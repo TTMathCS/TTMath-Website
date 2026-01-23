@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contests - TTMath School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="contest-page">
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="TTMath School" class="logo-img">
+      </a>
+      <nav class="nav">
+        <a href="index.html" data-i18n-en="Home" data-i18n-zh="首页">Home</a>
+        <a href="about.html" data-i18n-en="About Us" data-i18n-zh="关于我们">About Us</a>
+        <a href="curriculum.html" data-i18n-en="Curriculum" data-i18n-zh="课程体系">Curriculum</a>
+        <a href="contest.html" class="active" data-i18n-en="Contests" data-i18n-zh="竞赛">Contests</a>
+        <a href="achievements.html" data-i18n-en="Achievements" data-i18n-zh="成就">Achievements</a>
+        <a href="contact.html" data-i18n-en="Contact" data-i18n-zh="联系">Contact</a>
+      </nav>
+      <div class="header-right">
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="nav-toggle-text" data-i18n-en="Menu" data-i18n-zh="菜单">Menu</span>
+          <span class="nav-toggle-icon"></span>
+        </button>
+        <select class="lang-select">
+          <option value="en">EN</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <div class="announcement-bar">
+    <div class="container">
+      <span class="announcement-label" data-i18n-en="2026 Contest Updates" data-i18n-zh="2026竞赛更新">2026 Contest Updates</span>
+      <p data-i18n-en="Early deadlines approaching: Feb 5 AIME I, Feb 17 Math League, Feb 25 Pascal/Cayley/Fermat. Register by Jan 31, 2026 where listed." data-i18n-zh="近期截止：2月5日AIME I、2月17日Math League、2月25日Pascal/Cayley/Fermat。标注的项目需在2026年1月31日前报名。">Early deadlines approaching: Feb 5 AIME I, Feb 17 Math League, Feb 25 Pascal/Cayley/Fermat. Register by Jan 31, 2026 where listed.</p>
+      <a class="announcement-link" href="contact.html" data-i18n-en="Ask about registration" data-i18n-zh="咨询报名">Ask about registration</a>
+    </div>
+  </div>
+
+  <section class="contest-hero">
+    <div class="container contest-hero-grid">
+      <div class="contest-hero-content">
+        <span class="eyebrow" data-i18n-en="Contest Hub" data-i18n-zh="竞赛中心">Contest Hub</span>
+        <h1 data-i18n-en="Math & CS Contests" data-i18n-zh="数学与计算机竞赛">Math & CS Contests</h1>
+        <p data-i18n-en="Registration windows, schedules, and curated prep resources—all in one place." data-i18n-zh="报名时间、日程与精选备考资源一站式呈现。">Registration windows, schedules, and curated prep resources—all in one place.</p>
+        <div class="pill-row">
+          <span class="pill" data-i18n-en="Onsite + Online" data-i18n-zh="线下 + 线上">Onsite + Online</span>
+          <span class="pill" data-i18n-en="Jan–Jun 2026" data-i18n-zh="2026年1-6月">Jan–Jun 2026</span>
+          <span class="pill" data-i18n-en="Limited Seats" data-i18n-zh="名额有限">Limited Seats</span>
+        </div>
+        <div class="contest-actions">
+          <a href="#math-contests" class="btn" data-i18n-en="Math Schedule" data-i18n-zh="数学赛程">Math Schedule</a>
+          <a href="#cs-contests" class="btn btn-white" data-i18n-en="CS Schedule" data-i18n-zh="计算机赛程">CS Schedule</a>
+          <a href="#resources" class="btn btn-outline" data-i18n-en="Resources" data-i18n-zh="资源">Resources</a>
+        </div>
+        <div class="hero-metrics">
+          <div>
+            <span data-i18n-en="Registration Guidance" data-i18n-zh="报名指导">Registration Guidance</span>
+            <p data-i18n-en="Know where to register and when." data-i18n-zh="明确报名渠道与时间。">Know where to register and when.</p>
+          </div>
+          <div>
+            <span data-i18n-en="Prep Roadmaps" data-i18n-zh="备考路线">Prep Roadmaps</span>
+            <p data-i18n-en="Targeted practice aligned to contests." data-i18n-zh="针对性练习与赛事对齐。">Targeted practice aligned to contests.</p>
+          </div>
+          <div>
+            <span data-i18n-en="Seat Alerts" data-i18n-zh="名额提醒">Seat Alerts</span>
+            <p data-i18n-en="Stay ahead of capacity limits." data-i18n-zh="提前掌握名额动态。">Stay ahead of capacity limits.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="contest-hero-deadlines">
+        <div class="compact-upcoming">
+          <h3 data-i18n-en="Coming Up" data-i18n-zh="近期赛事">Coming Up</h3>
+          <ul>
+            <li><span>Feb 5, 2026</span><strong>AIME I</strong></li>
+            <li><span>Feb 17, 2026</span><strong>Math League (Gr6-8)</strong></li>
+            <li><span>Feb 18, 2026</span><strong>CCC Junior/Senior</strong></li>
+            <li><span>Feb 25, 2026</span><strong>Pascal/Cayley/Fermat</strong></li>
+            <li><span>Mar 22, 2026</span><strong>Math Kangaroo</strong></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="contest-subnav">
+    <div class="container">
+      <div class="subnav-inner">
+        <nav class="subnav-links">
+          <a href="#math-contests" data-i18n-en="Math Schedule" data-i18n-zh="数学赛程">Math Schedule</a>
+          <a href="#cs-contests" data-i18n-en="CS Schedule" data-i18n-zh="计算机赛程">CS Schedule</a>
+          <a href="#important-notes" data-i18n-en="Policies" data-i18n-zh="政策">Policies</a>
+          <a href="#resources" data-i18n-en="Resources" data-i18n-zh="资源">Resources</a>
+        </nav>
+        <div class="subnav-cta">
+          <span data-i18n-en="Need help choosing?" data-i18n-zh="需要建议？">Need help choosing?</span>
+          <a href="contact.html" class="btn btn-primary" data-i18n-en="Talk to an advisor" data-i18n-zh="咨询顾问">Talk to an advisor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section alt-bg contest-index">
+    <div class="container">
+      <details class="contest-index-details">
+        <summary data-i18n-en="Full Contest Index (by date) · Click to expand full list" data-i18n-zh="竞赛总览（按日期）· 点击展开完整列表">Full Contest Index (by date) · Click to expand full list</summary>
+        <div class="contest-index-table">
+          <div class="contest-index-header">
+            <span>Contest</span>
+            <span>Date</span>
+            <span>Registration Due</span>
+          </div>
+          <div class="contest-index-row">
+            <span>AIME I</span>
+            <span>Feb 5, 2026</span>
+            <span>TBD (invitation)</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Math League (Gr6-8)</span>
+            <span>Feb 17, 2026</span>
+            <span>Jan 31, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>CCC Junior/Senior</span>
+            <span>Feb 18, 2026</span>
+            <span>Feb 12, 2026 (through day school)</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Pascal/Cayley/Fermat</span>
+            <span>Feb 25, 2026</span>
+            <span>Jan 31, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>C(J)MO</span>
+            <span>Mar 2026 (TBD)</span>
+            <span>TBD (invitation)</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Math Kangaroo</span>
+            <span>Mar 22, 2026</span>
+            <span>Register independently</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Waterloo Euclid</span>
+            <span>Mar 31, 2026</span>
+            <span>Through your day school</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Fryer/Galois/Hypatia</span>
+            <span>Apr 1, 2026</span>
+            <span>Feb 18, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>CTMC</span>
+            <span>Apr 9, 2026</span>
+            <span>Feb 18, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Mathematica (Gr3-6)</span>
+            <span>Apr 15, 2026</span>
+            <span>Feb 18, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Mathematica (Gr7-9)</span>
+            <span>Apr 16, 2026</span>
+            <span>Feb 18, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Math League (Gr4-5)</span>
+            <span>Apr 18, 2026</span>
+            <span>Feb 18, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Math League (Algebra)</span>
+            <span>Apr 18, 2026</span>
+            <span>Feb 18, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Waterloo Gauss</span>
+            <span>May 13, 2026</span>
+            <span>Feb 18, 2026</span>
+          </div>
+          <div class="contest-index-row">
+            <span>CCO</span>
+            <span>May 2026 (TBD)</span>
+            <span>By invitation</span>
+          </div>
+          <div class="contest-index-row">
+            <span>ARML</span>
+            <span>May 30, 2026</span>
+            <span>TBD</span>
+          </div>
+          <div class="contest-index-row">
+            <span>Team Up Challenge</span>
+            <span>Jun 3, 2026</span>
+            <span>FULL</span>
+          </div>
+          <div class="contest-index-row">
+            <span>USACO (multiple dates)</span>
+            <span>Dec 2025–Mar 2026</span>
+            <span>usaco.org</span>
+          </div>
+          <div class="contest-index-row">
+            <span>ACSL</span>
+            <span>Year-round</span>
+            <span>Contact TTMath</span>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="content-section contest-timeline">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n-en="Season Map" data-i18n-zh="赛季地图">Season Map</span>
+        <h2 data-i18n-en="2026 Contest Timeline" data-i18n-zh="2026竞赛时间线">2026 Contest Timeline</h2>
+        <p data-i18n-en="A quick scan of the busiest months so families can plan ahead." data-i18n-zh="快速掌握高峰月份，便于提前规划。">A quick scan of the busiest months so families can plan ahead.</p>
+      </div>
+      <div class="timeline-track">
+        <div class="timeline-node">
+          <span>Jan</span>
+          <p data-i18n-en="Early deadlines + prep" data-i18n-zh="早期截止与备考">Early deadlines + prep</p>
+        </div>
+        <div class="timeline-node">
+          <span>Feb</span>
+          <p data-i18n-en="Pascal/Cayley/Fermat, AIME" data-i18n-zh="Pascal/Cayley/Fermat、AIME">Pascal/Cayley/Fermat, AIME</p>
+        </div>
+        <div class="timeline-node highlight">
+          <span>Mar</span>
+          <p data-i18n-en="Math Kangaroo, Euclid" data-i18n-zh="Math Kangaroo、Euclid">Math Kangaroo, Euclid</p>
+        </div>
+        <div class="timeline-node">
+          <span>Apr</span>
+          <p data-i18n-en="Mathematica, CTMC" data-i18n-zh="Mathematica、CTMC">Mathematica, CTMC</p>
+        </div>
+        <div class="timeline-node">
+          <span>May</span>
+          <p data-i18n-en="Gauss, CCO" data-i18n-zh="Gauss、CCO">Gauss, CCO</p>
+        </div>
+        <div class="timeline-node">
+          <span>Jun</span>
+          <p data-i18n-en="Team Up Challenge" data-i18n-zh="Team Up Challenge">Team Up Challenge</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section contest-overview">
+    <div class="container">
+      <div class="contest-overview-grid">
+        <div class="highlight-card">
+          <div class="highlight-icon">🏁</div>
+          <h3 data-i18n-en="Targeted Preparation" data-i18n-zh="针对性备考">Targeted Preparation</h3>
+          <p data-i18n-en="Focused practice blocks, mock contests, and strategy sessions aligned to each competition format." data-i18n-zh="围绕竞赛形式的专项练习、模考与策略指导。">Focused practice blocks, mock contests, and strategy sessions aligned to each competition format.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🧭</div>
+          <h3 data-i18n-en="Clear Registration" data-i18n-zh="清晰报名">Clear Registration</h3>
+          <p data-i18n-en="Know exactly where to register—TTMath onsite, online at home, or through your day school." data-i18n-zh="明确报名渠道：TTMath线下、在家线上或学校报名。">Know exactly where to register—TTMath onsite, online at home, or through your day school.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">⚡</div>
+          <h3 data-i18n-en="Latest Updates" data-i18n-zh="最新动态">Latest Updates</h3>
+          <p data-i18n-en="Deadlines, fees, and seat status surfaced so families can act fast without guessing." data-i18n-zh="截止日期、费用与名额状态一目了然，快速决策。">Deadlines, fees, and seat status surfaced so families can act fast without guessing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="content-section">
+    <div class="container">
+      <div class="contest-contact-grid">
+        <div class="contest-contact card">
+          <h3 data-i18n-en="Contest Office" data-i18n-zh="竞赛办公室">Contest Office</h3>
+          <p><strong>Location:</strong> 590 Alden Rd, Unit101, Markham, ON L3R 8N2</p>
+          <p><strong>Phone:</strong> 905-604-9339 | 647-498-8880</p>
+          <p><strong>Email:</strong> info@ttmath.ca</p>
+        </div>
+        <div class="contest-contact card">
+          <h3 data-i18n-en="Payment Details" data-i18n-zh="付款信息">Payment Details</h3>
+          <p><strong>E-transfer:</strong> payment@ttmath.ca</p>
+          <p class="muted" data-i18n-en="Include Student Name / TT ID / Grade / Contact Email / Contest Name" data-i18n-zh="请注明学生姓名 / TT ID / 年级 / 联系邮箱 / 竞赛名称">Include Student Name / TT ID / Grade / Contact Email / Contest Name</p>
+          <div class="mini-steps">
+            <span>1</span><p data-i18n-en="Confirm contest availability with TTMath." data-i18n-zh="与TTMath确认竞赛名额。">Confirm contest availability with TTMath.</p>
+            <span>2</span><p data-i18n-en="Submit payment with required details." data-i18n-zh="按要求信息完成付款。">Submit payment with required details.</p>
+            <span>3</span><p data-i18n-en="Receive confirmation + reminders." data-i18n-zh="收到确认及提醒信息。">Receive confirmation + reminders.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Math Contests -->
+  <section id="math-contests" class="content-section alt-bg">
+    <div class="container">
+      <div class="contests-layout">
+        <div class="contests-main">
+          <div class="section-head">
+            <span class="eyebrow" data-i18n-en="Math Contests" data-i18n-zh="数学竞赛">Math Contests</span>
+            <h2 data-i18n-en="2026 Math Contest Schedule (Jan-Jun)" data-i18n-zh="2026数学竞赛日程（1-6月）">2026 Math Contest Schedule (Jan-Jun)</h2>
+            <p data-i18n-en="Onsite and online options with practice packages and priority registration for TTMath students." data-i18n-zh="线上线下均可选择，含练习包与TTMath学生优先报名。">Onsite and online options with practice packages and priority registration for TTMath students.</p>
+          </div>
+          <div class="table-legend">
+            <span class="legend-chip danger" data-i18n-en="Deadline soon" data-i18n-zh="临近截止">Deadline soon</span>
+            <span class="legend-chip success" data-i18n-en="Free" data-i18n-zh="免费">Free</span>
+            <span class="legend-chip muted" data-i18n-en="Full" data-i18n-zh="已满">Full</span>
+          </div>
+          <div class="contest-table-wrap">
+            <table class="contest-table">
+          <thead>
+            <tr>
+              <th>Contest Name/Date/Time</th>
+              <th>Grade</th>
+              <th>Contest Info</th>
+              <th>TTMath Level</th>
+              <th>TT Student</th>
+              <th>Non-TT</th>
+              <th>Reg. Due</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Mathematica Online -->
+            <tr>
+              <td rowspan="4"><strong>Mathematica</strong><br>Online at Home<br>Wed. April 15, 7PM</td>
+              <td>Gr3</td><td>45 minutes</td><td>FunMath2/3</td>
+              <td rowspan="4">$20</td><td rowspan="4">$25</td><td rowspan="4">02/18/2026</td>
+            </tr>
+            <tr><td>Gr4</td><td>45 minutes</td><td>FunMath3/4</td></tr>
+            <tr><td>Gr5</td><td>60 minutes</td><td>FunMath4/5</td></tr>
+            <tr><td>Gr6</td><td>75 minutes</td><td>FunMath5/L1</td></tr>
+
+            <!-- Mathematica Online Gr7-9 -->
+            <tr class="alt-row">
+              <td rowspan="3"><strong>Mathematica</strong><br>Online at Home<br>Thurs. April 16, 7PM</td>
+              <td>Gr7 (FULL)</td><td>75 minutes</td><td>L1</td>
+              <td rowspan="3">$20</td><td rowspan="3">$25</td><td rowspan="3">02/18/2026</td>
+            </tr>
+            <tr class="alt-row"><td>Gr8</td><td>75 minutes</td><td>L2</td></tr>
+            <tr class="alt-row"><td>Gr9</td><td>75 minutes</td><td>L2</td></tr>
+
+            <!-- Math League Online Gr4-5 -->
+            <tr>
+              <td rowspan="2"><strong>Math League</strong> (Online at Home)<br>Sat. April 18@7PM</td>
+              <td>Gr4</td><td rowspan="2">30 minutes</td><td>FunMath3/4</td>
+              <td rowspan="2">$25<br><small>with practice</small></td>
+              <td rowspan="2">$30<br><small>with practice</small></td>
+              <td rowspan="2">02/18/2026</td>
+            </tr>
+            <tr><td>Gr5</td><td>FunMath4/5</td></tr>
+
+            <!-- Math League Online Gr6-8 -->
+            <tr class="alt-row">
+              <td rowspan="3"><strong>Math League</strong><br>Online at Home<br>Tues. Feb 17@7PM</td>
+              <td>Gr6</td><td rowspan="3">30 minutes</td><td>FunMath5/L1</td>
+              <td rowspan="3">$25<br><small>with practice</small></td>
+              <td rowspan="3">$30<br><small>with practice</small></td>
+              <td rowspan="3" class="deadline-soon">01/31/2026</td>
+            </tr>
+            <tr class="alt-row"><td>Gr7 (FULL)</td><td>L1/L2</td></tr>
+            <tr class="alt-row"><td>Gr8</td><td>L1/L2</td></tr>
+
+            <!-- Math League Algebra -->
+            <tr>
+              <td><strong>Math League</strong> (Online at Home)<br>Sat. April 18@7PM</td>
+              <td>Algebra/Gr9</td><td>30 minutes</td><td>L2 or Gr9 and under</td>
+              <td>$25<br><small>with practice</small></td>
+              <td>$30<br><small>with practice</small></td>
+              <td>02/18/2026</td>
+            </tr>
+
+            <!-- Math Kangaroo -->
+            <tr class="alt-row">
+              <td rowspan="3"><strong>Math Kangaroo</strong><br>Sunday, March 22</td>
+              <td>Gr3/4</td><td>60 minutes</td><td>FunMath3/4</td>
+              <td rowspan="3">N/A</td><td rowspan="3">N/A</td><td rowspan="3">N/A</td>
+            </tr>
+            <tr class="alt-row"><td>Gr5/6</td><td>75 minutes</td><td>FunMath5/L1</td></tr>
+            <tr class="alt-row"><td>Gr7/8</td><td>75 minutes</td><td>L1/L2</td></tr>
+            <tr class="alt-row"><td colspan="7" class="note-cell">Register at <a href="https://kangaroo.math.ca" target="_blank">kangaroo.math.ca</a> by yourself</td></tr>
+
+            <!-- Waterloo Gauss -->
+            <tr>
+              <td rowspan="2"><strong>Waterloo Gauss</strong> TTmath Onsite<br>Wed. May 13@5:30PM or 7:30PM</td>
+              <td>Gr7</td><td rowspan="2">60 minutes</td><td>L1</td>
+              <td rowspan="2">$20</td><td rowspan="2">$30</td><td rowspan="2">02/18/2026</td>
+            </tr>
+            <tr><td>Gr8</td><td>L2</td></tr>
+
+            <!-- Pascal/Cayley/Fermat -->
+            <tr class="alt-row">
+              <td rowspan="3"><strong>Pascal/Cayley/Fermat</strong><br>TTMath Onsite<br>Wed. Feb 25@6:30PM</td>
+              <td>Gr9</td><td rowspan="3">25 multiple-choices<br>60 minutes</td><td>L2</td>
+              <td rowspan="3">$20</td><td rowspan="3">$30</td><td rowspan="3" class="deadline-soon">01/31/2026</td>
+            </tr>
+            <tr class="alt-row"><td>Gr10</td><td>L3</td></tr>
+            <tr class="alt-row"><td>Gr11</td><td>L3</td></tr>
+
+            <!-- Fryer/Galois/Hypatia -->
+            <tr>
+              <td rowspan="3"><strong>Fryer/Galois/Hypatia</strong><br>TTMath Onsite<br>Wed. April 1@6:30PM</td>
+              <td>Gr9</td><td rowspan="3">Solutions<br>75 minutes</td><td>L2</td>
+              <td rowspan="3">$30</td><td rowspan="3">$40</td><td rowspan="3">02/18/2026</td>
+            </tr>
+            <tr><td>Gr10</td><td>L3</td></tr>
+            <tr><td>Gr11</td><td>L3</td></tr>
+
+            <!-- Waterloo Euclid -->
+            <tr class="alt-row">
+              <td><strong>Waterloo Euclid</strong></td>
+              <td>Gr10-12</td><td>Tues. March 31</td><td>L4/L4+</td>
+              <td>N/A</td><td>N/A</td><td>N/A</td>
+            </tr>
+            <tr class="alt-row"><td colspan="7" class="note-cell">Register through your day school</td></tr>
+
+            <!-- AIME I -->
+            <tr>
+              <td><strong>AIME I</strong> TTMath Onsite<br>Thurs. Feb 5@1:30-4:30PM</td>
+              <td>Gr9+</td><td>By invitation</td><td>L4+</td>
+              <td class="free-cell">FREE</td><td class="free-cell">FREE</td><td>TBD</td>
+            </tr>
+
+            <!-- CJMO -->
+            <tr class="alt-row">
+              <td><strong>C(J)MO</strong> TTMath Onsite</td>
+              <td>Gr9+</td><td>March</td><td>L4+</td>
+              <td class="free-cell">FREE</td><td class="free-cell">FREE</td><td>TBD</td>
+            </tr>
+
+            <!-- CTMC -->
+            <tr>
+              <td><strong>CTMC: Canadian Team Mathematics Contest</strong><br>TTMath Onsite</td>
+              <td>Gr9-12</td><td>5-9PM@Thurs. April 9</td><td>L3+</td>
+              <td>$30</td><td>$40</td><td>02/18/2026</td>
+            </tr>
+
+            <!-- Team Up Challenge -->
+            <tr class="alt-row">
+              <td><strong>Team Up Challenge</strong><br>TTMath Onsite</td>
+              <td>Gr6-8</td><td>5-9PM@Wed. June 3</td><td>L1/L2</td>
+              <td class="full-cell">FULL</td><td class="full-cell">FULL</td><td class="full-cell">FULL</td>
+            </tr>
+
+            <!-- ARML -->
+            <tr>
+              <td><strong>ARML</strong></td>
+              <td>Gr9+</td><td>May 30@Penn State</td><td>L4+</td>
+              <td>TBD</td><td>TBD</td><td>TBD</td>
+            </tr>
+            <tr><td colspan="7" class="note-cell">Selective</td></tr>
+          </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CS Contests -->
+  <section id="cs-contests" class="content-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n-en="CS Contests" data-i18n-zh="计算机竞赛">CS Contests</span>
+        <h2 data-i18n-en="2026 Computer Science Contests" data-i18n-zh="2026计算机竞赛">2026 Computer Science Contests</h2>
+        <p data-i18n-en="From CCC to USACO—build algorithmic thinking and competition-ready coding skills." data-i18n-zh="从CCC到USACO，训练算法思维与竞赛编程能力。">From CCC to USACO—build algorithmic thinking and competition-ready coding skills.</p>
+      </div>
+      <div class="table-legend">
+        <span class="legend-chip success" data-i18n-en="Free" data-i18n-zh="免费">Free</span>
+        <span class="legend-chip muted" data-i18n-en="Registration via school" data-i18n-zh="通过学校报名">Registration via school</span>
+      </div>
+      <div class="contest-table-wrap">
+        <table class="contest-table">
+          <thead>
+            <tr>
+              <th>Contest Name/Date</th>
+              <th>Grade</th>
+              <th>Contest Info</th>
+              <th>TTMath Level</th>
+              <th>TT Student</th>
+              <th>Non-TT</th>
+              <th>Registration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- CCC -->
+            <tr>
+              <td><strong>CCC Junior/Senior</strong><br>Wed. Feb 18, 2026</td>
+              <td>Gr9+</td><td>3 hours, 5 problems each division</td><td>CS2+/CS3+</td>
+              <td>N/A</td><td>N/A</td><td>Through your day school (due Feb 12, 2026)</td>
+            </tr>
+
+            <!-- USACO -->
+            <tr class="alt-row">
+              <td><strong>USACO</strong><br>Dec, Jan, Feb, Mar (Online)</td>
+              <td>All</td><td>4 hours, 3 problems<br>Bronze/Silver/Gold/Platinum</td><td>CS1+/CS2+/CS3+</td>
+              <td class="free-cell">FREE</td><td class="free-cell">FREE</td><td><a href="http://usaco.org" target="_blank">usaco.org</a></td>
+            </tr>
+
+            <!-- CCO -->
+            <tr>
+              <td><strong>CCO (Canadian Computing Olympiad)</strong><br>May 2026</td>
+              <td>Gr9+</td><td>By invitation (top CCC scorers)</td><td>CS3+</td>
+              <td class="free-cell">FREE</td><td class="free-cell">FREE</td><td>By invitation</td>
+            </tr>
+
+            <!-- ACSL -->
+            <tr class="alt-row">
+              <td><strong>ACSL</strong><br>Throughout the year</td>
+              <td>All</td><td>4 contests per year<br>Junior/Intermediate/Senior</td><td>CS1+/CS2+</td>
+              <td>TBD</td><td>TBD</td><td>Contact TTMath</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Info -->
+  <section id="important-notes" class="content-section alt-bg">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n-en="Important" data-i18n-zh="重要">Important</span>
+        <h2 data-i18n-en="Important Notes" data-i18n-zh="重要提示">Important Notes</h2>
+        <p data-i18n-en="Please read before registering to avoid schedule conflicts and missed deadlines." data-i18n-zh="报名前请阅读，避免时间冲突或错过截止日期。">Please read before registering to avoid schedule conflicts and missed deadlines.</p>
+      </div>
+      <div class="note-grid">
+        <div class="note-card warning">
+          <h4 data-i18n-en="No Refunds" data-i18n-zh="不退款">No Refunds</h4>
+          <p data-i18n-en="No refund/credit for any contest cancellation. Please always check with your home school first." data-i18n-zh="任何竞赛取消不退款/不转课，请先与日校确认。">No refund/credit for any contest cancellation. Please always check with your home school first.</p>
+        </div>
+        <div class="note-card info">
+          <h4 data-i18n-en="Perfect Score Waiver" data-i18n-zh="满分免报名费">Perfect Score Waiver</h4>
+          <p data-i18n-en="TTMath students only: Contest fee is waived for the corresponding contest if you had a Perfect score with TTMath last school year." data-i18n-zh="仅限TTMath学生：上学年在TTMath获得满分的对应竞赛可免报名费。">TTMath students only: Contest fee is waived for the corresponding contest if you had a Perfect score with TTMath last school year.</p>
+        </div>
+        <div class="note-card warning">
+          <h4 data-i18n-en="Limited Spots" data-i18n-zh="名额有限">Limited Spots</h4>
+          <p data-i18n-en="First come first service. Each contest has limited spots and will close before the deadline without notification if spots are gone." data-i18n-zh="名额有限，先到先得。名额满会提前截止，恕不另行通知。">First come first service. Each contest has limited spots and will close before the deadline without notification if spots are gone.</p>
+        </div>
+        <div class="note-card info">
+          <h4 data-i18n-en="One Registration Rule" data-i18n-zh="一次报名规则">One Registration Rule</h4>
+          <p data-i18n-en="For any contest (in a box in the first column) you can only register once in a school year—if you are taking it at your day school, you cannot take it again at TTMath." data-i18n-zh="同一学年同一竞赛只能报名一次；若在日校参加，则不能再在TTMath参加。">For any contest (in a box in the first column) you can only register once in a school year—if you are taking it at your day school, you cannot take it again at TTMath.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section id="resources" class="content-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n-en="Resources" data-i18n-zh="资源">Resources</span>
+        <h2 data-i18n-en="Contest Resources" data-i18n-zh="竞赛资源">Contest Resources</h2>
+        <p data-i18n-en="Official archives, problem sets, and online judges to fuel consistent progress." data-i18n-zh="官方题库、题目集与在线评测平台，持续提升实力。">Official archives, problem sets, and online judges to fuel consistent progress.</p>
+      </div>
+
+      <h3 style="margin-top: 24px; margin-bottom: 16px;" data-i18n-en="Math Contest Resources" data-i18n-zh="数学竞赛资源">Math Contest Resources</h3>
+      <div class="resource-grid">
+        <div class="card resource-card">
+          <h4>Waterloo CEMC</h4>
+          <p>Past contests, solutions, and practice materials for all Waterloo contests</p>
+          <a href="https://cemc.uwaterloo.ca/contests/past_contests.html" target="_blank" class="resource-link">cemc.uwaterloo.ca</a>
+        </div>
+        <div class="card resource-card">
+          <h4>AMC/AIME</h4>
+          <p>Past problems and solutions for AMC 8/10/12 and AIME</p>
+          <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" class="resource-link">Art of Problem Solving Wiki</a>
+        </div>
+        <div class="card resource-card">
+          <h4>COMC</h4>
+          <p>Canadian Open Mathematics Challenge past problems</p>
+          <a href="https://cms.math.ca/competitions/comc/" target="_blank" class="resource-link">cms.math.ca</a>
+        </div>
+        <div class="card resource-card">
+          <h4>Math Kangaroo</h4>
+          <p>International math competition for grades 1-12</p>
+          <a href="https://kangaroo.math.ca" target="_blank" class="resource-link">kangaroo.math.ca</a>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 36px; margin-bottom: 16px;" data-i18n-en="CS Contest Resources" data-i18n-zh="计算机竞赛资源">CS Contest Resources</h3>
+      <div class="resource-grid">
+        <div class="card resource-card">
+          <h4>DMOJ</h4>
+          <p>Online judge with CCC past problems and practice contests</p>
+          <a href="https://dmoj.ca" target="_blank" class="resource-link">dmoj.ca</a>
+        </div>
+        <div class="card resource-card">
+          <h4>USACO Guide</h4>
+          <p>Comprehensive training guide for USACO Bronze to Platinum</p>
+          <a href="https://usaco.guide" target="_blank" class="resource-link">usaco.guide</a>
+        </div>
+        <div class="card resource-card">
+          <h4>CCC Past Problems</h4>
+          <p>Official Waterloo CCC past problems and solutions</p>
+          <a href="https://cemc.uwaterloo.ca/contests/computing.html" target="_blank" class="resource-link">cemc.uwaterloo.ca</a>
+        </div>
+        <div class="card resource-card">
+          <h4>Codeforces</h4>
+          <p>Competitive programming contests and practice problems</p>
+          <a href="https://codeforces.com" target="_blank" class="resource-link">codeforces.com</a>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 36px; margin-bottom: 16px;" data-i18n-en="TTMath Course Materials" data-i18n-zh="TTMath课程资料">TTMath Course Materials</h3>
+      <div class="foundation-links">
+        <a href="ccc-junior.html" class="foundation-card">
+          <h3 data-i18n-en="CCC Junior Foundations" data-i18n-zh="CCC初级基础">CCC Junior Foundations</h3>
+          <p data-i18n-en="Essential math & algorithms for J1-J5" data-i18n-zh="J1-J5必备数学与算法">Essential math & algorithms for J1-J5</p>
+        </a>
+        <a href="ccc-senior.html" class="foundation-card">
+          <h3 data-i18n-en="CCC Senior Foundations" data-i18n-zh="CCC高级基础">CCC Senior Foundations</h3>
+          <p data-i18n-en="Advanced topics for S1-S3" data-i18n-zh="S1-S3高阶内容">Advanced topics for S1-S3</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 data-i18n-en="Need Contest Preparation?" data-i18n-zh="需要竞赛备考？">Need Contest Preparation?</h2>
+      <p data-i18n-en="Join our courses to prepare for math and CS competitions." data-i18n-zh="加入我们的课程备战数学与计算机竞赛。">Join our courses to prepare for math and CS competitions.</p>
+      <a href="contact.html" class="btn btn-white" data-i18n-en="Book Free Assessment" data-i18n-zh="预约免费测评">Book Free Assessment</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="TTMath School" class="footer-logo">
+          <p data-i18n-en="Excellence in mathematics education since 2010." data-i18n-zh="自2010年以来专注数学教育。">Excellence in mathematics education since 2010.</p>
+        </div>
+        <div>
+          <h4 data-i18n-en="Quick Links" data-i18n-zh="快速链接">Quick Links</h4>
+          <a href="about.html" data-i18n-en="About Us" data-i18n-zh="关于我们">About Us</a>
+          <a href="curriculum.html" data-i18n-en="Curriculum" data-i18n-zh="课程体系">Curriculum</a>
+          <a href="contact.html" data-i18n-en="Contact" data-i18n-zh="联系">Contact</a>
+        </div>
+        <div>
+          <h4 data-i18n-en="Contact" data-i18n-zh="联系">Contact</h4>
+          <p>info@ttmath.ca</p>
+          <p>905-604-9339</p>
+          <p>Markham, Ontario</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n-en="© 2025 TTMath School. All rights reserved." data-i18n-zh="© 2025 TTMath School. 保留所有权利。">© 2025 TTMath School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
