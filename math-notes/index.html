@@ -13,10 +13,8 @@
   <style>
     a.note-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
     .note-sym { display: flex; align-items: center; justify-content: center;
-      width: 54px; height: 54px; border-radius: 14px; background: rgba(37, 99, 235, 0.1);
-      color: var(--primary); font-family: "Cambria Math", Cambria, Georgia, serif;
-      font-size: 1.55rem; font-weight: 600; line-height: 1; margin-bottom: 14px; }
-    .note-sym sup, .note-sym sub { font-size: 0.58em; }
+      width: 46px; height: 46px; border-radius: 50%; background: rgba(37, 99, 235, 0.1);
+      color: var(--primary); font: 700 1.05rem/1 "Inter", system-ui; margin-bottom: 14px; }
     .note-card .note-tag { display: inline-block; align-self: flex-start;
       font: 600 11.5px/1 "Inter", system-ui; letter-spacing: 0.3px; color: var(--primary);
       background: rgba(37, 99, 235, 0.08); padding: 5px 11px; border-radius: 20px; margin-bottom: 12px; }
@@ -84,35 +82,35 @@
       <p class="section-intro" data-i18n-en="Five interactive explainers. Click the yellow Why? boxes for the reasoning and play with the green demos." data-i18n-zh="五个互动讲解。点击黄色 Why? 框查看推理，体验绿色互动演示。">Five interactive explainers. Click the yellow Why? boxes for the reasoning and play with the green demos.</p>
       <div class="note-grid">
         <a class="experience-card note-card feat" href="crt-explained.html">
-          <div class="note-sym">∏</div>
+          <div class="note-sym">1</div>
           <span class="note-tag">Concept · interactive</span>
           <h3>Chinese Remainder Theorem, explained</h3>
           <p>From scratch, with a clock, the remainder grid, and the construction formula.</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card" href="crt-proof.html">
-          <div class="note-sym">∎</div>
+          <div class="note-sym">2</div>
           <span class="note-tag">Concept · proof</span>
           <h3>Why CRT is true</h3>
           <p>Uniqueness + existence (the construction), plus the counting argument.</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card feat" href="euclidean-inverse.html">
-          <div class="note-sym">a<sup>−1</sup></div>
+          <div class="note-sym">3</div>
           <span class="note-tag">Concept · interactive</span>
           <h3>Modular inverse via Euclid</h3>
           <p>The tool behind CRT's yᵢ and RSA's private key, with a calculator.</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card feat" href="fermat.html">
-          <div class="note-sym">a<sup>p−1</sup></div>
+          <div class="note-sym">4</div>
           <span class="note-tag">Concept · interactive</span>
           <h3>Fermat's Little Theorem</h3>
           <p>Why aᵖ⁻¹ ≡ 1, how it crushes big exponents, with a powers demo.</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card" href="reference.html">
-          <div class="note-sym">≡</div>
+          <div class="note-sym">5</div>
           <span class="note-tag">Concept · review</span>
           <h3>Congruence toolbox</h3>
           <p>Every congruence rule plus a catalog of the popular modular theorems.</p>
@@ -129,49 +127,49 @@
       <p class="section-intro" data-i18n-en="Seven problems worked end to end. One pattern runs through them all: split the modulus, shrink exponents with Fermat, glue back with CRT." data-i18n-zh="七道完整例题，贯穿同一思路：拆分模数、用费马缩小指数、再用中国剩余定理拼接。">Seven problems worked end to end. One pattern runs through them all: split the modulus, shrink exponents with Fermat, glue back with CRT.</p>
       <div class="note-grid">
         <a class="experience-card note-card" href="q1a-crt-two-congruences.html">
-          <div class="note-sym">≡</div>
+          <div class="note-sym">1a</div>
           <span class="note-tag">Problem 1(a) · CRT</span>
           <h3>Two congruences</h3>
           <p>x ≡ 1 (mod 2), x ≡ 4 (mod 3)</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card" href="q1b-crt-three-congruences.html">
-          <div class="note-sym">−1</div>
+          <div class="note-sym">1b</div>
           <span class="note-tag">Problem 1(b) · CRT</span>
           <h3>Three congruences, the −1 trick</h3>
           <p>x ≡ 1 (mod 3), 4 (mod 5), 6 (mod 7)</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card" href="q2a-last-two-digits.html">
-          <div class="note-sym">10<sup>2</sup></div>
+          <div class="note-sym">2a</div>
           <span class="note-tag">Problem 2(a) · splitting</span>
           <h3>Last two digits of 49¹⁹</h3>
           <p>mod 100 = 4 × 25</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card" href="q2b-mod6-mod8.html">
-          <div class="note-sym">≠</div>
+          <div class="note-sym">2b</div>
           <span class="note-tag">Problem 2(b) · splitting</span>
           <h3>Non-coprime moduli (the trap)</h3>
           <p>x ≡ 5 (mod 6), x ≡ 3 (mod 8)</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card" href="q2c-polynomial-mod77.html">
-          <div class="note-sym">x<sup>121</sup></div>
+          <div class="note-sym">2c</div>
           <span class="note-tag">Problem 2(c) · the hard one</span>
           <h3>A polynomial congruence mod 77</h3>
           <p>2x¹²¹ + 22x³⁶ + 21x³⁰ + 2 ≡ 0</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card" href="q3-prove-a30-mod77.html">
-          <div class="note-sym">a<sup>30</sup></div>
+          <div class="note-sym">3</div>
           <span class="note-tag">Problem 3 · Fermat</span>
           <h3>Prove a³⁰ ≡ 1 (mod 77)</h3>
           <p>whenever gcd(a, 77) = 1</p>
           <span class="note-arrow">Open →</span>
         </a>
         <a class="experience-card note-card" href="q4-order-of-2-mod35.html">
-          <div class="note-sym">ord</div>
+          <div class="note-sym">4</div>
           <span class="note-tag">Problem 4 · order</span>
           <h3>Smallest n with 2ⁿ ≡ 1 (mod 35)</h3>
           <p>order = lcm of orders · interactive</p>
