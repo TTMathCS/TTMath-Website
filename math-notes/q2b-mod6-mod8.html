@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem 2(b) — non-coprime moduli</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>Problem 2(b)</h1>
+  <p class="sub">Splitting the modulus · the non-coprime trap</p>
+  <div class="hook"><b>6 and 8 look harmless</b> — but they share a secret factor. This is the
+  problem that teaches you to look before you split.</div>
+
+  <div class="problem"><b>Solve.</b> &nbsp;<span class="m">x ≡ 5 (mod 6)</span> &nbsp;and&nbsp;
+    <span class="m">x ≡ 3 (mod 8)</span>.</div>
+
+  <span class="tool">Tool: split only the coprime part — and watch the trap</span>
+
+  <div class="warn">
+    <b>The trap:</b> 6 and 8 are <b>not</b> coprime (gcd = 2). You can't CRT them blindly, and you
+    can't split 8 into 2 × 4 either. Handle the shared factor of 2 carefully.
+  </div>
+
+  <div class="step" data-n="1">
+    <h3>Split the 6 (it factors into coprimes 2 × 3)</h3>
+    <pre class="calc">x ≡ 5 (mod 6)  ⟺  x ≡ 1 (mod 2)  and  x ≡ 2 (mod 3)</pre>
+    <p>(using 5 ≡ 1 mod 2 and 5 ≡ 2 mod 3.)</p>
+  </div>
+
+  <div class="step" data-n="2">
+    <h3>Absorb the redundant condition</h3>
+    <p>We also have <span class="m">x ≡ 3 (mod 8)</span>, which already forces x odd, i.e.
+    <span class="m">x ≡ 1 (mod 2)</span>. So the mod-2 piece is implied — drop it. Left with:</p>
+    <pre class="calc">x ≡ 3 (mod 8)
+x ≡ 2 (mod 3)</pre>
+    <p>Now 8 and 3 <b>are</b> coprime, so CRT applies cleanly.</p>
+  </div>
+
+  <div class="step" data-n="3">
+    <h3>Merge</h3>
+    <p>Answer lives mod 8 × 3 = 24. From x ≡ 3 (mod 8), test {3, 11, 19} for x ≡ 2 (mod 3):</p>
+    <table class="tbl">
+      <tr><th>candidate</th><td>3</td><td class="hit">11</td><td>19</td></tr>
+      <tr><th>mod 3</th><td>0</td><td class="hit">2 ✓</td><td>1</td></tr>
+    </table>
+  </div>
+
+  <div class="answer"><span class="m">x ≡ 11 (mod 24)</span> &nbsp;— that is, x = 11 + 24k.</div>
+  <p><span class="check">Check:</span> 11 mod 6 = 5 ✓ · 11 mod 8 = 3 ✓</p>
+
+  <div class="note">
+    <b>The big idea.</b> When moduli overlap, peel them into prime-power pieces (6 = 2·3, 8 = 2³),
+    then reconcile the shared piece — the stronger condition (mod 8) wins over mod 2. If two
+    overlapping conditions <i>contradicted</i> (one even, one odd) there would be <b>no
+    solution</b> — a good "what if?" for the class.
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="challenge">
+    <p class="ch">Your turn</p>
+    <p>Solve <span class="m">x ≡ 3 (mod 4)</span> and <span class="m">x ≡ 5 (mod 6)</span> — another
+    non-coprime pair (gcd 2).</p>
+    <details><summary>Show answer</summary>
+      <p>Both force x odd, so they agree on the shared factor of 2. Reduce to
+      <span class="m">x ≡ 3 (mod 4)</span> and <span class="m">x ≡ 2 (mod 3)</span> →
+      <span class="m">x ≡ 11 (mod 12)</span>.</p>
+    </details>
+  </div>
+  <div class="pagenav">
+    <a href="q2a-last-two-digits.html">← Problem 2(a)</a>
+    <span class="spacer"></span>
+    <a href="q2c-polynomial-mod77.html">Next: Problem 2(c) →</a>
+  </div>
+  <div class="concepts-row">Concepts: <a href="crt-explained.html">CRT</a> ·
+    <a href="fermat.html">Fermat</a> · <a href="euclidean-inverse.html">Inverse</a> ·
+    <a href="crt-proof.html">CRT proof</a></div>
+</div>
+</body>
+</html>

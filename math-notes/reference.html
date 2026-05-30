@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Congruence toolbox — properties &amp; key theorems</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  table.props{width:100%}
+  table.props td{text-align:left}
+  table.props th{text-align:left}
+  table.props tr.cat td{background:#eef2f8;font:700 13px system-ui;color:var(--ink)}
+  .thm{margin:22px 0;padding:18px 22px}
+  .thm h3{margin:0 0 4px;font-size:18px}
+  .thm p{margin:9px 0}
+  .thm .lbl{color:var(--soft);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>Congruence toolbox</h1>
+  <p class="sub">A one-page review: the rules of working mod n, and the theorems worth knowing</p>
+
+  <div class="hook">Quick reference for the board. Part A is every arithmetic rule in one table; Part B
+  is the named theorems, with the four you'll actually use in this class marked.</div>
+
+  <!-- PART A -->
+  <h2>Part A — Properties of congruences</h2>
+  <p>Recall <span class="m">a ≡ b (mod n)</span> means "n divides a − b" — a and b sit at the same
+  spot on an n-hour clock. Every legal move is in the table below
+  (<span class="m">a ≡ b</span> and <span class="m">c ≡ d (mod n)</span> throughout; k is any integer).</p>
+
+  <table class="tbl props">
+    <tr><th>Rule</th><th>Name</th><th>Example</th></tr>
+
+    <tr class="cat"><td colspan="3">It behaves like equality</td></tr>
+    <tr><td class="m">a ≡ a</td><td>reflexive</td><td class="m">7 ≡ 7 (mod 5)</td></tr>
+    <tr><td class="m">a ≡ b ⟹ b ≡ a</td><td>symmetric</td><td class="m">2 ≡ 7 ⟹ 7 ≡ 2</td></tr>
+    <tr><td class="m">a ≡ b, b ≡ c ⟹ a ≡ c</td><td>transitive</td><td class="m">12 ≡ 7, 7 ≡ 2 ⟹ 12 ≡ 2</td></tr>
+
+    <tr class="cat"><td colspan="3">Combine two congruences</td></tr>
+    <tr><td class="m">a + c ≡ b + d</td><td>add</td><td class="m">9+10 ≡ 2+3 (mod 7)</td></tr>
+    <tr><td class="m">a − c ≡ b − d</td><td>subtract</td><td class="m">9−10 ≡ 2−3 (mod 7)</td></tr>
+    <tr><td class="m">a · c ≡ b · d</td><td>multiply</td><td class="m">9·10 ≡ 2·3 (mod 7)</td></tr>
+    <tr><td class="m">aᵏ ≡ bᵏ&nbsp; (k ≥ 0)</td><td>powers</td><td class="m">9³ ≡ 2³ (mod 7)</td></tr>
+    <tr><td class="m">P(a) ≡ P(b)</td><td>any integer polynomial</td><td>plug congruent values into P</td></tr>
+
+    <tr class="cat"><td colspan="3">Same constant k on both sides &nbsp;(the case c = d = k)</td></tr>
+    <tr><td class="m">a + k ≡ b + k</td><td>add a constant</td><td class="m">9 ≡ 2 ⟹ 9+4 ≡ 2+4</td></tr>
+    <tr><td class="m">a − k ≡ b − k</td><td>subtract a constant</td><td class="m">9 ≡ 2 ⟹ 9−5 ≡ 2−5</td></tr>
+    <tr><td class="m">k · a ≡ k · b</td><td>multiply by a constant</td><td class="m">9 ≡ 2 ⟹ 3·9 ≡ 3·2</td></tr>
+
+    <tr class="cat"><td colspan="3">Change the modulus</td></tr>
+    <tr><td class="m">m | n ⟹ a ≡ b (mod m)</td><td>shrink to a divisor</td><td class="m">a ≡ b (mod 12) ⟹ a ≡ b (mod 4)</td></tr>
+    <tr><td class="m">a ≡ b (mod n) ⟹ k·a ≡ k·b (mod k·n)</td><td>scale up</td><td class="m">a ≡ b (mod 5) ⟹ 3a ≡ 3b (mod 15)</td></tr>
+    <tr><td class="m">a ≡ b (mod m) &amp; (mod n), gcd(m,n)=1 ⟹ a ≡ b (mod m·n)</td><td>combine coprime moduli (splitting / CRT)</td><td class="m">mod 5 &amp; mod 7 ⟹ mod 35</td></tr>
+
+    <tr class="cat"><td colspan="3">Cancelling — the careful one (see warning)</td></tr>
+    <tr><td class="m">c·a ≡ c·b (mod n) ⟹ a ≡ b (mod n / gcd(c,n))</td><td>divide; if gcd(c,n)=1 cancel c freely</td><td class="m">6a ≡ 6b (mod 9) ⟹ 2a ≡ 2b (mod 3)</td></tr>
+  </table>
+
+  <p>Handiest consequence of the multiply/power rules: when computing, <b>replace any number by
+  anything congruent to it</b> at any step — that's why <span class="m">49 ≡ −1 (mod 25)</span> makes
+  <span class="m">49¹⁹</span> easy.</p>
+
+  <div class="warn">
+    <b>The one trap: you cannot always divide.</b> From <span class="m">c·a ≡ c·b (mod n)</span> you
+    may <b>not</b> simply cancel c — the correct rule is
+    <span class="m">a ≡ b (mod n / gcd(c, n))</span>, and only when
+    <span class="m">gcd(c, n) = 1</span> does c cancel cleanly.
+    <br>Example: <span class="m">2·3 ≡ 2·0 (mod 6)</span> (both sides ≡ 0), yet
+    <span class="m">3 ≢ 0 (mod 6)</span> — dividing by 2 fails because gcd(2,6)=2. To "divide,"
+    multiply by the <a href="euclidean-inverse.html">modular inverse</a> instead (which exists only
+    when gcd = 1).
+  </div>
+
+  <!-- PART B -->
+  <h2>Part B — Popular theorems, in brief</h2>
+
+  <h3>Core — the four this class is built on</h3>
+
+  <div class="card thm">
+    <h3>Chinese Remainder Theorem &nbsp;<span class="tool" style="padding:2px 10px;font-size:12px">this class</span></h3>
+    <p><span class="lbl">Statement.</span> If <span class="m">n₁, …, nₖ</span> are pairwise coprime
+    (<span class="m">gcd(nᵢ, nⱼ) = 1</span>, <span class="m">i ≠ j</span>), the system
+    <span class="m">x ≡ aᵢ (mod nᵢ)</span> has exactly one solution modulo
+    <span class="m">N = <span class="bigop"><span class="lim">k</span><span class="sym">∏</span><span class="lim">i=1</span></span> nᵢ</span>.</p>
+    <p><span class="lbl">What it's for.</span> It turns one hard modulus into several easy ones: solve
+    the problem separately mod each prime piece, then glue the answers into a single number. The glue
+    step is the whole reason "split → solve → recombine" works.</p>
+    <p><span class="lbl">Example.</span> <span class="m">x ≡ 2 (mod 3), 3 (mod 5), 2 (mod 7)</span> has
+    the unique answer <span class="m">x = 23 (mod 105)</span>.
+    → <a href="crt-explained.html">explained</a> · <a href="crt-proof.html">proof</a></p>
+  </div>
+
+  <div class="card thm">
+    <h3>Fermat's Little Theorem &nbsp;<span class="tool" style="padding:2px 10px;font-size:12px">this class</span></h3>
+    <p><span class="lbl">Statement.</span> If p is prime and <span class="m">p ∤ a</span>, then
+    <span class="m">a^(p−1) ≡ 1 (mod p)</span>.</p>
+    <p><span class="lbl">What it's for.</span> The exponent-crusher. Since the powers of a return to 1
+    every (p−1) steps, only the <i>exponent mod (p−1)</i> matters — so a monstrous power collapses to
+    a tiny one.</p>
+    <p><span class="lbl">Example.</span> <span class="m">3⁶ ≡ 1 (mod 7)</span>, so for
+    <span class="m">3¹⁰⁰</span> reduce 100 mod 6 = 4: <span class="m">3¹⁰⁰ ≡ 3⁴ = 81 ≡ 4 (mod 7)</span>.
+    It also underlies the fast primality test for choosing RSA primes. → <a href="fermat.html">explained</a></p>
+  </div>
+
+  <div class="card thm">
+    <h3>Euler's Theorem &nbsp;<span class="tag">generalizes Fermat</span></h3>
+    <p><span class="lbl">Statement.</span> If <span class="m">gcd(a, n) = 1</span>, then
+    <span class="m">a^φ(n) ≡ 1 (mod n)</span>, where <span class="m">φ(n)</span> (Euler's totient)
+    counts how many of <span class="m">1, …, n</span> share no factor with n.</p>
+    <p><span class="lbl">What it's for.</span> Fermat for <i>any</i> modulus, not just primes — when n
+    is composite, p−1 no longer works but φ(n) does. When n = p is prime, φ(p) = p−1 and you recover
+    Fermat exactly.</p>
+    <p><span class="lbl">Example.</span> <span class="m">φ(10) = 4</span> (the coprime ones are 1, 3, 7,
+    9), so <span class="m">3⁴ = 81 ≡ 1 (mod 10)</span>. This is the engine behind why RSA decryption
+    returns the original message.</p>
+  </div>
+
+  <div class="card thm">
+    <h3>Order of an element &amp; primitive roots &nbsp;<span class="tool" style="padding:2px 10px;font-size:12px">this class</span></h3>
+    <p><span class="lbl">Statement.</span> The <b>order</b> <span class="m">ord<sub>n</sub>(a)</span> of
+    a mod n is the smallest d with <span class="m">aᵈ ≡ 1 (mod n)</span>, and it always divides φ(n):
+    <span class="m">ord<sub>n</sub>(a) | φ(n)</span>. If some a has order exactly φ(n), it is a
+    <b>primitive root</b>.</p>
+    <p><span class="lbl">What it's for.</span> The order is the length of the repeating cycle of
+    powers. A primitive root generates <i>every</i> coprime residue by its powers — the basis of
+    discrete logarithms and Diffie–Hellman key exchange.</p>
+    <p><span class="lbl">Example.</span> Order of 2 mod 7 is 3 (cycle 2, 4, 1). But 3 is a primitive
+    root mod 7: its powers 3, 2, 6, 4, 5, 1 hit all six nonzero residues.
+    → <a href="q4-order-of-2-mod35.html">Problem 4</a></p>
+  </div>
+
+  <h3>Good to know — popular beyond this class</h3>
+
+  <div class="card thm">
+    <h3>Wilson's Theorem</h3>
+    <p><span class="lbl">Statement.</span> <span class="m">(p−1)! ≡ −1 (mod p)</span> if and only if p
+    is prime.</p>
+    <p><span class="lbl">Why it's true (sketch).</span> Mod a prime, pair every number with its inverse;
+    only 1 and p−1 are their own inverse, so the whole product collapses to
+    <span class="m">1·(p−1) ≡ −1</span>.</p>
+    <p><span class="lbl">Example.</span> <span class="m">(5−1)! = 24 ≡ 4 ≡ −1 (mod 5)</span>. A neat
+    primality test in theory, though far too slow for large p.</p>
+  </div>
+
+  <div class="card thm">
+    <h3>Euler's criterion &amp; quadratic reciprocity</h3>
+    <p><span class="lbl">Statement.</span> For odd prime p and <span class="m">p ∤ a</span>, a is a
+    perfect square mod p exactly when <span class="m">a^((p−1)/2) ≡ 1 (mod p)</span> (and ≡ −1 if it
+    is not). The Legendre symbol <span class="m">(a | p) = ±1</span> records the answer.</p>
+    <p><span class="lbl">What it's for.</span> Deciding whether <span class="m">x² ≡ a</span> has a
+    solution, without searching. Quadratic reciprocity then links
+    <span class="m">(p | q)</span> to <span class="m">(q | p)</span>, so you can flip a hard symbol
+    into an easier one.</p>
+    <p><span class="lbl">Example.</span> Is 2 a square mod 7? <span class="m">2³ = 8 ≡ 1</span> → yes
+    (indeed <span class="m">3² = 9 ≡ 2</span>). Central to cryptography and computing square roots
+    mod p.</p>
+  </div>
+
+  <div class="card thm">
+    <h3>Lagrange's theorem (polynomials mod p)</h3>
+    <p><span class="lbl">Statement.</span> A nonzero polynomial of degree d has <b>at most d roots</b>
+    modulo a prime p.</p>
+    <p><span class="lbl">What it's for.</span> It caps how many solutions a congruence can have — the
+    same way a degree-d equation has at most d real roots. (It can fail for composite moduli, which is
+    why we split to primes first.)</p>
+    <p><span class="lbl">Example.</span> <span class="m">x² ≡ 1 (mod 7)</span> has exactly two roots,
+    x = 1 and x = 6 — not more. This is what bounds the solution count in a problem like 2(c).</p>
+  </div>
+
+  <div class="card thm">
+    <h3>Lifting the Exponent (LTE)</h3>
+    <p><span class="lbl">Statement.</span> Under the right conditions (e.g. p divides a − b but not a
+    or b), it gives the <i>exact</i> power of p dividing <span class="m">aⁿ − bⁿ</span>:
+    <span class="m">v_p(aⁿ − bⁿ) = v_p(a − b) + v_p(n)</span>.</p>
+    <p><span class="lbl">What it's for.</span> Counting how many times a prime divides a difference of
+    powers, instantly — a favourite olympiad shortcut for divisibility problems.</p>
+    <p><span class="lbl">Example.</span> How many times does 3 divide
+    <span class="m">10⁹ − 1</span>? Since 3 | (10 − 1), LTE gives
+    <span class="m">v₃ = v₃(9) + v₃(9) = 2 + 2 = 4</span>.</p>
+  </div>
+
+  <div class="card thm">
+    <h3>Carmichael function λ(n)</h3>
+    <p><span class="lbl">Statement.</span> <span class="m">λ(n)</span> is the smallest exponent that
+    works for <i>every</i> coprime base at once: <span class="m">a^λ(n) ≡ 1 (mod n)</span> for all
+    gcd(a, n) = 1. It always divides φ(n).</p>
+    <p><span class="lbl">What it's for.</span> A sharper Euler — sometimes the true universal exponent
+    is much smaller than φ(n), which matters for efficiency and for the exact RSA correctness proof.</p>
+    <p><span class="lbl">Example.</span> <span class="m">λ(8) = 2</span> (every odd a satisfies
+    <span class="m">a² ≡ 1 (mod 8)</span>), even though <span class="m">φ(8) = 4</span>.</p>
+  </div>
+
+  <div class="card thm">
+    <h3>Hensel's lemma &nbsp;<span class="tag">advanced</span></h3>
+    <p><span class="lbl">Statement.</span> If a polynomial has a <i>simple</i> root mod p (one where
+    the derivative isn't 0), that root lifts to a unique root mod
+    <span class="m">p², p³, …</span></p>
+    <p><span class="lbl">What it's for.</span> The bridge from "solve mod a prime" to "solve mod a
+    prime power" — you solve the easy case mod p, then climb. It's the missing rung when CRT alone
+    isn't enough.</p>
+    <p><span class="lbl">Example.</span> Start from the root x = 3 of
+    <span class="m">x² ≡ 2 (mod 7)</span>. Hensel produces a root mod 49, then mod 343, by nudging the
+    value while keeping it ≡ 3 (mod 7):</p>
+    <pre class="calc">mod 7:    x = 3       (3²  = 9     ≡ 2)
+mod 49:   x = 10      (10² = 100   ≡ 2)
+mod 343:  x = 108     (108²= 11664 ≡ 2)</pre>
+    <details class="why">
+      <summary>How do you know it's 10, then 108?</summary>
+      <p><b>At each step there are only 7 numbers it could be — so you check them.</b> The new root
+      must stay ≡ 3 (mod 7) (shrink-the-modulus rule), so below 49 the only candidates are 3 plus
+      multiples of 7:</p>
+      <pre class="calc">candidates (3 + 7t):   3, 10, 17, 24, 31, 38, 45
+square mod 49:          3²=9,  10²=100≡2 ✓,  17²≡44,  …
+→ only 10 works, so the root mod 49 is 10</pre>
+      <p>Same idea one level up: the root must now stay ≡ 10 (mod 49), so the candidates are 10 plus
+      multiples of 49:</p>
+      <pre class="calc">candidates (10 + 49s): 10, 59, 108, 157, 206, 255, 304
+square mod 343:         10²≡100,  59²≡51,  108²=11664≡2 ✓
+→ only 108 works, so the root mod 343 is 108</pre>
+      <p><b>Shortcut — solve instead of guessing.</b> With <span class="m">x = 3 + 7t</span>:</p>
+      <pre class="calc">(3 + 7t)² ≡ 9 + 42t (mod 49)  →  9 + 42t ≡ 2  →  6t ≡ −1 (mod 7)  →  t = 1  →  x = 10</pre>
+      <p>That one-line equation gives t directly (and the next level gives s = 2). Either way you are
+      building x <b>one base-7 digit at a time</b>: <span class="m">3, then 3 + 1·7 = 10, then
+      10 + 2·49 = 108</span> — each new power of 7 fixes the next digit, earlier digits never change.</p>
+    </details>
+  </div>
+
+  <div class="card thm">
+    <h3>Lucas' theorem &nbsp;<span class="tag">advanced</span></h3>
+    <p><span class="lbl">Statement.</span> A binomial coefficient mod a prime p equals the product of
+    binomials of the base-p digits: write m and k in base p, then
+    <span class="m">C(m, k) ≡ ∏ C(mᵢ, kᵢ) (mod p)</span>.</p>
+    <p><span class="lbl">What it's for.</span> Computing <span class="m">C(m, k) mod p</span> for huge m
+    without the giant factorial — and quickly telling whether p divides it.</p>
+    <p><span class="lbl">Example.</span> Is <span class="m">C(10, 3)</span> divisible by 3? In base 3,
+    10 = 101 and 3 = 010; the digit 0-choose-1 = 0 appears, so the product is 0 — yes, 3 divides it.</p>
+  </div>
+
+  <div class="note">
+    <b>How they connect.</b> CRT splits a composite modulus into primes; Fermat / Euler / order handle
+    each prime piece; Hensel climbs from a prime p up to its powers <span class="m">pᵏ</span>.
+    Together they reduce almost any "mod n" question to small prime calculations.
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="pagenav">
+    <a href="index.html">← all questions</a>
+    <span class="spacer"></span>
+    <a href="crt-explained.html">CRT</a> · <a href="fermat.html">Fermat</a> ·
+    <a href="euclidean-inverse.html">Inverse</a> · <a href="crt-proof.html">CRT proof</a>
+  </div>
+</div>
+</body>
+</html>

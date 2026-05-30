@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="base-path" content="/TTMath-Website/math-notes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TTMath Math Notes - interactive number theory: Chinese Remainder Theorem, Fermat's Little Theorem, modular inverse, and order, with worked examples.">
+  <title>TTMath School - Math Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/TTMath-Website/demo3/css/style.css">
+  <style>
+    a.note-card { text-decoration: none; color: inherit; display: block; }
+    .note-card .note-tag { display: inline-block; font: 600 12px/1 "Inter", system-ui;
+      color: var(--primary); background: rgba(37, 99, 235, 0.1); padding: 5px 11px;
+      border-radius: 20px; margin-bottom: 12px; }
+    .note-card h3 { font-size: 1.1rem; margin: 0 0 8px; color: var(--text); }
+    .note-card p { color: var(--text-light); font-size: 0.92rem; margin: 0 0 12px; }
+    .note-card .note-arrow { color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+    .note-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 860px) { .note-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .note-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="/TTMath-Website/demo3/" class="logo">
+        <img src="/TTMath-Website/demo3/images/logo.png" alt="TTMath School" class="logo-img">
+      </a>
+      <nav class="nav">
+        <a href="/TTMath-Website/demo3/" data-i18n-en="Home" data-i18n-zh="首页">Home</a>
+        <a href="/TTMath-Website/demo3/about/" data-i18n-en="About Us" data-i18n-zh="关于我们">About Us</a>
+        <a href="/TTMath-Website/demo3/curriculum/" data-i18n-en="Curriculum" data-i18n-zh="课程体系">Curriculum</a>
+        <a href="/TTMath-Website/demo3/contest/" data-i18n-en="Contests" data-i18n-zh="竞赛">Contests</a>
+        <a href="/TTMath-Website/math-notes/" class="active" data-i18n-en="Math Notes" data-i18n-zh="数学笔记">Math Notes</a>
+        <a href="/TTMath-Website/demo3/achievements/" data-i18n-en="Achievements" data-i18n-zh="成就">Achievements</a>
+        <a href="/TTMath-Website/demo3/contact/" data-i18n-en="Contact" data-i18n-zh="联系">Contact</a>
+      </nav>
+      <div class="header-right">
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="nav-toggle-text" data-i18n-en="Menu" data-i18n-zh="菜单">Menu</span>
+          <span class="nav-toggle-icon"></span>
+        </button>
+        <select class="lang-select">
+          <option value="en">EN</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 data-i18n-en="Math Notes" data-i18n-zh="数学笔记">Math Notes</h1>
+      <p data-i18n-en="Interactive number theory — open any page in a browser, no setup needed." data-i18n-zh="互动式数论笔记——在浏览器中打开即可，无需任何安装。">Interactive number theory — open any page in a browser, no setup needed.</p>
+      <div class="hero-badges">
+        <span class="hero-badge" data-i18n-en="Chinese Remainder Theorem" data-i18n-zh="中国剩余定理">Chinese Remainder Theorem</span>
+        <span class="hero-badge" data-i18n-en="Fermat's Little Theorem" data-i18n-zh="费马小定理">Fermat's Little Theorem</span>
+        <span class="hero-badge" data-i18n-en="Modular inverse &amp; order" data-i18n-zh="模逆元与阶">Modular inverse &amp; order</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concepts -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n-en="Start here — the concepts" data-i18n-zh="从这里开始 · 核心概念">Start here — the concepts</h2>
+      <p class="section-intro" data-i18n-en="Five interactive explainers. Click the yellow Why? boxes for the reasoning and play with the green demos." data-i18n-zh="五个互动讲解。点击黄色 Why? 框查看推理，体验绿色互动演示。">Five interactive explainers. Click the yellow Why? boxes for the reasoning and play with the green demos.</p>
+      <div class="note-grid">
+        <a class="experience-card note-card" href="crt-explained.html">
+          <div class="experience-icon">🕐</div>
+          <span class="note-tag">Concept · interactive</span>
+          <h3>Chinese Remainder Theorem, explained</h3>
+          <p>From scratch, with a clock, the remainder grid, and the construction formula.</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="crt-proof.html">
+          <div class="experience-icon">📜</div>
+          <span class="note-tag">Concept · proof</span>
+          <h3>Why CRT is true</h3>
+          <p>Uniqueness + existence (the construction), plus the counting argument.</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="euclidean-inverse.html">
+          <div class="experience-icon">🔑</div>
+          <span class="note-tag">Concept · interactive</span>
+          <h3>Modular inverse via Euclid</h3>
+          <p>The tool behind CRT's yᵢ and RSA's private key, with a calculator.</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="fermat.html">
+          <div class="experience-icon">⚡</div>
+          <span class="note-tag">Concept · interactive</span>
+          <h3>Fermat's Little Theorem</h3>
+          <p>Why aᵖ⁻¹ ≡ 1, how it crushes big exponents, with a powers demo.</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="reference.html">
+          <div class="experience-icon">🧰</div>
+          <span class="note-tag">Concept · review</span>
+          <h3>Congruence toolbox</h3>
+          <p>Every congruence rule plus a catalog of the popular modular theorems.</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Worked examples -->
+  <section class="content-section alt-bg">
+    <div class="container">
+      <h2 class="section-title" data-i18n-en="Worked examples" data-i18n-zh="例题精讲">Worked examples</h2>
+      <p class="section-intro" data-i18n-en="Seven problems worked end to end. One pattern runs through them all: split the modulus, shrink exponents with Fermat, glue back with CRT." data-i18n-zh="七道完整例题，贯穿同一思路：拆分模数、用费马缩小指数、再用中国剩余定理拼接。">Seven problems worked end to end. One pattern runs through them all: split the modulus, shrink exponents with Fermat, glue back with CRT.</p>
+      <div class="note-grid">
+        <a class="experience-card note-card" href="q1a-crt-two-congruences.html">
+          <span class="note-tag">Problem 1(a) · CRT</span>
+          <h3>Two congruences</h3>
+          <p>x ≡ 1 (mod 2), x ≡ 4 (mod 3)</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="q1b-crt-three-congruences.html">
+          <span class="note-tag">Problem 1(b) · CRT</span>
+          <h3>Three congruences, the −1 trick</h3>
+          <p>x ≡ 1 (mod 3), 4 (mod 5), 6 (mod 7)</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="q2a-last-two-digits.html">
+          <span class="note-tag">Problem 2(a) · splitting</span>
+          <h3>Last two digits of 49¹⁹</h3>
+          <p>mod 100 = 4 × 25</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="q2b-mod6-mod8.html">
+          <span class="note-tag">Problem 2(b) · splitting</span>
+          <h3>Non-coprime moduli (the trap)</h3>
+          <p>x ≡ 5 (mod 6), x ≡ 3 (mod 8)</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="q2c-polynomial-mod77.html">
+          <span class="note-tag">Problem 2(c) · the hard one</span>
+          <h3>A polynomial congruence mod 77</h3>
+          <p>2x¹²¹ + 22x³⁶ + 21x³⁰ + 2 ≡ 0</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="q3-prove-a30-mod77.html">
+          <span class="note-tag">Problem 3 · Fermat</span>
+          <h3>Prove a³⁰ ≡ 1 (mod 77)</h3>
+          <p>whenever gcd(a, 77) = 1</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+        <a class="experience-card note-card" href="q4-order-of-2-mod35.html">
+          <span class="note-tag">Problem 4 · order</span>
+          <h3>Smallest n with 2ⁿ ≡ 1 (mod 35)</h3>
+          <p>order = lcm of orders · interactive</p>
+          <span class="note-arrow">Open →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/TTMath-Website/demo3/images/logo.png" alt="TTMath School" class="footer-logo">
+          <p data-i18n-en="Excellence in mathematics education since 2010." data-i18n-zh="自2010年以来专注数学教育。">Excellence in mathematics education since 2010.</p>
+        </div>
+        <div>
+          <h4 data-i18n-en="Programs" data-i18n-zh="课程">Programs</h4>
+          <a href="/TTMath-Website/demo3/curriculum/" data-i18n-en="Competition Math" data-i18n-zh="竞赛数学">Competition Math</a>
+          <a href="/TTMath-Website/demo3/curriculum/" data-i18n-en="Computer Science" data-i18n-zh="计算机科学">Computer Science</a>
+          <a href="/TTMath-Website/demo3/curriculum/" data-i18n-en="Funmath" data-i18n-zh="趣味数学">Funmath</a>
+        </div>
+        <div>
+          <h4 data-i18n-en="Quick Links" data-i18n-zh="快速链接">Quick Links</h4>
+          <a href="/TTMath-Website/demo3/about/" data-i18n-en="About Us" data-i18n-zh="关于我们">About Us</a>
+          <a href="/TTMath-Website/demo3/achievements/" data-i18n-en="Achievements" data-i18n-zh="成就">Achievements</a>
+          <a href="/TTMath-Website/demo3/contact/" data-i18n-en="Contact" data-i18n-zh="联系">Contact</a>
+        </div>
+        <div>
+          <h4 data-i18n-en="Contact" data-i18n-zh="联系">Contact</h4>
+          <p>info@ttmath.ca</p>
+          <p>905-604-9339</p>
+          <p>590 Alden Rd Unit 101<br>Markham, ON L3R 8N2</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n-en="© 2025 TTMath School. All rights reserved." data-i18n-zh="© 2025 TTMath School. 保留所有权利。">© 2025 TTMath School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/TTMath-Website/demo3/js/main.js" defer></script>
+</body>
+</html>

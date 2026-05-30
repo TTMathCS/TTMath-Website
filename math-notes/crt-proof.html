@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why the Chinese Remainder Theorem is true (proof)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a> &nbsp;·&nbsp; <a href="crt-explained.html">CRT explained</a></nav>
+  <h1>Why CRT is true — the proof</h1>
+  <p class="sub">Two parts: there is at most one answer (uniqueness), and there is at least one (existence)</p>
+
+  <div class="problem"><b>Theorem.</b> Let <span class="m">n₁, …, nₖ</span> be pairwise coprime —
+    <span class="m">gcd(nᵢ, nⱼ) = 1</span> for every <span class="m">i ≠ j</span>. For any
+    <span class="m">a₁, …, aₖ</span>, the system <span class="m">x ≡ aᵢ (mod nᵢ)</span> (for all i) has a
+    solution, and any two solutions differ by a multiple of
+    <div class="formula">N = n<sub>1</sub>·n<sub>2</sub>·⋯·n<sub>k</sub> =
+      <span class="bigop"><span class="lim">k</span><span class="sym">∏</span><span class="lim">i=1</span></span>
+      n<sub>i</sub></div>
+    In short: <b>exactly one solution mod N</b>.</div>
+
+  <h2>Part A — Uniqueness (at most one answer mod N)</h2>
+  <div class="step" data-n="1">
+    <h3>Suppose two numbers both work</h3>
+    <p>Let x and x′ each satisfy all the congruences. For every i,</p>
+    <pre class="calc">x ≡ aᵢ (mod nᵢ)  and  x′ ≡ aᵢ (mod nᵢ)   →   x − x′ ≡ 0 (mod nᵢ)</pre>
+    <p>So each <span class="m">nᵢ</span> divides the difference <span class="m">x − x′</span>.</p>
+  </div>
+  <div class="step" data-n="2">
+    <h3>Coprime divisors multiply</h3>
+    <p>A number divisible by several <b>pairwise coprime</b> numbers is divisible by their product.
+    (If <span class="m">n₁</span> and <span class="m">n₂</span> share no factor and both divide D, then
+    <span class="m">n₁n₂</span> divides D; repeat.) Hence</p>
+    <div class="formula"><span class="m">n<sub>i</sub> | (x − x′)</span> for every i &nbsp;⟹&nbsp;
+      <span class="bigop"><span class="lim">k</span><span class="sym">∏</span><span class="lim">i=1</span></span>
+      n<sub>i</sub> = N &nbsp;|&nbsp; (x − x′)</div>
+    <p>That is <span class="m">x ≡ x′ (mod N)</span> — any two solutions are the same modulo N. So
+    there is <b>at most one</b> answer in 0 … N−1.</p>
+  </div>
+  <div class="note"><b>Where coprime is used:</b> Step 2. Without it, the separate divisibilities
+  would only give the <i>lcm</i>, not the product — and the clean "one answer mod N" breaks (exactly
+  what you see in the failing grid on the <a href="crt-explained.html">CRT page</a>).</div>
+
+  <h2>Part B — Existence (at least one answer), by construction</h2>
+  <p>We don't just argue an answer exists — we build it. This is the same formula used on the CRT
+  page and in RSA.</p>
+  <div class="step" data-n="1">
+    <h3>Build a "selector" for each clock</h3>
+    <p>Let <span class="m">Mᵢ = N / nᵢ</span> — the product of all the <i>other</i> moduli. Because the
+    moduli are pairwise coprime, <span class="m">Mᵢ</span> shares no factor with
+    <span class="m">nᵢ</span>, so <span class="m">gcd(Mᵢ, nᵢ) = 1</span> and
+    <span class="m">Mᵢ</span> has an inverse <span class="m">yᵢ</span> mod <span class="m">nᵢ</span>
+    (found by the <a href="euclidean-inverse.html">Euclidean algorithm</a>).</p>
+    <p>Notice the key property of <span class="m">Mᵢ</span>: it is a multiple of every other modulus,
+    so</p>
+    <pre class="calc">Mᵢ ≡ 0 (mod nⱼ) for j ≠ i,   and   Mᵢ · yᵢ ≡ 1 (mod nᵢ)</pre>
+  </div>
+  <div class="step" data-n="2">
+    <h3>Add the selectors, weighted by the targets</h3>
+    <div class="formula">x =
+      <span class="cA">a<sub>1</sub></span><span class="cM">M<sub>1</sub></span><span class="cY">y<sub>1</sub></span> +
+      <span class="cA">a<sub>2</sub></span><span class="cM">M<sub>2</sub></span><span class="cY">y<sub>2</sub></span> + ⋯ +
+      <span class="cA">a<sub>k</sub></span><span class="cM">M<sub>k</sub></span><span class="cY">y<sub>k</sub></span> =
+      <span class="bigop"><span class="lim">k</span><span class="sym">∑</span><span class="lim">i=1</span></span>
+      <span class="cA">a<sub>i</sub></span><span class="cM">M<sub>i</sub></span><span class="cY">y<sub>i</sub></span></div>
+  </div>
+  <div class="step" data-n="3">
+    <h3>Check it lands correctly on every clock</h3>
+    <p>Look at x modulo a fixed <span class="m">nᵢ</span>. Every term with <span class="m">j ≠ i</span>
+    contains <span class="m">Mⱼ</span>, which is <span class="m">≡ 0 (mod nᵢ)</span> — so those terms
+    vanish. Only the i-th term survives:</p>
+    <pre class="calc">x ≡ aᵢ · Mᵢ · yᵢ ≡ aᵢ · 1 = aᵢ (mod nᵢ)</pre>
+    <p>This holds for every i, so x satisfies the whole system. <b>An answer exists.</b> ∎</p>
+  </div>
+
+  <h2>A shorter existence argument (counting)</h2>
+  <p>Part A shows the map sending a number to its list of remainders,</p>
+  <div class="formula">x &nbsp;⟼&nbsp; ( x mod n<sub>1</sub>, &nbsp;… , &nbsp;x mod n<sub>k</sub> )</div>
+  <p>never sends two different values of <span class="m">{0, …, N−1}</span> to the same list — it is
+  <b>injective</b>. But both sides have exactly
+  <span class="m">N = <span class="bigop"><span class="lim">k</span><span class="sym">∏</span><span class="lim">i=1</span></span> nᵢ</span>
+  elements, and an injective map between finite sets of equal size is automatically <b>onto</b>. So <i>every</i>
+  possible list of remainders is hit — existence, for free. (This is the grid filling every cell
+  exactly once.)</p>
+
+  <div class="note">
+    <b>Two moduli, by hand.</b> For just <span class="m">n₁, n₂</span>: write
+    <span class="m">x = a₁ + n₁t</span> from the first congruence, plug into the second to get
+    <span class="m">n₁t ≡ a₂ − a₁ (mod n₂)</span>; since <span class="m">gcd(n₁,n₂)=1</span>,
+    <span class="m">n₁</span> is invertible mod <span class="m">n₂</span>, so t is determined mod
+    <span class="m">n₂</span> and x is determined mod <span class="m">n₁n₂</span>. Chaining this two
+    at a time proves the general case by induction.
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="pagenav">
+    <a href="index.html">← all questions</a>
+    <span class="spacer"></span>
+    <a href="crt-explained.html">CRT explained</a> · <a href="euclidean-inverse.html">Inverse</a>
+  </div>
+</div>
+</body>
+</html>

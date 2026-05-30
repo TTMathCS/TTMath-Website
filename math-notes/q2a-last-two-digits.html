@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem 2(a) — last two digits of 49¹⁹</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>Problem 2(a)</h1>
+  <p class="sub">Splitting the modulus · last two digits of a big power</p>
+  <div class="hook"><b>49¹⁹ has 33 digits</b> — no calculator will show you its last two. Try to
+  guess them… then watch us pin them down in three lines.</div>
+
+  <div class="problem"><b>Find the last two digits of</b> <span class="m">49¹⁹</span>.</div>
+
+  <span class="tool">Tool: "last two digits" = mod 100; split 100 = 4 × 25; use −1</span>
+  <p>The last two digits of a number are its value mod 100. We want
+  <span class="m">49¹⁹ mod 100</span>. Since gcd(4, 25) = 1, split into mod 4 and mod 25.</p>
+
+  <div class="step" data-n="1">
+    <h3>Mod 4</h3>
+    <pre class="calc">49 ≡ 1 (mod 4)   →   49¹⁹ ≡ 1¹⁹ = 1 (mod 4)</pre>
+  </div>
+
+  <div class="step" data-n="2">
+    <h3>Mod 25 — the −1 shortcut</h3>
+    <pre class="calc">49 = 50 − 1 ≡ −1 (mod 25)   →   49¹⁹ ≡ (−1)¹⁹ = −1 ≡ 24 (mod 25)</pre>
+  </div>
+
+  <div class="step" data-n="3">
+    <h3>Glue with CRT</h3>
+    <p>Find x &lt; 100 with x ≡ 1 (mod 4) and x ≡ 24 (mod 25). From x ≡ 24 (mod 25),
+    x ∈ {24, 49, 74, 99}. Which is ≡ 1 (mod 4)?</p>
+    <table class="tbl">
+      <tr><th>candidate</th><td>24</td><td class="hit">49</td><td>74</td><td>99</td></tr>
+      <tr><th>mod 4</th><td>0</td><td class="hit">1 ✓</td><td>2</td><td>3</td></tr>
+    </table>
+  </div>
+
+  <div class="answer"><span class="m">49¹⁹ ≡ 49 (mod 100)</span> &nbsp;→ last two digits = <b>49</b>.</div>
+
+  <div class="note">
+    <b>Why it's satisfying.</b> 49¹⁹ is a 33-digit monster, but we never computed it. The −1 trick
+    mod 25 did all the work — the same move as Problem 1(b).
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="challenge">
+    <p class="ch">Your turn</p>
+    <p>Find the last two digits of <span class="m">49²⁰</span> (just one more power!).</p>
+    <details><summary>Show answer</summary>
+      <p>mod 4: <span class="m">1²⁰ = 1</span>. mod 25: <span class="m">(−1)²⁰ = 1</span>. CRT →
+      <span class="m">≡ 1 (mod 100)</span>, so the last two digits are <b>01</b>.
+      Fun twist: 49¹⁹ ends in 49, but 49²⁰ ends in 01.</p>
+    </details>
+  </div>
+  <div class="pagenav">
+    <a href="q1b-crt-three-congruences.html">← Problem 1(b)</a>
+    <span class="spacer"></span>
+    <a href="q2b-mod6-mod8.html">Next: Problem 2(b) →</a>
+  </div>
+  <div class="concepts-row">Concepts: <a href="crt-explained.html">CRT</a> ·
+    <a href="fermat.html">Fermat</a> · <a href="euclidean-inverse.html">Inverse</a> ·
+    <a href="crt-proof.html">CRT proof</a></div>
+</div>
+</body>
+</html>

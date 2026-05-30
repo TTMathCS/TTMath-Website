@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem 1(a) — two congruences (CRT)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>Problem 1(a)</h1>
+  <p class="sub">Chinese Remainder Theorem · two small congruences</p>
+  <div class="hook"><b>Warm-up riddle:</b> I'm odd, and on a 3-hour clock I sit where 4 would
+  land. Who am I? Two clues, one number — that's all CRT ever asks.</div>
+
+  <div class="problem"><b>Solve.</b> &nbsp;<span class="m">x ≡ 1 (mod 2)</span> &nbsp;and&nbsp;
+    <span class="m">x ≡ 4 (mod 3)</span>.</div>
+
+  <span class="tool">Tool: CRT with small moduli — just test cases</span>
+
+  <div class="step" data-n="1">
+    <h3>The answer lives mod 6</h3>
+    <p>The moduli 2 and 3 are coprime, so CRT promises <b>one</b> answer modulo
+    <span class="m">2 × 3 = 6</span>.</p>
+  </div>
+
+  <div class="step" data-n="2">
+    <h3>Simplify the second condition</h3>
+    <p><span class="m">4 ≡ 1 (mod 3)</span>, so the system really asks for x that is
+    <b>odd</b> and <span class="m">≡ 1 (mod 3)</span>.</p>
+  </div>
+
+  <div class="step" data-n="3">
+    <h3>List and pick</h3>
+    <p>Odd numbers: 1, 3, 5, 7, … Of these, which are <span class="m">≡ 1 (mod 3)</span>?</p>
+    <pre class="calc">1, 7, 13, 19, …   →   x ≡ 1 (mod 6)</pre>
+  </div>
+
+  <div class="answer"><span class="m">x ≡ 1 (mod 6)</span> &nbsp;— that is, x = 1 + 6k.</div>
+  <p><span class="check">Check:</span> 1 is odd (≡ 1 mod 2) and 1 ≡ 4 (mod 3) since 4 ≡ 1. ✓</p>
+
+  <div class="warn">
+    <b>The instructor PDF has a typo here.</b> It prints the answer as x = 4 + 6k, but 4 is
+    <b>even</b>, so 4 ≡ 0 (mod 2) — that fails the stated condition x ≡ 1 (mod 2). The correct
+    answer to the problem as written is <span class="m">x ≡ 1 (mod 6)</span>.
+    <br><br>
+    (If you instead trust the printed "4", then the intended first condition was x ≡ 0 (mod 2).
+    Decide which version you'll present.)
+  </div>
+
+  <div class="note">
+    <b>Make it a lesson.</b> Always check the answer back against <i>every</i> original condition.
+    Plug x = 4 into "x ≡ 1 (mod 2)" — it fails — so 4 can't be right.
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="challenge">
+    <p class="ch">Your turn</p>
+    <p>Solve <span class="m">x ≡ 1 (mod 2)</span> and <span class="m">x ≡ 2 (mod 3)</span>.</p>
+    <details><summary>Show answer</summary>
+      <p><span class="m">x ≡ 5 (mod 6)</span>. Odd numbers that are ≡ 2 (mod 3): 5, 11, 17, …</p>
+    </details>
+  </div>
+  <div class="pagenav">
+    <a href="index.html">← all questions</a>
+    <span class="spacer"></span>
+    <a href="q1b-crt-three-congruences.html">Next: Problem 1(b) →</a>
+  </div>
+  <div class="concepts-row">Concepts: <a href="crt-explained.html">CRT</a> ·
+    <a href="fermat.html">Fermat</a> · <a href="euclidean-inverse.html">Inverse</a> ·
+    <a href="crt-proof.html">CRT proof</a></div>
+</div>
+</body>
+</html>

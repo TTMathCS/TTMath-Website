@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Chinese Remainder Theorem — explained from scratch</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2733;
+    --soft:#5b6573; --line:#e4e8ee; --blue:#2f6df6; --blue2:#e9f0ff;
+    --green:#1aa861; --green2:#e7f7ef; --red:#e5484d; --red2:#fdecec;
+    --amber:#d98a00; --shadow:0 1px 3px rgba(20,30,50,.08),0 8px 24px rgba(20,30,50,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:880px;margin:0 auto;padding:32px 20px 40px;}
+  h1{font-size:30px;line-height:1.2;margin:.2em 0 .1em;letter-spacing:-.4px}
+  .sub{color:var(--soft);font-size:17px;margin:0 0 28px}
+  h2{font-size:22px;margin:38px 0 10px;letter-spacing:-.2px}
+  h3{font-size:17px;margin:22px 0 6px}
+  p{margin:10px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+  .m{font-family:"Cambria Math",Cambria,Georgia,"Times New Roman",serif;
+    font-size:1.05em;color:#15233f}
+  .box{display:inline-block;background:var(--blue2);border:1px solid #c9dbff;
+    border-radius:8px;padding:2px 10px;font-family:"Cambria Math",Georgia,serif;color:#143a8a}
+  .lead{font-size:17px}
+  .note{background:#fff8e8;border:1px solid #f3e2b3;border-radius:10px;padding:12px 16px;margin:14px 0}
+  .note b{color:var(--amber)}
+  .funfact{background:#fbf1ff;border:1px solid #ecccf4;border-radius:10px;padding:12px 16px;margin:14px 0}
+  .funfact b{color:#a23bb0}
+  .grid-fail{background:var(--red2);border-color:#f3c0c0}
+  pre.calc{background:#f3f6fb;border:1px solid #e0e7f2;border-radius:9px;padding:12px 16px;
+    margin:10px 0;overflow-x:auto;font:15px/1.7 "Cambria Math",Consolas,Menlo,monospace;color:#15233f}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0}
+  button{font:inherit;font-size:14px;font-weight:600;cursor:pointer;border-radius:9px;
+    border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 14px;transition:.15s}
+  button:hover{border-color:var(--blue);color:var(--blue)}
+  button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  button.primary:hover{background:#205bd6;color:#fff}
+  button.active{background:var(--blue);border-color:var(--blue);color:#fff}
+  select{font:inherit;font-size:14px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:#fff}
+  .tag{font-size:13px;color:var(--soft)}
+  .clockwrap{display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+  .reading{font-size:15px}
+  .big{font-size:34px;font-weight:700;font-family:"Cambria Math",Georgia,serif;color:var(--blue)}
+  table.grid{border-collapse:separate;border-spacing:5px;margin:10px 0}
+  table.grid th{font:600 13px system-ui;color:var(--soft);padding:2px 6px}
+  table.grid td{width:46px;height:46px;text-align:center;vertical-align:middle;border-radius:9px;
+    background:#eef1f5;color:#9aa3b0;font-weight:700;font-family:"Cambria Math",Georgia,serif;
+    font-size:17px;transition:transform .18s ease, background .18s, color .18s}
+  table.grid td.fill{background:var(--green2);color:var(--green)}
+  table.grid td.pop{transform:scale(1.18)}
+  table.grid td.dup{background:var(--red2);color:var(--red)}
+  table.grid td.target{outline:3px solid var(--blue);outline-offset:1px}
+  .legend{font-size:13px;color:var(--soft);display:flex;gap:18px;flex-wrap:wrap;margin-top:8px}
+  .swatch{display:inline-block;width:13px;height:13px;border-radius:4px;vertical-align:-2px;margin-right:5px}
+  .stat{font-size:15px;margin-top:8px}
+  a{color:var(--blue)}
+  .files{font-size:14px;background:#f0f3f8;border-radius:10px;padding:12px 16px}
+  code{background:#eef1f5;padding:1px 6px;border-radius:5px;font-size:.92em}
+  ul{margin:8px 0 8px 4px;padding-left:22px}
+  li{margin:4px 0}
+  ol{margin:8px 0 8px 4px;padding-left:22px}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px}
+  .pill.ok{background:var(--green2);color:var(--green)}
+  .pill.no{background:var(--red2);color:var(--red)}
+  .inp{width:66px;font:inherit;font-size:15px;padding:6px 8px;border-radius:8px;border:1px solid var(--line)}
+  .miniwrap{display:flex;flex-wrap:wrap;gap:16px;margin:6px 0}
+  .scell{min-width:26px;padding:5px 6px;text-align:center;border-radius:6px;background:#eef1f5;
+    color:#aab2bf;font:600 13px "Cambria Math",Georgia,serif;transition:transform .15s,background .15s,color .15s}
+  .scell.no{background:#f3f5f8;color:#cdd4de}
+  .scell.fill{background:var(--green2);color:var(--green)}
+  .scell.now{outline:2px solid var(--blue)}
+  .scell.pop{transform:scale(1.3)}
+  .strip{display:flex;flex-wrap:wrap;gap:3px;margin-top:8px}
+  .ftable{border-collapse:collapse;margin:10px 0}
+  .ftable td{padding:6px 16px;border-bottom:1px solid var(--line);font-family:"Cambria Math",Georgia,serif}
+  .ftable tr:first-child td{color:var(--soft);font:600 13px system-ui;border-bottom:2px solid var(--line)}
+  .pagefoot{max-width:880px;margin:0 auto;padding:6px 20px 70px}
+  .pagenav{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:16px;font-size:14px}
+  .pagenav a{color:var(--blue);text-decoration:none;font-weight:600}
+  .pagenav .spacer{flex:1}
+  .formula{background:#eef3fb;border:1px solid #d3e0f3;border-left:4px solid var(--blue);
+    border-radius:9px;padding:13px 18px;margin:14px 0;text-align:center;
+    font-family:"Cambria Math",Cambria,Georgia,serif;font-size:1.18em;color:#15233f}
+  .formula .lbl{display:block;font:600 12px system-ui;color:var(--soft);
+    text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px}
+  .bigop{display:inline-flex;flex-direction:column;align-items:center;
+    vertical-align:middle;margin:0 3px;line-height:1;color:var(--blue)}
+  .bigop .sym{font:1.5em/.8 "Cambria Math",Georgia,serif}
+  .bigop .lim{font-size:.56em;color:var(--soft);font-weight:600}
+  .cA{color:#a23bb0;font-weight:600}
+  .cM{color:#1aa861;font-weight:600}
+  .cY{color:#d98a00;font-weight:600}
+  .cN{color:#2f6df6;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>The Chinese Remainder Theorem</h1>
+  <p class="sub">Also called Sun Zi's Theorem (孫子定理). A from-scratch, visual explanation —
+  for teaching Class 6. Open this in any browser.</p>
+
+  <div class="card">
+    <p class="lead"><b>The whole idea in one sentence:</b> if you know the remainders of a
+    secret number when divided by a few numbers that share no common factor, those remainders
+    pin down <i>exactly one</i> answer — and you can rebuild the secret number from them.</p>
+  </div>
+
+  <!-- 1. CONGRUENCE -->
+  <h2>1. First, what is a "remainder" / congruence?</h2>
+  <p>Forget formulas for a second. Think of a <b>clock</b>. A normal clock has 12 hours, so
+  17 o'clock is the same as 5 o'clock — you go around once (12) and land on 5. We say
+  <span class="m">17 ≡ 5 (mod 12)</span>, read aloud as <i>"17 is congruent to 5, mod 12."</i></p>
+
+  <p>"<span class="m">mod n</span>" just means <b>a clock with n hours</b>. The number after
+  "mod" is the clock size; the answer is where the hand lands. Below is a clock with
+  <b id="ckN">7</b> hours. Type any number of hours and watch where it lands — that landing
+  spot is the remainder.</p>
+
+  <div class="card">
+    <div class="clockwrap">
+      <svg id="clock" width="200" height="200" viewBox="0 0 200 200"></svg>
+      <div class="reading">
+        <div class="row">
+          <span>Clock size (mod):</span>
+          <select id="ckSize">
+            <option value="5">5</option>
+            <option value="7" selected>7</option>
+            <option value="12">12</option>
+          </select>
+          <span>Hours to advance:</span>
+          <input id="ckHours" type="number" value="17" style="width:80px;font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--line)">
+          <button class="primary" id="ckGo">Spin the hand</button>
+        </div>
+        <div class="stat"><span class="m" id="ckText">17 hours on a 7-hour clock…</span></div>
+        <div class="big" id="ckAns">17 ≡ 3 (mod 7)</div>
+        <div class="tag">The hand spins all the way around, then stops on the remainder.</div>
+      </div>
+    </div>
+  </div>
+
+  <p>So a <b>congruence</b> <span class="m">x ≡ a (mod n)</span> just says: "on an n-hour
+  clock, x lands on a." That's all. The remainder is always one of
+  <span class="m">0, 1, 2, …, n−1</span>.</p>
+
+  <!-- 2. THE PUZZLE -->
+  <h2>2. The puzzle that started it (≈1700 years ago)</h2>
+  <p>In an old Chinese text — <i>Sunzi Suanjing</i> (孫子算經, "The Mathematical Classic of
+  Master Sun"), by Sun Zi (孫子) — a general wants to count his soldiers without counting one
+  by one. He lines them up:</p>
+  <ul>
+    <li>in rows of <b>3</b> → <b>2</b> soldiers left over &nbsp; <span class="m">(x ≡ 2 mod 3)</span></li>
+    <li>in rows of <b>5</b> → <b>3</b> left over &nbsp; <span class="m">(x ≡ 3 mod 5)</span></li>
+    <li>in rows of <b>7</b> → <b>2</b> left over &nbsp; <span class="m">(x ≡ 2 mod 7)</span></li>
+  </ul>
+  <p>From just three small leftovers, can we recover the exact count? The Chinese Remainder
+  Theorem says <b>yes</b> — and there is only one answer below 3×5×7 = 105. (It's 23.)</p>
+
+  <div class="funfact"><b>Wait — same Sun Zi as <i>The Art of War</i>?</b> Nope, and it fools a lot
+  of people. <i>The Art of War</i> (孫子兵法) was written by the strategist <b>Sun Wu</b> (孫武)
+  around 500 BCE. This <i>Mathematical Classic</i> (孫子算經) appeared some 700–900 years later
+  (roughly 300–500 CE) from a <b>different</b> "Master Sun" whose real name is lost to history.
+  Same honorific "Sunzi," two completely different people — which is exactly why the theorem is
+  nicknamed 孫子定理, "Sun Zi's Theorem," after the mathematician, not the general.</div>
+
+  <!-- 3. STATEMENT -->
+  <h2>3. The theorem, stated plainly</h2>
+  <div class="card">
+    <p style="margin-top:0">Pick clocks of sizes <span class="m">n₁, n₂, …, nₖ</span> that are
+    <b>pairwise coprime</b> — every pair shares no common factor,
+    <span class="m">gcd(nᵢ, nⱼ) = 1</span> for <span class="m">i ≠ j</span> (e.g. 3, 5, 7). For any
+    chosen landing spots <span class="m">a₁, a₂, …, aₖ</span>, the system</p>
+    <div class="formula">x ≡ a<sub>1</sub> (mod n<sub>1</sub>),&nbsp;&nbsp; x ≡ a<sub>2</sub> (mod n<sub>2</sub>),&nbsp;&nbsp; … ,&nbsp;&nbsp; x ≡ a<sub>k</sub> (mod n<sub>k</sub>)</div>
+    <p>has <b>exactly one</b> solution in the range <span class="m">0 ≤ x &lt; N</span> — i.e. a single
+    number among <span class="m">1, 2, …, N</span> — where N is the product of all the clock sizes:</p>
+    <div class="formula"><span class="lbl">size of the answer range</span>
+      N = n<sub>1</sub>·n<sub>2</sub>·⋯·n<sub>k</sub> =
+      <span class="bigop"><span class="lim">k</span><span class="sym">∏</span><span class="lim">i=1</span></span>
+      n<sub>i</sub></div>
+    <p style="margin-bottom:0">Every other solution is that one plus a multiple of N.</p>
+  </div>
+
+  <!-- 4. THE GRID -->
+  <h2>4. Why it works — see it with your eyes</h2>
+  <p>This is the heart of the lesson. Take two clocks, sizes <b id="g1lbl">3</b> and
+  <b id="g2lbl">5</b>. Make a grid: <b>rows = remainder on the first clock</b>,
+  <b>columns = remainder on the second clock</b>. Now count <span class="m">x = 0, 1, 2, …</span>
+  and drop each number into the cell (its two remainders). Press play and watch.</p>
+
+  <div class="card">
+    <div class="row">
+      <span class="tag">Two clock sizes:</span>
+      <button class="preset active" data-a="3" data-b="5">3 &amp; 5 <span class="pill ok">coprime ✓</span></button>
+      <button class="preset" data-a="5" data-b="7">5 &amp; 7 <span class="pill ok">coprime ✓</span></button>
+      <button class="preset" data-a="2" data-b="4">2 &amp; 4 <span class="pill no">not coprime ✗</span></button>
+    </div>
+    <div class="row">
+      <button class="primary" id="gPlay">▶ Play</button>
+      <button id="gStep">Step +1</button>
+      <button id="gReset">Reset</button>
+      <span class="stat">Now placing: <span class="big" id="gX" style="font-size:24px">–</span></span>
+    </div>
+    <div id="gridHost"></div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--green2);border:1px solid var(--green)"></span>filled once</span>
+      <span><span class="swatch" style="background:var(--red2);border:1px solid var(--red)"></span>landed twice (collision)</span>
+      <span><span class="swatch" style="background:#eef1f5;border:1px solid var(--line)"></span>never filled</span>
+    </div>
+    <div class="stat" id="gMsg"></div>
+  </div>
+
+  <div class="note" id="gNote">
+    <b>What to notice.</b> With <b>3 &amp; 5</b> (coprime), the numbers march diagonally and fill
+    <i>every single cell exactly once</i> — 15 numbers, 15 cells, perfect. That's the theorem:
+    each pair of remainders happens for one and only one x. With <b>2 &amp; 4</b> (share a factor
+    of 2), it breaks — some cells get hit twice and others are <i>never</i> reached. That's why
+    "coprime" is non-negotiable.
+  </div>
+
+  <p>Said in symbols, the grid is a perfect <b>one-to-one matching</b>: every number below N pairs
+  with exactly one tuple of remainders, and every tuple is used once.</p>
+  <div class="formula"><span class="lbl">one number ⟷ one tuple of remainders</span>
+    x &nbsp;⟷&nbsp; ( x mod n<sub>1</sub>, &nbsp;x mod n<sub>2</sub>, &nbsp;… , &nbsp;x mod n<sub>k</sub> )</div>
+
+  <!-- 5. SOLVE -->
+  <h2>5. So how do you actually solve one?</h2>
+  <p>Solving a system is just <b>pointing at the right cell and reading the number in it.</b>
+  Choose the remainders you want and the grid will find the unique answer.</p>
+
+  <div class="card">
+    <div class="row">
+      <span>I want &nbsp; <span class="m">x ≡</span></span>
+      <select id="solR1"></select>
+      <span class="m">(mod <span id="solN1">3</span>)</span>
+      <span>&nbsp;and&nbsp; <span class="m">x ≡</span></span>
+      <select id="solR2"></select>
+      <span class="m">(mod <span id="solN2">5</span>)</span>
+      <button class="primary" id="solGo">Find x</button>
+    </div>
+    <div class="stat" id="solOut">Pick remainders, then press <b>Find x</b>.</div>
+    <div class="tag">(Uses the same two clock sizes selected above.)</div>
+  </div>
+
+  <h3>The two hand methods (for the board)</h3>
+  <ul>
+    <li><b>Just test.</b> The answer is below N, so try x = 0,1,2,… until both remainders match.
+    Perfect for small N — it's literally walking the grid.</li>
+    <li><b>The −1 shortcut.</b> If a remainder is one less than its clock (like 4 mod 5, or 6 mod 7),
+    rewrite it as <span class="m">−1</span>. In the class problem
+    <span class="m">x ≡ 4 (mod 5)</span> and <span class="m">x ≡ 6 (mod 7)</span> both become
+    <span class="m">x ≡ −1</span>, so together <span class="m">x ≡ −1 (mod 35)</span> = 34. Fast.</li>
+  </ul>
+
+  <!-- 6. GENERAL CASE -->
+  <h2>6. The general case — any number of clocks</h2>
+  <p>The grid above shows two clocks, but the theorem works for <b>k clocks at once</b>, exactly as
+  the PDF states it:</p>
+  <div class="card" style="text-align:center">
+    <span class="m">x ≡ a₁ (mod n₁),&nbsp;&nbsp; x ≡ a₂ (mod n₂),&nbsp;&nbsp; … ,&nbsp;&nbsp; x ≡ aₖ (mod nₖ)</span>
+    <div style="margin-top:8px">one unique answer modulo
+      <span class="box">N = <span class="bigop"><span class="lim">k</span><span class="sym" style="color:#143a8a">∏</span><span class="lim">i=1</span></span> n<sub>i</sub></span>&nbsp; (when the clocks are pairwise coprime).</div>
+  </div>
+  <p>Build your own system below. Add or remove clocks; the default is the
+  <b>soldier puzzle</b> from Section 2 (three clocks: 3, 5, 7).</p>
+
+  <p>Two buttons, two purposes. <b>Show all N</b> checks every number
+  <span class="m">0 … N−1</span> and lights the one survivor — this only <i>proves</i> the answer
+  is unique (it really is counting, and you'd never do this by hand). <b>Construct with the
+  formula</b> is the actual method: it builds the answer in one shot with</p>
+  <div class="formula"><span class="lbl">CRT construction formula</span>
+    x ≡
+    <span class="bigop"><span class="lim">k</span><span class="sym">∑</span><span class="lim">i=1</span></span>
+    <span class="cA">a<sub>i</sub></span> <span class="cM">M<sub>i</sub></span> <span class="cY">y<sub>i</sub></span>
+    &nbsp;(mod N),&nbsp;&nbsp;&nbsp;
+    <span class="cM">M<sub>i</sub></span> = N / <span class="cN">n<sub>i</sub></span>,&nbsp;&nbsp;
+    <span class="cY">y<sub>i</sub></span> ≡ <span class="cM">M<sub>i</sub></span><sup>−1</sup> (mod <span class="cN">n<sub>i</sub></span>)</div>
+  <p class="tag" style="text-align:center;margin:-4px 0 10px">
+    <span class="cA">a<sub>i</sub></span> = the target remainder &nbsp;·&nbsp;
+    <span class="cM">M<sub>i</sub></span> = the selector (0 on every other clock) &nbsp;·&nbsp;
+    <span class="cY">y<sub>i</sub></span> = the inverse that tunes it to land on 1</p>
+  <p>The idea: term i is divisible by every other clock's modulus, so it contributes
+  <span class="cA">a<sub>i</sub></span> on clock i and <b>0</b> on all the others — each clock gets set
+  independently, no searching.</p>
+
+  <div class="card" style="background:var(--green2);border-color:#b8e6cd">
+    <h3 style="margin-top:0">Worked example 1 — the soldier puzzle by formula</h3>
+    <p style="margin-top:0"><span class="m">x ≡ 2 (mod <span class="cN">3</span>), &nbsp;
+      x ≡ 3 (mod <span class="cN">5</span>), &nbsp; x ≡ 2 (mod <span class="cN">7</span>)</span>,
+      &nbsp; so &nbsp;<span class="m">N = 3·5·7 = <b>105</b></span>.</p>
+    <table class="ftable">
+      <tr>
+        <td><span class="cN">n<sub>i</sub></span></td>
+        <td><span class="cA">a<sub>i</sub></span></td>
+        <td><span class="cM">M<sub>i</sub></span> = N/<span class="cN">n<sub>i</sub></span></td>
+        <td><span class="cM">M<sub>i</sub></span> mod <span class="cN">n<sub>i</sub></span><br><span class="tag">(reduce first)</span></td>
+        <td><span class="cY">y<sub>i</sub></span> = <span class="cM">M<sub>i</sub></span><sup>−1</sup> mod <span class="cN">n<sub>i</sub></span></td>
+        <td><span class="cA">a<sub>i</sub></span><span class="cM">M<sub>i</sub></span><span class="cY">y<sub>i</sub></span></td>
+      </tr>
+      <tr><td><span class="cN">3</span></td><td><span class="cA">2</span></td><td><span class="cM">35</span></td><td>2</td><td><span class="cY">2</span> &nbsp;<span class="tag">(2·2 ≡ 1)</span></td><td>2·35·2 = 140</td></tr>
+      <tr><td><span class="cN">5</span></td><td><span class="cA">3</span></td><td><span class="cM">21</span></td><td>1</td><td><span class="cY">1</span> &nbsp;<span class="tag">(1·1 ≡ 1)</span></td><td>3·21·1 = 63</td></tr>
+      <tr><td><span class="cN">7</span></td><td><span class="cA">2</span></td><td><span class="cM">15</span></td><td>1</td><td><span class="cY">1</span> &nbsp;<span class="tag">(1·1 ≡ 1)</span></td><td>2·15·1 = 30</td></tr>
+    </table>
+    <p class="tag" style="margin:2px 0 8px">Reduce <span class="cM">M<sub>i</sub></span> mod
+      <span class="cN">n<sub>i</sub></span> first, then invert that small number —
+      <span class="m"><span class="cM">M<sub>i</sub></span><sup>−1</sup> = (<span class="cM">M<sub>i</sub></span> mod <span class="cN">n<sub>i</sub></span>)<sup>−1</sup></span>.
+      Here rows 2 and 3 reduce to 1, whose inverse is just 1.</p>
+    <div class="formula" style="background:#fff">x ≡ 140 + 63 + 30 = 233 ≡ <b>23</b> &nbsp;(mod 105)</div>
+    <p style="margin-bottom:0"><span class="check">Check:</span> 23 mod 3 = 2 ✓ · 23 mod 5 = 3 ✓ ·
+      23 mod 7 = 2 ✓ — the same 23 the soldier count gives.</p>
+  </div>
+
+  <div class="card" style="background:var(--green2);border-color:#b8e6cd">
+    <h3 style="margin-top:0">Worked example 2 — where the inverse really does work</h3>
+    <p style="margin-top:0">Solve <span class="m">x ≡ 2 (mod <span class="cN">5</span>)</span> and
+      <span class="m">x ≡ 3 (mod <span class="cN">7</span>)</span>, &nbsp;
+      <span class="m">N = 5·7 = <b>35</b></span>. Here the inverses are not just 1, so you can see the step.</p>
+    <ul style="margin:6px 0">
+      <li><span class="cM">M<sub>1</sub></span> = 35/<span class="cN">5</span> = <span class="cM">7</span>;
+        &nbsp; <span class="cM">7</span> mod <span class="cN">5</span> = 2, so we need
+        <span class="m">2·<span class="cY">y<sub>1</sub></span> ≡ 1 (mod 5)</span> →
+        <span class="cY">y<sub>1</sub></span> = <b>3</b> &nbsp;(2·3 = 6 ≡ 1).
+        Term = <span class="cA">2</span>·<span class="cM">7</span>·<span class="cY">3</span> = 42.</li>
+      <li><span class="cM">M<sub>2</sub></span> = 35/<span class="cN">7</span> = <span class="cM">5</span>;
+        &nbsp; <span class="cM">5</span> mod <span class="cN">7</span> = 5, so we need
+        <span class="m">5·<span class="cY">y<sub>2</sub></span> ≡ 1 (mod 7)</span> →
+        <span class="cY">y<sub>2</sub></span> = <b>3</b> &nbsp;(5·3 = 15 ≡ 1).
+        Term = <span class="cA">3</span>·<span class="cM">5</span>·<span class="cY">3</span> = 45.</li>
+    </ul>
+    <div class="formula" style="background:#fff">x ≡ 42 + 45 = 87 ≡ <b>17</b> &nbsp;(mod 35)</div>
+    <p style="margin-bottom:0"><span class="check">Check:</span> 17 mod 5 = 2 ✓ · 17 mod 7 = 3 ✓.
+      &nbsp; Notice <span class="cY">y<sub>i</sub></span> is the inverse of
+      <span class="cM">M<sub>i</sub></span> (not of <span class="cN">n<sub>i</sub></span>).</p>
+  </div>
+
+  <p>Now build your own and watch the same table fill in:</p>
+
+  <div class="card">
+    <div id="congRows"></div>
+    <div class="row">
+      <button id="addCong">+ add a clock</button>
+      <button class="primary" id="genConstruct">Construct with the formula</button>
+      <button id="genSolve">▶ Show all N (proof of uniqueness)</button>
+      <button id="genStop">Stop</button>
+    </div>
+    <div id="miniClocks" class="miniwrap"></div>
+    <div class="stat" id="genInfo"></div>
+    <div id="constructHost"></div>
+    <div id="stripHost"></div>
+    <div class="stat" id="genOut">Set up your clocks, then press <b>Construct with the formula</b>.</div>
+  </div>
+
+  <div class="note">
+    <b>Two things to point out.</b> (1) Add a fourth coprime clock (say mod 11) and N just grows —
+    still exactly one answer. (2) Add a clock that <i>shares a factor</i> with another (e.g. another
+    "mod 6" next to "mod 3") and the guarantee breaks: you'll get either no answer or several. That's
+    the pairwise-coprime condition doing its job.
+  </div>
+
+  <!-- 7. WHY CARE -->
+  <h2>7. Why anyone cares today</h2>
+  <p>All three of these are the exact same move as the soldier puzzle: work with small remainders,
+  then glue them into one answer with CRT.</p>
+
+  <div class="card">
+    <h3>Your phone, every secure website (RSA)</h3>
+    <p><b>In one line:</b> CRT doesn't create or crack the private key — it just makes the key
+    owner's own <b>decrypt / sign</b> step about 4× faster. Same answer, less time.</p>
+    <p><b>Who knows what.</b> The owner generated the key, so they alone know the two secret primes
+    <span class="m">p</span> and <span class="m">q</span>. Everyone else sees only the public modulus
+    <span class="m">n = p · q</span> and the public exponent. Factoring n back into p · q is
+    infeasible — that's the entire security of RSA — so <i>only the owner</i> can take the shortcut
+    below.</p>
+    <p><b>The slow way.</b> To read a ciphertext c, the owner must compute
+    <span class="m">m = c<sup>d</sup> mod n</span> with the private exponent d. Both d and n are
+    ~2048-bit numbers, so this single power is expensive.</p>
+    <p><b>What the owner actually does (the CRT way),</b> using their private p and q:</p>
+    <ol>
+      <li>shrink the exponent: <span class="m">d<sub>p</sub> = d mod (p−1)</span> and
+          <span class="m">d<sub>q</sub> = d mod (q−1)</span>;</li>
+      <li>do two <i>small</i> powers — c raised to <span class="m">d<sub>p</sub></span> mod p, and c
+          raised to <span class="m">d<sub>q</sub></span> mod q — each on half-size numbers, giving
+          <span class="m">m<sub>p</sub></span> and <span class="m">m<sub>q</sub></span>;</li>
+      <li><b>glue with CRT:</b> solve <span class="m">x ≡ m<sub>p</sub> (mod p)</span>,
+          <span class="m">x ≡ m<sub>q</sub> (mod q)</span> — its one answer mod n <i>is</i> the
+          message m.</li>
+    </ol>
+    <p><b>So what is CRT's job here?</b> Steps 1–2 only produce two <i>partial</i> views of the
+    answer — the message seen on the p-clock and on the q-clock. Those halves are not the message.
+    <b>CRT is the step that fuses the two halves back into the single number m.</b> Without it you'd
+    be stuck holding two pieces. And it pays off because doubling a modulus's bit-length makes a
+    power ~8× costlier (cubic cost): one 2048-bit power ≈ 8 units of work, while two 1024-bit powers
+    ≈ 2 units — roughly <b>¼ the time</b>, the speed-up baked into every TLS library.</p>
+    <div class="card" style="background:var(--green2);border-color:#b8e6cd">
+      <b>Tiny example</b> with toy primes. Let p = 5, q = 11, so n = 55, and suppose the private
+      exponent is d = 27. To decrypt c = 17:
+      <pre class="calc">d_p = 27 mod (5−1)  = 3   →   m_p = 17³ mod 5  = 2³ mod 5  = 3
+d_q = 27 mod (11−1) = 7   →   m_q = 17⁷ mod 11 = 6⁷ mod 11 = 8
+
+glue:  x ≡ 3 (mod 5),  x ≡ 8 (mod 11)   →   x = 8</pre>
+      The recovered message is <b>m = 8</b> — found using p and q, never touching the big
+      mod-55 power. (Finding d itself, and the inverses inside the glue step, use the
+      <a href="euclidean-inverse.html">Euclidean algorithm</a>.)
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The soldier trick, modernized (residue number systems)</h3>
+    <p><b>In plain terms:</b> CRT lets a computer treat one huge number as a bundle of small
+    independent numbers — so it can crunch them faster and in parallel, then rebuild the real
+    answer at the end.</p>
+    <p>Fix a set of coprime moduli <span class="m">m₁, m₂, …, mₖ</span> (small enough to fit a CPU
+    register). Store a big number X not as digits but as its remainder tuple
+    <span class="m">(X mod m₁, …, X mod mₖ)</span>. By CRT that tuple <b>is</b> X — exactly one big
+    number gives it, as long as X &lt; N = m₁·⋯·mₖ. (That's the grid filling once per cell.)</p>
+    <p><b>How CRT is used:</b> to add or multiply two giant numbers, work on each remainder
+    independently — <span class="m">(X+Y) mod mᵢ = (X mod mᵢ + Y mod mᵢ) mod mᵢ</span> — with no
+    carries linking the lanes, so every lane runs <b>in parallel</b> on separate hardware. CRT
+    reassembles the true answer from the tuple at the end. Used in signal-processing and crypto
+    chips where raw multiply speed matters.</p>
+  </div>
+
+  <div class="card">
+    <h3>Secret sharing (splitting a key safely)</h3>
+    <p><b>In plain terms:</b> CRT is the rule that decides exactly how many pieces count as
+    "enough" — gather the threshold and the secret is uniquely pinned down; gather fewer and it
+    stays genuinely hidden.</p>
+    <p>You want to split a secret S among several people so that any <i>t</i> of them together can
+    recover it, but <i>t−1</i> learn nothing. One classic scheme (Mignotte / Asmuth–Bloom) hands
+    person i the share <span class="m">sᵢ = S mod mᵢ</span> for chosen coprime moduli mᵢ.</p>
+    <p><b>How CRT is used:</b> collect enough shares and the product of their moduli exceeds the
+    range S lives in, so CRT pins down <b>one</b> value — the secret. Collect too few and that
+    product is too small; many different S values fit the same remainders, so the shares reveal
+    nothing. The whole security threshold is just <i>"do the gathered moduli multiply to something
+    big enough to make the CRT answer unique?"</i></p>
+    <p><b>Real example:</b> HashiCorp Vault's "unseal" runs on exactly this k-of-n idea — it splits
+    the master key into, say, 5 shares and needs any 3 to unlock, so no single admin can open it
+    alone. Vault uses <b>Shamir's Secret Sharing</b> (built from polynomials, not CRT), but the goal
+    is identical; CRT is simply a different way to build the same threshold guarantee.</p>
+  </div>
+
+  <div class="card files">
+    <b>Where this fits in your notes:</b> this page is the deep-dive for the
+    Chinese Remainder Theorem. The rest of the class is in the markdown files —
+    <code>class6-02-theory-primer.md</code> (all four tools),
+    <code>class6-03-problem1-crt.md</code> (CRT problems worked out), and so on through
+    Problem 4. Same three-move pattern everywhere: <b>split → Fermat → glue with CRT.</b>
+  </div>
+
+</div>
+
+<div class="pagefoot">
+  <div class="pagenav">
+    <a href="index.html">← all questions</a>
+    <span class="spacer"></span>
+    <a href="crt-proof.html">Why CRT is true (proof)</a> ·
+    <a href="euclidean-inverse.html">Inverse</a> · <a href="fermat.html">Fermat</a>
+  </div>
+</div>
+
+<script>
+// ---------- clock ----------
+const svg=document.getElementById('clock');
+function gcd(a,b){return b?gcd(b,a%b):a}
+function drawClock(n,hand){
+  const cx=100,cy=100,r=82;
+  let s=`<circle cx='${cx}' cy='${cy}' r='${r}' fill='#fff' stroke='#d7deea' stroke-width='2'/>`;
+  for(let i=0;i<n;i++){
+    const ang=(-90+360*i/n)*Math.PI/180;
+    const x=cx+(r-16)*Math.cos(ang), y=cy+(r-16)*Math.sin(ang);
+    const on = i===hand;
+    s+=`<circle cx='${cx+r*Math.cos(ang)}' cy='${cy+r*Math.sin(ang)}' r='3' fill='#c2cbd9'/>`;
+    s+=`<text x='${x}' y='${y+5}' text-anchor='middle' font-family='Georgia' font-size='15' fill='${on?'#2f6df6':'#5b6573'}' font-weight='${on?'700':'400'}'>${i}</text>`;
+  }
+  const ang=(-90+360*hand/n)*Math.PI/180;
+  s+=`<line x1='${cx}' y1='${cy}' x2='${cx+(r-30)*Math.cos(ang)}' y2='${cy+(r-30)*Math.sin(ang)}' stroke='#2f6df6' stroke-width='4' stroke-linecap='round'/>`;
+  s+=`<circle cx='${cx}' cy='${cy}' r='5' fill='#2f6df6'/>`;
+  svg.innerHTML=s;
+}
+function runClock(){
+  const hours=parseInt(document.getElementById('ckHours').value)||0;
+  const ckN=parseInt(document.getElementById('ckSize').value);
+  document.getElementById('ckN').textContent=ckN;
+  const ans=((hours%ckN)+ckN)%ckN;
+  document.getElementById('ckText').textContent=`${hours} hours on a ${ckN}-hour clock…`;
+  const dir=hours<0?-1:1; drawClock(ckN,0);
+  const realSteps=Math.abs(hours); let shown=0;
+  clearInterval(window._ck);
+  window._ck=setInterval(()=>{
+    shown++; const pos=((dir*shown)%ckN+ckN)%ckN; drawClock(ckN,pos);
+    if(shown>=Math.min(realSteps,ckN*3)){ clearInterval(window._ck); drawClock(ckN,ans); }
+  },70);
+  document.getElementById('ckAns').textContent=`${hours} ≡ ${ans} (mod ${ckN})`;
+}
+document.getElementById('ckGo').onclick=runClock;
+document.getElementById('ckSize').onchange=runClock;
+drawClock(7,3);
+
+// ---------- grid ----------
+let A=3,B=5,filled=[],playing=null,curX=0;
+const host=document.getElementById('gridHost');
+function buildGrid(){
+  let t=`<table class='grid'><tr><th></th>`;
+  for(let c=0;c<B;c++) t+=`<th>↓ ${c}</th>`;
+  t+=`</tr>`;
+  for(let rI=0;rI<A;rI++){
+    t+=`<tr><th>${rI} →</th>`;
+    for(let c=0;c<B;c++) t+=`<td id='c-${rI}-${c}'></td>`;
+    t+=`</tr>`;
+  }
+  t+=`</table>`; host.innerHTML=t;
+  filled=Array.from({length:A},()=>Array(B).fill(null));
+  curX=0; document.getElementById('gX').textContent='–'; document.getElementById('gMsg').textContent='';
+}
+function setMod(a,b){
+  A=a;B=b; document.getElementById('g1lbl').textContent=a; document.getElementById('g2lbl').textContent=b;
+  document.getElementById('solN1').textContent=a; document.getElementById('solN2').textContent=b;
+  buildGrid(); buildSolveOptions();
+}
+function placeNext(){
+  const N=A*B;
+  if(curX>=N){ finishGrid(); return false; }
+  const x=curX, r=x%A, c=x%B, cell=document.getElementById(`c-${r}-${c}`);
+  document.getElementById('gX').textContent=x;
+  if(filled[r][c]!==null){ cell.classList.add('dup'); cell.textContent=filled[r][c]+','+x; }
+  else { filled[r][c]=x; cell.classList.add('fill'); cell.textContent=x; }
+  cell.classList.add('pop'); setTimeout(()=>cell.classList.remove('pop'),180);
+  curX++; return true;
+}
+function finishGrid(){
+  let empty=0,dup=0;
+  for(let r=0;r<A;r++)for(let c=0;c<B;c++){ if(filled[r][c]===null) empty++; }
+  document.querySelectorAll('td.dup').forEach(()=>dup++);
+  const msg=document.getElementById('gMsg');
+  if(gcd(A,B)===1) msg.innerHTML=`<b style='color:var(--green)'>Every cell filled exactly once.</b> ${A}×${B}=${A*B} numbers, ${A*B} cells — coprime works. ✓`;
+  else msg.innerHTML=`<b style='color:var(--red)'>Broken:</b> ${empty} cells never reached, ${dup} cells hit twice. gcd(${A},${B})=${gcd(A,B)}≠1, so CRT fails here. ✗`;
+}
+document.getElementById('gPlay').onclick=function(){
+  if(playing){ clearInterval(playing); playing=null; this.textContent='▶ Play'; return; }
+  if(curX>=A*B) buildGrid();
+  this.textContent='⏸ Pause';
+  playing=setInterval(()=>{ if(!placeNext()){ clearInterval(playing); playing=null; document.getElementById('gPlay').textContent='▶ Play'; } },260);
+};
+document.getElementById('gStep').onclick=()=>{ if(curX>=A*B) return; placeNext(); if(curX>=A*B) finishGrid(); };
+document.getElementById('gReset').onclick=()=>{ if(playing){clearInterval(playing);playing=null;document.getElementById('gPlay').textContent='▶ Play';} buildGrid(); };
+document.querySelectorAll('.preset').forEach(btn=>{
+  btn.onclick=function(){
+    document.querySelectorAll('.preset').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    if(playing){clearInterval(playing);playing=null;document.getElementById('gPlay').textContent='▶ Play';}
+    setMod(+this.dataset.a,+this.dataset.b);
+  };
+});
+
+// ---------- two-clock solver ----------
+function buildSolveOptions(){
+  const s1=document.getElementById('solR1'), s2=document.getElementById('solR2');
+  s1.innerHTML=''; s2.innerHTML='';
+  for(let i=0;i<A;i++) s1.innerHTML+=`<option>${i}</option>`;
+  for(let i=0;i<B;i++) s2.innerHTML+=`<option>${i}</option>`;
+}
+document.getElementById('solGo').onclick=function(){
+  const r1=+document.getElementById('solR1').value, r2=+document.getElementById('solR2').value;
+  const N=A*B; let found=null;
+  for(let x=0;x<N;x++) if(x%A===r1 && x%B===r2){ found=x; break; }
+  document.querySelectorAll('td.target').forEach(td=>td.classList.remove('target'));
+  const out=document.getElementById('solOut');
+  if(found===null){
+    out.innerHTML=`<b style='color:var(--red)'>No solution.</b> Because gcd(${A},${B})≠1, the pair (${r1}, ${r2}) is one of the cells CRT can never reach.`;
+  } else {
+    if(curX<N){ buildGrid(); while(placeNext()){} }
+    const cell=document.getElementById(`c-${r1}-${r2}`); if(cell) cell.classList.add('target');
+    out.innerHTML=`Answer: <span class='big' style='font-size:24px'>x ≡ ${found} (mod ${N})</span> &nbsp; — the highlighted cell. (Check: ${found} mod ${A} = ${found%A}, ${found} mod ${B} = ${found%B}.)`;
+  }
+};
+
+// ---------- general k-clock case ----------
+function clockSVG(n,hand,dim){
+  const cx=dim/2,cy=dim/2,r=dim/2-12;
+  let s=`<svg width='${dim}' height='${dim}' viewBox='0 0 ${dim} ${dim}'>`;
+  s+=`<circle cx='${cx}' cy='${cy}' r='${r}' fill='#fff' stroke='#d7deea' stroke-width='2'/>`;
+  for(let i=0;i<n;i++){
+    const ang=(-90+360*i/n)*Math.PI/180, on=i===hand;
+    const tx=cx+(r-9)*Math.cos(ang), ty=cy+(r-9)*Math.sin(ang);
+    s+=`<text x='${tx}' y='${ty+4}' text-anchor='middle' font-family='Georgia' font-size='${dim>110?13:11}' fill='${on?'#2f6df6':'#9aa3b0'}' font-weight='${on?'700':'400'}'>${i}</text>`;
+  }
+  const ang=(-90+360*hand/n)*Math.PI/180;
+  s+=`<line x1='${cx}' y1='${cy}' x2='${cx+(r-13)*Math.cos(ang)}' y2='${cy+(r-13)*Math.sin(ang)}' stroke='#2f6df6' stroke-width='3' stroke-linecap='round'/>`;
+  s+=`<circle cx='${cx}' cy='${cy}' r='4' fill='#2f6df6'/></svg>`;
+  return s;
+}
+let congs=[{a:2,n:3},{a:3,n:5},{a:2,n:7}], genTimer=null;
+const congHost=document.getElementById('congRows'), miniHost=document.getElementById('miniClocks');
+function renderCongs(){
+  congHost.innerHTML='';
+  congs.forEach((c,i)=>{
+    const div=document.createElement('div'); div.className='row';
+    div.innerHTML=`<span class='m'>x ≡</span>
+      <input class='inp' type='number' value='${c.a}' data-i='${i}' data-k='a'>
+      <span class='m'>(mod</span>
+      <input class='inp' type='number' min='2' value='${c.n}' data-i='${i}' data-k='n'>
+      <span class='m'>)</span>
+      <button data-rm='${i}' title='remove'>✕</button>`;
+    congHost.appendChild(div);
+  });
+  congHost.querySelectorAll('input').forEach(inp=>{
+    inp.onchange=e=>{ congs[+e.target.dataset.i][e.target.dataset.k]=parseInt(e.target.value)||0; };
+  });
+  congHost.querySelectorAll('button[data-rm]').forEach(b=>{
+    b.onclick=e=>{ if(congs.length>1){ congs.splice(+e.target.dataset.rm,1); renderCongs(); } };
+  });
+}
+document.getElementById('addCong').onclick=()=>{ congs.push({a:1,n:4}); renderCongs(); };
+document.getElementById('genStop').onclick=()=>{ if(genTimer){clearInterval(genTimer);genTimer=null;} };
+function buildStrip(N){
+  const host=document.getElementById('stripHost');
+  if(N>400){ host.innerHTML="<div class='tag'>N is large — skipping the strip; the answer is computed below.</div>"; return; }
+  let h="<div class='strip'>";
+  for(let i=0;i<N;i++) h+=`<div class='scell' id='s-${i}'>${i}</div>`;
+  host.innerHTML=h+"</div>";
+}
+function finishGen(sols,N){
+  document.querySelectorAll('.scell.now').forEach(c=>c.classList.remove('now'));
+  sols.forEach(s=>{const c=document.getElementById('s-'+s); if(c){c.classList.remove('no');c.classList.add('fill','pop');}});
+  const out=document.getElementById('genOut');
+  if(sols.length===1) out.innerHTML=`Answer: <span class='big' style='font-size:24px'>x ≡ ${sols[0]} (mod ${N})</span> — the single green cell. Every solution is ${sols[0]} + ${N}·k.`;
+  else if(sols.length===0) out.innerHTML=`<b style='color:var(--red)'>No solution.</b> These remainders can't all happen together — the clocks aren't pairwise coprime.`;
+  else out.innerHTML=`<b style='color:var(--amber)'>${sols.length} solutions</b> in [0, ${N}): ${sols.join(', ')}. The clocks aren't pairwise coprime, so the answer isn't unique — exactly what CRT rules out.`;
+}
+document.getElementById('genSolve').onclick=function(){
+  if(genTimer){clearInterval(genTimer);genTimer=null;}
+  const cs=congs.filter(c=>c.n>=2).map(c=>({n:c.n, a:((c.a%c.n)+c.n)%c.n}));
+  if(!cs.length){ document.getElementById('genOut').innerHTML="Add at least one clock (mod ≥ 2)."; return; }
+  const N=cs.reduce((p,c)=>p*c.n,1);
+  let coprime=true,bad='';
+  for(let i=0;i<cs.length;i++)for(let j=i+1;j<cs.length;j++)
+    if(gcd(cs[i].n,cs[j].n)!==1){coprime=false;bad=`${cs[i].n} & ${cs[j].n}`;}
+  miniHost.innerHTML=cs.map(c=>`<div style='text-align:center'>${clockSVG(c.n,c.a,96)}<div class='tag'>x ≡ ${c.a} (mod ${c.n})</div></div>`).join('');
+  document.getElementById('genInfo').innerHTML=`N = ${cs.map(c=>c.n).join(' × ')} = <b>${N}</b> &nbsp; `+
+    (coprime?`<span class='pill ok'>pairwise coprime ✓</span> one unique answer`
+            :`<span class='pill no'>not coprime (${bad}) ✗</span> uniqueness not guaranteed`);
+  const sols=[]; for(let x=0;x<N;x++) if(cs.every(c=>x%c.n===c.a)) sols.push(x);
+  buildStrip(N);
+  if(N>400){ finishGen(sols,N); return; }
+  let x=0; const speed=N>140?16:32;
+  genTimer=setInterval(()=>{
+    if(x>=N){ clearInterval(genTimer); genTimer=null; finishGen(sols,N); return; }
+    const cell=document.getElementById('s-'+x), ok=cs.every(c=>x%c.n===c.a);
+    document.querySelectorAll('.scell.now').forEach(c=>c.classList.remove('now'));
+    if(cell){ cell.classList.add(ok?'fill':'no'); cell.classList.add('now'); if(ok)cell.classList.add('pop'); }
+    document.getElementById('genOut').innerHTML=`checking x = ${x} …`;
+    x++;
+  }, speed);
+};
+// the actual CRT construction — no counting
+function egcd(a,b){ if(!b) return [a,1,0]; const [g,x,y]=egcd(b,a%b); return [g,y,x-Math.floor(a/b)*y]; }
+function modInv(a,m){ a=((a%m)+m)%m; const [g,x]=egcd(a,m); return g===1 ? ((x%m)+m)%m : null; }
+document.getElementById('genConstruct').onclick=function(){
+  if(genTimer){clearInterval(genTimer);genTimer=null;}
+  const cs=congs.filter(c=>c.n>=2).map(c=>({n:c.n,a:((c.a%c.n)+c.n)%c.n}));
+  const host=document.getElementById('constructHost'), out=document.getElementById('genOut');
+  if(!cs.length){ host.innerHTML=''; out.innerHTML='Add at least one clock (mod ≥ 2).'; return; }
+  for(let i=0;i<cs.length;i++)for(let j=i+1;j<cs.length;j++)
+    if(gcd(cs[i].n,cs[j].n)!==1){
+      host.innerHTML=`<div class='note grid-fail'><b>The formula needs pairwise-coprime clocks.</b> ${cs[i].n} and ${cs[j].n} share a factor, so the inverse yᵢ doesn't exist — there is no single formula answer. (Press "Show all N" to see why.)</div>`;
+      out.innerHTML=''; return;
+    }
+  const N=cs.reduce((p,c)=>p*c.n,1);
+  miniHost.innerHTML=cs.map(c=>`<div style='text-align:center'>${clockSVG(c.n,c.a,96)}<div class='tag'>x ≡ ${c.a} (mod ${c.n})</div></div>`).join('');
+  document.getElementById('genInfo').innerHTML=`N = ${cs.map(c=>c.n).join(' × ')} = <b>${N}</b> &nbsp; <span class='pill ok'>pairwise coprime ✓</span>`;
+  let sum=0, rows='';
+  cs.forEach(c=>{
+    const M=N/c.n, Mmod=((M%c.n)+c.n)%c.n, y=modInv(M,c.n), term=c.a*M*y;
+    sum+=term;
+    rows+=`<tr><td>${c.n}</td><td>${c.a}</td><td>${M}</td><td>${Mmod}</td><td>${y}</td><td>${c.a}·${M}·${y} = ${term}</td></tr>`;
+  });
+  const x=((sum%N)+N)%N;
+  host.innerHTML=`<table class='ftable'>
+    <tr><td>nᵢ</td><td>aᵢ</td><td>Mᵢ = N/nᵢ</td><td>Mᵢ mod nᵢ</td><td>yᵢ = Mᵢ⁻¹</td><td>aᵢ · Mᵢ · yᵢ</td></tr>
+    ${rows}</table>
+    <div class='stat'>sum = ${sum} &nbsp;≡&nbsp; <span class='big' style='font-size:22px'>x ≡ ${x} (mod ${N})</span></div>`;
+  out.innerHTML=`Built directly from the remainders — <b>no counting</b>. (Every other x is ${x} + ${N}·k.)`;
+};
+renderCongs();
+
+// init
+setMod(3,5);
+</script>
+</body>
+</html>

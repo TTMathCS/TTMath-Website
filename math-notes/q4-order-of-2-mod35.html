@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem 4 — order of 2 mod 35</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>Problem 4</h1>
+  <p class="sub">Order of an element · the period of the powers</p>
+  <div class="hook"><b>How many times do you double before you're back to the start?</b> Place a
+  bet on the number, then let's hunt the cycle.</div>
+
+  <div class="problem"><b>Find the smallest positive n</b> with
+    <span class="m">2ⁿ ≡ 1 (mod 35)</span>.</div>
+
+  <p>The word <b>order</b> has a precise meaning here — and it's exactly what this problem asks for.</p>
+  <div class="card" style="border-left:4px solid var(--blue)">
+    <p style="margin-top:0"><b>The order of a (mod n)</b>, written <span class="m">ord<sub>n</sub>(a)</span>,
+    is the <b>smallest positive power that brings a back to 1</b>: the smallest d with
+    <span class="m">aᵈ ≡ 1 (mod n)</span>.</p>
+    <p>Equivalently it's the <b>length of the cycle</b> of powers. List
+    <span class="m">a, a², a³, …</span> on the n-clock; they eventually loop, and the number of steps
+    before you return to 1 is the order.</p>
+    <p style="margin-bottom:0">So "find the smallest n with <span class="m">2ⁿ ≡ 1 (mod 35)</span>" is
+    literally "<b>find the order of 2 mod 35</b>." The demo lower down shows the cycle returning to 1.</p>
+  </div>
+
+  <details class="why">
+    <summary>Why the name "order"?</summary>
+    <p>The powers you can reach — <span class="m">{a, a², …, aᵈ = 1}</span> — form a small set that
+    cycles forever. The <b>order</b> is the <i>size</i> of that set: how many distinct values are in
+    the loop. "Order" is just the classic word for "how many things are in this group," so the order
+    of the element = the length of its cycle. For 2 mod 7 the cycle is <span class="m">2, 4, 1</span>
+    — three values — so the order is 3.</p>
+  </details>
+
+  <span class="tool">Tool: order = lcm of the orders mod each prime factor</span>
+  <p>35 = 5 × 7, and gcd(2, 5) = gcd(2, 7) = 1, so the order of 2 mod 35 is the lcm of its order
+  mod 5 and mod 7.</p>
+
+  <details class="why">
+    <summary>Why is the order mod 35 the lcm of the orders mod 5 and mod 7?</summary>
+    <p><b>Step 1 — split.</b> Since 5 and 7 are coprime, one condition becomes two:</p>
+    <pre class="calc">2ⁿ ≡ 1 (mod 35)   ⟺   2ⁿ ≡ 1 (mod 5)  AND  2ⁿ ≡ 1 (mod 7)</pre>
+    <p>(a power lands on 1 on the 35-clock exactly when it lands on 1 on both small clocks at once.)</p>
+    <p><b>Step 2 — each clock forces a divisibility.</b> Write <span class="m">d₅, d₇</span> for the
+    orders of 2 mod 5 and mod 7. A power equals 1 exactly when the exponent is a multiple of that
+    order:</p>
+    <pre class="calc">2ⁿ ≡ 1 (mod 5)  ⟺  d₅ | n          2ⁿ ≡ 1 (mod 7)  ⟺  d₇ | n</pre>
+    <p>(that's the "n = qd + r" argument shown in Step 1 below.)</p>
+    <p><b>Step 3 — both at once = lcm.</b> So we need <span class="m">d₅ | n</span> <b>and</b>
+    <span class="m">d₇ | n</span>: n is a common multiple of both. A number divisible by both is
+    exactly a multiple of their <b>least common multiple</b>:</p>
+    <pre class="calc">2ⁿ ≡ 1 (mod 35)  ⟺  lcm(d₅, d₇) | n</pre>
+    <p>The <i>smallest</i> positive such n is <span class="m">lcm(d₅, d₇)</span> itself — and the
+    smallest n is exactly what "order" means. Hence <b>order mod 35 = lcm(d₅, d₇)</b>. Here that's
+    lcm(4, 3) = 12.</p>
+  </details>
+
+  <div class="step" data-n="1">
+    <h3>Order of 2 mod 5</h3>
+    <pre class="calc">2¹ = 2,  2² = 4,  2³ ≡ 3,  2⁴ ≡ 1     →   order 4</pre>
+    <p>So <span class="m">2ⁿ ≡ 1 (mod 5)</span> happens exactly when <b>4 divides n</b>.</p>
+
+    <details class="why">
+      <summary>Why does hitting 1 mean "4 divides n"?</summary>
+      <p>We list the powers until the first return to 1: that first time is
+      <span class="m">2⁴ ≡ 1</span>, so the <b>order</b> is 4.</p>
+      <p>Now take any n and divide it by 4: <span class="m">n = 4q + r</span> with
+      <span class="m">0 ≤ r &lt; 4</span>. Then</p>
+      <pre class="calc">2ⁿ = (2⁴)^q · 2ʳ ≡ 1 · 2ʳ = 2ʳ   (mod 5)</pre>
+      <p>For <span class="m">2ⁿ ≡ 1</span> we'd need <span class="m">2ʳ ≡ 1</span> with r smaller than
+      4 — but 4 is the <i>smallest</i> exponent that returns to 1, so the only possibility is
+      <span class="m">r = 0</span>. That means <b>4 | n</b>. (The same argument in Step 2 gives
+      3 | n.)</p>
+    </details>
+  </div>
+
+  <div class="step" data-n="2">
+    <h3>Order of 2 mod 7</h3>
+    <pre class="calc">2¹ = 2,  2² = 4,  2³ = 8 ≡ 1           →   order 3</pre>
+    <p>So <span class="m">2ⁿ ≡ 1 (mod 7)</span> happens exactly when <b>3 divides n</b> (same
+    argument as Step 1).</p>
+  </div>
+
+  <div class="step" data-n="3">
+    <h3>Combine</h3>
+    <div class="formula"><span class="m">ord<sub>35</sub>(2) = lcm( ord<sub>5</sub>(2), ord<sub>7</sub>(2) ) = lcm(4, 3) = 12</span></div>
+    <p>We need <span class="m">4 | n</span> (Step 1) <b>and</b> <span class="m">3 | n</span> (Step 2)
+    at once, so n is a common multiple of 4 and 3 — the smallest is their lcm.</p>
+
+    <details class="why">
+      <summary>Why the least common multiple?</summary>
+      <p>A valid n must be divisible by both 4 and 3, so it's a <b>common multiple</b> of them:
+      12, 24, 36, … The smallest positive one is the <b>least common multiple</b>,
+      <span class="m">lcm(4, 3) = 12</span>.</p>
+      <p>Since <span class="m">gcd(4, 3) = 1</span> (no shared factor), the lcm equals the product
+      <span class="m">4 × 3 = 12</span>. So the smallest n is 12.</p>
+      <p>(If the two orders <i>had</i> shared a factor, the lcm would be smaller than the product —
+      e.g. lcm(4, 6) = 12, not 24.)</p>
+    </details>
+  </div>
+
+  <div class="answer">smallest <span class="m">n = 12</span>.</div>
+  <p><span class="check">Check:</span> 2¹² = 4096 = 35·117 + 1, so 2¹² ≡ 1 (mod 35). ✓ &nbsp; No smaller
+  n works, since any working n must be a multiple of both 4 and 3.</p>
+
+  <h2>See the periods line up</h2>
+  <p>Step through the powers of 2. Watch the mod-5 row cycle every 4, the mod-7 row every 3, and
+  mod-35 only return to 1 when <b>both</b> hit 1 together — at n = 12.</p>
+
+  <div class="problem" style="border-left-color:var(--green)">
+    <div class="row" style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+      <button class="primary" id="play">▶ Play</button>
+      <button id="step">Step +1</button>
+      <button id="reset">Reset</button>
+      <span>n = <span class="big" id="nval" style="font-size:22px">0</span></span>
+    </div>
+    <table class="tbl" id="ptab">
+      <tr><th>n</th></tr>
+      <tr><th>2ⁿ mod 5</th></tr>
+      <tr><th>2ⁿ mod 7</th></tr>
+      <tr><th>2ⁿ mod 35</th></tr>
+    </table>
+    <div class="stat" id="pmsg" style="margin-top:8px;color:var(--soft);font-size:14px"></div>
+  </div>
+
+  <div class="note">
+    <b>The honest remark from the handout.</b> There is no neat formula for the order in general —
+    you find one working exponent (Fermat hands you p−1) and test its divisors. The
+    lcm-of-prime-orders shortcut above is the best general tool, and that's as good as it gets.
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="challenge">
+    <p class="ch">Your turn</p>
+    <p>Find the smallest <span class="m">n</span> with <span class="m">2ⁿ ≡ 1 (mod 15)</span>.</p>
+    <details><summary>Show answer</summary>
+      <p>15 = 3 · 5. Order of 2 mod 3 is 2; order mod 5 is 4. lcm(2, 4) = 4. Check:
+      <span class="m">2⁴ = 16 ≡ 1 (mod 15)</span>. So <b>n = 4</b>.</p>
+    </details>
+  </div>
+  <div class="pagenav">
+    <a href="q3-prove-a30-mod77.html">← Problem 3</a>
+    <span class="spacer"></span>
+    <a href="index.html">All questions →</a>
+  </div>
+  <div class="concepts-row">Concepts: <a href="crt-explained.html">CRT</a> ·
+    <a href="fermat.html">Fermat</a> · <a href="euclidean-inverse.html">Inverse</a> ·
+    <a href="crt-proof.html">CRT proof</a></div>
+</div>
+
+<script>
+const tab=document.getElementById('ptab'), maxN=12;
+let n=0, timer=null;
+const rows=tab.rows; // 0:n, 1:mod5, 2:mod7, 3:mod35
+function addCol(k){
+  const v5=(2**k)%5, v7=(2**k)%7, v35=(2**k)%35;
+  rows[0].insertCell().textContent=k;
+  const c5=rows[1].insertCell(); c5.textContent=v5; if(v5===1)c5.className='hit';
+  const c7=rows[2].insertCell(); c7.textContent=v7; if(v7===1)c7.className='hit';
+  const c35=rows[3].insertCell(); c35.textContent=v35; if(v35===1)c35.className='hit';
+  document.getElementById('nval').textContent=k;
+  if(v35===1 && k>0){
+    document.getElementById('pmsg').innerHTML=`<b style="color:var(--green)">2<sup>${k}</sup> ≡ 1 (mod 35)</b> — first time all three columns show 1. That's the order: ${k}.`;
+    if(timer){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶ Play';}
+  } else {
+    document.getElementById('pmsg').textContent='green = that power is ≡ 1 on that clock';
+  }
+}
+function stepOne(){ if(n>maxN) return; addCol(n); n++; }
+function resetTab(){
+  if(timer){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶ Play';}
+  for(let r=0;r<4;r++) while(rows[r].cells.length>1) rows[r].deleteCell(1);
+  n=0; document.getElementById('nval').textContent='0'; document.getElementById('pmsg').textContent='';
+  addCol(0); n=1;
+}
+document.getElementById('step').onclick=stepOne;
+document.getElementById('reset').onclick=resetTab;
+document.getElementById('play').onclick=function(){
+  if(timer){clearInterval(timer);timer=null;this.textContent='▶ Play';return;}
+  if(n>maxN) resetTab();
+  this.textContent='⏸ Pause';
+  timer=setInterval(()=>{ if(n>maxN){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶ Play';return;} stepOne(); }, 600);
+};
+resetTab();
+</script>
+</body>
+</html>

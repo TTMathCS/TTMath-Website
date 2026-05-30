@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modular inverse with the Euclidean algorithm</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>The modular inverse, via the Euclidean algorithm</h1>
+  <p class="sub">The tool behind CRT's yᵢ and behind RSA's private exponent</p>
+
+  <div class="problem"><b>Goal.</b> Given a and m, find the <b>inverse</b> of a mod m — the number b
+    with <span class="m">a · b ≡ 1 (mod m)</span>.</div>
+
+  <h2>1. What it is, and when it exists</h2>
+  <p>On an m-hour clock, the inverse of a is the number you multiply a by to land back on 1. For
+  example mod 7, the inverse of 3 is 5, because <span class="m">3 · 5 = 15 ≡ 1 (mod 7)</span>.</p>
+  <p>It exists <b>exactly when</b> <span class="m">gcd(a, m) = 1</span> (a and m are coprime). If they
+  share a factor, no multiple of a ever lands on 1, so there is no inverse.</p>
+
+  <h2>2. The idea: Bézout's identity</h2>
+  <p>The extended Euclidean algorithm finds whole numbers x, y with</p>
+  <pre class="calc">a · x + m · y = gcd(a, m)</pre>
+  <p>When <span class="m">gcd(a, m) = 1</span>, read that equation mod m: the
+  <span class="m">m · y</span> term vanishes, leaving <span class="m">a · x ≡ 1 (mod m)</span>. So
+  <b>x is the inverse</b> (reduced into the range 0…m−1).</p>
+
+  <h2>3. Worked example: inverse of 3 mod 40</h2>
+  <p>(This is the exact step RSA needs to turn the public exponent e = 3 into the private d.)</p>
+
+  <div class="step" data-n="1">
+    <h3>Run Euclid's algorithm (divide, keep remainders)</h3>
+    <pre class="calc">40 = 13 × 3 + 1
+ 3 =  3 × 1 + 0</pre>
+    <p>The last nonzero remainder is 1, so <span class="m">gcd(3, 40) = 1</span> — an inverse
+    exists.</p>
+  </div>
+
+  <div class="step" data-n="2">
+    <h3>Back-substitute to isolate the 1</h3>
+    <p>Take the line that produced the remainder 1 and solve for it:</p>
+    <pre class="calc">1 = 40 − 13 × 3</pre>
+    <p>So <span class="m">−13 × 3 = 1 − 40 ≡ 1 (mod 40)</span>.</p>
+  </div>
+
+  <div class="step" data-n="3">
+    <h3>Reduce the coefficient into 0…39</h3>
+    <pre class="calc">inverse of 3 = −13 ≡ −13 + 40 = 27 (mod 40)</pre>
+  </div>
+
+  <div class="answer"><span class="m">3⁻¹ ≡ 27 (mod 40)</span></div>
+  <p><span class="check">Check:</span> 3 × 27 = 81 = 2 × 40 + 1 ≡ 1 (mod 40). ✓</p>
+
+  <h2>4. Try it yourself</h2>
+  <p>Enter any a and m. The tool runs Euclid's divisions and reports the inverse (or says none
+  exists).</p>
+
+  <div class="problem" style="border-left-color:var(--green)">
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+      <span class="m">inverse of</span>
+      <input id="ina" type="number" value="3" style="width:80px;font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--line)">
+      <span class="m">mod</span>
+      <input id="inm" type="number" value="40" style="width:80px;font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--line)">
+      <button class="primary" id="calc">Compute</button>
+    </div>
+    <pre class="calc" id="steps" style="margin:6px 0">divisions appear here…</pre>
+    <div class="tag" id="bslabel" style="margin:8px 0 0"></div>
+    <pre class="calc" id="backsub" style="margin:6px 0"></pre>
+    <div class="stat" id="out"></div>
+  </div>
+
+  <h2>5. The same thing in Python</h2>
+  <p>The whole method is a short loop. This returns the inverse, or <code>None</code> when there
+  isn't one (gcd ≠ 1).</p>
+  <pre class="code"><span class="cm"># inverse of a modulo m, by the extended Euclidean algorithm</span>
+def inverse(a, m):
+    old_r, r = a % m, m
+    old_s, s = 1, 0
+    while r:
+        q = old_r // r
+        old_r, r = r, old_r - q * r
+        old_s, s = s, old_s - q * s
+    if old_r != 1:              <span class="cm"># gcd(a, m) != 1, no inverse</span>
+        return None
+    return old_s % m
+
+print(inverse(5, 43))          <span class="cm"># 26   (5 * 26 = 130 = 3*43 + 1)</span></pre>
+  <p>The pair <span class="m">old_s, s</span> carries Bézout's coefficient for
+  <span class="m">a</span> as the loop runs, so at the end <span class="m">old_s · a ≡ 1 (mod m)</span>
+  — that is the inverse. The other coefficient (for m) isn't needed, so we don't track it.</p>
+
+  <p><b>Even shorter (Python 3.8+):</b> the built-in <code>pow</code> does it directly —</p>
+  <pre class="code">print(pow(5, -1, 43))          <span class="cm"># 26</span></pre>
+
+  <div class="note">
+    <b>Where you'll use this.</b> The CRT construction needs
+    <span class="m">yᵢ = Mᵢ⁻¹ (mod nᵢ)</span> — that's this exact algorithm
+    (<a href="crt-explained.html">CRT page, Section 6</a>). RSA builds the private exponent the
+    same way: <span class="m">d = e⁻¹ (mod (p−1)(q−1))</span>.
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="funfact"><b>Fun fact:</b> Euclid's algorithm (~300 BC) is one of the oldest
+  recipes still in daily use — a version of it runs inside the chip that just loaded this page.</div>
+  <div class="pagenav">
+    <a href="index.html">← all questions</a>
+    <span class="spacer"></span>
+    <a href="crt-explained.html">CRT</a> · <a href="fermat.html">Fermat</a> ·
+    <a href="crt-proof.html">CRT proof</a>
+  </div>
+</div>
+
+<script>
+// format one term, e.g. "2×43", "43", "−5"
+function coefTerm(c,v){ if(c===1) return `${v}`; if(c===-1) return `−${v}`; return `${c<0?'−':''}${Math.abs(c)}×${v}`; }
+// format a following term with its sign, e.g. " − 17×5"
+function nextTerm(c,v){ const s=c<0?' − ':' + '; const mag=Math.abs(c); return s+(mag===1?`${v}`:`${mag}×${v}`); }
+// "1 = bigger-term ± smaller-term", positive term written first
+function lineStr(cL,vL,cH,vH){
+  let A={c:cL,v:vL}, B={c:cH,v:vH};
+  if(A.c<0 && B.c>0){ const t=A; A=B; B=t; }
+  return `1 = ${coefTerm(A.c,A.v)}${nextTerm(B.c,B.v)}`;
+}
+document.getElementById('calc').onclick=function(){
+  let a0=parseInt(document.getElementById('ina').value),
+      m=parseInt(document.getElementById('inm').value);
+  const stepsEl=document.getElementById('steps'), bsEl=document.getElementById('backsub'),
+        bsLab=document.getElementById('bslabel'), out=document.getElementById('out');
+  bsEl.textContent=''; bsLab.textContent='';
+  if(!Number.isFinite(a0)||!Number.isFinite(m)||m<2){ stepsEl.textContent=''; out.textContent='Enter whole numbers with m ≥ 2.'; return; }
+  let a=((a0%m)+m)%m;
+  if(a===0){ stepsEl.textContent=''; out.innerHTML=`<b style="color:var(--red)">No inverse</b> — ${a0} ≡ 0 (mod ${m}).`; return; }
+
+  // Euclid divisions on (m, a); record quotients qs[] and remainder chain v[]
+  let x=m, y=a, lines=[], v=[m,a], qs=[];
+  while(y!==0){ const q=Math.floor(x/y), r=x%y; lines.push(`${x} = ${q} × ${y} + ${r}`); qs.push(q); x=y; y=r; if(r!==0) v.push(r); }
+  stepsEl.textContent=lines.join('\n');
+  let note = (a0!==a) ? `(first reduced ${a0} ≡ ${a} mod ${m}) ` : '';
+
+  const t=v.length-1, g=v[t];              // v[t] = gcd
+  if(g!==1){ bsLab.textContent=note; out.innerHTML=`gcd(${a}, ${m}) = ${g} ≠ 1 → <b style="color:var(--red)">no inverse exists.</b>`; return; }
+
+  let inv;
+  if(t<2){                                  // a = 1, trivial
+    inv=1; bsLab.textContent=note; bsEl.textContent='a = 1, so its inverse is 1.';
+  } else {
+    // back-substitution: start from the step that produced gcd, walk down to m, a
+    let lo=t-2, hi=t-1, cLo=1, cHi=-qs[t-2];
+    const chain=[ lineStr(cLo, v[lo], cHi, v[hi]) ];
+    while(hi>=2){
+      const q=qs[hi-2], cm2=cHi, cm1=cLo-cHi*q;   // substitute v[hi] = v[hi-2] − q·v[hi-1]
+      hi=hi-1; lo=hi-1; cHi=cm1; cLo=cm2;
+      chain.push( lineStr(cLo, v[lo], cHi, v[hi]) );
+    }
+    inv=((cHi%m)+m)%m;                        // cHi is the coefficient on a
+    chain.push(`mod ${m}:  ${coefTerm(cHi,a)} ≡ 1   →   ${a}⁻¹ ≡ ${cHi} ≡ ${inv} (mod ${m})`);
+    bsLab.innerHTML=note+'Back-substitution — combine the lines to isolate 1:';
+    bsEl.textContent=chain.join('\n');
+  }
+  out.innerHTML=`<span class="big" style="font-size:22px">${a}⁻¹ ≡ ${inv} (mod ${m})</span> &nbsp; <span class="check">check: ${a} × ${inv} = ${a*inv} ≡ 1 (mod ${m})</span>`;
+};
+document.getElementById('calc').click();
+</script>
+</body>
+</html>

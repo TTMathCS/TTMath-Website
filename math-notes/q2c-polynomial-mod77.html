@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem 2(c) — polynomial congruence mod 77</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>Problem 2(c) <span style="font-size:15px;color:var(--amber)">· the hard one</span></h1>
+  <p class="sub">Splitting + Fermat + CRT, all together · budget ~10 min in class</p>
+  <div class="hook"><b>Boss level.</b> Splitting, Fermat, and CRT all show up at once. Take it
+  slow — every tool you've met earns its keep here.</div>
+
+  <div class="problem"><b>Solve.</b> &nbsp;<span class="m">2x¹²¹ + 22x³⁶ + 21x³⁰ + 2 ≡ 0 (mod 77)</span>.</div>
+
+  <span class="tool">Tool chain: split 77 = 7 × 11 → reduce each line with Fermat → CRT</span>
+  <p>New to Fermat's Little Theorem? → <a href="fermat.html">full explanation here</a> (what it is,
+  why it's true, and an interactive demo).</p>
+
+  <div class="step" data-n="1">
+    <h3>Split mod 77 into mod 7 and mod 11</h3>
+    <pre class="calc">2x¹²¹ + 22x³⁶ + 21x³⁰ + 2 ≡ 0   (mod 7)
+2x¹²¹ + 22x³⁶ + 21x³⁰ + 2 ≡ 0   (mod 11)</pre>
+  </div>
+
+  <div class="step" data-n="2">
+    <h3>Simplify the coefficients</h3>
+    <p>Mod 7: 22 ≡ 1, 21 ≡ 0. &nbsp; Mod 11: 22 ≡ 0, 21 ≡ −1.</p>
+    <pre class="calc">2x¹²¹ + x³⁶ + 2 ≡ 0   (mod 7)
+2x¹²¹ − x³⁰ + 2 ≡ 0   (mod 11)</pre>
+  </div>
+
+  <div class="step" data-n="3">
+    <h3>Solve mod 7 with Fermat</h3>
+    <p>If 7 | x, every x-term is 0 and we'd get 2 ≡ 0 (mod 7) — false. So 7 ∤ x and
+    <span class="m">x⁶ ≡ 1 (mod 7)</span>. Reduce exponents mod 6:</p>
+    <pre class="calc">121 = 6·20 + 1  →  x¹²¹ = (x⁶)²⁰·x ≡ x
+36  = 6·6       →  x³⁶  = (x⁶)⁶   ≡ 1
+
+2x + 1 + 2 ≡ 0  (mod 7)
+2x ≡ 4          (mod 7)
+x ≡ 2           (mod 7)</pre>
+
+    <details class="why">
+      <summary>Why each line? (the substitution and the "divide by 2")</summary>
+      <p><b>Where the equation starts.</b> After splitting mod 77 and reducing coefficients mod 7
+      (22 ≡ 1, 21 ≡ 0), the mod-7 equation is
+      <span class="m">2x¹²¹ + x³⁶ + 2 ≡ 0 (mod 7)</span>.</p>
+
+      <p><b>Why the powers shrink.</b> Two plain algebra rules, then Fermat:</p>
+      <ul>
+        <li>adding exponents: <span class="m">xᵃ⁺ᵇ = xᵃ · xᵇ</span></li>
+        <li>power of a power: <span class="m">(xᵃ)ᵇ = xᵃᵇ</span></li>
+      </ul>
+      <p>For <span class="m">x¹²¹</span>, divide 121 by 6: <span class="m">121 = 6·20 + 1</span>, so</p>
+      <pre class="calc">x¹²¹ = x¹²⁰⁺¹ = (x⁶)²⁰ · x ≡ 1²⁰ · x = x   (mod 7)</pre>
+      <p>For <span class="m">x³⁶</span>, divide 36 by 6: <span class="m">36 = 6·6 + 0</span> (no
+      remainder), so</p>
+      <pre class="calc">x³⁶ = x⁶ˣ⁶ = (x⁶)⁶ ≡ 1⁶ = 1   (mod 7)</pre>
+      <p>Picture <span class="m">x⁶ ≡ 1</span> as a "reset to 1." The <b>quotient</b> counts the full
+      resets (each becomes 1); the <b>remainder</b> is the leftover exponent that survives. So only
+      the exponent mod 6 matters: 121 mod 6 = 1 → <span class="m">x</span>; &nbsp;36 mod 6 = 0 →
+      <span class="m">1</span>.</p>
+
+      <p><b>The 2x + 1 + 2 line</b> is just plugging in the reduced powers:</p>
+      <table class="tbl">
+        <tr><th>term</th><th>becomes</th><th>why</th></tr>
+        <tr><td>2x¹²¹</td><td>2·x</td><td>x¹²¹ ≡ x; the coefficient 2 stays</td></tr>
+        <tr><td>x³⁶</td><td>1</td><td>x³⁶ ≡ 1</td></tr>
+        <tr><td>2</td><td>2</td><td>constant, unchanged</td></tr>
+      </table>
+      <p>So <span class="m">2x + 1 + 2 = 2x + 3 ≡ 0 (mod 7)</span>.</p>
+
+      <p><b>Why 2x ≡ 4.</b> Move the constant across: <span class="m">2x ≡ −3 (mod 7)</span>. On a
+      7-clock, <span class="m">−3</span> is the same spot as <span class="m">−3 + 7 = 4</span>, so
+      <span class="m">2x ≡ 4 (mod 7)</span>.</p>
+
+      <p><b>Why x ≡ 2 (dividing by 2).</b> Dividing by 2 is allowed because
+      <span class="m">gcd(2, 7) = 1</span>, so 2 has an inverse mod 7 — namely 4, since
+      <span class="m">2·4 = 8 ≡ 1</span> (<a href="euclidean-inverse.html">how to find an inverse</a>).
+      Multiply both sides by 4:</p>
+      <pre class="calc">4·2x ≡ 4·4   →   8x ≡ 16   →   x ≡ 2 (mod 7)     [8 ≡ 1, 16 ≡ 2]</pre>
+      <p>Faster: <span class="m">2·2 = 4</span>, so x = 2 works — and it's the only answer mod 7
+      because 2 is invertible (nothing else doubles to 4 on a 7-clock).</p>
+    </details>
+  </div>
+
+  <div class="step" data-n="4">
+    <h3>Solve mod 11 with Fermat</h3>
+    <p>Same way, 11 ∤ x, so <span class="m">x¹⁰ ≡ 1 (mod 11)</span>. Reduce exponents mod 10:</p>
+    <pre class="calc">121 = 10·12 + 1  →  x¹²¹ ≡ x
+30  = 10·3       →  x³⁰  = (x¹⁰)³ ≡ 1
+
+2x − 1 + 2 ≡ 0  (mod 11)
+2x ≡ 10         (mod 11)
+x ≡ 5           (mod 11)</pre>
+  </div>
+
+  <div class="step" data-n="5">
+    <h3>Glue with CRT</h3>
+    <p>Find x with x ≡ 2 (mod 7) and x ≡ 5 (mod 11). From x ≡ 5 (mod 11) test 5, 16, 27, …:
+    16 mod 7 = 2 ✓.</p>
+  </div>
+
+  <div class="answer"><span class="m">x ≡ 16 (mod 77)</span> &nbsp;— that is, x = 16 + 77k.</div>
+  <p><span class="check">Check:</span> 16 mod 7 = 2 ✓ · 16 mod 11 = 5 ✓</p>
+
+  <div class="warn">
+    <b>Where students get stuck.</b> (1) Forgetting to rule out p | x before using Fermat.
+    (2) Reducing the exponent mod p instead of mod (p−1). Write
+    <span class="m">"exponents live mod (p−1)"</span> on the board and leave it up.
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="challenge">
+    <p class="ch">Your turn</p>
+    <p>Quick Fermat reductions mod 11 (with 11 ∤ x): what are
+    <span class="m">x²⁵</span> and <span class="m">x⁴⁰</span>?</p>
+    <details><summary>Show answer</summary>
+      <p>Exponents live mod 10: &nbsp;25 mod 10 = 5 → <span class="m">x²⁵ ≡ x⁵</span>; &nbsp;
+      40 mod 10 = 0 → <span class="m">x⁴⁰ ≡ 1</span>.</p>
+    </details>
+  </div>
+  <div class="pagenav">
+    <a href="q2b-mod6-mod8.html">← Problem 2(b)</a>
+    <span class="spacer"></span>
+    <a href="q3-prove-a30-mod77.html">Next: Problem 3 →</a>
+  </div>
+  <div class="concepts-row">Concepts: <a href="crt-explained.html">CRT</a> ·
+    <a href="fermat.html">Fermat</a> · <a href="euclidean-inverse.html">Inverse</a> ·
+    <a href="crt-proof.html">CRT proof</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem 3 — prove a³⁰ ≡ 1 (mod 77)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>Problem 3</h1>
+  <p class="sub">Fermat's Little Theorem · a short proof</p>
+  <div class="hook"><b>A proof so short it feels like a card trick</b> — two lines of Fermat and
+  you're done.</div>
+
+  <div class="problem"><b>Prove.</b> If <span class="m">gcd(a, 77) = 1</span> then
+    <span class="m">a³⁰ ≡ 1 (mod 77)</span>.</div>
+
+  <span class="tool">Tool: Fermat on each prime factor, then bump to a common exponent</span>
+
+  <div class="step" data-n="1">
+    <h3>Coprime to 77 means coprime to 7 and to 11</h3>
+    <p>Since 77 = 7 × 11, gcd(a, 77) = 1 gives gcd(a, 7) = 1 and gcd(a, 11) = 1. Fermat:</p>
+    <pre class="calc">a⁶ ≡ 1  (mod 7)
+a¹⁰ ≡ 1 (mod 11)</pre>
+  </div>
+
+  <div class="step" data-n="2">
+    <h3>Raise both to reach exponent 30</h3>
+    <p>30 is a multiple of both 6 and 10 &nbsp;(30 = 6·5 = 10·3):</p>
+    <pre class="calc">a³⁰ = (a⁶)⁵  ≡ 1⁵ = 1   (mod 7)
+a³⁰ = (a¹⁰)³ ≡ 1³ = 1   (mod 11)</pre>
+  </div>
+
+  <div class="step" data-n="3">
+    <h3>Combine with coprimality</h3>
+    <p>So 7 and 11 both divide <span class="m">a³⁰ − 1</span>. Since they are coprime, their product
+    77 divides it too:</p>
+    <div class="formula"><span class="m">7 | (a³⁰ − 1)</span> &nbsp;and&nbsp; <span class="m">11 | (a³⁰ − 1)</span>
+      &nbsp;⟹&nbsp; <span class="m">77 | (a³⁰ − 1)</span></div>
+  </div>
+
+  <div class="answer"><span class="m">a³⁰ ≡ 1 (mod 77).</span> &nbsp;∎</div>
+
+  <div class="note">
+    <b>Teaching point.</b> 30 is exactly <span class="m">lcm(6, 10)</span> — the smallest exponent
+    that works for both primes at once. That's the bridge straight into
+    <a href="q4-order-of-2-mod35.html">Problem 4</a> (order = lcm of orders).
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="challenge">
+    <p class="ch">Your turn</p>
+    <p>Prove <span class="m">a¹² ≡ 1 (mod 65)</span> whenever <span class="m">gcd(a, 65) = 1</span>.</p>
+    <details><summary>Show answer</summary>
+      <p>65 = 5 · 13. By Fermat <span class="m">a⁴ ≡ 1 (mod 5)</span> so
+      <span class="m">a¹² = (a⁴)³ ≡ 1</span>; and <span class="m">a¹² ≡ 1 (mod 13)</span> directly
+      (12 = 13 − 1). Both 5 and 13 divide <span class="m">a¹² − 1</span>, so
+      <span class="m">a¹² ≡ 1 (mod 65)</span>.</p>
+    </details>
+  </div>
+  <div class="pagenav">
+    <a href="q2c-polynomial-mod77.html">← Problem 2(c)</a>
+    <span class="spacer"></span>
+    <a href="q4-order-of-2-mod35.html">Next: Problem 4 →</a>
+  </div>
+  <div class="concepts-row">Concepts: <a href="crt-explained.html">CRT</a> ·
+    <a href="fermat.html">Fermat</a> · <a href="euclidean-inverse.html">Inverse</a> ·
+    <a href="crt-proof.html">CRT proof</a></div>
+</div>
+</body>
+</html>

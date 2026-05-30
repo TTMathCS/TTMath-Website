@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem 1(b) — three congruences (CRT)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← all questions</a></nav>
+  <h1>Problem 1(b)</h1>
+  <p class="sub">Chinese Remainder Theorem · the −1 trick, then merge</p>
+  <div class="hook"><b>Three clues this time</b> — but two of them are the same clue in disguise.
+  Spot the hidden −1 and most of the work disappears.</div>
+
+  <div class="problem"><b>Solve.</b><br>
+    <span class="m">x ≡ 1 (mod 3)</span><br>
+    <span class="m">x ≡ 4 (mod 5)</span><br>
+    <span class="m">x ≡ 6 (mod 7)</span></div>
+
+  <span class="tool">Tool: spot disguised −1's, then merge two at a time</span>
+  <p>Moduli 3, 5, 7 are pairwise coprime, so one answer mod
+  <span class="m">3 · 5 · 7 = 105</span>.</p>
+
+  <div class="step" data-n="1">
+    <h3>Spot the disguised −1's</h3>
+    <p><span class="m">4 ≡ −1 (mod 5)</span> and <span class="m">6 ≡ −1 (mod 7)</span>, so the last
+    two equations are really</p>
+    <pre class="calc">x ≡ −1 (mod 5)
+x ≡ −1 (mod 7)</pre>
+    <p>Same remainder on both, coprime moduli — so together</p>
+    <pre class="calc">x ≡ −1 (mod 35),   i.e.  x ≡ 34 (mod 35)</pre>
+
+    <details class="why">
+      <summary>Why can we merge them into mod 35?</summary>
+      <p><b>Rewrite each as a divisibility.</b> <span class="m">x ≡ −1 (mod 5)</span> means 5 divides
+      <span class="m">x − (−1) = x + 1</span>. Likewise <span class="m">x ≡ −1 (mod 7)</span> means 7
+      divides <span class="m">x + 1</span>. So the same number <span class="m">x + 1</span> is
+      divisible by both 5 and 7.</p>
+      <p><b>Use coprimality.</b> Basic fact: <i>if two coprime numbers both divide a value, their
+      product divides it too.</i> Since 5 and 7 share no factor,</p>
+      <pre class="calc">5 | (x+1)  and  7 | (x+1)   →   35 | (x+1)   →   x ≡ −1 (mod 35)</pre>
+      <p><b>Why coprime matters.</b> In general two divisibilities combine to the <i>lcm</i>, not
+      the product. For 5 and 7, lcm = product = 35, so it's clean. But for 4 and 6, lcm(4,6) = 12 —
+      so <span class="m">x ≡ −1 (mod 4)</span> and <span class="m">x ≡ −1 (mod 6)</span> would give
+      mod 12, <b>not</b> mod 24.</p>
+      <p><b>And −1 → 34:</b> just a friendlier name for the same clock position,
+      <span class="m">−1 ≡ −1 + 35 = 34 (mod 35)</span>.</p>
+    </details>
+  </div>
+
+  <div class="step" data-n="2">
+    <h3>Merge with the first equation</h3>
+    <p>Now solve</p>
+    <pre class="calc">x ≡ 1  (mod 3)
+x ≡ 34 (mod 35)</pre>
+    <p>Reduce the big one mod 3: <span class="m">34 ≡ 1 (mod 3)</span>. So both conditions say
+    <span class="m">x ≡ 1 (mod 3)</span> — they already agree. Therefore x ≡ 34 works as-is.</p>
+  </div>
+
+  <div class="answer"><span class="m">x ≡ 34 (mod 105)</span> &nbsp;— that is, x = 34 + 105k.</div>
+  <p><span class="check">Check:</span> 34 mod 3 = 1 ✓ · 34 mod 5 = 4 ✓ · 34 mod 7 = 6 ✓</p>
+
+  <div class="note">
+    <b>Teaching point.</b> Rewriting 4 and 6 as −1 is what makes this fast. Train the eye to see
+    "one less than the modulus = −1." Same trick powers Problem 2(a).
+  </div>
+</div>
+
+<div class="pagefoot">
+  <div class="challenge">
+    <p class="ch">Your turn</p>
+    <p>Solve <span class="m">x ≡ 2 (mod 3)</span>, <span class="m">x ≡ 4 (mod 5)</span>,
+    <span class="m">x ≡ 6 (mod 7)</span>.</p>
+    <details><summary>Show answer</summary>
+      <p>Every right-hand side is −1, so <span class="m">x ≡ −1 (mod 105)</span> →
+      <span class="m">x ≡ 104 (mod 105)</span>.</p>
+    </details>
+  </div>
+  <div class="pagenav">
+    <a href="q1a-crt-two-congruences.html">← Problem 1(a)</a>
+    <span class="spacer"></span>
+    <a href="q2a-last-two-digits.html">Next: Problem 2(a) →</a>
+  </div>
+  <div class="concepts-row">Concepts: <a href="crt-explained.html">CRT</a> ·
+    <a href="fermat.html">Fermat</a> · <a href="euclidean-inverse.html">Inverse</a> ·
+    <a href="crt-proof.html">CRT proof</a></div>
+</div>
+</body>
+</html>
