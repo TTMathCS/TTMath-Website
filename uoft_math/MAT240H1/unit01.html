@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 1 — Fields &amp; Vector Spaces · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 01</div>
+<div class="unit-no reveal">Unit 01 · Algebra I</div>
+<h1 class="ch-title reveal">Fields &amp; Vector Spaces</h1>
+<p class="ch-intro reveal">Linear algebra starts not with matrices but with axioms:
+a field of scalars and a vector space over it. Everything later is a consequence of
+these rules.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Defining a vector space abstractly — by axioms, not as arrows or columns —
+    means one theorem covers polynomials, functions, and data vectors at once.
+    Abstraction buys reach.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Vector spaces over $\mathbb{R}$ and $\mathbb{C}$ are the language of machine
+    learning (data as vectors), quantum mechanics, and signal processing; finite
+    fields power error-correcting codes and cryptography.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Grassmann and Peano formalized vector spaces in the late 1800s; the abstract
+    axiomatic view took hold in the 20th century and is now the default language of
+    pure and applied mathematics alike.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State the field axioms and give examples ($\mathbb{R}$, $\mathbb{C}$,
+    $\mathbb{Z}_p$).</li>
+    <li>State the vector space axioms.</li>
+    <li>Verify whether a given set is a vector space.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Fields</h3>
+  <div class="box def"><div class="bl">Definition <b>Field</b></div>
+    <p>A set with $+$ and $\times$ satisfying the usual associative, commutative,
+    distributive, identity, and inverse laws (every nonzero element invertible).
+    Examples: $\mathbb{Q},\mathbb{R},\mathbb{C}$, and $\mathbb{Z}_p$ for prime
+    $p$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Vector spaces</h3>
+  <div class="box def"><div class="bl">Definition <b>Vector space</b></div>
+    <p>A set $V$ over a field $F$ with vector addition and scalar multiplication
+    obeying eight axioms (associativity and commutativity of $+$, a zero vector,
+    additive inverses, and the scalar-multiplication and distributive laws).</p></div>
+  <div class="box eg"><div class="bl">Examples</div>
+    <p>$F^n$, the polynomials $P(F)$, the $m\times n$ matrices, and the functions
+    $F\to F$ are all vector spaces.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Closure under both operations must be checked first.<br>
+  • The zero vector must actually lie in the set.<br>
+  • Scalars come from a field — over $\mathbb{Z}_p$, arithmetic wraps around.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Is $\{(x,y):x+y=0\}\subseteq\mathbb{R}^2$ a vector space?</p>
+      <details><summary>Answer</summary><div class="ans">Yes — closed under addition
+      and scalars, contains $0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Is $\{(x,y):x+y=1\}$ a vector space?</p>
+      <details><summary>Answer</summary><div class="ans">No — it does not contain
+      $(0,0)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Compute $3\times 4$ in $\mathbb{Z}_5$.</p>
+      <details><summary>Answer</summary><div class="ans">$12\equiv2\pmod 5$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="index.html">← Index<span>All chapters</span></a>
+  <a class="n" href="unit02.html">Unit 02 →<span>Subspaces, span &amp; independence</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

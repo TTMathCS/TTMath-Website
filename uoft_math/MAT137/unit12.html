@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 12 — Improper Integrals · MAT137</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT137</a><span>/</span>Unit 12</div>
+<div class="unit-no reveal">Unit 12 · Term 2</div>
+<h1 class="ch-title reveal">Improper Integrals</h1>
+<p class="ch-intro reveal">Integrals over an infinite interval, or of a function
+that blows up, are defined as limits of ordinary integrals. The question is always
+the same: does that limit exist?</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Evaluate type I (infinite interval) and type II (unbounded integrand)
+    improper integrals.</li>
+    <li>Apply the $p$-test.</li>
+    <li>Use the comparison test for convergence.</li>
+  </ul>
+</div>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Many of the most important integrals run to infinity or blow up somewhere —
+    distributions over all of space, decaying signals, probabilities. Improper
+    integrals define them carefully as limits.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>The Gaussian integral $\int_{-\infty}^{\infty} e^{-x^2}\,dx=\sqrt{\pi}$ is
+    what normalizes the bell curve. Laplace and Fourier transforms — over infinite
+    domains — are the backbone of signal processing and control engineering.
+    Expected values in probability are improper integrals.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Torricelli's "Gabriel's Horn" (1640s) has finite volume but infinite surface
+    area — you could fill it with paint but never paint it. The paradox shocked
+    mathematicians and is a perfect demonstration that infinity does not behave the
+    way intuition expects.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Type I — infinite intervals</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$\displaystyle\int_a^\infty f=\lim_{t\to\infty}\int_a^t f$, when the limit
+    exists (then the integral <em>converges</em>). Integrals over
+    $(-\infty,\infty)$ must be split at a finite point; both pieces must
+    converge.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\displaystyle\int_1^\infty\frac{dx}{x^2}=\lim_{t\to\infty}\Big[-\frac1x
+    \Big]_1^t=\lim_{t\to\infty}\Big(1-\frac1t\Big)=1.$</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Type II — unbounded integrand</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>If $f$ blows up at $b$,
+    $\displaystyle\int_a^b f=\lim_{t\to b^-}\int_a^t f$; if it blows up at $a$,
+    use $\lim_{t\to a^+}\int_t^b f$. At an interior singularity, split the
+    integral there; every piece must converge.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\displaystyle\int_0^1\frac{dx}{\sqrt{x}}=\lim_{t\to0^+}\big[2\sqrt
+    x\big]_t^1=2.$ Converges.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>The $p$-test</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>$\displaystyle\int_1^\infty\frac{dx}{x^p}$ converges iff $p>1$. &nbsp;
+    $\displaystyle\int_0^1\frac{dx}{x^p}$ converges iff $p&lt;1$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Comparison test</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>If $0\le f\le g$ near the same improper endpoint and $\int g$ converges,
+    so does $\int f$. If $\int f$ diverges, so does $\int g$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\displaystyle\int_1^\infty\frac{dx}{x^2+1}$ converges, since
+    $\dfrac{1}{x^2+1}\le\dfrac{1}{x^2}$ and $\int_1^\infty x^{-2}$ converges.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Always rewrite as a limit; don't plug $\infty$ in directly.<br>
+  • Watch for hidden type-II behaviour (a singularity inside the interval).<br>
+  • For the comparison test the functions must be nonnegative.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <p class="prac-intro">Problems adapted from the MAT137 question bank by Alfonso
+  Gracia-Saz, used under CC&nbsp;BY-SA&nbsp;4.0. Write full solutions before opening
+  the answer.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1 · Evaluate</div>
+      <p>Evaluate $\displaystyle\int_0^\infty e^{-x}\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">$\lim_{t\to\infty}
+      [-e^{-x}]_0^t=1.$</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Divergence</div>
+      <p>Does $\displaystyle\int_1^\infty\frac{dx}{x}$ converge?</p>
+      <details><summary>Answer</summary><div class="ans">No: $p=1$, and
+      $\int_1^t x^{-1}\,dx=\ln t\to\infty$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Comparison</div>
+      <p>Determine convergence of $\displaystyle\int_1^\infty\frac{2+\sin x}{x^2}
+      \,dx$.</p>
+      <details><summary>Hint</summary><div class="ans">$0\le\dfrac{2+\sin x}{x^2}
+      \le\dfrac{3}{x^2}$; converges by comparison.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Evaluate</div>
+      <p>Evaluate $\displaystyle\int_1^\infty\frac{dx}{x^2+x}$.</p>
+      <details><summary>Solution</summary><div class="ans">$\dfrac1{x^2+x}=\dfrac1x
+      -\dfrac1{x+1}$, so $\int_1^t=\left[\ln\dfrac{x}{x+1}\right]_1^t\to0-\ln\tfrac12
+      =\ln2.$</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · p-test</div>
+      <p>For which $p$ do $\displaystyle\int_1^\infty\frac{dx}{x^p}$ and
+      $\displaystyle\int_0^1\frac{dx}{x^p}$ converge?</p>
+      <details><summary>Answer</summary><div class="ans">$\int_1^\infty$ converges
+      iff $p>1$; $\int_0^1$ converges iff $p&lt;1$. (The trouble is at $\infty$ in
+      the first and at $0$ in the second.)</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · A subtle one</div>
+      <p>What is $\displaystyle\int_{-1}^{1}\frac{dx}{x}$?</p>
+      <details><summary>Answer</summary><div class="ans">It diverges: it is improper
+      at $0$, and $\int_0^1 dx/x$ already diverges, so the symmetry "$=0$" argument
+      is invalid.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Comparison</div>
+      <p>Determine convergence of $\displaystyle\int_1^\infty\frac{dx}{x+e^x}$.</p>
+      <details><summary>Answer</summary><div class="ans">$0&lt;\dfrac1{x+e^x}
+      &lt;e^{-x}$ and $\int_1^\infty e^{-x}\,dx$ converges, so it converges.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Compare two</div>
+      <p>Which converge: $\displaystyle\int_1^\infty\frac{1+\cos^2x}{x^{2/3}}\,dx$ or
+      $\displaystyle\int_1^\infty\frac{1+\cos^2x}{x^{4/3}}\,dx$?</p>
+      <details><summary>Answer</summary><div class="ans">The numerator lies in
+      $[1,2]$. The first diverges ($p=\tfrac23\le1$, bound below by $1/x^{2/3}$); the
+      second converges ($p=\tfrac43>1$, bound above by $2/x^{4/3}$).</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit11.html">← Unit 11<span>Sequences</span></a>
+  <a class="n" href="unit13.html">Unit 13 →<span>Series</span></a>
+</div>
+
+</div>
+<script src="../assets/mat137-practice.js"></script>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

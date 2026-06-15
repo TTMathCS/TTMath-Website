@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 9 — The Riemann Integral · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 09</div>
+<div class="unit-no reveal">Unit 09 · Analysis 1A</div>
+<h1 class="ch-title reveal">The Riemann Integral</h1>
+<p class="ch-intro reveal">Area, built rigorously from upper and lower sums. The
+definition is the careful part; once it is in place, the Fundamental Theorem makes
+computation easy.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>"Area under a curve" needs a precise meaning for wiggly functions. Riemann's
+    squeeze of lower and upper sums supplies it, and tells us exactly which
+    functions can be integrated.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Accumulated quantities — distance, work, expected value — are integrals.
+    Probability is the area under a density curve, which is why this unit is the
+    gateway to statistics.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Archimedes integrated by "exhaustion" in ~250 BC; Riemann gave the modern
+    definition in 1854; Lebesgue generalized it in 1902 into measure theory — the
+    foundation of modern probability.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Define upper and lower sums and the integral.</li>
+    <li>Apply the integrability criterion $U-L<\varepsilon$.</li>
+    <li>Quote that continuous functions are integrable.</li>
+    <li>Use linearity, additivity, and monotonicity.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Sums and integrability</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>For a partition $P$, $L(f,P)=\sum m_i\Delta x_i$ and $U(f,P)=\sum
+    M_i\Delta x_i$ with $m_i,M_i$ the inf/sup on each piece. $f$ is integrable if
+    $\sup_P L=\inf_P U$, the common value being $\int_a^b f$.</p></div>
+  <div class="box thm"><div class="bl">Criterion</div>
+    <p>$f$ is integrable iff for every $\varepsilon>0$ there is $P$ with
+    $U(f,P)-L(f,P)<\varepsilon$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>What is integrable, and properties</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>Continuous (and monotone) functions on $[a,b]$ are integrable. The integral
+    is linear, additive over intervals, monotone, and $\left|\int f\right|\le
+    \int|f|$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\int_0^1 x\,dx=\tfrac12$: with $n$ equal pieces, $L=\tfrac{n-1}{2n}$ and
+    $U=\tfrac{n+1}{2n}$ both tend to $\tfrac12$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• $m_i,M_i$ are inf/sup over each subinterval, not endpoint values.<br>
+  • Integrability is the gap $U-L$ closing — not the existence of an
+  antiderivative.<br>
+  • Not every bounded function is integrable (e.g. the Dirichlet function).</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Using equal pieces, show $\int_0^1 x^2\,dx=\tfrac13$.</p>
+      <details><summary>Hint</summary><div class="ans">$U=\tfrac{(n+1)(2n+1)}{6n^2}
+      \to\tfrac13$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Show the Dirichlet function is not Riemann integrable on $[0,1]$.</p>
+      <details><summary>Answer</summary><div class="ans">Every $m_i=0$, $M_i=1$, so
+      $L=0$, $U=1$ for all partitions; the gap never closes.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>If $1\le f\le 4$ on $[0,2]$, bound $\int_0^2 f$.</p>
+      <details><summary>Answer</summary><div class="ans">By monotonicity,
+      $2\le\int_0^2 f\le 8$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit08.html">← Unit 08<span>Inverse functions</span></a>
+  <a class="n" href="unit10.html">Unit 10 →<span>The Fundamental Theorem</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

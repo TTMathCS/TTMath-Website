@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 9 — Polynomials over a Field · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 09</div>
+<div class="unit-no reveal">Unit 09 · Algebra I</div>
+<h1 class="ch-title reveal">Polynomials over a Field</h1>
+<p class="ch-intro reveal">Polynomial arithmetic is the algebra behind
+characteristic and minimal polynomials. Division, greatest common divisors, and
+factorization explain which polynomial identities a linear map can satisfy.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Polynomials over a field behave much like integers: they admit division
+    with remainder, greatest common divisors, and unique factorization. This
+    structure makes eigenvalue and minimal-polynomial arguments possible.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Polynomial arithmetic over finite fields drives error-correcting codes,
+    cryptography, and symbolic computation. Resultants let software test whether
+    two polynomial equations share a root without solving them first.</p></div>
+  <div class="ci"><div class="cl">Course connection</div>
+    <p>The characteristic polynomial detects eigenvalues. The minimal polynomial
+    records the lowest-degree relation satisfied by a matrix and gives a sharper
+    test for diagonalizability.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Divide polynomials over a field and apply the remainder theorem.</li>
+    <li>Compute a polynomial gcd with the Euclidean algorithm.</li>
+    <li>Use unique factorization and understand why the field matters.</li>
+    <li>Define minimal polynomials and resultants.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Division and roots</h3>
+  <div class="box thm"><div class="bl">Division algorithm</div>
+    <p>For $f,g\in F[x]$ with $g\ne0$, there are unique $q,r\in F[x]$ such that
+    $f=qg+r$ and either $r=0$ or $\deg r<\deg g$.</p></div>
+  <div class="box thm"><div class="bl">Remainder and factor theorems</div>
+    <p>The remainder when $f(x)$ is divided by $x-a$ is $f(a)$. Therefore
+    $a\in F$ is a root of $f$ exactly when $x-a$ divides $f$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>Over any field, $x^3-1=(x-1)(x^2+x+1)$. Over $\mathbb{C}$ it splits into
+    three linear factors; over $\mathbb{R}$ the quadratic factor is irreducible.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>GCD and unique factorization</h3>
+  <div class="box thm"><div class="bl">Euclidean algorithm</div>
+    <p>Repeated polynomial division computes a greatest common divisor. Moreover,
+    $\gcd(f,g)$ can be written as $af+bg$ for some $a,b\in F[x]$.</p></div>
+  <div class="box thm"><div class="bl">Unique factorization</div>
+    <p>Every nonzero nonconstant polynomial in $F[x]$ factors into irreducible
+    polynomials, uniquely up to order and multiplication by nonzero constants.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Minimal polynomial and resultant</h3>
+  <div class="box def"><div class="bl">Definition <b>Minimal polynomial</b></div>
+    <p>For a linear operator $T$ on a finite-dimensional space, the minimal
+    polynomial $m_T$ is the unique monic polynomial of least positive degree with
+    $m_T(T)=0$. It divides every polynomial that annihilates $T$, including the
+    characteristic polynomial.</p></div>
+  <div class="box thm"><div class="bl">Diagonalization test</div>
+    <p>Over a field where the characteristic polynomial splits, $T$ is
+    diagonalizable exactly when $m_T$ is a product of distinct linear factors.</p></div>
+  <div class="box def"><div class="bl">Definition <b>Resultant</b></div>
+    <p>The resultant $\operatorname{Res}(f,g)$ is a determinant built from the
+    coefficients of $f$ and $g$. It is zero exactly when the polynomials share a
+    root over an algebraic closure.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Factorization depends on the field: $x^2+1$ is irreducible over
+  $\mathbb{R}$ but splits over $\mathbb{C}$.<br>
+  • A gcd is unique only after choosing it monic; nonzero scalar multiples are
+  also common divisors.<br>
+  • The minimal polynomial and characteristic polynomial need not be equal.<br>
+  • $p(T)=0$ means the zero operator, not that $p$ is the zero polynomial.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Divide $x^3+2x^2-1$ by $x+1$.</p>
+      <details><summary>Answer</summary><div class="ans">The quotient is
+      $x^2+x-1$ and the remainder is $0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Find $\gcd(x^3-x,\,x^2-1)$ over $\mathbb{Q}$.</p>
+      <details><summary>Answer</summary><div class="ans">$x^2-1$, since
+      $x^3-x=x(x^2-1)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Factor $x^2+1$ over $\mathbb{R}$ and over $\mathbb{C}$.</p>
+      <details><summary>Answer</summary><div class="ans">It is irreducible over
+      $\mathbb{R}$ and equals $(x-i)(x+i)$ over $\mathbb{C}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4</div>
+      <p>Find the minimal polynomial of
+      $A=\left(\begin{smallmatrix}2&0\\0&2\end{smallmatrix}\right)$.</p>
+      <details><summary>Answer</summary><div class="ans">$m_A(x)=x-2$, while the
+      characteristic polynomial is $(x-2)^2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5</div>
+      <p>Why is a matrix with minimal polynomial $(x-1)^2$ not diagonalizable?</p>
+      <details><summary>Answer</summary><div class="ans">The minimal polynomial
+      has a repeated linear factor; a diagonalizable operator has a square-free
+      minimal polynomial.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit08.html">← Unit 08<span>Determinants</span></a>
+  <a class="n" href="unit10.html">Unit 10 →<span>Eigenvalues &amp; diagonalization</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

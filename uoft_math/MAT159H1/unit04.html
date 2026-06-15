@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 4 — Taylor's Theorem · MAT159H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 04</div>
+<div class="unit-no reveal">Unit 04 · Analysis 1B</div>
+<h1 class="ch-title reveal">Taylor's Theorem</h1>
+<p class="ch-intro reveal">Approximating a function by a polynomial, with a precise
+formula for the error. This is the rigorous heart of "good enough"
+approximation.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Polynomials are easy; most functions are not. Taylor's theorem says how well
+    a polynomial approximates a function, and exactly how big the error can be.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>It is how calculators evaluate functions, how physics linearizes hard
+    problems (small-angle $\sin\theta\approx\theta$), and how optimization methods
+    like Newton's are derived.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Brook Taylor published the series in 1715; Madhava in 14th-century India had
+    found the key cases three centuries earlier. A function can equal its Taylor
+    series only when the remainder tends to zero.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Write the Taylor polynomial of a function.</li>
+    <li>State Taylor's theorem with the Lagrange remainder.</li>
+    <li>Bound approximation errors.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>The theorem</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Taylor with remainder</b></div>
+    <p>$f(x)=\displaystyle\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k+R_n(x)$, where
+    $R_n(x)=\dfrac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$ for some $c$ between $a$ and
+    $x$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>For $e^x$ about $0$: $e^x=1+x+\tfrac{x^2}{2}+\cdots+\tfrac{x^n}{n!}+R_n$,
+    with $R_n=\tfrac{e^c}{(n+1)!}x^{n+1}$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Error bounds</h3>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>View $1-\tfrac{x^2}{2}$ as the degree-3 Taylor polynomial of cosine (the
+    cubic coefficient is zero). Then the Lagrange error at $0.1$ is at most
+    $\dfrac{(0.1)^4}{4!}\approx4.2\times10^{-6}$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• The remainder point $c$ is unknown; bound $|f^{(n+1)}|$ over the interval.<br>
+  • A Taylor series can converge yet not to $f$ — only $R_n\to0$ guarantees
+  equality.<br>
+  • Centre matters: expanding about a nearby $a$ improves accuracy.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Write the degree-3 Taylor polynomial of $\sin x$ about $0$.</p>
+      <details><summary>Answer</summary><div class="ans">$x-\tfrac{x^3}{6}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Bound the error of approximating $e^{0.5}$ by $1+0.5+\tfrac{0.25}{2}$.</p>
+      <details><summary>Hint</summary><div class="ans">$R_2\le\tfrac{e^{0.5}(0.5)^3}
+      {6}\approx0.034$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Use a Taylor polynomial to estimate $\sqrt{1.1}$.</p>
+      <details><summary>Answer</summary><div class="ans">$\sqrt{1+x}\approx1+
+      \tfrac{x}{2}-\tfrac{x^2}{8}$ at $x=0.1$ gives $\approx1.0488$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit03.html">← Unit 03<span>Sequences &amp; Cauchy</span></a>
+  <a class="n" href="unit05.html">Unit 05 →<span>Infinite series</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

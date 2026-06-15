@@ -1,0 +1,317 @@
+/* Shared design system for U of T course guides
+   Paper / ink / terracotta editorial theme. */
+
+:root{
+  --paper:#eee7d5;--card:#f8f3e6;--ink:#211c15;--ink-soft:#4a4234;
+  --accent:#a83f1d;--accent-2:#27474e;--line:#dbcdb2;--gold:#806019;
+  --shadow:24px 24px 0 -12px rgba(39,71,78,.12);
+  --eg-bg:#f6efdb;--fig-bg:#f4edd7;--ctx-bg:#eae2cd;--warn-bg:#f2e3dc;
+  --note-bg:#27474e;--note-ink:#f4ecda;
+}
+[data-theme="dark"]{
+  --paper:#14110e;--card:#2d2820;--ink:#ece3d4;--ink-soft:#bcb098;
+  --accent:#e58450;--accent-2:#8fc8cf;--line:#48402f;--gold:#d8ad57;
+  --shadow:24px 24px 0 -12px rgba(0,0,0,.45);
+  --eg-bg:#352b1a;--fig-bg:#2c2619;--ctx-bg:#2a2318;--warn-bg:#3d2a20;
+  --note-bg:#1a3a39;--note-ink:#eaf2f1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scrollbar-gutter:stable both-edges}
+/* visible keyboard focus everywhere */
+a:focus-visible,summary:focus-visible,button:focus-visible,
+input:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Spectral",Georgia,serif;font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;opacity:.1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply}
+[data-theme="dark"] body::before{display:none}
+/* ---------- theme toggle ---------- */
+.theme-toggle{position:fixed;right:14px;top:14px;z-index:50;
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--card);
+  border:1px solid var(--line);border-radius:999px;padding:6px 11px;cursor:pointer;
+  box-shadow:0 3px 12px rgba(0,0,0,.14);transition:.2s}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+/* ---------- index layout (sidebar) ---------- */
+.wrap{max-width:1500px;margin:0 auto;padding:0 16px;
+  display:grid;grid-template-columns:220px 1fr;gap:40px}
+nav.side{position:sticky;top:0;align-self:start;height:100vh;
+  padding:40px 0;display:flex;flex-direction:column;gap:4px;z-index:5}
+nav.side .brand{font-family:"Fraunces";font-weight:600;font-size:22px;
+  line-height:1.1;margin-bottom:4px;letter-spacing:-.01em}
+nav.side .brand span{color:var(--accent)}
+nav.side .sub{font-family:"JetBrains Mono",monospace;font-size:10.5px;
+  color:var(--ink-soft);letter-spacing:.1em;margin-bottom:24px;line-height:1.6}
+nav.side a{font-family:"JetBrains Mono",monospace;font-size:12.5px;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);
+  text-decoration:none;padding:8px 0 8px 16px;border-left:2px solid var(--line);transition:.25s}
+nav.side a:hover{color:var(--ink);border-color:var(--accent)}
+nav.side a.active{color:var(--accent);border-color:var(--accent);transform:translateX(3px);font-weight:600}
+nav.side .foot{margin-top:auto;font-size:11px;color:var(--ink-soft);
+  font-family:"JetBrains Mono",monospace;line-height:1.7;opacity:.7}
+
+main{padding:26px 0 64px;min-width:0}
+
+/* ---------- chapter layout (single column) ---------- */
+.container{max-width:980px;margin:0 auto;padding:20px 16px 64px}
+
+/* ---------- hero ---------- */
+header.hero{position:relative;margin-bottom:30px}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-family:"Fraunces";font-weight:600;font-size:clamp(30px,4.4vw,48px);
+  line-height:1.04;letter-spacing:-.02em;max-width:calc(100% - 250px)}
+h1 em{font-style:italic;color:var(--accent-2)}
+.lede{margin-top:14px;max-width:70ch;font-size:17px;color:var(--ink-soft)}
+.curve{position:absolute;right:-10px;top:-6px;width:230px;height:150px;opacity:.9}
+.curve path{fill:none;stroke:var(--accent);stroke-width:2.4;
+  stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.4s .3s ease forwards}
+.curve .axis{stroke:var(--line);stroke-width:1.4;stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+.curve circle{fill:var(--accent);opacity:0;animation:pop .5s 2.3s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+
+/* ---------- strategy note ---------- */
+.note{background:var(--note-bg);color:var(--note-ink);border-radius:3px;
+  padding:20px 24px;margin-bottom:32px;box-shadow:var(--shadow)}
+.note h3{font-family:"Fraunces";font-weight:600;font-size:19px;margin-bottom:8px}
+.note p{font-size:16px;opacity:.92;max-width:78ch}
+.note .tag{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:.7;margin-bottom:14px}
+.note a{color:#f2c98a;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- section heads ---------- */
+section{margin-bottom:38px;scroll-margin-top:24px}
+.sec-head{display:flex;align-items:baseline;gap:14px;
+  border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
+.sec-head h2{font-family:"Fraunces";font-weight:600;font-size:clamp(22px,2.8vw,30px);letter-spacing:-.015em}
+.sec-head .no{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);font-weight:600}
+.sec-sub{color:var(--ink-soft);font-size:16px;margin:10px 0 18px;max-width:78ch}
+
+/* ---------- chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 20px}
+.chip{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.04em;
+  padding:7px 12px;border:1.5px solid var(--line);border-radius:2px;background:var(--card);
+  display:flex;gap:8px;align-items:center}
+.chip b{color:var(--accent)}.chip.teal b{color:var(--accent-2)}
+.chip small{font-weight:400;color:var(--ink-soft);font-family:"Spectral",serif;font-size:13px}
+
+/* ---------- unit index list ---------- */
+.units{list-style:none;counter-reset:c}
+.units li{counter-increment:c;border-top:1px solid var(--line)}
+.units a,.units .soon{display:grid;grid-template-columns:46px 1fr auto;gap:16px;align-items:baseline;
+  padding:12px 12px 12px 0;text-decoration:none;color:inherit;transition:.25s}
+.units a:hover{padding-left:10px;background:linear-gradient(90deg,rgba(177,68,32,.05),transparent)}
+.units a::before,.units .soon::before{content:counter(c,decimal-leading-zero);
+  font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:600;color:var(--accent)}
+.units h4{font-family:"Fraunces";font-weight:600;font-size:18px;margin-bottom:2px}
+.units p{font-size:14.5px;color:var(--ink-soft)}
+.units .go{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent)}
+.units .soon{opacity:.5}
+.units .soon .go{color:var(--ink-soft)}
+
+/* ---------- prologue / epilogue bookend links ---------- */
+.bookend{display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:14px 18px;margin:4px 0 8px;border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:3px;background:var(--card);
+  text-decoration:none;color:inherit;transition:.2s}
+.bookend:hover{border-color:var(--accent);transform:translateX(2px)}
+.bookend h4{font-family:"Fraunces";font-weight:600;font-size:18px;margin-bottom:2px}
+.bookend p{font-size:14.5px;color:var(--ink-soft);margin:0}
+.bookend .go{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);white-space:nowrap}
+
+/* ---------- term divider ---------- */
+.term{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:22px 0 4px;font-weight:600;
+  display:flex;align-items:center;gap:14px}
+.term::after{content:"";flex:1;height:1px;background:var(--line)}
+.term:first-of-type{margin-top:8px}
+
+/* ---------- breadcrumb + chapter title ---------- */
+.crumb{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px;display:flex;gap:10px;align-items:center}
+.crumb a{color:var(--accent);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.unit-no{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.ch-title{font-family:"Fraunces";font-weight:600;font-size:clamp(26px,3.6vw,40px);
+  line-height:1.06;letter-spacing:-.02em;margin-bottom:12px;max-width:none}
+.ch-intro{font-size:17px;color:var(--ink-soft);max-width:78ch;margin-bottom:10px}
+
+/* ---------- goals ---------- */
+.goals{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:14px 18px;margin:18px 0 26px}
+.goals .gl{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.goals ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.goals li{padding-left:22px;position:relative;font-size:16px}
+.goals li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+
+/* ---------- content blocks ---------- */
+.block{margin:18px 0}
+.block[id]{scroll-margin-top:24px}
+.block>h3{font-family:"Fraunces";font-weight:600;font-size:20px;margin-bottom:7px;letter-spacing:-.01em}
+.block p{margin:9px 0;max-width:78ch}
+.block ul,.block ol{margin:9px 0 9px 22px}
+.block li{margin:4px 0;max-width:76ch}
+
+/* boxed: definition / theorem / example / pitfall */
+.box{border-radius:3px;padding:13px 16px;margin:14px 0;border:1px solid var(--line);
+  background:var(--card)}
+.box .bl{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;margin-bottom:6px;display:flex;gap:10px;align-items:center}
+.box .bl b{font-family:"Spectral",serif;font-style:italic;font-weight:600;text-transform:none;
+  letter-spacing:0;font-size:14px}
+.box p{margin:6px 0}
+.def{border-left:3px solid var(--accent-2)}.def .bl{color:var(--accent-2)}
+.thm{border-left:3px solid var(--accent)}.thm .bl{color:var(--accent)}
+.eg{border-left:3px solid var(--gold);background:var(--eg-bg)}.eg .bl{color:var(--gold)}
+.warn{border-left:3px solid #9c3b2c;background:var(--warn-bg)}.warn .bl{color:#c2503c}
+.eg .step{margin:6px 0;padding-left:14px;border-left:2px solid var(--line);font-size:16px}
+
+/* ---------- visual explanations / interactive figures ---------- */
+.figure{margin:16px 0;background:var(--fig-bg);border:1px solid var(--line);border-radius:4px;
+  padding:14px 16px;overflow:hidden}
+.figure .fig-title{font-family:"Fraunces";font-weight:600;font-size:16px;margin-bottom:3px}
+.figure .fig-note{font-size:13.5px;color:var(--ink-soft);margin:0 0 12px;max-width:68ch}
+.figure svg{display:block;width:100%;height:auto;background:var(--card);border:1px solid var(--line);
+  border-radius:3px}
+.figure svg text{font-family:"JetBrains Mono",monospace;font-size:11px;fill:var(--ink-soft)}
+.figure svg .axis{stroke:var(--ink-soft);stroke-width:1.2}
+.figure svg .guide{stroke:var(--line);stroke-width:1;stroke-dasharray:5 5}
+.figure svg .curve-line{fill:none;stroke:var(--accent-2);stroke-width:3}
+.figure svg .focus-line{fill:none;stroke:var(--accent);stroke-width:2.5}
+.figure svg .secondary-line{fill:none;stroke:var(--gold);stroke-width:2;stroke-dasharray:6 4}
+.figure svg .focus-point{fill:var(--accent);stroke:var(--card);stroke-width:2}
+.figure svg .secondary-point{fill:var(--gold);stroke:var(--card);stroke-width:2}
+.figure svg .input-band{fill:rgba(39,71,78,.14)}
+.figure svg .output-band{fill:rgba(177,68,32,.13)}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:14px}
+.controls label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent-2);font-weight:600}
+.controls input[type="range"]{accent-color:var(--accent);min-width:220px;flex:1}
+.controls output{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);padding:5px 8px;border-radius:2px}
+.controls button{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--card);background:var(--accent-2);border:0;border-radius:2px;
+  padding:8px 12px;cursor:pointer}
+.controls button:hover{background:var(--accent)}
+.exh-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.exh-row svg{flex:1 1 320px;width:auto;min-width:0}
+.exh-row .calc-panel{flex:1 1 360px;margin-top:0}
+.calc-panel{margin-top:12px;font-family:"JetBrains Mono",monospace;font-size:12.5px;
+  line-height:1.95;color:var(--ink);background:var(--card);border:1px solid var(--line);
+  border-radius:3px;padding:11px 14px;overflow-x:auto}
+.calc-panel div{white-space:nowrap}
+.calc-panel .res{color:var(--accent);font-weight:600}
+.calc-panel .pi{color:var(--accent-2);font-weight:600}
+.proof-map{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;margin-top:14px}
+.proof-map .choice{background:var(--card);border:1px solid var(--line);padding:13px 14px;border-radius:3px}
+.proof-map .choice b{display:block;font-family:"Fraunces";font-size:16px;margin-bottom:3px}
+.proof-map .choice span{display:block;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.proof-map .arrow{align-self:center;color:var(--accent);font-family:"JetBrains Mono",monospace;
+  font-weight:600;animation:nudge 1.4s ease-in-out infinite alternate}
+.logic-table{width:100%;border-collapse:collapse;margin:15px 0;font-size:15px;background:var(--card)}
+.logic-table th,.logic-table td{padding:8px 10px;border:1px solid var(--line);text-align:center}
+.logic-table th{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent-2)}
+.logic-table .false{color:#9c3b2c;font-weight:600}.logic-table .true{color:var(--accent-2);font-weight:600}
+.checkpoint{border-left:3px solid var(--accent-2);padding:10px 14px;margin:14px 0;
+  background:rgba(39,71,78,.07);font-size:14.5px}
+.checkpoint b{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent-2);display:block;margin-bottom:4px}
+@keyframes nudge{to{transform:translateX(5px)}}
+
+/* ---------- practice ---------- */
+.prac-intro{font-size:14px;color:var(--ink-soft);margin:5px 0 12px;max-width:76ch}
+.prac{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
+  padding:11px 14px;border-radius:2px}
+.q .ql{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:4px}
+.q p{font-size:16px;color:var(--ink)}
+details{margin-top:7px}
+details summary{cursor:pointer;font-family:"JetBrains Mono",monospace;font-size:11.5px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);list-style:none;
+  display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);
+  padding:4px 10px;border-radius:2px;transition:.2s}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+";font-weight:600}
+details[open] summary::before{content:"–"}
+details summary:hover{background:var(--accent-2);color:var(--paper)}
+details .ans{margin-top:8px;font-size:15px;color:var(--ink-soft);padding-left:12px;border-left:2px solid var(--line)}
+
+.math-rendered{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;
+  font-size:1.08em;color:var(--ink);vertical-align:-.08em}
+.math-rendered[display="block"]{display:block;margin:16px 0;padding:8px 12px;
+  overflow-x:auto;text-align:center;font-size:1.16em}
+.math-rendered mtext{font-family:"Spectral",Georgia,serif}
+.unit-offset-seven{counter-reset:c 6}
+
+/* ---------- prev/next ---------- */
+.navrow{display:flex;justify-content:space-between;gap:14px;margin-top:36px;
+  border-top:2px solid var(--ink);padding-top:16px}
+.navrow a{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--accent);text-decoration:none;max-width:45%}
+.navrow a:hover{color:var(--accent-2)}
+.navrow a.n{text-align:right;margin-left:auto}
+.navrow span{display:block;font-family:"Spectral",serif;text-transform:none;letter-spacing:0;
+  font-size:15px;color:var(--ink);margin-top:3px}
+
+/* ---------- misc ---------- */
+.bp{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.bp .card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px 18px;transition:.3s}
+.bp .card:hover{transform:translateY(-4px);box-shadow:8px 12px 0 -4px rgba(39,71,78,.1)}
+.bp .card .n{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.12em}
+.bp .card h4{font-family:"Fraunces";font-weight:600;font-size:17px;margin:5px 0}
+.bp .card p{font-size:15px;color:var(--ink-soft)}
+.src{font-size:15px;color:var(--ink-soft);line-height:1.85}
+.src a{color:var(--accent-2);text-decoration:none;border-bottom:1px solid var(--line)}
+.src a:hover{border-color:var(--accent-2)}
+.lic{margin-top:18px;font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-soft);
+  line-height:1.8;background:var(--card);border:1px dashed var(--line);padding:14px 16px;border-radius:3px}
+/* context / story panel */
+.context{margin:22px 0;border:1px solid var(--accent-2);border-radius:4px;background:var(--ctx-bg);overflow:hidden}
+.context .ctxh{background:var(--note-bg);color:var(--note-ink);font-family:"Fraunces";font-weight:600;font-size:16px;padding:10px 18px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.context .ctxh::before{content:"❖";font-size:13px;color:#f2c98a}
+.context .ci{padding:11px 18px;border-top:1px solid var(--line)}
+.context .cl{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.context .ci p{font-size:16px;color:var(--ink);margin:0;max-width:78ch;line-height:1.55}
+
+.reveal{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+footer.end{border-top:2px solid var(--ink);padding-top:20px;font-family:"JetBrains Mono",monospace;
+  font-size:11.5px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.assessment-bank{border-top:3px solid var(--accent-2);padding-top:32px;margin-top:56px}
+.assessment-bank .assessment-note{max-width:76ch;margin:10px 0 24px;color:var(--ink-soft);
+  font-size:17px}
+.assessment-bank .q{border-left-color:var(--accent-2)}
+.assessment-bank .q .ql{color:var(--accent-2)}
+
+@media(max-width:880px){
+  .wrap{grid-template-columns:1fr;gap:0;padding:0 14px}
+  .container{padding-right:14px;padding-left:14px}
+  nav.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;gap:8px 14px;
+    padding:26px 0;border-bottom:1px solid var(--line)}
+  nav.side .brand,nav.side .sub{width:100%}nav.side .sub{margin-bottom:6px}
+  nav.side a{border-left:none;border-bottom:2px solid var(--line);padding:4px 0}
+  nav.side .foot{display:none}.curve{display:none}.bp{grid-template-columns:1fr}
+  h1{max-width:none}
+  .units a,.units .soon{grid-template-columns:36px 1fr;gap:12px}
+  .units .go{display:none}
+}
+@media(max-width:600px){
+  .proof-map{grid-template-columns:1fr}.proof-map .arrow{transform:rotate(90deg);justify-self:center}
+  .controls input[type="range"]{min-width:100%;width:100%}
+  .logic-table{display:block;overflow-x:auto;white-space:nowrap}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;animation:none}
+  .curve path,.curve circle,.proof-map .arrow{animation:none}
+}

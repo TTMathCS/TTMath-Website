@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 2 — Subspaces, Span &amp; Independence · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 02</div>
+<div class="unit-no reveal">Unit 02 · Algebra I</div>
+<h1 class="ch-title reveal">Subspaces, Span &amp; Independence</h1>
+<p class="ch-intro reveal">The three ideas that organize a vector space from the
+inside: which subsets are themselves spaces, what a set of vectors generates, and
+when vectors carry genuinely independent information.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Span and independence are how we measure "how much" a set of vectors
+    captures — without redundancy. They lead directly to the idea of a basis.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Linear independence is feature redundancy in data science; the span of a
+    dataset is the subspace it can represent. Dimensionality reduction (PCA) is
+    exactly this language.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>These notions crystallized as mathematicians sought the smallest set of
+    "directions" needed to describe a space — the search that produced the modern
+    theory of dimension.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Test whether a subset is a subspace.</li>
+    <li>Describe the span of a set of vectors.</li>
+    <li>Decide linear independence.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Subspaces and span</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$W\subseteq V$ is a subspace if it contains $0$ and is closed under addition
+    and scalar multiplication. The <em>span</em> of $S$ is the set of all linear
+    combinations of vectors in $S$ — the smallest subspace containing $S$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Linear independence</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$v_1,\dots,v_k$ are linearly independent if $c_1v_1+\cdots+c_kv_k=0$ forces
+    every $c_i=0$. Otherwise one vector is a combination of the others.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$(1,0),(0,1)$ are independent; $(1,2),(2,4)$ are dependent since the second
+    is twice the first.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• A subspace must contain the zero vector.<br>
+  • Independence is about the <em>only</em> solution being trivial.<br>
+  • Span grows with more vectors; independence shrinks.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Is the set of polynomials with $p(0)=0$ a subspace of $P(\mathbb{R})$?</p>
+      <details><summary>Answer</summary><div class="ans">Yes — closed under $+$ and
+      scalars, contains the zero polynomial.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Are $(1,1,0),(0,1,1),(1,0,-1)$ independent in $\mathbb{R}^3$?</p>
+      <details><summary>Answer</summary><div class="ans">No — the third equals the
+      first minus the second.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>What is $\operatorname{span}\{(1,0),(0,1)\}$?</p>
+      <details><summary>Answer</summary><div class="ans">All of $\mathbb{R}^2$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit01.html">← Unit 01<span>Fields &amp; vector spaces</span></a>
+  <a class="n" href="unit03.html">Unit 03 →<span>Bases &amp; dimension</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

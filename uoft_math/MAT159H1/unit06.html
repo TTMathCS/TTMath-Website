@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 6 — Uniform Convergence · MAT159H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 06</div>
+<div class="unit-no reveal">Unit 06 · Analysis 1B</div>
+<h1 class="ch-title reveal">Uniform Convergence</h1>
+<p class="ch-intro reveal">The capstone idea of the course: a stronger kind of
+convergence for sequences of functions, strong enough to let you swap limits with
+integrals and derivatives.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Pointwise convergence is too weak: a limit of continuous functions can be
+    discontinuous, and you cannot freely swap limits with integrals. Uniform
+    convergence is the condition that fixes this.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>It justifies term-by-term differentiation and integration of series — the
+    silent step behind Fourier analysis, differential-equation solutions, and much
+    of applied mathematics.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Early 19th-century mathematicians made famous errors by assuming limits could
+    always be swapped. Weierstrass isolated uniform convergence as the missing
+    hypothesis — a milestone in the rigorisation of analysis.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Distinguish pointwise from uniform convergence.</li>
+    <li>Use the sup-norm test for uniform convergence.</li>
+    <li>State when limits, integrals, and derivatives may be exchanged.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Two kinds of convergence</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$f_n\to f$ <em>uniformly</em> on $S$ if $\sup_{x\in S}|f_n(x)-f(x)|\to0$. The
+    single $N$ works for all $x$ at once — that is the difference from pointwise.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$f_n(x)=x^n$ on $[0,1]$ converges pointwise to a discontinuous limit (0 on
+    $[0,1)$, 1 at $1$), so the convergence is <em>not</em> uniform.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Why it matters</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>If $f_n\to f$ uniformly and each $f_n$ is continuous, then $f$ is continuous.
+    On a closed bounded interval, uniform convergence of integrable functions
+    permits $\int\lim=\lim\int$. For derivatives, one standard theorem also
+    requires $f_n'$ to converge uniformly and $f_n(x_0)$ to converge at one
+    point; then the limit is differentiable with derivative $\lim f_n'$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Pointwise convergence does not preserve continuity or allow swapping
+  limits.<br>
+  • Check the $\sup$ of the difference, not just each point.<br>
+  • Uniform convergence of $f_n$ does not by itself give convergence of
+  $f_n'$.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Show $f_n(x)=x/n$ converges uniformly to $0$ on $[0,1]$.</p>
+      <details><summary>Answer</summary><div class="ans">$\sup|x/n|=1/n\to0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Show $f_n(x)=x^n$ is not uniform on $[0,1]$.</p>
+      <details><summary>Hint</summary><div class="ans">$\sup|x^n-f|=1$ near $x=1$
+      for every $n$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Does $f_n(x)=\dfrac{\sin(nx)}{n}$ converge uniformly on $\mathbb{R}$?</p>
+      <details><summary>Answer</summary><div class="ans">Yes; $\sup\le1/n\to0$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit05.html">← Unit 05<span>Infinite series</span></a>
+  <a class="n" href="unit07.html">Unit 07 →<span>Power series</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

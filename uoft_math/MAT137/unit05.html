@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 5 — The Mean Value Theorem · MAT137</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT137</a><span>/</span>Unit 05</div>
+<div class="unit-no reveal">Unit 05 · Term 1</div>
+<h1 class="ch-title reveal">The Mean Value Theorem &amp; Applications</h1>
+<p class="ch-intro reveal">The MVT is the workhorse that turns information about
+$f'$ into information about $f$. Almost every "derivative tells you about the
+function" fact — monotonicity, constancy, inequalities — comes from it.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State and prove Rolle's theorem and the Mean Value Theorem.</li>
+    <li>Prove that $f'=0$ on an interval forces $f$ constant.</li>
+    <li>Relate the sign of $f'$ to increasing/decreasing behaviour.</li>
+    <li>Prove inequalities with the MVT.</li>
+  </ul>
+</div>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>The Mean Value Theorem is the bridge from a derivative at one instant to
+    behaviour over a whole stretch. It is why "if your speed never topped 100, your
+    average can't have either" is a theorem, not just a feeling.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Average-speed cameras on highways literally issue tickets using the MVT —
+    the time between two points gives an average speed the law treats as proof you
+    sped somewhere. The same theorem underlies error bounds in numerical methods
+    and uniqueness proofs for differential equations.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>It is named partly for Rolle (1691), who was himself an early skeptic of
+    calculus. Cauchy gave it its modern form. Simple as it looks, almost every
+    "the derivative controls the function" fact in this course flows from this one
+    theorem.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Local extrema and Fermat's theorem</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Fermat</b></div>
+    <p>If $f$ has a local extremum at an interior point $c$ and $f'(c)$ exists,
+    then $f'(c)=0$.</p></div>
+  <p>Such points (where $f'=0$ or $f'$ fails to exist) are the <em>critical
+  points</em> — the only candidates for interior extrema.</p>
+</div>
+
+<div class="block reveal">
+  <h3>Rolle's theorem</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Rolle</b></div>
+    <p>If $f$ is continuous on $[a,b]$, differentiable on $(a,b)$, and
+    $f(a)=f(b)$, then there is $c\in(a,b)$ with $f'(c)=0$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">By the Extreme Value Theorem $f$ attains a max and min on
+    $[a,b]$.</div>
+    <div class="step">If the maximum equals the minimum, $f$ is constant and
+    $f'=0$ everywhere. Otherwise, because $f(a)=f(b)$, at least one extremum is
+    interior, and Fermat gives $f'(c)=0$. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>The Mean Value Theorem</h3>
+  <div class="box thm"><div class="bl">Theorem <b>MVT</b></div>
+    <p>If $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then there is
+    $c\in(a,b)$ with $$f'(c)=\frac{f(b)-f(a)}{b-a}.$$</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">Subtract the secant line: let $g(x)=f(x)-\big[f(a)+
+    \tfrac{f(b)-f(a)}{b-a}(x-a)\big]$.</div>
+    <div class="step">Then $g(a)=g(b)=0$; Rolle gives $g'(c)=0$, which rearranges
+    to the MVT. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Consequences</h3>
+  <div class="box thm"><div class="bl">Corollaries</div>
+    <p>On an interval: if $f'=0$ everywhere then $f$ is constant; if $f'>0$ then
+    $f$ is strictly increasing; if $f'=g'$ then $f-g$ is constant.</p></div>
+  <div class="box eg"><div class="bl">Example <b>An inequality</b></div>
+    <p>Show $e^x\ge1+x$ for all $x$.</p>
+    <div class="step">Let $h(x)=e^x-1-x$, so $h(0)=0$ and $h'(x)=e^x-1$.</div>
+    <div class="step">$h'>0$ for $x>0$ and $h'&lt;0$ for $x&lt;0$, so $x=0$ is a global
+    minimum; thus $h(x)\ge0$. ∎</div>
+  </div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• The MVT needs continuity on the <em>closed</em> interval and
+  differentiability on the open one — check both.<br>
+  • The MVT guarantees $c$ exists but not its value or uniqueness.<br>
+  • "$f'>0$ at a point" does not make $f$ increasing near that point in general;
+  the clean statement is about $f'>0$ on a whole interval.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <p class="prac-intro">Problems adapted from the MAT137 question bank by Alfonso
+  Gracia-Saz, used under CC&nbsp;BY-SA&nbsp;4.0. Write full solutions before opening
+  the answer.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1 · Zero derivative</div>
+      <p>Use the MVT to prove: if $f'(x)=0$ for all $x\in(a,b)$, then $f$ is
+      constant on $(a,b)$.</p>
+      <details><summary>Solution</summary><div class="ans">For any $x_1&lt;x_2$ in
+      the interval, MVT gives $f(x_2)-f(x_1)=f'(c)(x_2-x_1)=0$, so $f(x_2)=f(x_1)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Lipschitz bound</div>
+      <p>Prove $|\sin a-\sin b|\le|a-b|$ for all real $a,b$.</p>
+      <details><summary>Hint</summary><div class="ans">Apply the MVT to $\sin$ on
+      $[a,b]$: the difference equals $\cos c\,(a-b)$, and $|\cos c|\le1$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Inequality</div>
+      <p>Show $\ln(1+x)&lt;x$ for all $x>0$.</p>
+      <details><summary>Hint</summary><div class="ans">Let $h(x)=x-\ln(1+x)$;
+      $h(0)=0$ and $h'(x)=1-\tfrac1{1+x}>0$ for $x>0$, so $h$ increases.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Bounding</div>
+      <p>If $f'(x)\le M$ on $[a,b]$, bound $f(b)-f(a)$.</p>
+      <details><summary>Answer</summary><div class="ans">MVT gives
+      $f(b)-f(a)=f'(c)(b-a)\le M(b-a)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Exponential bound</div>
+      <p>Prove that $e^x\ge1+x$ for all $x\in\mathbb{R}$.</p>
+      <details><summary>Solution</summary><div class="ans">Let $g(x)=e^x-1-x$.
+      Then $g(0)=0$ and $g'(x)=e^x-1$, which is $&lt;0$ for $x&lt;0$ and $>0$ for
+      $x>0$. So $g$ has a global minimum $0$ at $x=0$; hence $g(x)\ge0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Counting roots</div>
+      <p>Prove that a polynomial of degree $n$ has at most $n$ real zeros.</p>
+      <details><summary>Solution</summary><div class="ans">If it had $n+1$ distinct
+      zeros, Rolle's theorem between consecutive zeros gives $n$ zeros of the
+      derivative, then $n-1$ of the second derivative, and so on, forcing the
+      degree-$n$ leading term ($n!\,a_n\ne0$) to have a zero — impossible.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · One-to-one</div>
+      <p>Prove: if $f$ is differentiable on an open interval $I$ and $f'(x)\ne0$
+      for all $x\in I$, then $f$ is one-to-one on $I$.</p>
+      <details><summary>Solution</summary><div class="ans">If $f(x_1)=f(x_2)$ with
+      $x_1&lt;x_2$, Rolle's theorem gives $c\in(x_1,x_2)$ with $f'(c)=0$,
+      contradicting the hypothesis. So $f$ is one-to-one.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · A derivative at 0</div>
+      <p>Suppose $f$ is differentiable at $0$ with $f(0)=0$ and $f(x)\ge x$ for all
+      $x$. Find $f'(0)$.</p>
+      <details><summary>Solution</summary><div class="ans">For $x>0$,
+      $\tfrac{f(x)}{x}\ge1$; for $x&lt;0$, dividing by a negative flips it to
+      $\tfrac{f(x)}{x}\le1$. The two one-sided limits are both $f'(0)$, so
+      $f'(0)\ge1$ and $f'(0)\le1$, giving $f'(0)=1$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit04.html">← Unit 04<span>Transcendental functions</span></a>
+  <a class="n" href="unit06.html">Unit 06 →<span>Applications of derivatives</span></a>
+</div>
+
+</div>
+<script src="../assets/mat137-practice.js"></script>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

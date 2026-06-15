@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 1 — Integration Techniques · MAT159H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 01</div>
+<div class="unit-no reveal">Unit 01 · Analysis 1B</div>
+<h1 class="ch-title reveal">Integration Techniques</h1>
+<p class="ch-intro reveal">Finding antiderivatives takes pattern-matching, not a
+formula. These are the standard moves — and a reminder that some integrals have no
+elementary answer at all.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Unlike differentiation, integration has no mechanical recipe. These
+    techniques are the toolkit, and they reveal that elementary antiderivatives are
+    the exception, not the rule.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>The bell curve $e^{-x^2}$ has no elementary antiderivative, so statistics
+    relies on numerical integration of it. Every p-value depends on that fact.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Liouville proved in the 1830s that integrals like $\int e^{-x^2}$ cannot be
+    written in elementary terms; the 1968 Risch algorithm lets computers decide
+    when a closed form exists.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Integrate by substitution and by parts.</li>
+    <li>Decompose with partial fractions.</li>
+    <li>Recognize when a trigonometric substitution helps.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Substitution and by parts</h3>
+  <div class="box thm"><div class="bl">Rules</div>
+    <p>$\int f(g(x))g'(x)\,dx=\int f(u)\,du$ and $\int u\,dv=uv-\int v\,du$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\int x e^x\,dx=xe^x-\int e^x\,dx=(x-1)e^x+C$ by parts.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Partial fractions and trig substitution</h3>
+  <div class="box eg"><div class="bl">Example <b>Partial fractions</b></div>
+    <p>$\int\dfrac{dx}{x^2-1}=\tfrac12\ln\left|\dfrac{x-1}{x+1}\right|+C$.</p></div>
+  <p>For $\sqrt{a^2-x^2}$ use $x=a\sin\theta$; for $\sqrt{a^2+x^2}$, $x=a\tan\theta$.</p>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Convert everything (including $dx$) to the new variable.<br>
+  • Change the limits or convert back — never mix.<br>
+  • Partial fractions need a proper fraction; divide first if not.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>$\int x\cos(x^2)\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">$u=x^2$:
+      $\tfrac12\sin(x^2)+C$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>$\int \ln x\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">By parts: $x\ln x-x+C$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>$\int_0^1 x e^{-x}\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">$1-2e^{-1}$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="index.html">← Index<span>All chapters</span></a>
+  <a class="n" href="unit02.html">Unit 02 →<span>Improper integrals</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

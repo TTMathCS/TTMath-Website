@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 10 — Eigenvalues &amp; Diagonalization · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 10</div>
+<div class="unit-no reveal">Unit 10 · Algebra I</div>
+<h1 class="ch-title reveal">Eigenvalues &amp; Diagonalization</h1>
+<p class="ch-intro reveal">The finale: directions a map only stretches, not rotates.
+Finding them is how we choose the basis that makes a matrix diagonal — the most
+useful form there is. The theory continues into MAT247.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Eigenvectors are the special directions a linear map merely scales. In an
+    eigenbasis the matrix is diagonal, so powers, exponentials, and long-term
+    behaviour become trivial to compute.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Eigenvalues run Google's PageRank, principal component analysis, the
+    stability of dynamical systems and markets, the energy levels of quantum
+    mechanics, and vibration modes in engineering.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>The "eigen" (German for "own") terminology comes from Hilbert. The
+    Cayley–Hamilton theorem — every matrix satisfies its own characteristic equation
+    — caps the course; when a matrix cannot be diagonalized, the Jordan form of
+    MAT247 takes over.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Find eigenvalues from the characteristic polynomial.</li>
+    <li>Find eigenvectors and decide diagonalizability.</li>
+    <li>State the Cayley–Hamilton theorem.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Eigenvalues and eigenvectors</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$\lambda$ is an eigenvalue of $A$ with eigenvector $v\ne0$ if $Av=\lambda v$.
+    The eigenvalues are the roots of the characteristic polynomial
+    $\det(A-\lambda I)=0$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>For $A=\left(\begin{smallmatrix}2&0\\0&3\end{smallmatrix}\right)$, the
+    eigenvalues are $2$ and $3$ with eigenvectors $e_1,e_2$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Diagonalization and Cayley–Hamilton</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>$A$ is diagonalizable iff it has a basis of eigenvectors; then $A=PDP^{-1}$
+    with $D$ diagonal. An $n\times n$ matrix with $n$ distinct eigenvalues is
+    diagonalizable.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Cayley–Hamilton</b></div>
+    <p>Every square matrix satisfies its own characteristic polynomial:
+    $p_A(A)=0$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Eigenvectors must be nonzero by definition.<br>
+  • Repeated eigenvalues may give too few independent eigenvectors — then the
+  matrix is not diagonalizable.<br>
+  • Over $\mathbb{R}$ a matrix may have no real eigenvalues (a rotation); over
+  $\mathbb{C}$ its characteristic polynomial has $n$ roots counted with algebraic
+  multiplicity, but it may still have fewer than $n$ independent eigenvectors.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Find the eigenvalues of
+      $\left(\begin{smallmatrix}2&1\\0&3\end{smallmatrix}\right)$.</p>
+      <details><summary>Answer</summary><div class="ans">$2$ and $3$ (triangular —
+      read the diagonal).</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Is $\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$
+      diagonalizable?</p>
+      <details><summary>Answer</summary><div class="ans">No — only one independent
+      eigenvector for the repeated eigenvalue $1$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Verify Cayley–Hamilton for
+      $A=\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)$.</p>
+      <details><summary>Answer</summary><div class="ans">$p_A(\lambda)=\lambda^2$,
+      and indeed $A^2=0$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit09.html">← Unit 09<span>Polynomials over a field</span></a>
+  <a class="n" href="index.html">Back to Index<span>All chapters</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 11 — Transcendental Functions · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 11</div>
+<div class="unit-no reveal">Unit 11 · Analysis 1A</div>
+<h1 class="ch-title reveal">Transcendental Functions</h1>
+<p class="ch-intro reveal">The rigorous payoff: define $\ln$ as an integral, $\exp$
+as its inverse, and recover all their laws — closing the first half of analysis
+with functions built on everything before.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Defining $e^x$ by "repeated multiplication" makes no sense for irrational
+    exponents. Building $\ln$ as $\int_1^x\tfrac1t\,dt$ first gives a rigorous,
+    gap-free construction of all the transcendental functions.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>$e^x$ governs growth and decay; logarithms scale pH, decibels, and
+    information in bits; trig functions drive every Fourier method in audio,
+    imaging, and signal processing.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Napier built logarithms in 1614 to ease astronomers' arithmetic; Euler named
+    $e$. Hermite and Lindemann later proved $e$ and $\pi$ transcendental, settling
+    "squaring the circle" once and for all.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Define $\ln$ as an integral and prove the log laws.</li>
+    <li>Define $\exp$ as the inverse and find its derivative.</li>
+    <li>Differentiate trig and inverse-trig functions.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Logarithm and exponential</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$\ln x=\displaystyle\int_1^x\frac{1}{t}\,dt$ for $x>0$, so $(\ln x)'=
+    \tfrac1x$ by the FTC. Define $\exp=\ln^{-1}$ and $e=\exp(1)$; then
+    $(e^x)'=e^x$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>$\ln(ab)=\ln a+\ln b$</b></div>
+    <div class="step">Fix $a$; $g(x)=\ln(ax)$ has $g'(x)=\tfrac1x=(\ln x)'$.</div>
+    <div class="step">So $g(x)-\ln x$ is constant, equal to $\ln a$ at $x=1$. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Trigonometric functions</h3>
+  <div class="box thm"><div class="bl">Key limit</div>
+    <p>$\lim_{x\to0}\dfrac{\sin x}{x}=1$, from which $(\sin x)'=\cos x$ and
+    $(\cos x)'=-\sin x$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\dfrac{d}{dx}\arctan x=\dfrac{1}{1+x^2}$ via the inverse-function rule of
+    Unit 8.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• $\dfrac{d}{dx}a^x=a^x\ln a$, not $x a^{x-1}$.<br>
+  • Keep domains straight: $\ln$ needs $x>0$, $\arcsin$ needs $|x|\le1$.<br>
+  • The integral definition of $\ln$ is what makes irrational exponents
+  meaningful.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Prove $\ln(x^r)=r\ln x$ for rational $r$.</p>
+      <details><summary>Hint</summary><div class="ans">Differentiate both sides;
+      they share derivative $r/x$ and agree at $x=1$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Differentiate $y=x^x$ ($x>0$).</p>
+      <details><summary>Answer</summary><div class="ans">$\ln y=x\ln x$, so
+      $y'=x^x(\ln x+1)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Compute $\lim_{x\to0}\dfrac{e^x-1}{x}$ from a derivative.</p>
+      <details><summary>Answer</summary><div class="ans">It is $(e^x)'$ at $0$,
+      i.e. $1$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit10.html">← Unit 10<span>The Fundamental Theorem</span></a>
+  <a class="n" href="index.html">Back to Index<span>All chapters</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

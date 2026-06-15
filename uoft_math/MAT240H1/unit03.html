@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 3 — Bases &amp; Dimension · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 03</div>
+<div class="unit-no reveal">Unit 03 · Algebra I</div>
+<h1 class="ch-title reveal">Bases &amp; Dimension</h1>
+<p class="ch-intro reveal">A basis is a minimal spanning set — just enough vectors to
+build everything, with none to spare. Its size, the dimension, is the same no
+matter which basis you choose.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>A basis gives every vector unique coordinates, turning an abstract space into
+    something computable. Dimension is the single number that classifies the space.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Choosing a basis is choosing coordinates — pixel bases for images, Fourier
+    bases for audio, principal components for data. The right basis makes a problem
+    easy.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>That every basis of a space has the same size is a theorem, not an
+    assumption — the result that makes "dimension" well defined and underpins all of
+    linear algebra.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Define a basis and find one for a given space.</li>
+    <li>Prove all bases have the same size.</li>
+    <li>Compute dimension and use it.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Basis and dimension</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>A <em>basis</em> is a linearly independent set that spans $V$. Every vector
+    is then a unique linear combination of basis vectors. The <em>dimension</em> is
+    the number of basis vectors.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Invariance of dimension</b></div>
+    <p>Any two bases of a finite-dimensional space have the same number of
+    elements.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Using dimension</h3>
+  <div class="box thm"><div class="bl">Facts</div>
+    <p>In an $n$-dimensional space: any $n$ independent vectors form a basis, any
+    $n$ spanning vectors form a basis, and more than $n$ vectors must be
+    dependent.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\dim\mathbb{R}^n=n$; $\dim P_k(\mathbb{R})=k+1$ (basis
+    $1,x,\dots,x^k$).</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• A basis must be both independent and spanning — neither alone suffices.<br>
+  • Coordinates depend on the chosen basis and its order.<br>
+  • Infinite-dimensional spaces (like all polynomials) have no finite basis.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Find a basis and the dimension of $\{(x,y,z):x+y+z=0\}$.</p>
+      <details><summary>Answer</summary><div class="ans">e.g. $(1,-1,0),(1,0,-1)$;
+      dimension $2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>What is $\dim$ of the space of $2\times2$ matrices?</p>
+      <details><summary>Answer</summary><div class="ans">$4$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Can 4 vectors be independent in $\mathbb{R}^3$?</p>
+      <details><summary>Answer</summary><div class="ans">No — more than
+      $\dim=3$ vectors are always dependent.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit02.html">← Unit 02<span>Subspaces, span &amp; independence</span></a>
+  <a class="n" href="unit04.html">Unit 04 →<span>Linear transformations</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 8 — Inverse Functions · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 08</div>
+<div class="unit-no reveal">Unit 08 · Analysis 1A</div>
+<h1 class="ch-title reveal">Inverse Functions</h1>
+<p class="ch-intro reveal">When does a function have a continuous, differentiable
+inverse — and what is its derivative? This one-variable theorem is the seed of one
+of the deepest results in all of analysis.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Many essential functions — $\exp$, $\arcsin$, $\arctan$ — are <em>defined</em>
+    as inverses. We need to know they are differentiable and to compute their
+    derivatives without an explicit formula.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>The multivariable inverse and implicit function theorems (built on this one)
+    underlie change-of-variables in integration, the Jacobians of robotics, and the
+    solvability conditions in optimization.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>The 1-D version is elementary, but its generalizations are cornerstones of
+    MAT257 and of differential geometry — the language of general relativity.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Show a strictly monotone continuous function is invertible.</li>
+    <li>Prove the inverse is continuous.</li>
+    <li>Differentiate an inverse: $(f^{-1})'(y)=\dfrac{1}{f'(x)}$.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Existence and continuity of the inverse</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>A continuous, strictly monotone function on an interval is a bijection onto
+    its image, with a continuous, strictly monotone inverse.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Derivative of the inverse</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>Let $f$ be one-to-one on an interval with continuous inverse. If $f$ is
+    differentiable at $x_0$, $f'(x_0)\ne0$, and $y_0=f(x_0)$, then $f^{-1}$ is
+    differentiable at $y_0$ and
+    $(f^{-1})'(y_0)=\dfrac{1}{f'(x_0)}$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>arcsin</b></div>
+    <div class="step">$y=\arcsin x\Rightarrow\sin y=x\Rightarrow\cos y\,y'=1$.</div>
+    <div class="step">$\cos y=\sqrt{1-x^2}$ on $[-\tfrac\pi2,\tfrac\pi2]$, so
+    $y'=\dfrac{1}{\sqrt{1-x^2}}$ for $|x|<1$. At $x=\pm1$, arcsine is not
+    differentiable as a real-valued function.</div>
+  </div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• The derivative formula needs $f'(x)\ne0$; at a horizontal tangent the
+  inverse has a vertical one.<br>
+  • Track the domain of the inverse and the correct sign of the square root.<br>
+  • Continuity plus strict monotonicity on an interval gives the cleanest
+  sufficient condition for a continuous inverse.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Show $\dfrac{d}{dx}\arctan x=\dfrac{1}{1+x^2}$.</p>
+      <details><summary>Solution</summary><div class="ans">$\tan y=x\Rightarrow
+      \sec^2y\,y'=1$, and $\sec^2y=1+x^2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>If $f(x)=x^3+x$, find $(f^{-1})'(2)$.</p>
+      <details><summary>Hint</summary><div class="ans">$f(1)=2$, $f'(1)=4$, so
+      $(f^{-1})'(2)=\tfrac14$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Why is $f(x)=x^2$ on $\mathbb{R}$ not invertible, but on $[0,\infty)$ it
+      is?</p>
+      <details><summary>Answer</summary><div class="ans">Not monotone on
+      $\mathbb{R}$ (fails injectivity); strictly increasing on $[0,\infty)$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit07.html">← Unit 07<span>The Mean Value Theorem</span></a>
+  <a class="n" href="unit09.html">Unit 09 →<span>The Riemann integral</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

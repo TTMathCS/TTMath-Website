@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 7 — Systems &amp; Elementary Operations · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 07</div>
+<div class="unit-no reveal">Unit 07 · Algebra I</div>
+<h1 class="ch-title reveal">Systems &amp; Elementary Operations</h1>
+<p class="ch-intro reveal">Row reduction is the computational workhorse — it reveals
+rank, solves systems, and inverts matrices, all by the same three elementary
+moves.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Row reduction is the concrete algorithm behind the abstract theory: it turns
+    "does a solution exist?" into a mechanical procedure that also computes rank and
+    inverses.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Solving $A\mathbf{x}=\mathbf{b}$ is everywhere — circuit analysis, least
+    squares regression, computer graphics, and the linear solves at the core of
+    scientific computing.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>The method is called Gaussian elimination, though versions appear in a
+    Chinese text from around 200 BC. How fast matrices can be multiplied and
+    inverted is still an open research frontier.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Apply the three elementary row operations.</li>
+    <li>Read rank and solutions from row-echelon form.</li>
+    <li>Invert a matrix by row reduction.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Elementary operations</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>Swap two rows, scale a row by a nonzero scalar, or add a multiple of one row
+    to another. Each corresponds to multiplying by an invertible elementary
+    matrix.</p></div>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>Row operations preserve the solution set of a system and the row space; the
+    number of nonzero rows in echelon form is the rank.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Solving and inverting</h3>
+  <div class="box eg"><div class="bl">Example <b>Solution types</b></div>
+    <p>After reduction: a pivot in every variable column gives a unique solution; a
+    free column gives infinitely many; a row $0=1$ gives none.</p></div>
+  <p>To invert $A$: row-reduce $[A\,|\,I]$ to $[I\,|\,A^{-1}]$.</p>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Scaling by zero is not allowed.<br>
+  • A row $0=1$ (inconsistent) means no solution; do not keep reducing for one.<br>
+  • Free variables parametrize infinitely many solutions — write the general
+  form.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>How many solutions has a $3\times3$ system whose matrix has rank $2$ and is
+      consistent?</p>
+      <details><summary>Answer</summary><div class="ans">Infinitely many — one free
+      variable.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>When is $A\mathbf{x}=\mathbf{b}$ guaranteed solvable for every
+      $\mathbf{b}$?</p>
+      <details><summary>Answer</summary><div class="ans">When $A$ has full row rank
+      (rank $=$ number of rows).</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>What does a row of zeros in echelon form indicate?</p>
+      <details><summary>Answer</summary><div class="ans">That row contributes no
+      pivot. Rank is the total number of nonzero echelon rows; a zero row alone
+      does not prove that rank dropped by exactly one.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit06.html">← Unit 06<span>Change of basis &amp; similarity</span></a>
+  <a class="n" href="unit08.html">Unit 08 →<span>Determinants</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

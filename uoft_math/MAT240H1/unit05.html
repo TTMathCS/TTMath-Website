@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 5 — Rank–Nullity &amp; Matrices · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 05</div>
+<div class="unit-no reveal">Unit 05 · Algebra I</div>
+<h1 class="ch-title reveal">Rank–Nullity &amp; Matrices</h1>
+<p class="ch-intro reveal">The accounting identity of linear algebra: dimension in =
+dimension collapsed + dimension out. Once a basis is fixed, every linear map
+becomes a matrix.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>The Rank–Nullity theorem ties together how much a map crushes to zero and how
+    much it produces. It is the bookkeeping that explains when systems have
+    solutions and how many.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Rank measures the true information content of a data matrix; low-rank
+    structure is the basis of compression, recommender systems, and PCA. Nullity is
+    the space of "free" solution directions.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Representing a linear map by a matrix in coordinates — and recognizing rank as
+    basis-independent — unified the previously separate arts of solving equations
+    and studying transformations.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State and use the Rank–Nullity theorem.</li>
+    <li>Build the matrix of a linear map in given bases.</li>
+    <li>Relate rank to solvability of $A\mathbf{x}=\mathbf{b}$.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>The theorem</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Rank–Nullity</b></div>
+    <p>For a linear $T:V\to W$ with $V$ finite-dimensional,
+    $$\dim V=\operatorname{rank}(T)+\operatorname{nullity}(T),$$ where rank
+    $=\dim(\text{range})$ and nullity $=\dim(\text{null space})$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Matrix of a map</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>Fix bases of $V$ and $W$. The columns of the matrix $[T]$ are the coordinate
+    vectors of $T$ applied to the basis of $V$. Then $T(v)$ in coordinates is
+    $[T]\,[v]$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>Differentiation on $P_2$ in basis $1,x,x^2$ has matrix with columns
+    $0,\,(1,0,0),\,(0,2,0)$ — rank $2$, nullity $1$ (the constants).</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Rank–nullity counts the dimension of the <em>domain</em>, not the
+  codomain.<br>
+  • The matrix changes with the basis; rank and nullity do not.<br>
+  • $A\mathbf{x}=\mathbf{b}$ is solvable iff $\mathbf{b}$ lies in the range
+  (column space).</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>A linear map $\mathbb{R}^4\to\mathbb{R}^3$ has rank $3$. Find its
+      nullity.</p>
+      <details><summary>Answer</summary><div class="ans">$4-3=1$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>If a $3\times3$ matrix has nullity $0$, what is its rank?</p>
+      <details><summary>Answer</summary><div class="ans">$3$ — full rank,
+      invertible.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Can a map $\mathbb{R}^2\to\mathbb{R}^5$ be onto?</p>
+      <details><summary>Answer</summary><div class="ans">No — rank $\le2<5$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit04.html">← Unit 04<span>Linear transformations</span></a>
+  <a class="n" href="unit06.html">Unit 06 →<span>Change of basis &amp; similarity</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

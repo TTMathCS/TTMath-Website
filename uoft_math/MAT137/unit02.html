@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 2 — Limits &amp; Continuity · MAT137</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT137</a><span>/</span>Unit 02</div>
+<div class="unit-no reveal">Unit 02 · Term 1</div>
+<h1 class="ch-title reveal">Limits &amp; Continuity</h1>
+<p class="ch-intro reveal">The conceptual heart of the course. The ε–δ definition
+of a limit is the single idea everything downstream — derivatives, integrals,
+series — is built on. Spend real time until you can write ε–δ proofs cold.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State the ε–δ definition of $\lim_{x\to a}f(x)=L$ precisely.</li>
+    <li>Prove simple limits directly from the definition.</li>
+    <li>Use the limit laws and the squeeze theorem.</li>
+    <li>Decide whether a function is continuous at a point.</li>
+  </ul>
+</div>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Early calculus worked remarkably well, but many infinitesimal arguments
+    lacked a precise foundation. The ε–δ limit answered the question — what does
+    "approaches" actually mean? — and gave analysis a rigorous framework.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Every instantaneous rate is a limit: speed on a speedometer, a tolerance an
+    engineer designs to, whether an algorithm settles on an answer. Continuity is
+    the hidden assumption behind root-finding by bisection and behind "small change
+    in input, small change in output" in physics and economics.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Newton and Leibniz built calculus in the 1600s on infinitesimals; Bishop
+    Berkeley ridiculed them in 1734 as "the ghosts of departed quantities." It took
+    Cauchy and Weierstrass another century to make ε–δ rigorous. Weierstrass then
+    exhibited a function that is continuous everywhere but differentiable nowhere
+    — destroying everyone's intuition at once.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>The ε–δ definition</h3>
+  <div class="box def"><div class="bl">Definition <b>Limit</b></div>
+    <p>$\displaystyle\lim_{x\to a}f(x)=L$ means: for every $\varepsilon>0$ there
+    exists $\delta>0$ such that, for all $x$,
+    $$0&lt;|x-a|&lt;\delta\ \Longrightarrow\ |f(x)-L|&lt;\varepsilon.$$</p></div>
+  <p>Read it as a challenge–response game. The challenger picks a tolerance
+  $\varepsilon$ around $L$; you must produce a radius $\delta$ around $a$ so that
+  every $x$ within $\delta$ (except $a$ itself) lands within $\varepsilon$ of $L$.
+  The "$0&lt;|x-a|$" part says the value at $a$ is irrelevant. The order of
+  quantifiers matters: $\delta$ may depend on $\varepsilon$, but it must work for
+  <em>every</em> eligible $x$.</p>
+  <div class="figure">
+    <div class="fig-title">Explore the ε–δ challenge for $f(x)=x^2$ at $a=2$</div>
+    <p class="fig-note">Move ε. The red horizontal band is the required output
+    tolerance; the blue vertical band is the input window produced by the proof's
+    conservative choice $\delta=\min\{1,\varepsilon/5\}$.</p>
+    <svg id="limit-diagram" viewBox="0 0 680 370" role="img"
+      aria-label="Interactive epsilon delta diagram for x squared approaching 4 as x approaches 2">
+      <rect class="output-band" data-role="output-band" x="58" y="180" width="594" height="64"/>
+      <rect class="input-band" data-role="input-band" x="330" y="24" width="50" height="314"/>
+      <line class="axis" x1="58" y1="338" x2="652" y2="338"/>
+      <line class="axis" x1="58" y1="24" x2="58" y2="338"/>
+      <line class="guide" x1="355" y1="24" x2="355" y2="338"/>
+      <line class="guide" x1="58" y1="212.4" x2="652" y2="212.4"/>
+      <path class="curve-line" data-role="curve"/>
+      <circle class="focus-point" cx="355" cy="212.4" r="6"/>
+      <text x="360" y="205">(2, 4)</text>
+      <text x="638" y="355">x</text>
+      <text x="39" y="30">y</text>
+      <text x="346" y="355">2</text>
+      <text x="65" y="205">4</text>
+    </svg>
+    <div class="controls">
+      <label for="epsilon-control">Output tolerance</label>
+      <input id="epsilon-control" type="range" min="0.25" max="3" value="1.5" step="0.05">
+      <output id="epsilon-readout">epsilon = 1.50</output>
+      <output id="delta-readout">delta = 0.30</output>
+    </div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Writing an ε–δ proof</h3>
+  <p>The structure is always the same: "Let $\varepsilon>0$. Choose
+  $\delta=\dots$. Then if $0&lt;|x-a|&lt;\delta$, …, so $|f(x)-L|&lt;\varepsilon$."</p>
+  <div class="box eg"><div class="bl">Example <b>A linear limit</b></div>
+    <p>Prove $\lim_{x\to3}(2x-1)=5$.</p>
+    <div class="step"><em>Scratch:</em> $|(2x-1)-5|=2|x-3|$, want $&lt;\varepsilon$,
+    so need $|x-3|&lt;\varepsilon/2$.</div>
+    <div class="step"><em>Proof:</em> let $\varepsilon>0$ and take
+    $\delta=\varepsilon/2$. If $0&lt;|x-3|&lt;\delta$ then $|(2x-1)-5|=2|x-3|&lt;2\delta=
+    \varepsilon$. ∎</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>A quadratic limit</b></div>
+    <p>Prove $\lim_{x\to2}x^2=4$.</p>
+    <div class="step"><em>Scratch:</em> $|x^2-4|=|x-2|\,|x+2|$. Restrict
+    $\delta\le1$ so $|x-2|&lt;1\Rightarrow|x+2|&lt;5$.</div>
+    <div class="step"><em>Proof:</em> let $\varepsilon>0$, take
+    $\delta=\min\{1,\varepsilon/5\}$. Then $|x^2-4|=|x-2||x+2|&lt;5\cdot
+    \tfrac{\varepsilon}{5}=\varepsilon$. ∎</div>
+  </div>
+  <div class="checkpoint"><b>Scratch work versus proof</b>
+    Work backward to discover a useful $\delta$, but write the proof forward:
+    announce the choice first, then verify that it works. A valid $\delta$ need
+    not be the largest possible one.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Limit laws and the squeeze theorem</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Limit laws</b></div>
+    <p>If $\lim_{x\to a}f=L$ and $\lim_{x\to a}g=M$, then the limits of $f\pm g$,
+    $fg$, and (if $M\ne0$) $f/g$ are $L\pm M$, $LM$, and $L/M$.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Squeeze</b></div>
+    <p>If $g(x)\le f(x)\le h(x)$ for all $x$ sufficiently close to $a$ (possibly
+    excluding $a$), and $\lim_{x\to a}g=\lim_{x\to a}h=L$, then
+    $\lim_{x\to a}f=L$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Squeeze</b></div>
+    <p>$\lim_{x\to0}x^2\sin(1/x)=0$, since $-x^2\le x^2\sin(1/x)\le x^2$ and both
+    bounds tend to $0$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>One-sided and infinite limits</h3>
+  <p>$\lim_{x\to a^-}$ and $\lim_{x\to a^+}$ restrict $x$ to one side; the
+  two-sided limit exists iff both one-sided limits exist and agree. Infinite
+  limits and limits at infinity use the same challenge–response structure.</p>
+  <div class="box def"><div class="bl">Examples <b>Formal infinite-limit language</b></div>
+    <p>$\lim_{x\to a}f(x)=\infty$ means: for every $M>0$, there is a $\delta>0$
+    such that $0&lt;|x-a|&lt;\delta\Rightarrow f(x)>M$.</p>
+    <p>$\lim_{x\to\infty}f(x)=L$ means: for every $\varepsilon>0$, there is an
+    $N>0$ such that $x>N\Rightarrow |f(x)-L|&lt;\varepsilon$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Continuity</h3>
+  <div class="box def"><div class="bl">Definition <b>Continuity at a point</b></div>
+    <p>$f$ is continuous at $a$ if $a$ is in the domain and
+    $\displaystyle\lim_{x\to a}f(x)=f(a)$. Equivalently: $\forall\varepsilon>0\
+    \exists\delta>0$ with $|x-a|&lt;\delta\Rightarrow|f(x)-f(a)|&lt;\varepsilon$.</p></div>
+  <p>Sums, products, quotients (nonzero denominator), and compositions of
+  continuous functions are continuous. Polynomials are continuous everywhere;
+  rational functions wherever defined.</p>
+  <div class="box eg"><div class="bl">Example <b>A patched function</b></div>
+    <p>Let $f(x)=x\sin(1/x)$ for $x\ne0$ and $f(0)=0$. Is $f$ continuous at $0$?</p>
+    <div class="step">$|x\sin(1/x)|\le|x|\to0$, so $\lim_{x\to0}f(x)=0=f(0)$.
+    Yes, continuous.</div>
+  </div>
+  <div class="box thm"><div class="bl">Theorem <b>Intermediate Value Theorem</b></div>
+    <p>If $f$ is continuous on $[a,b]$ and $N$ lies between $f(a)$ and $f(b)$,
+    then there is some $c\in[a,b]$ with $f(c)=N$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Proving a root exists</b></div>
+    <p>$p(x)=x^3+x-1$ is continuous, $p(0)=-1$, and $p(1)=1$. By the IVT, some
+    $c\in(0,1)$ satisfies $p(c)=0$. The theorem proves existence, not a formula
+    for $c$.</p></div>
+  <p>Discontinuities commonly appear as <em>removable</em> holes, <em>jump</em>
+  discontinuities where one-sided limits disagree, or <em>infinite</em>
+  discontinuities. The ε–δ definition handles all of them without relying on a
+  graph.</p>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Choosing $\delta$ that secretly depends on $x$ — it may depend only on
+  $\varepsilon$ (and $a$).<br>
+  • Forgetting to bound the "extra" factor (like $|x+2|$) by restricting $\delta\le
+  1$ first.<br>
+  • Confusing "limit exists" with "function is defined": the limit ignores the
+  value at $a$.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <p class="prac-intro">Problems adapted from the MAT137 question bank by Alfonso
+  Gracia-Saz, used under CC&nbsp;BY-SA&nbsp;4.0. Write full solutions before opening
+  the answer.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1 · Choosing δ</div>
+      <p>Let $\varepsilon>0$. Find <em>all</em> $\delta>0$ such that
+      $|x-3|&lt;\delta\Rightarrow|5x-15|&lt;\varepsilon$.</p>
+      <details><summary>Answer</summary><div class="ans">$|5x-15|=5|x-3|&lt;\varepsilon$
+      exactly when $|x-3|&lt;\varepsilon/5$, so every $\delta$ with
+      $0&lt;\delta\le\varepsilon/5$ works.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · First ε–δ proof</div>
+      <p>Prove $\lim_{x\to3}(5x+1)=16$ directly from the definition.</p>
+      <details><summary>Solution</summary><div class="ans">Let $\varepsilon>0$ and
+      take $\delta=\varepsilon/5$. If $0&lt;|x-3|&lt;\delta$ then
+      $|(5x+1)-16|=5|x-3|&lt;5\delta=\varepsilon$. ∎</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · A harder ε–δ proof</div>
+      <p>Prove $\lim_{x\to0}(x^3+x^2)=0$ directly from the definition.</p>
+      <details><summary>Solution</summary><div class="ans">Take
+      $\delta=\min\{1,\varepsilon/2\}$. If $0&lt;|x|&lt;\delta\le1$ then
+      $|x+1|&lt;2$ and $|x|^2&lt;|x|$, so
+      $|x^3+x^2|=|x|^2|x+1|&lt;2|x|&lt;2\delta\le\varepsilon$. ∎</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Squeeze</div>
+      <p>Prove: if $\lim_{x\to a}|f(x)|=0$, then $\lim_{x\to a}f(x)=0$.</p>
+      <details><summary>Solution</summary><div class="ans">For every $x$,
+      $-|f(x)|\le f(x)\le|f(x)|$. Both bounds tend to $0$, so by the squeeze
+      theorem $\lim_{x\to a}f(x)=0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Bounded × small</div>
+      <p>Suppose $\lim_{x\to a}f(x)=0$ and $g$ is bounded near $a$. Prove
+      $\lim_{x\to a}f(x)g(x)=0$.</p>
+      <details><summary>Solution</summary><div class="ans">Pick $M>0$ with
+      $|g(x)|\le M$ near $a$. Then $0\le|f(x)g(x)|\le M|f(x)|\to0$, so the squeeze
+      theorem gives the limit $0$. (This is why $x^2\sin(1/x)\to0$.)</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Limit at infinity</div>
+      <p>Compute $\lim_{x\to\infty}\dfrac{x^2+2x+3}{3x^2+4x+5}$.</p>
+      <details><summary>Answer</summary><div class="ans">Divide top and bottom by
+      $x^2$: $\dfrac{1+2/x+3/x^2}{3+4/x+5/x^2}\to\dfrac13$.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Trig limit</div>
+      <p>Using $\lim_{x\to0}\dfrac{\sin x}{x}=1$, compute
+      $\lim_{x\to0}\dfrac{\sin(5x)}{x}$.</p>
+      <details><summary>Answer</summary><div class="ans">Write
+      $\dfrac{\sin(5x)}{x}=5\cdot\dfrac{\sin(5x)}{5x}$; as $x\to0$ the fraction
+      tends to $1$, so the limit is $5$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · IVT</div>
+      <p>Prove that $x^4-2x=100$ has at least two solutions.</p>
+      <details><summary>Solution</summary><div class="ans">Let
+      $f(x)=x^4-2x-100$, continuous. $f(0)=-100&lt;0$, $f(4)=148>0$, and
+      $f(-4)=164>0$. By the IVT there is a root in $(0,4)$ and another in $(-4,0)$
+      — at least two solutions.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit01.html">← Unit 01<span>Logic &amp; proofs</span></a>
+  <a class="n" href="unit03.html">Unit 03 →<span>Derivatives</span></a>
+</div>
+
+</div>
+<script src="interactions.js"></script>
+<script src="../assets/mat137-practice.js"></script>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

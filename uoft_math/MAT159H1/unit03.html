@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 3 — Sequences &amp; Cauchy Sequences · MAT159H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 03</div>
+<div class="unit-no reveal">Unit 03 · Analysis 1B</div>
+<h1 class="ch-title reveal">Sequences &amp; Cauchy Sequences</h1>
+<p class="ch-intro reveal">Sequences in their rigorous form, plus the Cauchy
+criterion — convergence detected without knowing the limit. This is the deep idea
+the analysis stream adds beyond ordinary calculus.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Sometimes you must know a sequence converges without naming its limit. The
+    Cauchy criterion does exactly that, and it is how the completeness of
+    $\mathbb{R}$ is most usefully expressed.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Every iterative algorithm is a sequence — Newton's method, fixed-point
+    iteration, machine-learning training loops. "Cauchy" is the practical test that
+    successive iterates stop changing.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Cantor and Dedekind used Cauchy sequences to construct $\mathbb{R}$ in the
+    1870s. Zeno's 450 BC paradox of Achilles and the tortoise is resolved by the
+    limit of such a sequence.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State the ε–N definition and prove sequence limits.</li>
+    <li>Apply the Monotone Convergence Theorem.</li>
+    <li>State the Cauchy criterion and why it matters.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Limits and monotone convergence</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$\lim a_n=L$: $\forall\varepsilon>0\ \exists N$ with $n\ge N\Rightarrow
+    |a_n-L|<\varepsilon$.</p></div>
+  <div class="box thm"><div class="bl">Monotone Convergence</div>
+    <p>An increasing sequence bounded above converges to its supremum.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Cauchy sequences</h3>
+  <div class="box def"><div class="bl">Definition <b>Cauchy</b></div>
+    <p>$(a_n)$ is Cauchy if $\forall\varepsilon>0\ \exists N$ with $m,n\ge
+    N\Rightarrow|a_m-a_n|<\varepsilon$.</p></div>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>In $\mathbb{R}$, a sequence converges iff it is Cauchy. (This is the
+    completeness of $\mathbb{R}$ restated.)</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• "Cauchy" compares terms to <em>each other</em>, not to a limit.<br>
+  • Cauchy implies convergent only because $\mathbb{R}$ is complete — it fails in
+  $\mathbb{Q}$.<br>
+  • A bounded sequence need not converge unless it is also monotone or has a
+  convergent subsequence.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Prove $\lim\dfrac{n}{n+1}=1$.</p>
+      <details><summary>Answer</summary><div class="ans">$\left|\tfrac{n}{n+1}-1
+      \right|=\tfrac1{n+1}<\varepsilon$ for $n>1/\varepsilon$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Show $a_1=\sqrt2,\ a_{n+1}=\sqrt{2+a_n}$ converges and find the limit.</p>
+      <details><summary>Hint</summary><div class="ans">Increasing and bounded by
+      $2$; limit solves $L=\sqrt{2+L}$, so $L=2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Why is $a_n=(-1)^n$ not Cauchy?</p>
+      <details><summary>Answer</summary><div class="ans">Consecutive terms differ by
+      $2$, so no tail stays within $\varepsilon=1$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit02.html">← Unit 02<span>Improper integrals</span></a>
+  <a class="n" href="unit04.html">Unit 04 →<span>Taylor's theorem</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

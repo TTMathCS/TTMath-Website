@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 8 — The Fundamental Theorem of Calculus · MAT137</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT137</a><span>/</span>Unit 08</div>
+<div class="unit-no reveal">Unit 08 · Term 2</div>
+<h1 class="ch-title reveal">The Fundamental Theorem of Calculus</h1>
+<p class="ch-intro reveal">The theorem that ties the whole course together:
+differentiation and integration are inverse operations. It is what lets us compute
+integrals without ever returning to sums.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State both parts of the FTC.</li>
+    <li>Explain why the area function's derivative is $f$.</li>
+    <li>Evaluate definite integrals with antiderivatives.</li>
+    <li>Differentiate integrals with variable limits.</li>
+  </ul>
+</div>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>It would be astonishing if two operations invented for unrelated reasons —
+    slopes and areas — turned out to be exact inverses. They do. That is the
+    Fundamental Theorem, and it is why integration becomes "find an antiderivative"
+    instead of summing forever.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Because of it we can solve the differential equations that model nearly
+    everything — orbits, circuits, epidemics (SIR models), and option prices
+    (Black–Scholes). Without it those would be intractable.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Newton's own teacher, Isaac Barrow, glimpsed the connection geometrically;
+    Newton and Leibniz saw it in full. This is the theorem that turned calculus
+    from a collection of tricks into the central tool of science. The name is not
+    an exaggeration.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Part 1 — the area function</h3>
+  <div class="box thm"><div class="bl">Theorem <b>FTC, Part 1</b></div>
+    <p>If $f$ is continuous on $[a,b]$ and $F(x)=\displaystyle\int_a^x f(t)\,dt$,
+    then $F$ is differentiable on $(a,b)$ and $F'(x)=f(x)$. At the endpoints,
+    the corresponding one-sided derivative has the same value.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">$\dfrac{F(x+h)-F(x)}{h}=\dfrac1h\displaystyle\int_x^{x+h}f$ is
+    an average of $f$ over $[x,x+h]$.</div>
+    <div class="step">As $h\to0$, continuity forces that average to $f(x)$. So
+    $F'(x)=f(x)$. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Part 2 — evaluation</h3>
+  <div class="box thm"><div class="bl">Theorem <b>FTC, Part 2</b></div>
+    <p>If $f$ is continuous and $G$ is any antiderivative of $f$ (so $G'=f$), then
+    $$\int_a^b f(x)\,dx=G(b)-G(a).$$</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\displaystyle\int_1^e\frac{\ln x}{x}\,dx$. With $u=\ln x$ an antiderivative
+    is $\tfrac12(\ln x)^2$, so the value is $\tfrac12(1-0)=\tfrac12$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Variable limits and the chain rule</h3>
+  <div class="box thm"><div class="bl">Rule</div>
+    <p>$\dfrac{d}{dx}\displaystyle\int_{a}^{g(x)}f(t)\,dt=f\!\big(g(x)\big)\,g'(x).$
+    With both limits variable, differentiate each and subtract.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\dfrac{d}{dx}\displaystyle\int_{0}^{x^2}\cos t\,dt=\cos(x^2)\cdot2x.$</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• In Part 1 the variable is the <em>upper limit</em>; the dummy variable
+  inside is different ($t$, not $x$).<br>
+  • With a variable upper limit $g(x)$, don't forget the $g'(x)$ factor.<br>
+  • Part 2 needs $f$ continuous and $G$ a genuine antiderivative on $[a,b]$.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <p class="prac-intro">Problems adapted from the MAT137 question bank by Alfonso
+  Gracia-Saz, used under CC&nbsp;BY-SA&nbsp;4.0. Write full solutions before opening
+  the answer.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1 · FTC part 1</div>
+      <p>Compute $\dfrac{d}{dx}\displaystyle\int_{x}^{3}e^{-t^2}\,dt$.</p>
+      <details><summary>Answer</summary><div class="ans">The variable is the lower
+      limit, so it is $-e^{-x^2}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · FTC part 2</div>
+      <p>Evaluate $\displaystyle\int_0^{\pi}\sin x\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">$[-\cos x]_0^{\pi}=
+      -(-1)-(-1)=2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Chain rule</div>
+      <p>Find $F'(x)$ if $F(x)=\displaystyle\int_{1}^{x^3}\frac{dt}{1+t^2}$.</p>
+      <details><summary>Answer</summary><div class="ans">
+      $\dfrac{1}{1+x^6}\cdot3x^2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Recover f</div>
+      <p>If $\displaystyle\int_0^x f(t)\,dt=x\,e^{x}$, find $f$.</p>
+      <details><summary>Answer</summary><div class="ans">Differentiate both sides:
+      $f(x)=e^x+xe^x=(1+x)e^x$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Both limits</div>
+      <p>Find $F'(x)$ for $F(x)=\displaystyle\int_{2x}^{x^2}\frac{dt}{1+t^2}$.</p>
+      <details><summary>Answer</summary><div class="ans">Differentiate each limit:
+      $F'(x)=\dfrac{2x}{1+x^4}-\dfrac{2}{1+4x^2}.$</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Evaluate</div>
+      <p>Evaluate $\displaystyle\int_{\pi/4}^{\pi/3}\sec^2x\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">$[\tan x]_{\pi/4}^{\pi/3}
+      =\sqrt3-1.$</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Evaluate</div>
+      <p>Evaluate $\displaystyle\int_0^1\!\left[e^x+e^{-x}-\cos(2x)\right]dx$.</p>
+      <details><summary>Answer</summary><div class="ans">
+      $(e-1)+(1-e^{-1})-\tfrac{\sin2}{2}=e-e^{-1}-\tfrac{\sin2}{2}.$</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Recover f</div>
+      <p>Suppose $f$ is continuous and $\displaystyle\int_0^x e^t f(t)\,dt
+      =\frac{\sin x}{x^2+1}$ for all $x$. Find $f(x)$.</p>
+      <details><summary>Solution</summary><div class="ans">Differentiate: $e^x
+      f(x)=\dfrac{\cos x\,(x^2+1)-2x\sin x}{(x^2+1)^2}$, so $f(x)=e^{-x}\cdot$ that.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit07.html">← Unit 07<span>Definition of the integral</span></a>
+  <a class="n" href="unit09.html">Unit 09 →<span>Integration methods</span></a>
+</div>
+
+</div>
+<script src="../assets/mat137-practice.js"></script>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 6 — Change of Basis &amp; Similarity · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 06</div>
+<div class="unit-no reveal">Unit 06 · Algebra I</div>
+<h1 class="ch-title reveal">Change of Basis &amp; Similarity</h1>
+<p class="ch-intro reveal">The same linear map looks like different matrices in
+different bases. Similarity is the relationship between those matrices — and the
+key to finding a basis where the map is simple.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>A clumsy matrix can become diagonal in the right basis. Change of basis is
+    how we hunt for that better viewpoint, and similarity tells us which matrices
+    represent the same map.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Picking a better basis is the whole idea behind PCA, Fourier methods, and
+    decoupling systems of differential equations in engineering and finance.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>The search for the "best" basis for a given map leads straight to eigenvalues
+    and the diagonalization problem of Unit 9 — and, when diagonalization fails, to
+    the Jordan form studied in MAT247.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Write a change-of-coordinates matrix.</li>
+    <li>Convert a map's matrix between bases.</li>
+    <li>Define similar matrices and list their shared invariants.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Change of coordinates</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>If $P$ has the new basis vectors as columns (in old coordinates), then old
+    coordinates $=P\cdot$(new coordinates). For an operator $T:V\to V$ using the
+    same basis change in domain and codomain,
+    $[T]_{\text{new}}=P^{-1}[T]_{\text{old}}P$. More generally, if $P$ changes
+    domain coordinates and $Q$ changes codomain coordinates, then
+    $[T]_{\text{new}}=Q^{-1}[T]_{\text{old}}P$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Similarity</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$A$ and $B$ are <em>similar</em> if $B=P^{-1}AP$ for some invertible $P$.
+    Similar matrices represent the same linear map in different bases.</p></div>
+  <div class="box thm"><div class="bl">Invariants</div>
+    <p>Similar matrices share determinant, trace, rank, characteristic polynomial,
+    and eigenvalues.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Mind the direction: $[T]_{\text{new}}=P^{-1}[T]_{\text{old}}P$, not the
+  reverse.<br>
+  • Similar is stronger than "same determinant"; it requires the conjugating
+  $P$.<br>
+  • Not every matrix is similar to a diagonal one (Unit 9).</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Are similar matrices guaranteed to have the same eigenvalues?</p>
+      <details><summary>Answer</summary><div class="ans">Yes — they share the
+      characteristic polynomial.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>If $B=P^{-1}AP$, relate $\det A$ and $\det B$.</p>
+      <details><summary>Answer</summary><div class="ans">Equal:
+      $\det B=\det(P)^{-1}\det A\det P=\det A$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Is the identity similar to any matrix besides itself?</p>
+      <details><summary>Answer</summary><div class="ans">No — $P^{-1}IP=I$ for all
+      $P$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit05.html">← Unit 05<span>Rank–nullity &amp; matrices</span></a>
+  <a class="n" href="unit07.html">Unit 07 →<span>Systems &amp; elementary operations</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

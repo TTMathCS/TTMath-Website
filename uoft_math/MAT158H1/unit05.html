@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 5 — The Three Hard Theorems · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 05</div>
+<div class="unit-no reveal">Unit 05 · Analysis 1A</div>
+<h1 class="ch-title reveal">The Three Hard Theorems</h1>
+<p class="ch-intro reveal">Intermediate Value, Boundedness, and Extreme Value —
+the theorems that make calculus work. Each looks obvious, and each genuinely needs
+the completeness of $\mathbb{R}$ from Unit 2.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>"A continuous function that changes sign has a root" and "a continuous
+    function on a closed interval attains a maximum" feel obvious — but they are
+    false without completeness, and proving them is the whole point of building
+    $\mathbb{R}$ carefully.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>The IVT guarantees that root-finding by bisection converges; the EVT
+    guarantees that optimization problems actually have a solution to find. Both
+    are silent assumptions in countless algorithms.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Bolzano proved the IVT rigorously in 1817, decades ahead of his time and
+    largely unread. The companion Bolzano–Weierstrass theorem (every bounded
+    sequence has a convergent subsequence) carries both their names.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State and prove the Intermediate Value Theorem.</li>
+    <li>State the Boundedness and Extreme Value theorems.</li>
+    <li>Use them to guarantee roots and extrema.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Intermediate Value Theorem</h3>
+  <div class="box thm"><div class="bl">Theorem <b>IVT</b></div>
+    <p>If $f$ is continuous on $[a,b]$ and $y$ lies between $f(a)$ and $f(b)$, then
+    $f(c)=y$ for some $c\in[a,b]$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">Suppose $f(a)&lt;0&lt;f(b)$. Let $c=\sup\{x:f(x)&lt;0\}$, which exists
+    by completeness.</div>
+    <div class="step">Continuity rules out $f(c)<0$ and $f(c)>0$, so $f(c)=0$. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Boundedness and Extreme Value</h3>
+  <div class="box thm"><div class="bl">Theorem <b>EVT</b></div>
+    <p>A continuous function on a closed bounded interval $[a,b]$ is bounded and
+    attains a maximum and a minimum value.</p></div>
+  <p>Both hypotheses are essential: $1/x$ on $(0,1]$ is continuous but unbounded;
+  $x$ on $(0,1)$ attains neither max nor min.</p>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• The interval must be closed <em>and</em> bounded for the EVT.<br>
+  • The IVT gives existence of $c$, not its value or uniqueness.<br>
+  • Continuity is required throughout — one jump can break everything.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Show $x^3-x-1=0$ has a real root.</p>
+      <details><summary>Answer</summary><div class="ans">$f(1)=-1<0$, $f(2)=5>0$;
+      by IVT a root lies in $(1,2)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Show any continuous $f:[0,1]\to[0,1]$ has a fixed point.</p>
+      <details><summary>Hint</summary><div class="ans">Apply the IVT to
+      $g(x)=f(x)-x$: $g(0)\ge0$, $g(1)\le0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Why does the EVT fail for $f(x)=x$ on $(0,1)$?</p>
+      <details><summary>Answer</summary><div class="ans">The interval is open; the
+      sup $1$ and inf $0$ are never attained.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit04.html">← Unit 04<span>Continuous functions</span></a>
+  <a class="n" href="unit06.html">Unit 06 →<span>Derivatives</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

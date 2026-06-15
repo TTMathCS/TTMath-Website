@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 3 — Limits · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 03</div>
+<div class="unit-no reveal">Unit 03 · Analysis 1A</div>
+<h1 class="ch-title reveal">Limits</h1>
+<p class="ch-intro reveal">The ε–δ definition, now as a tool you prove with, not
+just apply. In analysis every limit law is a theorem with a proof — and this is
+where you learn to build them.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>For two centuries calculus rested on infinitesimals nobody could define. The
+    ε–δ limit answered "what does <em>approaches</em> mean?" and made the whole
+    subject rigorous.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Every instantaneous rate is a limit, and the convergence of every numerical
+    algorithm is a limit. The ε–δ habit of "given a target tolerance, find the
+    needed precision" is exactly how error analysis works.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Berkeley mocked infinitesimals in 1734 as "the ghosts of departed
+    quantities." Cauchy and Weierstrass made ε–δ rigorous a century later;
+    Weierstrass then built a function continuous everywhere yet differentiable
+    nowhere.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State the ε–δ definition precisely.</li>
+    <li>Prove limits directly from the definition.</li>
+    <li>Prove the limit laws.</li>
+    <li>Use the squeeze theorem.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>The ε–δ definition</h3>
+  <div class="box def"><div class="bl">Definition <b>Limit</b></div>
+    <p>$\displaystyle\lim_{x\to a}f(x)=L$ means: $\forall\varepsilon>0\
+    \exists\delta>0$ such that $0<|x-a|<\delta\Rightarrow|f(x)-L|<\varepsilon$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Quadratic</b></div>
+    <p>Prove $\lim_{x\to2}x^2=4$. Restrict $\delta\le1$ so $|x+2|<5$; then take
+    $\delta=\min\{1,\varepsilon/5\}$ and $|x^2-4|=|x-2||x+2|<\varepsilon$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Limit laws, proved</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>If $\lim f=L$ and $\lim g=M$, then $\lim(f+g)=L+M$ and $\lim(fg)=LM$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea <b>of the sum law</b></div>
+    <div class="step">Given $\varepsilon$, pick $\delta_1,\delta_2$ making each of
+    $|f-L|,|g-M|<\varepsilon/2$.</div>
+    <div class="step">For $\delta=\min$, $|(f+g)-(L+M)|\le|f-L|+|g-M|<\varepsilon$
+    by the triangle inequality. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>The squeeze theorem</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>If $g\le f\le h$ near $a$ and $\lim g=\lim h=L$, then $\lim f=L$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\lim_{x\to0}x^2\sin(1/x)=0$, since $-x^2\le x^2\sin(1/x)\le x^2$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• $\delta$ may depend on $\varepsilon$ and $a$, never on $x$.<br>
+  • Bound the "extra" factor by first restricting $\delta\le1$.<br>
+  • The limit ignores the value $f(a)$ — that is the role of $0<|x-a|$.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Prove $\lim_{x\to1}(3x+2)=5$ from the definition.</p>
+      <details><summary>Solution</summary><div class="ans">$\delta=\varepsilon/3$:
+      $|(3x+2)-5|=3|x-1|<\varepsilon$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Prove the product law $\lim(fg)=LM$.</p>
+      <details><summary>Hint</summary><div class="ans">Write $fg-LM=f(g-M)+M(f-L)$;
+      bound $f$ near $a$ and use both limits.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Find $\lim_{x\to0}x\cos(1/x)$ with justification.</p>
+      <details><summary>Answer</summary><div class="ans">$0$, by squeeze
+      ($-|x|\le x\cos(1/x)\le|x|$).</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit02.html">← Unit 02<span>Real numbers &amp; LUB</span></a>
+  <a class="n" href="unit04.html">Unit 04 →<span>Continuous functions</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 4 — Linear Transformations · MAT240H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 04</div>
+<div class="unit-no reveal">Unit 04 · Algebra I</div>
+<h1 class="ch-title reveal">Linear Transformations</h1>
+<p class="ch-intro reveal">The maps that respect vector-space structure. They are the
+real subject of linear algebra — matrices are just the way we write them down once
+a basis is chosen.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Linearity — $T(av+bw)=aT(v)+bT(w)$ — is the structure-preserving condition.
+    Studying the maps, not just the spaces, is what gives linear algebra its
+    power.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Every layer of a neural network is a linear transformation followed by a
+    nonlinearity; rotations and projections in graphics are linear maps; so are the
+    transforms of signal processing.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>The shift from "matrix as array of numbers" to "matrix as a linear map in
+    coordinates" is the conceptual leap that organizes the whole subject and
+    generalizes to infinite dimensions in functional analysis.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Define a linear transformation and verify linearity.</li>
+    <li>Describe the null space and range.</li>
+    <li>See how a basis turns a map into a matrix.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Definition and examples</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$T:V\to W$ is linear if $T(av+bw)=aT(v)+bT(w)$ for all scalars $a,b$ and
+    vectors $v,w$. Then $T(0)=0$ automatically.</p></div>
+  <div class="box eg"><div class="bl">Examples</div>
+    <p>Differentiation $D:P\to P$, multiplication by a matrix, rotation of the
+    plane about the origin — all linear. Squaring is not.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Null space and range</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>The <em>null space</em> (kernel) is $\{v:T(v)=0\}$; the <em>range</em> is
+    $\{T(v):v\in V\}$. Both are subspaces.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Check both additivity and scalar-homogeneity for linearity.<br>
+  • $T(0)=0$ is necessary, not sufficient.<br>
+  • The matrix of $T$ depends on the chosen bases.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Is $T(x,y)=(x+y,\,2x)$ linear?</p>
+      <details><summary>Answer</summary><div class="ans">Yes — it is matrix
+      multiplication by $\left(\begin{smallmatrix}1&1\\2&0\end{smallmatrix}\right)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Is $T(x)=x+1$ linear?</p>
+      <details><summary>Answer</summary><div class="ans">No — $T(0)=1\ne0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Find the null space of $T(x,y)=(x+y,\,x+y)$.</p>
+      <details><summary>Answer</summary><div class="ans">$\{(x,-x)\}$, a line.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit03.html">← Unit 03<span>Bases &amp; dimension</span></a>
+  <a class="n" href="unit05.html">Unit 05 →<span>Rank–nullity &amp; matrices</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

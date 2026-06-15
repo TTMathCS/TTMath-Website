@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 6 — Derivatives · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 06</div>
+<div class="unit-no reveal">Unit 06 · Analysis 1A</div>
+<h1 class="ch-title reveal">Derivatives</h1>
+<p class="ch-intro reveal">The derivative as a limit, with every rule proved. In
+analysis we also care about the fine print: differentiable implies continuous, but
+not the reverse.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>The derivative captures the instantaneous rate of change — the exact slope
+    "right here" — which an average rate of change cannot.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Physics (velocity), economics (marginal cost), and above all machine
+    learning, where training a network is gradient descent — repeatedly following
+    derivatives downhill.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Newton and Leibniz discovered it independently and feuded over credit for a
+    century; Leibniz's $dy/dx$ notation won. Weierstrass's nowhere-differentiable
+    function showed continuity is strictly weaker than differentiability.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Compute derivatives from the limit definition.</li>
+    <li>Prove differentiable $\Rightarrow$ continuous.</li>
+    <li>Prove the product, quotient, and chain rules.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Definition</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$f'(a)=\displaystyle\lim_{h\to0}\frac{f(a+h)-f(a)}{h}$ when the limit
+    exists.</p></div>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>Differentiable at $a$ $\Rightarrow$ continuous at $a$. The converse fails:
+    $|x|$ is continuous but not differentiable at $0$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>The rules, proved</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>$(fg)'=f'g+fg'$ and $(f\circ g)'(x)=f'(g(x))g'(x)$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea <b>Product rule</b></div>
+    <div class="step">$\dfrac{f(x+h)g(x+h)-f(x)g(x)}{h}=\dfrac{f(x+h)-f(x)}{h}g(x+h)
+    +f(x)\dfrac{g(x+h)-g(x)}{h}.$</div>
+    <div class="step">Let $h\to0$, using continuity of $g$: $\to f'g+fg'$. ∎</div>
+  </div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• The difference quotient is a limit, not $0/0$.<br>
+  • Don't drop the inner factor $g'(x)$ in the chain rule.<br>
+  • Continuity does not imply differentiability.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>From the definition, find $f'(a)$ for $f(x)=\sqrt x$, $a>0$.</p>
+      <details><summary>Answer</summary><div class="ans">Rationalize:
+      $\dfrac{1}{2\sqrt a}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Prove differentiability at $a$ implies continuity at $a$.</p>
+      <details><summary>Hint</summary><div class="ans">$f(x)-f(a)=\frac{f(x)-f(a)}{x-a}
+      (x-a)\to f'(a)\cdot0=0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Show $|x|$ is not differentiable at $0$.</p>
+      <details><summary>Answer</summary><div class="ans">Left and right difference
+      quotients give $-1$ and $+1$; the limit does not exist.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit05.html">← Unit 05<span>The three hard theorems</span></a>
+  <a class="n" href="unit07.html">Unit 07 →<span>The Mean Value Theorem</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

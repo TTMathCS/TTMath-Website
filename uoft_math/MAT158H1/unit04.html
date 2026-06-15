@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 4 — Continuous Functions · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 04</div>
+<div class="unit-no reveal">Unit 04 · Analysis 1A</div>
+<h1 class="ch-title reveal">Continuous Functions</h1>
+<p class="ch-intro reveal">Continuity is "no sudden jumps," made precise with ε–δ.
+It is the hypothesis that powers the three hard theorems of the next unit.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Almost every useful theorem about functions assumes continuity. Pinning down
+    exactly what it means is what lets those theorems be proved rather than
+    believed.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Continuity is the "small change in input gives small change in output"
+    assumption behind stable control systems, well-posed physics models, and
+    convergent numerical methods.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Bolzano and Cauchy gave the modern definition in the early 1800s. Pathologies
+    soon followed — functions continuous only at a single point, or nowhere
+    differentiable — showing how much the precise definition was needed.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State continuity at a point in ε–δ form.</li>
+    <li>Prove that sums, products, and compositions stay continuous.</li>
+    <li>Decide continuity of a patched function.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Definition</h3>
+  <div class="box def"><div class="bl">Definition <b>Continuity</b></div>
+    <p>$f$ is continuous at $a$ if $\lim_{x\to a}f(x)=f(a)$; equivalently,
+    $\forall\varepsilon>0\ \exists\delta>0$ with $|x-a|<\delta\Rightarrow
+    |f(x)-f(a)|<\varepsilon$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Building continuous functions</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>Sums, products, quotients (nonzero denominator), and compositions of
+    continuous functions are continuous. Polynomials are continuous everywhere.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Composition</b></div>
+    <p>If $g$ is continuous at $a$ and $f$ at $g(a)$, then $f\circ g$ is continuous
+    at $a$ — chase the ε through $f$, then through $g$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Patched functions</h3>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$f(x)=x\sin(1/x)$ for $x\ne0$, $f(0)=0$. Since $|f(x)|\le|x|\to0$,
+    $\lim_{x\to0}f=0=f(0)$, so $f$ is continuous at $0$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Continuity needs the value $f(a)$ to exist and equal the limit.<br>
+  • A removable discontinuity (limit exists $\ne f(a)$) is still a discontinuity.<br>
+  • Continuity of $f\circ g$ needs $f$ continuous at $g(a)$, not at $a$.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Where is $f(x)=\dfrac{x^2-1}{x-1}$ (with $f(1)=2$) continuous?</p>
+      <details><summary>Answer</summary><div class="ans">Everywhere: for $x\ne1$ it
+      equals $x+1$, and the limit at $1$ is $2=f(1)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Prove the sum of two functions continuous at $a$ is continuous at $a$.</p>
+      <details><summary>Hint</summary><div class="ans">Apply the sum law for
+      limits; the limit equals $f(a)+g(a)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Is the Dirichlet function (1 on rationals, 0 on irrationals) continuous
+      anywhere?</p>
+      <details><summary>Answer</summary><div class="ans">Nowhere — every interval
+      contains both rationals and irrationals, so no limit exists.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit03.html">← Unit 03<span>Limits</span></a>
+  <a class="n" href="unit05.html">Unit 05 →<span>The three hard theorems</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

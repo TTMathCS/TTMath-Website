@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 7 — The Mean Value Theorem · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 07</div>
+<div class="unit-no reveal">Unit 07 · Analysis 1A</div>
+<h1 class="ch-title reveal">The Mean Value Theorem</h1>
+<p class="ch-intro reveal">The theorem that turns local information about $f'$ into
+global information about $f$. In analysis it is the lever for nearly every
+"derivative controls the function" result.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>It is the rigorous bridge from a derivative at one point to behaviour across
+    a whole interval — why $f'=0$ everywhere forces $f$ constant, a fact we cannot
+    prove without it.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Average-speed cameras use it literally; numerical analysis uses it for error
+    bounds; differential equations use it for uniqueness of solutions.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Named partly for Rolle (1691), himself an early critic of calculus; Cauchy
+    gave the modern statement and the generalized (Cauchy) Mean Value Theorem
+    behind L'Hôpital's rule.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Prove Rolle's theorem and the MVT.</li>
+    <li>Deduce monotonicity and constancy from the sign of $f'$.</li>
+    <li>Prove inequalities with the MVT.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Rolle and the MVT</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Rolle</b></div>
+    <p>If $f$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $f(a)=f(b)$,
+    then $f'(c)=0$ for some $c\in(a,b)$.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>MVT</b></div>
+    <p>Under the same smoothness, $f'(c)=\dfrac{f(b)-f(a)}{b-a}$ for some
+    $c\in(a,b)$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">Subtract the secant: $g(x)=f(x)-\big[f(a)+\tfrac{f(b)-f(a)}
+    {b-a}(x-a)\big]$ has $g(a)=g(b)=0$.</div>
+    <div class="step">Rolle gives $g'(c)=0$, which is the MVT. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Consequences</h3>
+  <div class="box thm"><div class="bl">Corollary</div>
+    <p>On an interval: $f'=0\Rightarrow f$ constant; $f'>0\Rightarrow f$ strictly
+    increasing; $f'=g'\Rightarrow f-g$ constant.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Need continuity on $[a,b]$ and differentiability on $(a,b)$ — check both.<br>
+  • The MVT gives existence of $c$, not its value.<br>
+  • "$f'(x_0)>0$" at one point does not make $f$ increasing near $x_0$.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Prove: $f'=0$ on an interval $\Rightarrow f$ constant there.</p>
+      <details><summary>Solution</summary><div class="ans">For any $x_1&lt;x_2$, MVT
+      gives $f(x_2)-f(x_1)=f'(c)(x_2-x_1)=0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Show $|\sin a-\sin b|\le|a-b|$.</p>
+      <details><summary>Hint</summary><div class="ans">MVT on $\sin$:
+      $|\cos c|\,|a-b|\le|a-b|$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Prove $e^x\ge1+x$ for all $x$.</p>
+      <details><summary>Hint</summary><div class="ans">$h(x)=e^x-1-x$ has $h(0)=0$
+      and $h'$ changes sign at $0$, a global min.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit06.html">← Unit 06<span>Derivatives</span></a>
+  <a class="n" href="unit08.html">Unit 08 →<span>Inverse functions</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

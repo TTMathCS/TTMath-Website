@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>U of T Mathematics · Course Guide Library</title>
+<link rel="stylesheet" href="assets/catalog.css">
+<script src="assets/theme.js"></script>
+</head>
+<body>
+<div class="catalog-shell">
+  <header class="hero">
+    <div class="kicker">U of T Mathematics · Course Guide Library</div>
+    <h1>Build the proof skills, <em>course by course.</em></h1>
+    <p class="lede">A local, searchable library of detailed course guides. Each
+    chapter includes definitions, theorems, worked reasoning, common pitfalls,
+    and practice designed for mastery.</p>
+
+    <div class="stats" aria-label="Library summary">
+      <div><strong id="course-count">4</strong><span>course guides</span></div>
+      <div><strong id="chapter-count">42</strong><span>detailed chapters</span></div>
+      <div><strong>Local</strong><span>first-party files only</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="catalog-section" aria-labelledby="catalog-title">
+      <div class="section-heading">
+        <div>
+          <span class="section-number">01</span>
+          <h2 id="catalog-title">Course Catalog</h2>
+        </div>
+        <p id="result-count" aria-live="polite">Showing all courses.</p>
+      </div>
+
+      <div class="catalog-tools">
+        <label for="course-search">Search courses and topics</label>
+        <input id="course-search" type="search" autocomplete="off"
+          placeholder="Try limits, proofs, series, or algebra">
+        <div id="course-filters" class="filters" aria-label="Filter by subject"></div>
+      </div>
+
+      <div id="course-grid" class="course-grid"></div>
+
+      <noscript>
+        <div class="noscript-list">
+          <p>JavaScript is disabled. Open a course directly:</p>
+          <a href="MAT137/index.html">MAT137 · Calculus with Proofs</a>
+          <a href="MAT158H1/index.html">MAT158H1 · Analysis 1A</a>
+          <a href="MAT159H1/index.html">MAT159H1 · Analysis 1B</a>
+          <a href="MAT240H1/index.html">MAT240H1 · Algebra I</a>
+        </div>
+      </noscript>
+    </section>
+
+    <section class="reference-section" aria-labelledby="reference-title">
+      <div class="section-heading">
+        <div>
+          <span class="section-number">02</span>
+          <h2 id="reference-title">Library Notes</h2>
+        </div>
+      </div>
+      <div class="reference-grid">
+        <a href="comprehensive_guide.html">
+          <span>Study map</span>
+          <strong>Comprehensive Guide</strong>
+          <p>See how the courses connect and how to sequence the material.</p>
+        </a>
+        <a href="course_changes.html">
+          <span>Course context</span>
+          <strong>Course Changes</strong>
+          <p>Track naming and curriculum changes reflected in the guides.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="add-section" aria-labelledby="add-title">
+      <span class="section-number">03</span>
+      <h2 id="add-title">Adding A Future Course</h2>
+      <p>Create its folder and course pages, then add one object to
+      <code>assets/courses.js</code>. The catalog automatically adds the card,
+      subject filter, search terms, and updated totals.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>U OF T MATHEMATICS · LOCAL COURSE LIBRARY</span>
+    <span>NO ONLINE RUNTIME DEPENDENCIES</span>
+  </footer>
+</div>
+
+<script src="assets/courses.js"></script>
+<script src="assets/catalog.js"></script>
+</body>
+</html>

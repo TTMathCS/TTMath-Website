@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 2 — Improper Integrals · MAT159H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 02</div>
+<div class="unit-no reveal">Unit 02 · Analysis 1B</div>
+<h1 class="ch-title reveal">Improper Integrals</h1>
+<p class="ch-intro reveal">Integrals over infinite intervals, or of functions that
+blow up, defined carefully as limits. The recurring question: does the limit
+exist?</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Many vital integrals run to infinity or have a singularity — probability
+    distributions, decaying signals. Improper integrals give them a rigorous
+    meaning.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>The Gaussian integral $\int_{-\infty}^{\infty}e^{-x^2}\,dx=\sqrt{\pi}$
+    normalizes the bell curve; Laplace and Fourier transforms over infinite domains
+    power signal processing and control engineering.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Torricelli's "Gabriel's Horn" (1640s) has finite volume but infinite surface
+    area — fillable with paint, yet impossible to paint. A vivid warning that
+    infinity defies intuition.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Evaluate type I (infinite interval) and type II (singular) integrals.</li>
+    <li>Apply the $p$-test.</li>
+    <li>Use the comparison test.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Definitions</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$\int_a^\infty f=\lim_{t\to\infty}\int_a^t f$; if $f$ blows up at $b$,
+    $\int_a^b f=\lim_{t\to b^-}\int_a^t f$. Existence of the limit is
+    convergence.</p></div>
+  <div class="box thm"><div class="bl">$p$-test</div>
+    <p>$\int_1^\infty x^{-p}\,dx$ converges iff $p>1$; $\int_0^1 x^{-p}\,dx$
+    converges iff $p<1$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Comparison</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>If $0\le f\le g$ and $\int g$ converges, so does $\int f$; if $\int f$
+    diverges, so does $\int g$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\int_1^\infty\dfrac{dx}{x^2+1}$ converges, by comparison with $x^{-2}$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Always rewrite as a limit; never substitute $\infty$ directly.<br>
+  • Watch for a hidden singularity inside the interval.<br>
+  • Comparison needs nonnegative functions.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>$\int_0^\infty e^{-x}\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">$1$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Does $\int_1^\infty\dfrac{dx}{x}$ converge?</p>
+      <details><summary>Answer</summary><div class="ans">No; $\ln t\to\infty$
+      ($p=1$).</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Converge or diverge: $\int_1^\infty\dfrac{2+\sin x}{x^2}\,dx$?</p>
+      <details><summary>Hint</summary><div class="ans">$\le 3/x^2$; converges.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit01.html">← Unit 01<span>Integration techniques</span></a>
+  <a class="n" href="unit03.html">Unit 03 →<span>Sequences &amp; Cauchy sequences</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

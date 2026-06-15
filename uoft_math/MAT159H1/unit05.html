@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 5 — Infinite Series · MAT159H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 05</div>
+<div class="unit-no reveal">Unit 05 · Analysis 1B</div>
+<h1 class="ch-title reveal">Infinite Series</h1>
+<p class="ch-intro reveal">Adding infinitely many numbers — when it makes sense and
+how to test it. The convergence tests here are the working vocabulary for the
+power series that close the course.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>How can an infinite sum be finite, and when? Series make this precise and let
+    functions be represented as sums.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Calculators sum series to find $\sin$, $e^x$, and $\pi$; Fourier series
+    compress audio and images (MP3, JPEG); present value in finance is an infinite
+    sum.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Euler stunned everyone in 1734 with $1+\tfrac14+\tfrac19+\cdots=
+    \tfrac{\pi^2}{6}$. The deepest open problem in mathematics — the Riemann
+    Hypothesis, a one-million-dollar prize — is a statement about a series tied to the primes.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Define convergence by partial sums; sum a geometric series.</li>
+    <li>Apply the divergence, comparison, integral, ratio, and root tests.</li>
+    <li>Use the alternating series test and tell absolute from conditional.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Convergence and the basic tests</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$\sum a_n$ converges if the partial sums $s_N=\sum_{n\le N}a_n$ converge.
+    Geometric: $\sum_{n\ge0}r^n=\tfrac{1}{1-r}$ for $|r|<1$.</p></div>
+  <div class="box thm"><div class="bl">Tests</div>
+    <p>Divergence ($a_n\not\to0\Rightarrow$ diverges), comparison, integral, ratio
+    ($L=\lim|a_{n+1}/a_n|<1$), and root.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Alternating and absolute convergence</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>If $b_n\downarrow0$, then $\sum(-1)^n b_n$ converges. If $\sum|a_n|$
+    converges the series converges <em>absolutely</em>; converging without that is
+    <em>conditional</em>.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\sum\tfrac{(-1)^n}{n}$ converges conditionally; $\sum\tfrac1n$ diverges.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• $a_n\to0$ does not imply convergence (harmonic series).<br>
+  • Ratio test is inconclusive at $L=1$ — switch tests.<br>
+  • Check both conditions of the alternating test.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Does $\sum\dfrac{1}{n^2+1}$ converge?</p>
+      <details><summary>Answer</summary><div class="ans">Yes, comparison with
+      $1/n^2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Test $\sum\dfrac{n}{2^n}$.</p>
+      <details><summary>Answer</summary><div class="ans">Ratio $\to\tfrac12<1$;
+      converges.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Absolute or conditional: $\sum\dfrac{(-1)^n}{\sqrt n}$?</p>
+      <details><summary>Answer</summary><div class="ans">Conditional.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit04.html">← Unit 04<span>Taylor's theorem</span></a>
+  <a class="n" href="unit06.html">Unit 06 →<span>Uniform convergence</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

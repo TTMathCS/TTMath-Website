@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 6 — Applications of Derivatives &amp; Limits · MAT137</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT137</a><span>/</span>Unit 06</div>
+<div class="unit-no reveal">Unit 06 · Term 1</div>
+<h1 class="ch-title reveal">Applications of Derivatives &amp; Limits</h1>
+<p class="ch-intro reveal">Putting the derivative to work: shape of graphs,
+optimization, and L'Hôpital's rule for the indeterminate limits the algebra of
+limits can't reach.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Use the first and second derivatives to describe a graph.</li>
+    <li>Solve optimization problems with justification.</li>
+    <li>Apply L'Hôpital's rule correctly.</li>
+    <li>Find limits at infinity and asymptotes.</li>
+  </ul>
+</div>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>A huge share of real problems are "find the best" — biggest, cheapest,
+    fastest. Derivatives locate those optima. L'Hôpital's rule rescues limits that
+    collapse to the meaningless $0/0$.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Optimization is the engine of operations research, logistics, engineering
+    design, and machine learning (training a model is minimizing a loss function).
+    The same calculus that sketches a curve also routes delivery trucks and tunes
+    models.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>"L'Hôpital's rule" was not his. Johann Bernoulli discovered it, and the
+    Marquis de l'Hôpital paid for the right to publish it under his own name in
+    1696 — one of mathematics' most famous misattributions, now impossible to
+    undo.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Monotonicity and concavity</h3>
+  <div class="box thm"><div class="bl">Tests</div>
+    <p>On an interval: $f'>0\Rightarrow$ increasing, $f'&lt;0\Rightarrow$ decreasing.
+    $f''>0\Rightarrow$ concave up, $f''&lt;0\Rightarrow$ concave down. An
+    <em>inflection point</em> is where concavity changes.</p></div>
+  <p>The <strong>first derivative test</strong> classifies a critical point by the
+  sign change of $f'$; the <strong>second derivative test</strong> uses $f''(c)$:
+  positive means local min, negative means local max.</p>
+</div>
+
+<div class="block reveal">
+  <h3>Curve sketching</h3>
+  <p>A reliable routine: domain → intercepts and symmetry → asymptotes → $f'$ for
+  increase/decrease and extrema → $f''$ for concavity and inflections → plot.</p>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>For $f(x)=\dfrac{x}{1+x^2}$: $f'(x)=\dfrac{1-x^2}{(1+x^2)^2}$, so $f$
+    increases on $(-1,1)$ and decreases outside; max at $x=1$, min at $x=-1$;
+    horizontal asymptote $y=0$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Optimization</h3>
+  <div class="box thm"><div class="bl">Closed-interval method</div>
+    <p>A continuous $f$ on $[a,b]$ attains its extremes at critical points or
+    endpoints. Evaluate $f$ at all of them and compare.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>Maximize the area of a rectangle with perimeter $20$.</p>
+    <div class="step">Sides $x$ and $10-x$; area $A(x)=x(10-x)=10x-x^2$.</div>
+    <div class="step">$A'(x)=10-2x=0\Rightarrow x=5$; $A''&lt;0$, so a max. The
+    square $5\times5$ wins, area $25$.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>L'Hôpital's rule</h3>
+  <div class="box thm"><div class="bl">Theorem <b>L'Hôpital</b></div>
+    <p>Suppose $f$ and $g$ are differentiable on a punctured interval near the
+    limit point, $g'(x)\ne0$ there, and $f,g$ both tend to $0$ or both diverge in
+    magnitude. If $\lim\frac{f'}{g'}=L$ exists (possibly infinite), then, under
+    these hypotheses, $\lim\frac{f}{g}=L$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\displaystyle\lim_{x\to1}\frac{\ln x}{x-1}\overset{\frac00}{=}
+    \lim_{x\to1}\frac{1/x}{1}=1.$ &nbsp; And $\displaystyle\lim_{x\to\infty}
+    \frac{\ln x}{x}\overset{\frac{\infty}{\infty}}{=}\lim_{x\to\infty}
+    \frac{1/x}{1}=0.$</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Limits at infinity and asymptotes</h3>
+  <p>$\lim_{x\to\infty}f(x)=L$ gives a horizontal asymptote $y=L$. For rational
+  functions, compare leading degrees. Vertical asymptotes occur where the function
+  blows up (often a zero denominator with nonzero numerator).</p>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• L'Hôpital applies only to $\tfrac00$ and $\tfrac{\infty}{\infty}$. Rewrite
+  other forms ($0\cdot\infty$, $\infty-\infty$, $1^\infty$) first.<br>
+  • Don't differentiate the quotient with the quotient rule — differentiate top
+  and bottom <em>separately</em>.<br>
+  • Always justify a max/min (endpoints, sign of $f'$ or $f''$), don't just find a
+  critical point.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <p class="prac-intro">Problems adapted from the MAT137 question bank by Alfonso
+  Gracia-Saz, used under CC&nbsp;BY-SA&nbsp;4.0. Write full solutions before opening
+  the answer.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1 · Closed interval</div>
+      <p>Find the absolute max and min of $f(x)=x^3-3x$ on $[-2,2]$.</p>
+      <details><summary>Solution</summary><div class="ans">Critical points
+      $x=\pm1$. Values: $f(-2)=-2$, $f(-1)=2$, $f(1)=-2$, $f(2)=2$. Max $2$, min
+      $-2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · L'Hôpital</div>
+      <p>Evaluate $\lim_{x\to0}\dfrac{e^x-1-x}{x^2}$.</p>
+      <details><summary>Answer</summary><div class="ans">Apply L'Hôpital twice:
+      $\to\lim\frac{e^x-1}{2x}\to\lim\frac{e^x}{2}=\tfrac12$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Optimization</div>
+      <p>A box with square base and no top has volume $32$. Minimize its surface
+      area.</p>
+      <details><summary>Solution</summary><div class="ans">$S=x^2+4xh$ with
+      $x^2h=32$, so $S(x)=x^2+128/x$ for $x>0$.
+      $S'=2x-128/x^2=0\Rightarrow x=4$, $h=2$. Since
+      $S''=2+256/x^3>0$ and $S\to\infty$ at both ends of its domain, this is the
+      global minimum.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Indeterminate form</div>
+      <p>Evaluate $\lim_{x\to0^+}x\ln x$.</p>
+      <details><summary>Answer</summary><div class="ans">Rewrite as
+      $\dfrac{\ln x}{1/x}$ ($\tfrac{-\infty}{\infty}$); L'Hôpital gives
+      $\dfrac{1/x}{-1/x^2}=-x\to0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Related rates</div>
+      <p>A pebble drops into a lake, making a circular ripple. When the radius is
+      $2$ m and growing at $10$ cm/s, how fast is the enclosed area growing?</p>
+      <details><summary>Solution</summary><div class="ans">$A=\pi r^2$, so
+      $\dfrac{dA}{dt}=2\pi r\dfrac{dr}{dt}=2\pi(2)(0.1)=0.4\pi\approx1.26$ m²/s.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Related rates</div>
+      <p>A $10$ m ladder leans on a wall and slides. When the top is $8$ m up and
+      dropping at $1$ m/s, how fast is the foot sliding out?</p>
+      <details><summary>Solution</summary><div class="ans">$x^2+y^2=100$; at
+      $y=8$, $x=6$. Differentiate: $x\,x'+y\,y'=0$, so
+      $6x'+8(-1)=0\Rightarrow x'=\tfrac43$ m/s.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Optimization</div>
+      <p>A farmer has $300$ m of fence for a rectangular field plus one fence
+      dividing it equally down the middle. What is the largest possible area?</p>
+      <details><summary>Solution</summary><div class="ans">With the divider parallel
+      to the width $W$: $2L+3W=300$, area $A=LW=\tfrac{W(300-3W)}2$. Then
+      $A'=150-3W=0\Rightarrow W=50$, $L=75$, so $A=3750$ m².</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Indeterminate power</div>
+      <p>Evaluate $\lim_{x\to\infty}x^{1/x}$.</p>
+      <details><summary>Answer</summary><div class="ans">Take logs:
+      $\ln\!\left(x^{1/x}\right)=\dfrac{\ln x}{x}\to0$ (L'Hôpital), so the limit is
+      $e^0=1$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit05.html">← Unit 05<span>The Mean Value Theorem</span></a>
+  <a class="n" href="unit07.html">Unit 07 →<span>The definition of the integral</span></a>
+</div>
+
+</div>
+<script src="../assets/mat137-practice.js"></script>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

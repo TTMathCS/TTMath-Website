@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 1 — Logic, Sets &amp; Proof · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 01</div>
+<div class="unit-no reveal">Unit 01 · Analysis 1A</div>
+<h1 class="ch-title reveal">Logic, Sets &amp; Proof</h1>
+<p class="ch-intro reveal">Analysis begins with airtight reasoning. This unit is the
+proof language — quantifiers and proof methods — on which every later theorem
+about the real numbers rests.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>In analysis "obvious" is not allowed. Statements must be proved from axioms,
+    because intuition about infinity and limits is famously unreliable — exactly
+    where 18th-century calculus kept going wrong.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>This is the logic that runs computers and the basis of proof assistants like
+    Lean and Coq, now used to verify major theorems and safety-critical software
+    line by line.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>The 19th-century drive for rigour came precisely because calculus had been
+    caught being sloppy. Boole, Cantor, Russell, and Gödel turned reasoning itself
+    into an object of study; Gödel's 1931 theorems showed every rich system has
+    true statements it cannot prove.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Read and negate statements with $\forall$ and $\exists$.</li>
+    <li>Use the contrapositive and proof by contradiction.</li>
+    <li>Prove statements by induction and strong induction.</li>
+    <li>Write a clean proof and spot a broken one.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Quantifiers and negation</h3>
+  <div class="box def"><div class="bl">Definition <b>Quantifiers</b></div>
+    <p>$\forall x\in S,\ P(x)$: true for every $x$. $\exists x\in S,\ P(x)$: true
+    for at least one $x$. Negation flips each quantifier and negates the inside:
+    $\neg(\forall x\,P)\equiv\exists x\,\neg P$.</p></div>
+  <p>Order matters: $\forall x\,\exists y$ and $\exists y\,\forall x$ usually mean
+  different things. Mastering this is the whole game in ε–δ arguments.</p>
+</div>
+
+<div class="block reveal">
+  <h3>Proof methods</h3>
+  <div class="box thm"><div class="bl">The toolkit</div>
+    <p>Direct ($P\Rightarrow Q$), contrapositive ($\neg Q\Rightarrow\neg P$),
+    contradiction (assume false, derive an impossibility), and induction (for all
+    $n\in\mathbb{N}$). An implication and its contrapositive are always
+    equivalent.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Contradiction</b></div>
+    <p>$\sqrt2$ is irrational: if $\sqrt2=p/q$ in lowest terms, then $p^2=2q^2$
+    makes $p$ even, then $q$ even — contradicting "lowest terms."</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Induction</h3>
+  <div class="box thm"><div class="bl">Principle</div>
+    <p>If $P(1)$ holds and $P(k)\Rightarrow P(k+1)$ for all $k$, then $P(n)$ holds
+    for all $n$. Strong induction may assume $P(1),\dots,P(k)$ all at once.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$1+2+\cdots+n=\tfrac{n(n+1)}{2}$: base $n=1$ holds; the step adds $(k+1)$ to
+    $\tfrac{k(k+1)}{2}$ to get $\tfrac{(k+1)(k+2)}{2}$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Proving the converse by accident — check the direction.<br>
+  • One counterexample kills a $\forall$; one example proves an $\exists$.<br>
+  • In induction, never skip the base case or forget to use the hypothesis.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Prove: if $x^2$ is irrational then $x$ is irrational.</p>
+      <details><summary>Solution</summary><div class="ans">Contrapositive: $x$
+      rational $\Rightarrow x^2=p^2/q^2$ rational.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Negate: "$\exists M\ \forall n,\ a_n\le M$."</p>
+      <details><summary>Answer</summary><div class="ans">"$\forall M\ \exists n,\
+      a_n>M$" — the sequence is unbounded above.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Prove $n<2^n$ for all $n\in\mathbb{N}$ by induction.</p>
+      <details><summary>Hint</summary><div class="ans">Step: $k+1<2^k+1\le
+      2^k+2^k=2^{k+1}$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="index.html">← Index<span>All chapters</span></a>
+  <a class="n" href="unit02.html">Unit 02 →<span>Real numbers &amp; least upper bounds</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

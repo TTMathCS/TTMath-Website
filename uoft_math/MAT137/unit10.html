@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 10 — Applications of the Integral · MAT137</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT137</a><span>/</span>Unit 10</div>
+<div class="unit-no reveal">Unit 10 · Term 2</div>
+<h1 class="ch-title reveal">Applications of the Integral</h1>
+<p class="ch-intro reveal">Once the integral is "add up infinitely many tiny
+pieces," geometric and physical quantities follow: area, volume, average value,
+and arc length. The skill is setting up the right integral.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Find the area between two curves.</li>
+    <li>Compute volumes of revolution by disks/washers and shells.</li>
+    <li>Find the average value of a function.</li>
+    <li>Set up an arc-length integral.</li>
+  </ul>
+</div>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Once you can integrate, geometry and physics open up — areas, volumes,
+    lengths, and averages all become single integrals.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Volumes of revolution show up in manufacturing and 3D printing; CT and MRI
+    scanners reconstruct the body by integrating along rays; arc length is path
+    planning and GPS. A signal's average value gives its DC component, while its
+    RMS value is the square root of the average of its square.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Archimedes found the volume of a sphere this way and was so proud he asked
+    for a sphere-in-a-cylinder on his tombstone. In 1615 Kepler worked out the
+    volumes of wine barrels — an early, very practical burst of integration.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Area between curves</h3>
+  <div class="box thm"><div class="bl">Formula</div>
+    <p>If $f\ge g$ on $[a,b]$, the area between them is
+    $\displaystyle\int_a^b\big(f(x)-g(x)\big)\,dx.$</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>Between $y=x^2$ and $y=2-x^2$: they meet at $x=\pm1$, and
+    $\int_{-1}^{1}(2-2x^2)\,dx=\big[2x-\tfrac{2}{3}x^3\big]_{-1}^{1}=\tfrac83.$</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Volumes of revolution</h3>
+  <div class="box thm"><div class="bl">Two methods</div>
+    <p>Disks/washers (slices $\perp$ to the axis):
+    $V=\displaystyle\int_a^b\pi\big(R^2-r^2\big)\,dx.$ &nbsp; Shells (slices
+    $\parallel$): for a region in $x\ge0$ rotated about the $y$-axis,
+    $V=\displaystyle\int_a^b 2\pi x\,h(x)\,dx$. In general, use each slice's
+    distance from the axis as its radius.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>Revolve $y=\sqrt{x}$, $0\le x\le4$, about the $x$-axis:
+    $V=\int_0^4\pi(\sqrt{x})^2\,dx=\pi\int_0^4 x\,dx=8\pi.$</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Average value</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>The average value of $f$ on $[a,b]$ is
+    $\bar f=\dfrac{1}{b-a}\displaystyle\int_a^b f.$ The Mean Value Theorem for
+    integrals says a continuous $f$ attains this value somewhere.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Arc length</h3>
+  <div class="box thm"><div class="bl">Formula</div>
+    <p>If $f'$ is continuous on $[a,b]$, the length of $y=f(x)$ over $[a,b]$ is
+    $L=\displaystyle\int_a^b\sqrt{1+\big(f'(x)\big)^2}\,dx.$</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Find intersection points before integrating; check which curve is on top.<br>
+  • For washers, subtract the inner radius squared, not the radii then squared.<br>
+  • Match the slicing method to the axis to avoid impossible integrals.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <p class="prac-intro">Problems adapted from the MAT137 question bank by Alfonso
+  Gracia-Saz, used under CC&nbsp;BY-SA&nbsp;4.0. Write full solutions before opening
+  the answer.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1 · Area</div>
+      <p>Find the area between $y=x$ and $y=x^2$.</p>
+      <details><summary>Answer</summary><div class="ans">They meet at $0$ and $1$;
+      $\int_0^1(x-x^2)\,dx=\tfrac12-\tfrac13=\tfrac16.$</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Shells</div>
+      <p>Revolve $y=x^2$, $0\le x\le1$, about the $y$-axis using shells.</p>
+      <details><summary>Answer</summary><div class="ans">$V=\int_0^1 2\pi x\cdot
+      x^2\,dx=2\pi\cdot\tfrac14=\tfrac{\pi}{2}.$</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Average value</div>
+      <p>Average value of $f(x)=\sin x$ on $[0,\pi]$.</p>
+      <details><summary>Answer</summary><div class="ans">$\dfrac{1}{\pi}\int_0^\pi
+      \sin x\,dx=\dfrac{2}{\pi}.$</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Disk formula</div>
+      <p>Let $f$ be positive on $[a,b]$. Write the volume when the region under $f$
+      is rotated about the $x$-axis.</p>
+      <details><summary>Answer</summary><div class="ans">$V=\displaystyle\int_a^b
+      \pi\,[f(x)]^2\,dx$ — a stack of disks of radius $f(x)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Sphere</div>
+      <p>Rotate the circle $x^2+y^2=R^2$ about the $x$-axis and find the sphere's
+      volume by disks.</p>
+      <details><summary>Solution</summary><div class="ans">$V=\int_{-R}^{R}
+      \pi(R^2-x^2)\,dx=\pi\!\left[R^2x-\tfrac{x^3}{3}\right]_{-R}^{R}
+      =\tfrac43\pi R^3.$</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Pyramid</div>
+      <p>Find the volume of a pyramid of height $H$ with a square base of side $L$,
+      using slices parallel to the base.</p>
+      <details><summary>Solution</summary><div class="ans">A slice a distance $y$
+      from the apex has side $Ly/H$, so $V=\int_0^H\!\left(\tfrac{Ly}{H}\right)^2dy
+      =\tfrac{L^2H}{3}.$</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Washer</div>
+      <p>Rotate the region between $y=\sqrt{x}$ and $y=x$ about the $x$-axis.</p>
+      <details><summary>Answer</summary><div class="ans">$V=\int_0^1\pi\!\left[x-x^2
+      \right]dx=\pi\!\left(\tfrac12-\tfrac13\right)=\tfrac{\pi}{6}.$</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Washer</div>
+      <p>Rotate the first-quadrant region between $y=x^3$ and $y=\sqrt{32x}$ about
+      the $x$-axis.</p>
+      <details><summary>Solution</summary><div class="ans">They meet at $x=2$
+      ($x^5=32$). $V=\int_0^2\pi\!\left[32x-x^6\right]dx
+      =\pi\!\left[16x^2-\tfrac{x^7}{7}\right]_0^2=\tfrac{320\pi}{7}.$</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit09.html">← Unit 09<span>Integration methods</span></a>
+  <a class="n" href="unit11.html">Unit 11 →<span>Sequences</span></a>
+</div>
+
+</div>
+<script src="../assets/mat137-practice.js"></script>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

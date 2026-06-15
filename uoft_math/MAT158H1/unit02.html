@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 2 — Real Numbers &amp; Least Upper Bounds · MAT158H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 02</div>
+<div class="unit-no reveal">Unit 02 · Analysis 1A</div>
+<h1 class="ch-title reveal">The Real Numbers &amp; Least Upper Bounds</h1>
+<p class="ch-intro reveal">What separates $\mathbb{R}$ from $\mathbb{Q}$ is
+completeness — no gaps. The least upper bound axiom is the single foundation every
+deep theorem of analysis stands on.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>$\mathbb{Q}$ has holes — there is no rational whose square is $2$. Analysis
+    needs a number line with no gaps so that limits actually land somewhere.
+    Completeness is exactly that guarantee.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Floating-point arithmetic and numerical analysis constantly wrestle with the
+    gap between true real numbers and what a computer can store. Understanding
+    completeness clarifies why rounding errors and convergence behave as they
+    do.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Dedekind (with "cuts") and Cantor (with Cauchy sequences) independently
+    constructed $\mathbb{R}$ in the 1870s — finally giving a precise definition to
+    the objects calculus had used for two hundred years.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>List the ordered-field axioms of $\mathbb{R}$.</li>
+    <li>Define upper bound, supremum, and infimum.</li>
+    <li>State and use the Least Upper Bound axiom.</li>
+    <li>Derive the Archimedean property from completeness.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Bounds and the supremum</h3>
+  <div class="box def"><div class="bl">Definition <b>Supremum</b></div>
+    <p>$M$ is an upper bound of $S$ if $x\le M$ for all $x\in S$. The
+    <em>supremum</em> $\sup S$ is the least upper bound: an upper bound that is
+    $\le$ every other upper bound. The infimum $\inf S$ is the greatest lower
+    bound.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$S=\{1-\tfrac1n:n\in\mathbb{N}\}$ has $\sup S=1$, even though $1\notin S$.
+    The sup need not be attained.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>The completeness axiom</h3>
+  <div class="box thm"><div class="bl">Axiom <b>Least Upper Bound</b></div>
+    <p>Every nonempty subset of $\mathbb{R}$ that is bounded above has a supremum
+    in $\mathbb{R}$. This single axiom is what $\mathbb{Q}$ lacks.</p></div>
+  <p>It is the engine behind the Intermediate Value Theorem, the Extreme Value
+  Theorem, and the convergence of monotone sequences — all proved in later units.</p>
+</div>
+
+<div class="block reveal">
+  <h3>The Archimedean property</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>For any real $x$ there is a natural number $n>x$. Equivalently, for any
+    $\varepsilon>0$ there is $n$ with $\tfrac1n<\varepsilon$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">If $\mathbb{N}$ were bounded above it would have a supremum
+    $s$; then $s-1$ is not an upper bound, so some $n>s-1$, giving $n+1>s$ — a
+    contradiction.</div>
+  </div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• The supremum may not belong to the set; "max" requires it to be attained.<br>
+  • Completeness is about upper bounds existing as <em>real</em> numbers — that is
+  what fails in $\mathbb{Q}$.<br>
+  • To show $s=\sup S$: prove $s$ is an upper bound and that $s-\varepsilon$ is
+  not, for every $\varepsilon>0$.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Find $\sup$ and $\inf$ of $S=\{\tfrac1n:n\in\mathbb{N}\}$.</p>
+      <details><summary>Answer</summary><div class="ans">$\sup S=1$ (attained),
+      $\inf S=0$ (not attained).</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Prove that if $s=\sup S$ then for every $\varepsilon>0$ there is $x\in S$
+      with $x>s-\varepsilon$.</p>
+      <details><summary>Hint</summary><div class="ans">Else $s-\varepsilon$ is an
+      upper bound smaller than $s$, contradicting "least."</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Use the Archimedean property to show $\inf\{\tfrac1n\}=0$.</p>
+      <details><summary>Hint</summary><div class="ans">$0$ is a lower bound; for any
+      $\varepsilon>0$ some $\tfrac1n<\varepsilon$, so nothing larger than $0$ is a
+      lower bound.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit01.html">← Unit 01<span>Logic, sets &amp; proof</span></a>
+  <a class="n" href="unit03.html">Unit 03 →<span>Limits</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

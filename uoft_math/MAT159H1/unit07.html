@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 7 — Power Series · MAT159H1</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 07</div>
+<div class="unit-no reveal">Unit 07 · Analysis 1B</div>
+<h1 class="ch-title reveal">Power Series</h1>
+<p class="ch-intro reveal">Functions as infinite polynomials, now on rigorous
+footing: radius of convergence, and — thanks to uniform convergence —
+term-by-term calculus inside that radius.</p>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>A power series turns a complicated function into something computable,
+    differentiable, and integrable term by term — with the radius of convergence
+    telling you where that is valid.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>It is how computers evaluate functions and how applied mathematics and
+    machine learning use truncated expansions to approximate and analyze.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Madhava found power series for sine, cosine, and arctangent around 1400, well
+    before Newton. From these same ideas comes Euler's identity $e^{i\pi}+1=0$,
+    often called the most beautiful equation in mathematics.</p></div>
+</div>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Find the radius and interval of convergence.</li>
+    <li>Differentiate and integrate power series term by term.</li>
+    <li>Use the common Maclaurin series.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
+  <h3>Radius of convergence</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$\sum c_n(x-a)^n$ converges on an interval of radius $R$ about $a$, usually
+    found by the ratio test. Inside $R$ convergence is uniform on closed
+    subintervals, which licenses term-by-term calculus.</p></div>
+  <div class="box thm"><div class="bl">Common series</div>
+    <p>$e^x=\sum\tfrac{x^n}{n!}$, $\dfrac{1}{1-x}=\sum x^n$ ($|x|<1$),
+    $\ln(1+x)=\sum\tfrac{(-1)^{n+1}x^n}{n}$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Term-by-term calculus</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>Within its radius, a power series may be differentiated and integrated term
+    by term, with the same radius.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>Integrating $\dfrac{1}{1+x}=\sum(-x)^n$ gives $\ln(1+x)$ for $|x|<1$.</p></div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• Endpoints need separate testing; the radius alone does not decide them.<br>
+  • Term-by-term operations are valid <em>inside</em> the radius, justified by
+  uniform convergence.<br>
+  • A function need not equal its Taylor series even where the series converges.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1</div>
+      <p>Radius of convergence of $\sum\dfrac{x^n}{n!}$?</p>
+      <details><summary>Answer</summary><div class="ans">$R=\infty$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2</div>
+      <p>Maclaurin series of $e^{-x^2}$?</p>
+      <details><summary>Answer</summary><div class="ans">$\sum\tfrac{(-1)^n x^{2n}}
+      {n!}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3</div>
+      <p>Interval of convergence of $\sum\dfrac{(x-2)^n}{n\,3^n}$?</p>
+      <details><summary>Answer</summary><div class="ans">$[-1,5)$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit06.html">← Unit 06<span>Uniform convergence</span></a>
+  <a class="n" href="index.html">Back to Index<span>All chapters</span></a>
+</div>
+
+</div>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

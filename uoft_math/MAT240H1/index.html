@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>MAT240H1 — Algebra I · Course Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="side">
+  <div class="brand"><span>MAT240H1</span></div>
+  <div class="sub">ALGEBRA I · FALL<br>COURSE GUIDE</div>
+  <a href="../index.html">All Courses</a>
+  <a href="#about" data-t>About</a>
+  <a href="#units" data-t>Chapters</a>
+  <a href="#resources" data-t>Resources</a>
+  <div class="foot">LINEAR ALGEBRA<br>TEXT: FRIEDBERG<br>CO-REQ MAT158/159</div>
+</nav>
+
+<main>
+<header class="hero reveal">
+  <svg class="curve" viewBox="0 0 230 150" aria-hidden="true">
+    <line class="axis" x1="14" y1="135" x2="220" y2="135"/>
+    <line class="axis" x1="20" y1="8" x2="20" y2="142"/>
+    <path d="M30,120 L120,70 L200,30"/>
+    <circle cx="120" cy="70" r="4.5"/>
+  </svg>
+  <div class="kicker">U of T · Algebra I · Fall</div>
+  <h1>MAT240H1: linear algebra, done with <em>proofs</em>.</h1>
+  <p class="lede">Vector spaces over arbitrary fields, linear transformations,
+  determinants, and eigenvalues — the proof-based linear algebra that pairs with
+  the analysis stream and underpins everything in statistics, ML, and finance.</p>
+</header>
+
+<div class="note reveal" id="about">
+  <div class="tag">About this course</div>
+  <h3>The abstract core tool.</h3>
+  <p>MAT240H1 "Algebra I": vector spaces over arbitrary fields (including
+  $\mathbb{C}$ and modular arithmetic), subspaces, bases and dimension, linear
+  transformations, matrices, change of basis, similarity, determinants,
+  polynomials over fields, eigenvalues and eigenvectors, characteristic
+  polynomials, diagonalization, minimal polynomials, and the Cayley–Hamilton
+  theorem. This guide uses Friedberg, Insel &amp; Spence as a companion text.
+  Co-requisite: MAT158H1 + MAT159H1. The sequel is MAT247H1 (Algebra II).</p>
+</div>
+
+<section id="units" class="reveal">
+  <div class="sec-head"><span class="no">01</span><h2>Chapters</h2></div>
+  <p class="sec-sub">In course order. Each page has definitions, theorems, worked
+  proofs, pitfalls, and practice.</p>
+
+  <div class="chips">
+    <span class="chip teal"><b>MAT240H1</b><small>Algebra I · Fall</small></span>
+    <span class="chip teal"><b>MAT247H1</b><small>Algebra II · Winter (sequel)</small></span>
+    <span class="chip"><b>Co-req</b><small>MAT158H1 + MAT159H1</small></span>
+  </div>
+
+  <ol class="units">
+    <li><a href="unit01.html"><div><h4>Fields &amp; vector spaces</h4>
+      <p>Fields, the axioms, and first examples.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit02.html"><div><h4>Subspaces, span &amp; independence</h4>
+      <p>Linear combinations and linear independence.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit03.html"><div><h4>Bases &amp; dimension</h4>
+      <p>Existence of bases; the dimension theorem.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit04.html"><div><h4>Linear transformations</h4>
+      <p>Maps, null space and range.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit05.html"><div><h4>Rank–nullity &amp; matrices</h4>
+      <p>$\dim V=\operatorname{rank}(T)+\operatorname{nullity}(T)$; matrix forms.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit06.html"><div><h4>Change of basis &amp; similarity</h4>
+      <p>Coordinate changes and similar matrices.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit07.html"><div><h4>Systems &amp; elementary operations</h4>
+      <p>Row reduction, rank, and inverses.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit08.html"><div><h4>Determinants</h4>
+      <p>Definition, properties, $\det(AB)=\det A\det B$.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit09.html"><div><h4>Polynomials over a field</h4>
+      <p>Division, factorization, minimal polynomials, and resultants.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit10.html"><div><h4>Eigenvalues &amp; diagonalization</h4>
+      <p>Characteristic polynomial, diagonalizability, Cayley–Hamilton.</p></div><span class="go">Open →</span></a></li>
+  </ol>
+</section>
+
+<section id="resources" class="reveal">
+  <div class="sec-head"><span class="no">02</span><h2>Resources</h2></div>
+  <p class="src">
+    <a href="https://artsci.calendar.utoronto.ca/course/mat240h1">MAT240H1 — official calendar listing</a><br>
+    <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">3Blue1Brown — Essence of Linear Algebra (intuition)</a>
+  </p>
+  <p class="lic">Companion text used by this guide: Friedberg, Insel &amp; Spence,
+  <em>Linear Algebra</em>. Co-requisite MAT158H1 + MAT159H1 (or MAT157Y1).
+  Sequel MAT247H1. Verify details against the official calendar each year.</p>
+</section>
+
+<footer class="end">
+  <span>MAT240H1 · ALGEBRA I · U OF T</span>
+  <span>SEQUEL: MAT247H1</span>
+</footer>
+</main>
+</div>
+
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>

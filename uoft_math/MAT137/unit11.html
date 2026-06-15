@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Unit 11 — Sequences · MAT137</title>
+<link rel="stylesheet" href="style.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="crumb reveal"><a href="index.html">MAT137</a><span>/</span>Unit 11</div>
+<div class="unit-no reveal">Unit 11 · Term 2</div>
+<h1 class="ch-title reveal">Sequences</h1>
+<p class="ch-intro reveal">Sequences bring the ε–δ idea back, now as ε–N: a tail
+that stays arbitrarily close to a limit. They are the foundation for series in the
+final units.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State the ε–N definition of a sequence limit.</li>
+    <li>Use the limit laws and squeeze theorem for sequences.</li>
+    <li>Apply the Monotone Convergence Theorem.</li>
+    <li>Handle recursively defined sequences.</li>
+  </ul>
+</div>
+
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Sequences make "getting arbitrarily close" precise in the simplest setting,
+    and they are the scaffolding for series. Cauchy sequences are even used to
+    build the real numbers themselves.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Every iterative algorithm is a sequence converging (you hope) to an answer —
+    Newton's method, fixed-point iteration, and the training loops of machine
+    learning all live here. The convergence rate is exactly how fast they
+    finish.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Zeno's paradox (~450 BC) — Achilles can never catch the tortoise — is really
+    a question about the limit of a sequence, and the limit resolves it. Two
+    millennia later, Cantor and Dedekind used Cauchy sequences to construct
+    $\mathbb{R}$ rigorously. The ratio of consecutive Fibonacci numbers tends to
+    the golden ratio, a limit that also appears in mathematical models of
+    phyllotaxis.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>The ε–N definition</h3>
+  <div class="box def"><div class="bl">Definition <b>Sequence limit</b></div>
+    <p>$\lim_{n\to\infty}a_n=L$ means: for every $\varepsilon>0$ there is
+    $N\in\mathbb N$ such that $n\ge N\Rightarrow|a_n-L|&lt;\varepsilon$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>Prove $\lim\dfrac{n}{n+1}=1$. Given $\varepsilon>0$, $\left|\dfrac{n}{n+1}-1
+    \right|=\dfrac{1}{n+1}<\varepsilon$ once $n>\tfrac1\varepsilon-1$, so take
+    $N=\lceil1/\varepsilon\rceil$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Limit laws and squeeze</h3>
+  <div class="box thm"><div class="bl">Tools</div>
+    <p>Limits of sums, products, and quotients behave as expected. Squeeze: if
+    $b_n\le a_n\le c_n$ and $b_n,c_n\to L$, then $a_n\to L$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\dfrac{\sin n}{n}\to0$ since $-\dfrac1n\le\dfrac{\sin n}{n}\le\dfrac1n$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Monotone Convergence Theorem</h3>
+  <div class="box thm"><div class="bl">Theorem <b>MCT</b></div>
+    <p>A sequence that is increasing and bounded above converges (to its
+    supremum). Likewise decreasing and bounded below.</p></div>
+  <div class="box eg"><div class="bl">Example <b>A recursive sequence</b></div>
+    <p>$a_1=\sqrt2$, $a_{n+1}=\sqrt{2+a_n}$.</p>
+    <div class="step">By induction $a_n&lt;2$ (bounded) and $a_{n+1}>a_n$
+    (increasing), so by MCT it converges to some $L$.</div>
+    <div class="step">Taking limits in the recursion, $L=\sqrt{2+L}$, so
+    $L^2-L-2=0$, giving $L=2$.</div>
+  </div>
+</div>
+
+<div class="box warn reveal"><div class="bl">Common pitfalls</div>
+  <p>• $N$ may depend on $\varepsilon$ but not on $n$.<br>
+  • A bounded sequence need not converge (e.g. $(-1)^n$); monotonicity is what
+  MCT adds.<br>
+  • When solving $L=f(L)$, also confirm the limit exists first.</p></div>
+
+<div class="block reveal">
+  <h3>Practice</h3>
+  <p class="prac-intro">Problems adapted from the MAT137 question bank by Alfonso
+  Gracia-Saz, used under CC&nbsp;BY-SA&nbsp;4.0. Write full solutions before opening
+  the answer.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Practice 1 · Definition</div>
+      <p>Prove $\lim\dfrac{2n+1}{n}=2$ from the definition.</p>
+      <details><summary>Solution</summary><div class="ans">
+      $\left|\dfrac{2n+1}{n}-2\right|=\dfrac1n&lt;\varepsilon$ for
+      $n>1/\varepsilon$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Squeeze</div>
+      <p>Does $a_n=\dfrac{n!}{n^n}$ converge? To what?</p>
+      <details><summary>Hint</summary><div class="ans">$0&lt;a_n\le\dfrac1n$ (each
+      factor $\le1$, one equals $1/n$), so by squeeze $a_n\to0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Recurrence</div>
+      <p>$a_1=1$, $a_{n+1}=\tfrac12(a_n+2/a_n)$. Show it converges and find the
+      limit.</p>
+      <details><summary>Answer</summary><div class="ans">All terms are positive,
+      and $a_2=\tfrac32>\sqrt2$. AM-GM gives $a_{n+1}\ge\sqrt2$, and whenever
+      $a_n\ge\sqrt2$,
+      $a_{n+1}\le a_n$. Thus the tail is decreasing and bounded below, so it
+      converges. Its positive limit solves $L=\tfrac12(L+2/L)$, giving
+      $L=\sqrt2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Definition</div>
+      <p>Prove $\lim\dfrac{n^2}{n^2+1}=1$ directly from the definition.</p>
+      <details><summary>Solution</summary><div class="ans">
+      $\left|\dfrac{n^2}{n^2+1}-1\right|=\dfrac{1}{n^2+1}&lt;\dfrac{1}{n}&lt;\varepsilon$
+      once $n>1/\varepsilon$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Growth rates</div>
+      <p>Evaluate $\displaystyle\lim_{n\to\infty}\frac{n!+2e^n}{3n!+4e^n}$.</p>
+      <details><summary>Answer</summary><div class="ans">$n!$ dominates $e^n$;
+      divide by $n!$ to get $\dfrac{1+0}{3+0}=\dfrac13.$</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Growth rates</div>
+      <p>Evaluate $\displaystyle\lim_{n\to\infty}\frac{5n^5+5^n+5\,n!}{n^n}$.</p>
+      <details><summary>Answer</summary><div class="ans">$n^n$ grows faster than
+      $n!$, which beats $5^n$ and any power. Every term over $n^n\to0$, so the limit
+      is $0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Theory</div>
+      <p>Prove: if a sequence is increasing and unbounded above, it diverges to
+      $\infty$.</p>
+      <details><summary>Solution</summary><div class="ans">Given $M$, unboundedness
+      gives some $a_N>M$; since the sequence increases, $a_n\ge a_N>M$ for all
+      $n\ge N$. That is the definition of $a_n\to\infty$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Recurrence</div>
+      <p>$R_0=1$, $R_{n+1}=\dfrac{R_n+2}{R_n+3}$. Show it converges and find the
+      limit.</p>
+      <details><summary>Solution</summary><div class="ans">Let
+      $L=\sqrt3-1$, the positive fixed point of $g(x)=\dfrac{x+2}{x+3}$.
+      For $x>L$, one checks that $L&lt;g(x)&lt;x$. Since $R_0=1>L$, induction
+      shows that $(R_n)$ decreases and remains above $L$, so it converges. Taking
+      limits in the recurrence gives $R_n\to L=\sqrt3-1$.</div></details></div>
+  </div>
+</div>
+
+<div class="navrow reveal">
+  <a href="unit10.html">← Unit 10<span>Applications of the integral</span></a>
+  <a class="n" href="unit12.html">Unit 12 →<span>Improper integrals</span></a>
+</div>
+
+</div>
+<script src="../assets/mat137-practice.js"></script>
+<script src="../assets/course-runtime.js"></script>
+</body>
+</html>
