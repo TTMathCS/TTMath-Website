@@ -12,11 +12,11 @@
   <text x="40" y="98" font-size="17" fill="#666">From AI basics to real products and international competition</text>
 
   <!-- path flow -->
-  <rect x="210" y="132" width="480" height="94" rx="12" fill="#fdf6e3" stroke="#e0c36a" stroke-width="2"/>
-  <text x="450" y="172" font-size="24" font-weight="bold" text-anchor="middle" fill="#111">AI-1</text>
-  <text x="450" y="200" font-size="17" text-anchor="middle" fill="#555">Creator Foundations</text>
-  <text x="450" y="252" font-size="16" text-anchor="middle" fill="#888">Foundation course, grades 6&#8211;10</text>
-  <text x="450" y="274" font-size="16" text-anchor="middle" fill="#888">Starts no-code, then Python apps</text>
+  <rect x="260" y="132" width="380" height="140" rx="12" fill="#fdf6e3" stroke="#e0c36a" stroke-width="2"/>
+  <text x="450" y="174" font-size="22" font-weight="bold" text-anchor="middle" fill="#111">AI-1 Creator Foundations</text>
+  <text x="450" y="202" font-size="16" text-anchor="middle" fill="#555">Sep&#8211;Aug (3 terms)</text>
+  <text x="450" y="228" font-size="15" text-anchor="middle" fill="#888">Foundation track, grades 6&#8211;10</text>
+  <text x="450" y="250" font-size="15" text-anchor="middle" fill="#888">starts no-code, then Python apps</text>
 
   <line x1="450" y1="292" x2="245" y2="360" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
   <line x1="450" y1="292" x2="655" y2="360" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
