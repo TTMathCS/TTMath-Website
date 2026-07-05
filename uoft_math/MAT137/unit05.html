@@ -48,6 +48,39 @@ function" fact — monotonicity, constancy, inequalities — comes from it.</p>
 </div>
 
 <div class="block reveal">
+  <h3>What this unit changes</h3>
+  <p>Before the Mean Value Theorem, a derivative is local information: it describes
+  behavior at one point. The MVT turns that local information into a statement
+  about an entire interval. That is why it becomes the proof engine for
+  monotonicity, inequalities, uniqueness, and "same derivative means same function
+  up to a constant."</p>
+  <div class="box eg"><div class="bl">MVT proof pattern</div>
+    <div class="step">Choose two points $a&lt;b$ in the interval.</div>
+    <div class="step">Check $f$ is continuous on $[a,b]$ and differentiable on
+    $(a,b)$.</div>
+    <div class="step">Use $f(b)-f(a)=f'(c)(b-a)$ for some $c\in(a,b)$.</div>
+    <div class="step">Insert information about $f'(c)$ to conclude something
+    about $f(b)-f(a)$.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Typical proof goals</h3>
+  <p>Many MVT problems look different but share the same skeleton. Learn to
+  identify the target before doing computations.</p>
+  <ul>
+    <li><strong>Show increasing.</strong> Prove $f(x_2)-f(x_1)>0$ for arbitrary
+    $x_1&lt;x_2$.</li>
+    <li><strong>Show constant.</strong> Prove $f(x_2)-f(x_1)=0$ for arbitrary
+    $x_1&lt;x_2$.</li>
+    <li><strong>Prove an inequality.</strong> Apply MVT to the difference between
+    the two sides, or bound $f'(c)$ directly.</li>
+    <li><strong>Show uniqueness of a root.</strong> Combine IVT for existence with
+    monotonicity or Rolle's theorem for at most one root.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>Local extrema and Fermat's theorem</h3>
   <div class="box thm"><div class="bl">Theorem <b>Fermat</b></div>
     <p>If $f$ has a local extremum at an interior point $c$ and $f'(c)$ exists,

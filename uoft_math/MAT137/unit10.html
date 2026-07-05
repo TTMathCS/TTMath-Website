@@ -46,6 +46,36 @@ and arc length. The skill is setting up the right integral.</p>
 </div>
 
 <div class="block reveal">
+  <h3>Setup comes before calculus</h3>
+  <p>Applications of the integral are won or lost before the antiderivative. First
+  identify the tiny piece being added: a vertical strip, a washer, a shell, a
+  cross-section, or a small arc-length segment. Then translate that piece into an
+  integral.</p>
+  <div class="box eg"><div class="bl">Setup routine</div>
+    <div class="step">Draw the region and find intersections.</div>
+    <div class="step">Decide the slice direction: vertical slices use $dx$,
+    horizontal slices use $dy$.</div>
+    <div class="step">Write the size of one slice: height, radius, area, or
+    length element.</div>
+    <div class="step">Integrate over the interval covered by the slices.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Common formulas as slice stories</h3>
+  <ul>
+    <li><strong>Area.</strong> A thin rectangle has area
+    $(\text{top}-\text{bottom})\,dx$.</li>
+    <li><strong>Disk/washer.</strong> A thin circular slice has area
+    $\pi(R^2-r^2)$ and thickness $dx$ or $dy$.</li>
+    <li><strong>Shell.</strong> A thin shell has circumference $2\pi r$, height
+    $h$, and thickness $dx$ or $dy$.</li>
+    <li><strong>Arc length.</strong> A tiny segment has length
+    $\sqrt{1+(f'(x))^2}\,dx$.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>Area between curves</h3>
   <div class="box thm"><div class="bl">Formula</div>
     <p>If $f\ge g$ on $[a,b]$, the area between them is

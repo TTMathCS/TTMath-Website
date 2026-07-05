@@ -48,6 +48,34 @@ integrals without ever returning to sums.</p>
 </div>
 
 <div class="block reveal">
+  <h3>The two directions of the theorem</h3>
+  <p>FTC Part 1 says integration creates an antiderivative. FTC Part 2 says an
+  antiderivative evaluates an integral. Keeping those directions separate prevents
+  most mistakes in this unit.</p>
+  <div class="box eg"><div class="bl">Which part should you use?</div>
+    <div class="step">If the problem asks for a derivative of
+    $\int_a^x f(t)\,dt$, use Part 1 and the chain rule.</div>
+    <div class="step">If the problem asks for the numerical value of
+    $\int_a^b f(x)\,dx$, find an antiderivative and use Part 2.</div>
+    <div class="step">If both limits move, rewrite the integral as a difference of
+    two accumulation functions or apply the upper-limit rule minus the lower-limit
+    rule.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Variable-limit checklist</h3>
+  <ul>
+    <li>Upper limit $g(x)$ contributes $f(g(x))g'(x)$.</li>
+    <li>Lower limit $h(x)$ contributes $-f(h(x))h'(x)$.</li>
+    <li>The integration variable is a dummy variable; it should not be confused
+    with the outside variable $x$.</li>
+    <li>If the integrand also contains $x$ outside the dummy variable, the simple
+    FTC rule may not apply directly.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>Part 1 — the area function</h3>
   <div class="box thm"><div class="bl">Theorem <b>FTC, Part 1</b></div>
     <p>If $f$ is continuous on $[a,b]$ and $F(x)=\displaystyle\int_a^x f(t)\,dt$,
@@ -84,7 +112,8 @@ integrals without ever returning to sums.</p>
   <p>• In Part 1 the variable is the <em>upper limit</em>; the dummy variable
   inside is different ($t$, not $x$).<br>
   • With a variable upper limit $g(x)$, don't forget the $g'(x)$ factor.<br>
-  • Part 2 needs $f$ continuous and $G$ a genuine antiderivative on $[a,b]$.</p></div>
+  • Part 2 needs $f$ continuous on $[a,b]$ and an antiderivative $G$ with
+  $G'=f$ throughout $(a,b)$.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
@@ -124,7 +153,8 @@ integrals without ever returning to sums.</p>
       <p>Suppose $f$ is continuous and $\displaystyle\int_0^x e^t f(t)\,dt
       =\frac{\sin x}{x^2+1}$ for all $x$. Find $f(x)$.</p>
       <details><summary>Solution</summary><div class="ans">Differentiate: $e^x
-      f(x)=\dfrac{\cos x\,(x^2+1)-2x\sin x}{(x^2+1)^2}$, so $f(x)=e^{-x}\cdot$ that.</div></details></div>
+      f(x)=\dfrac{\cos x\,(x^2+1)-2x\sin x}{(x^2+1)^2}$, so
+      $f(x)=e^{-x}\dfrac{\cos x\,(x^2+1)-2x\sin x}{(x^2+1)^2}$.</div></details></div>
   </div>
 </div>
 

@@ -48,6 +48,37 @@ functions apart (partial fractions).</p>
 </div>
 
 <div class="block reveal">
+  <h3>Choosing a method</h3>
+  <p>Integration technique is pattern recognition plus verification. Always check
+  the derivative of your answer; that habit catches sign errors, missing constants,
+  and wrong substitutions quickly.</p>
+  <div class="box eg"><div class="bl">Decision guide</div>
+    <div class="step">Use substitution when you see a composition and the
+    derivative of the inside is also present.</div>
+    <div class="step">Use integration by parts when the integrand is a product and
+    differentiating one factor makes it simpler.</div>
+    <div class="step">Use partial fractions for rational functions after ensuring
+    the numerator degree is smaller than the denominator degree.</div>
+    <div class="step">Use trigonometric substitution when a square root matches
+    $a^2-x^2$, $a^2+x^2$, or $x^2-a^2$.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Definite integral discipline</h3>
+  <p>For definite integrals, every symbol must describe the same variable. After
+  substituting $u=g(x)$, either change the bounds immediately or convert the
+  antiderivative back to $x$ before evaluating.</p>
+  <ul>
+    <li>Changed bounds method: $x=a$ becomes $u=g(a)$ and $x=b$ becomes
+    $u=g(b)$.</li>
+    <li>Back-substitution method: find an antiderivative in $x$, then plug in the
+    original $x$-bounds.</li>
+    <li>Never plug $x$-bounds into an expression that is still written in $u$.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>Substitution</h3>
   <div class="box thm"><div class="bl">Rule</div>
     <p>$\displaystyle\int f\!\big(g(x)\big)g'(x)\,dx=\int f(u)\,du$ with $u=g(x)$.

@@ -50,6 +50,35 @@ Power series let us represent, differentiate, integrate, and approximate functio
 </div>
 
 <div class="block reveal">
+  <h3>Power-series workflow</h3>
+  <p>A power series has two separate questions: where does it converge, and what
+  function does it represent there? The radius handles the first question in the
+  interior; endpoint checks and remainders handle the rest.</p>
+  <div class="box eg"><div class="bl">Interval of convergence routine</div>
+    <div class="step">Use ratio or root test to find the radius $R$.</div>
+    <div class="step">Write the open interval $|x-a|&lt;R$.</div>
+    <div class="step">Test each endpoint separately using ordinary series tests.</div>
+    <div class="step">Report the final interval with correct brackets.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Building new series from old ones</h3>
+  <p>Do not compute every Taylor series from derivatives. Most MAT137 problems are
+  faster if you start from a known series and transform it carefully.</p>
+  <ul>
+    <li><strong>Substitute.</strong> Replace $x$ by a new expression, such as
+    $x^2$ or $-x$.</li>
+    <li><strong>Differentiate.</strong> Differentiate term by term inside the
+    radius of convergence.</li>
+    <li><strong>Integrate.</strong> Integrate term by term and then determine the
+    constant using a known value.</li>
+    <li><strong>Bound error.</strong> Use Taylor's theorem or alternating-series
+    estimates to say how far a polynomial approximation may be from the function.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>Power series and radius of convergence</h3>
   <div class="box def"><div class="bl">Definition</div>
     <p>A power series $\displaystyle\sum_{n=0}^\infty c_n(x-a)^n$ converges

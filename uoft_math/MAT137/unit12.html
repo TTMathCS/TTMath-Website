@@ -48,6 +48,38 @@ the same: does that limit exist?</p>
 </div>
 
 <div class="block reveal">
+  <h3>Improper integral workflow</h3>
+  <p>An improper integral is not an ordinary integral with a strange endpoint. It
+  is a limit. The first step is always to identify every place where ordinary
+  Riemann integration fails.</p>
+  <div class="box eg"><div class="bl">Checklist</div>
+    <div class="step">Is an endpoint infinite? Replace it with a finite variable
+    and take a limit.</div>
+    <div class="step">Does the integrand blow up at an endpoint? Approach that
+    endpoint from inside the interval.</div>
+    <div class="step">Does the integrand blow up in the middle? Split the integral
+    there, and require both pieces to converge.</div>
+    <div class="step">Only after the correct limits are written should you compute
+    or compare.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Comparison strategy</h3>
+  <p>When an antiderivative is hard or impossible, compare the integrand to a known
+  benchmark. The benchmark is usually a $p$-integral, an exponential, or a simpler
+  rational function.</p>
+  <ul>
+    <li>To prove convergence of $f$, find a larger convergent $g$ with
+    $0\le f\le g$.</li>
+    <li>To prove divergence of $g$, find a smaller divergent $f$ with
+    $0\le f\le g$.</li>
+    <li>For large $x$, compare leading powers; near $0$, compare the most singular
+    power.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>Type I — infinite intervals</h3>
   <div class="box def"><div class="bl">Definition</div>
     <p>$\displaystyle\int_a^\infty f=\lim_{t\to\infty}\int_a^t f$, when the limit

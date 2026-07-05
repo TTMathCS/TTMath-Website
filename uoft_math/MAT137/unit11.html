@@ -50,13 +50,41 @@ final units.</p>
 </div>
 
 <div class="block reveal">
+  <h3>How sequence proofs work</h3>
+  <p>A sequence limit proof is an $\varepsilon$ proof with only one moving
+  variable: the index $n$. The proof should show that every term far enough out in
+  the tail is close to the proposed limit.</p>
+  <div class="box eg"><div class="bl">Epsilon-N routine</div>
+    <div class="step">Start from $|a_n-L|&lt;\varepsilon$ and solve for a lower
+    bound on $n$.</div>
+    <div class="step">Choose a natural number $N$ larger than that bound.</div>
+    <div class="step">Prove that every $n\ge N$ satisfies the desired inequality.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Recursive sequences</h3>
+  <p>For recurrences, finding a candidate limit is not enough. First prove the
+  sequence actually converges, usually by monotone convergence or by contraction
+  estimates. Only then is it legitimate to take limits on both sides of the
+  recurrence.</p>
+  <ul>
+    <li>Find a stable interval: prove all terms stay inside it.</li>
+    <li>Prove monotonicity or another convergence mechanism.</li>
+    <li>Let the limit be $L$ and solve the fixed-point equation.</li>
+    <li>Reject algebraic roots that do not fit the interval or sign of the
+    sequence.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>The ε–N definition</h3>
   <div class="box def"><div class="bl">Definition <b>Sequence limit</b></div>
     <p>$\lim_{n\to\infty}a_n=L$ means: for every $\varepsilon>0$ there is
     $N\in\mathbb N$ such that $n\ge N\Rightarrow|a_n-L|&lt;\varepsilon$.</p></div>
   <div class="box eg"><div class="bl">Example</div>
     <p>Prove $\lim\dfrac{n}{n+1}=1$. Given $\varepsilon>0$, $\left|\dfrac{n}{n+1}-1
-    \right|=\dfrac{1}{n+1}<\varepsilon$ once $n>\tfrac1\varepsilon-1$, so take
+    \right|=\dfrac{1}{n+1}&lt;\varepsilon$ once $n>\tfrac1\varepsilon-1$, so take
     $N=\lceil1/\varepsilon\rceil$.</p></div>
 </div>
 
@@ -120,13 +148,17 @@ final units.</p>
       once $n>1/\varepsilon$.</div></details></div>
     <div class="q"><div class="ql">Practice 5 · Growth rates</div>
       <p>Evaluate $\displaystyle\lim_{n\to\infty}\frac{n!+2e^n}{3n!+4e^n}$.</p>
-      <details><summary>Answer</summary><div class="ans">$n!$ dominates $e^n$;
-      divide by $n!$ to get $\dfrac{1+0}{3+0}=\dfrac13.$</div></details></div>
+      <details><summary>Answer</summary><div class="ans">Divide by $n!$. The ratio
+      $\dfrac{e^n}{n!}\to0$ (its successive ratios are $\dfrac{e}{n+1}\to0$), so
+      the limit is $\dfrac{1+0}{3+0}=\dfrac13.$</div></details></div>
     <div class="q"><div class="ql">Practice 6 · Growth rates</div>
       <p>Evaluate $\displaystyle\lim_{n\to\infty}\frac{5n^5+5^n+5\,n!}{n^n}$.</p>
       <details><summary>Answer</summary><div class="ans">$n^n$ grows faster than
-      $n!$, which beats $5^n$ and any power. Every term over $n^n\to0$, so the limit
-      is $0$.</div></details></div>
+      each numerator term: $\dfrac{5n^5}{n^n}\to0$,
+      $\dfrac{5^n}{n^n}=\left(\dfrac5n\right)^n\to0$, and
+      $\dfrac{n!}{n^n}=\dfrac1n\cdot\dfrac2n\cdots\dfrac nn\le
+      \left(\tfrac12\right)^{(n-1)/2}\to0$. Hence the limit is
+      $0$.</div></details></div>
     <div class="q"><div class="ql">Practice 7 · Theory</div>
       <p>Prove: if a sequence is increasing and unbounded above, it diverges to
       $\infty$.</p>

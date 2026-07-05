@@ -48,6 +48,37 @@ the Fundamental Theorem (next unit) meaningful rather than magical.</p>
 </div>
 
 <div class="block reveal">
+  <h3>What the definition is measuring</h3>
+  <p>Upper and lower sums measure the worst possible disagreement inside each
+  subinterval. If the total disagreement can be forced below every
+  $\varepsilon>0$, then the function has one well-defined area. This is why the
+  definition works even before antiderivatives exist.</p>
+  <div class="box eg"><div class="bl">How to prove integrability</div>
+    <div class="step">Start with an arbitrary $\varepsilon>0$.</div>
+    <div class="step">Build a partition whose subintervals make the oscillation
+    $M_i-m_i$ small, except possibly on a few intervals whose total length is
+    small.</div>
+    <div class="step">Show $U(f,P)-L(f,P)=\sum_i(M_i-m_i)\Delta x_i&lt;\varepsilon$.</div>
+    <div class="step">Conclude integrability by the criterion.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Three common integrability arguments</h3>
+  <ul>
+    <li><strong>Continuous functions.</strong> Use uniform continuity on
+    $[a,b]$ to make every oscillation small.</li>
+    <li><strong>Monotone functions.</strong> On an equal partition, the total
+    upper-lower gap telescopes to roughly $(f(b)-f(a))\Delta x$.</li>
+    <li><strong>One jump or finitely many jumps.</strong> Trap the jumps in very
+    short intervals; outside those intervals the oscillation is controlled.</li>
+  </ul>
+  <p>This is also the right way to think about why a function like the Dirichlet
+  function fails: every interval contains rationals and irrationals, so the
+  oscillation never shrinks.</p>
+</div>
+
+<div class="block reveal">
   <h3>Partitions and sums</h3>
   <div class="box def"><div class="bl">Definition <b>Upper and lower sums</b></div>
     <p>For a bounded function $f$ and a partition
@@ -85,10 +116,11 @@ the Fundamental Theorem (next unit) meaningful rather than magical.</p>
 <div class="block reveal">
   <h3>Properties</h3>
   <div class="box thm"><div class="bl">Basic rules</div>
-    <p>For integrable functions, linearity
-    $\int(\alpha f+\beta g)=\alpha\!\int f+\beta\!\int g$;
-    additivity $\int_a^b=\int_a^c+\int_c^b$; monotonicity $f\le g\Rightarrow
-    \int f\le\int g$; and $\left|\int f\right|\le\int|f|$.</p></div>
+    <p>For integrable functions on $[a,b]$, linearity
+    $\int_a^b(\alpha f+\beta g)=\alpha\!\int_a^b f+\beta\!\int_a^b g$;
+    additivity $\int_a^b f=\int_a^c f+\int_c^b f$; monotonicity
+    $f\le g\Rightarrow \int_a^b f\le\int_a^b g$; and
+    $\left|\int_a^b f\right|\le\int_a^b|f|$.</p></div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
@@ -106,7 +138,10 @@ the Fundamental Theorem (next unit) meaningful rather than magical.</p>
     <div class="q"><div class="ql">Practice 1 · Riemann sum</div>
       <p>Using equal subintervals, show $\int_0^1 x^2\,dx=\tfrac13$.</p>
       <details><summary>Hint</summary><div class="ans">Upper sum
-      $\dfrac{1}{n^3}\sum_{k=1}^n k^2=\dfrac{(n+1)(2n+1)}{6n^2}\to\tfrac13$.</div></details></div>
+      $\dfrac{1}{n^3}\sum_{k=1}^n k^2=\dfrac{(n+1)(2n+1)}{6n^2}\to\tfrac13$.
+      The lower sum
+      $\dfrac{1}{n^3}\sum_{k=0}^{n-1}k^2=\dfrac{(n-1)(2n-1)}{6n^2}\to\tfrac13$ too,
+      so the integral is $\tfrac13$.</div></details></div>
     <div class="q"><div class="ql">Practice 2 · Constant</div>
       <p>Explain why $f(x)=c$ (constant) is integrable and $\int_a^b c=c(b-a)$.</p>
       <details><summary>Answer</summary><div class="ans">Every $m_i=M_i=c$, so

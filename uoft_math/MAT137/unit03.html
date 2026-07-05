@@ -48,6 +48,38 @@ apply them.</p>
 </div>
 
 <div class="block reveal">
+  <h3>The learning spine</h3>
+  <p>Every derivative calculation in this unit is a disguised limit. Rules like
+  product, quotient, and chain rules are shortcuts only after their hypotheses are
+  met. When learning a new rule, first understand the limit proof, then practice
+  recognizing the pattern quickly.</p>
+  <div class="box eg"><div class="bl">Derivative-from-definition routine</div>
+    <div class="step">Write the correct quotient:
+    $\dfrac{f(a+h)-f(a)}{h}$ or $\dfrac{f(x)-f(a)}{x-a}$.</div>
+    <div class="step">Simplify before taking the limit. Usually this means
+    factoring, expanding, rationalizing, or combining fractions.</div>
+    <div class="step">Only after the expression is defined for $h\ne0$ and
+    simplified should you let $h\to0$.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Proofs you should own</h3>
+  <p>MAT137 treats the differentiation rules as theorems, not magic formulas. A
+  student who can reproduce the following proof ideas is ready for later analysis.</p>
+  <ul>
+    <li><strong>Differentiable implies continuous.</strong> Write the change in
+    $f$ as a difference quotient times the change in $x$.</li>
+    <li><strong>Product rule.</strong> Add and subtract the same middle term so
+    the difference quotient splits into two known limits.</li>
+    <li><strong>Quotient rule.</strong> Derive it from the product rule and the
+    derivative of the reciprocal.</li>
+    <li><strong>Chain rule.</strong> Introduce the inner change
+    $g(x+h)-g(x)$ and handle the case where that change may be zero.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>The definition</h3>
   <div class="box def"><div class="bl">Definition <b>Derivative</b></div>
     <p>$f$ is differentiable at $a$ if the limit

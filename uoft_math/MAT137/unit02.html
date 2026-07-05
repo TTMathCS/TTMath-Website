@@ -49,6 +49,40 @@ series — is built on. Spend real time until you can write ε–δ proofs cold.
 </div>
 
 <div class="block reveal">
+  <h3>The mental model</h3>
+  <p>An $\varepsilon$-$\delta$ proof is a game with two distances. The output
+  distance $|f(x)-L|$ is what the challenger wants small. The input distance
+  $|x-a|$ is what you control. Scratch work moves backward from the output
+  inequality to a condition on $|x-a|$; the final proof then moves forward from
+  your chosen $\delta$ to the desired output bound.</p>
+  <div class="box eg"><div class="bl">Delta-finding pattern</div>
+    <div class="step">Start with the target: make $|f(x)-L|&lt;\varepsilon$.</div>
+    <div class="step">Algebraically rewrite $|f(x)-L|$ until a factor
+    $|x-a|$ appears.</div>
+    <div class="step">If another factor depends on $x$, use a preliminary bound
+    such as $\delta\le1$ to make that factor controlled.</div>
+    <div class="step">Choose $\delta$ as the minimum of all needed restrictions.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>How to recognize the right tool</h3>
+  <p>Not every limit needs a full $\varepsilon$-$\delta$ proof. The course expects
+  you to know when a theorem is doing the work and when the definition is being
+  tested directly.</p>
+  <ul>
+    <li><strong>Direct definition.</strong> Use when asked to prove a basic limit
+    from scratch, especially linear and polynomial examples.</li>
+    <li><strong>Limit laws.</strong> Use after the component limits are known and
+    denominators do not approach $0$.</li>
+    <li><strong>Squeeze theorem.</strong> Use when a hard expression is trapped by
+    simple expressions, often because $|\sin x|\le1$ or $|\cos x|\le1$.</li>
+    <li><strong>Continuity.</strong> Use to replace $\lim_{x\to a}f(x)$ by
+    $f(a)$ only after checking the function is continuous at $a$.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>The ε–δ definition</h3>
   <div class="box def"><div class="bl">Definition <b>Limit</b></div>
     <p>$\displaystyle\lim_{x\to a}f(x)=L$ means: for every $\varepsilon>0$ there
@@ -146,7 +180,7 @@ series — is built on. Spend real time until you can write ε–δ proofs cold.
   <h3>Continuity</h3>
   <div class="box def"><div class="bl">Definition <b>Continuity at a point</b></div>
     <p>$f$ is continuous at $a$ if $a$ is in the domain and
-    $\displaystyle\lim_{x\to a}f(x)=f(a)$. Equivalently: $\forall\varepsilon>0\
+    $\displaystyle\lim_{x\to a}f(x)=f(a)$. Equivalently: $\forall\varepsilon>0\,
     \exists\delta>0$ with $|x-a|&lt;\delta\Rightarrow|f(x)-f(a)|&lt;\varepsilon$.</p></div>
   <p>Sums, products, quotients (nonzero denominator), and compositions of
   continuous functions are continuous. Polynomials are continuous everywhere;

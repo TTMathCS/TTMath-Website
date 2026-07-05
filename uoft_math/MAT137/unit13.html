@@ -49,6 +49,35 @@ series can converge without converging absolutely.</p>
 </div>
 
 <div class="block reveal">
+  <h3>Choosing a series test</h3>
+  <p>Series questions are decision problems. Before calculating, identify the
+  structure of the term $a_n$. A good test choice should match that structure.</p>
+  <div class="box eg"><div class="bl">Test selection guide</div>
+    <div class="step">If $a_n$ does not tend to $0$, use the divergence test.</div>
+    <div class="step">If the series is geometric or telescoping, compute partial
+    sums directly.</div>
+    <div class="step">If terms look like powers of $n$, compare with a
+    $p$-series.</div>
+    <div class="step">If factorials or exponentials appear, try the ratio test.</div>
+    <div class="step">If the entire term is raised to the $n$th power, try the
+    root test.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Absolute versus conditional convergence</h3>
+  <p>For signed series, first ask whether the absolute series converges. Absolute
+  convergence is stronger and usually easier to work with. If the absolute series
+  diverges, then look for alternating structure or another cancellation argument.</p>
+  <ul>
+    <li>Absolute convergence: $\sum|a_n|$ converges, so $\sum a_n$ converges.</li>
+    <li>Conditional convergence: $\sum a_n$ converges but $\sum|a_n|$ diverges.</li>
+    <li>Divergence: either the terms do not go to $0$, or every applicable test
+    shows the partial sums cannot settle.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>Partial sums and geometric series</h3>
   <div class="box def"><div class="bl">Definition</div>
     <p>$\displaystyle\sum_{n=1}^\infty a_n$ converges to $S$ if the partial sums
@@ -68,8 +97,8 @@ series can converge without converging absolutely.</p>
 <div class="block reveal">
   <h3>Tests for positive series</h3>
   <div class="box thm"><div class="bl">Toolkit</div>
-    <p><b>Integral test:</b> $\sum f(n)$ and $\int_1^\infty f$ agree when $f$ is
-    continuous, positive, and decreasing. <b>Comparison / limit comparison:</b>
+    <p><b>Integral test:</b> $\sum f(n)$ and $\int_1^\infty f$ converge or diverge
+    together when $f$ is continuous, positive, and decreasing. <b>Comparison / limit comparison:</b>
     compare with a known series. <b>Ratio:</b>
     $L=\lim|a_{n+1}/a_n|$. <b>Root:</b> $L=\lim|a_n|^{1/n}$. For either test,
     $L&lt;1$ gives absolute convergence, $L>1$ (or $L=\infty$) gives divergence,

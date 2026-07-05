@@ -49,13 +49,46 @@ them is to define $\ln$ as an integral and recover everything else from there.</
 </div>
 
 <div class="block reveal">
+  <h3>How the functions are built</h3>
+  <p>The clean MAT137 approach is structural: define $\ln$ by an integral, prove
+  its laws, define $\exp$ as its inverse, then define $a^x$ using $e^{x\ln a}$.
+  This order matters because it keeps irrational exponents and logarithm laws from
+  becoming circular assumptions.</p>
+  <div class="box eg"><div class="bl">Dependency chain</div>
+    <div class="step">First: $\ln x=\int_1^x\dfrac1t\,dt$, so $(\ln x)'=1/x$.</div>
+    <div class="step">Next: log laws follow by comparing derivatives of functions
+    such as $\ln(ax)-\ln x$.</div>
+    <div class="step">Then: $\exp$ is the inverse of $\ln$, and inverse
+    differentiation gives $(e^x)'=e^x$.</div>
+    <div class="step">Finally: for $a>0$, define $a^x=e^{x\ln a}$.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Domain discipline</h3>
+  <p>Most mistakes in this unit are not algebra mistakes; they are domain mistakes.
+  Before differentiating, ask where the expression is defined and where the
+  derivative formula is valid.</p>
+  <ul>
+    <li>$\ln x$ requires $x>0$, while $\ln|x|$ is defined for $x\ne0$.</li>
+    <li>$a^x=e^{x\ln a}$ requires $a>0$ for real-valued functions of all real
+    $x$.</li>
+    <li>$\arcsin x$ is defined on $[-1,1]$, but its derivative formula only holds
+    on $(-1,1)$.</li>
+    <li>Logarithmic differentiation requires the quantity inside $\ln$ to be
+    positive, or else an absolute-value version must be justified.</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>The natural logarithm as an integral</h3>
   <div class="box def"><div class="bl">Definition <b>Natural log</b></div>
     <p>For $x>0$, $\displaystyle\ln x=\int_1^x \frac{1}{t}\,dt.$ By the Fundamental
     Theorem of Calculus, $\dfrac{d}{dx}\ln x=\dfrac1x$.</p></div>
   <div class="box thm"><div class="bl">Theorem <b>Log laws</b></div>
-    <p>For $a,b>0$ and real $r$: $\ln(ab)=\ln a+\ln b$,
-    $\ln(a/b)=\ln a-\ln b$, and $\ln(a^r)=r\ln a$.</p></div>
+    <p>For $a,b>0$: $\ln(ab)=\ln a+\ln b$ and
+    $\ln(a/b)=\ln a-\ln b$. For rational $r$, $\ln(a^r)=r\ln a$; after real powers
+    are defined by $a^r=e^{r\ln a}$, the same identity holds for every real $r$.</p></div>
   <div class="box eg"><div class="bl">Proof idea <b>of $\ln(ab)=\ln a+\ln b$</b></div>
     <div class="step">Fix $a$ and let $g(x)=\ln(ax)$. Then $g'(x)=\dfrac{a}{ax}=
     \dfrac1x=(\ln x)'$.</div>

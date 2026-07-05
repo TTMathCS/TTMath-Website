@@ -52,6 +52,43 @@ the foundation every later unit is written in — invest here.</p>
 </div>
 
 <div class="block reveal">
+  <h3>How to learn this unit</h3>
+  <p>The goal is not to memorize symbols. The goal is to translate between English,
+  formal logic, and proof structure without changing the meaning. For each new
+  statement, do three passes: identify the quantifiers, identify the main
+  implication or equation, then decide what a proof would need to start with and
+  what it must end by showing.</p>
+  <div class="box eg"><div class="bl">Reading routine</div>
+    <div class="step">For a $\forall$ statement, imagine an adversary hands you an
+    arbitrary object. Your proof must work for that object without assuming it is
+    special.</div>
+    <div class="step">For an $\exists$ statement, your job is to build or name one
+    object and verify it has the required property.</div>
+    <div class="step">For $P\Rightarrow Q$, write "Assume $P$" at the top of the
+    scratch work and "$Q$" as the target at the bottom. The proof is the bridge
+    between them.</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>What a complete proof contains</h3>
+  <p>A proof should make the logical source of every line visible. MAT137 proofs do
+  not need to be long, but they do need to say what is arbitrary, what is assumed,
+  what definition is being used, and where the conclusion has been reached.</p>
+  <ul>
+    <li><strong>Start cleanly.</strong> "Let $x\in A$ be arbitrary" for a set
+    inclusion, or "Assume $P$" for an implication.</li>
+    <li><strong>Unpack definitions.</strong> Replace "even," "one-to-one,"
+    "subset," or "divides" by the exact definition before doing algebra.</li>
+    <li><strong>Track direction.</strong> In a biconditional, label the forward and
+    reverse directions. In a contrapositive proof, state the contrapositive first.</li>
+    <li><strong>Close the loop.</strong> End by explicitly naming the conclusion:
+    "therefore $x\in B$," "therefore $n$ is even," or "therefore $f$ is
+    one-to-one."</li>
+  </ul>
+</div>
+
+<div class="block reveal">
   <h3>Statements and quantifiers</h3>
   <p>A <em>statement</em> is a sentence that is either true or false. Most
   interesting statements use quantifiers: "for all" ($\forall$) and "there
