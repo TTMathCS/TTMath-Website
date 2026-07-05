@@ -16,66 +16,183 @@
 <div class="unit-no reveal">Unit 01 · Analysis 1B</div>
 <h1 class="ch-title reveal">Integration Techniques</h1>
 <p class="ch-intro reveal">Finding antiderivatives takes pattern-matching, not a
-formula. These are the standard moves — and a reminder that some integrals have no
+formula. These are the standard moves — substitution, parts, partial fractions,
+and trigonometric substitution — and a reminder that some integrals have no
 elementary answer at all.</p>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
   <div class="ci"><div class="cl">Why it exists</div>
-    <p>Unlike differentiation, integration has no mechanical recipe. These
-    techniques are the toolkit, and they reveal that elementary antiderivatives are
+    <p>Unlike differentiation, integration has no mechanical recipe: there is no
+    "product rule for antiderivatives." These techniques are the toolkit built up
+    over centuries of trial, and they reveal that elementary antiderivatives are
     the exception, not the rule.</p></div>
   <div class="ci"><div class="cl">In the real world</div>
     <p>The bell curve $e^{-x^2}$ has no elementary antiderivative, so statistics
-    relies on numerical integration of it. Every p-value depends on that fact.</p></div>
+    relies on numerical integration of it. Every p-value depends on that fact.
+    Partial fractions decompositions are also exactly how control theory inverts
+    Laplace transforms.</p></div>
   <div class="ci"><div class="cl">Story &amp; open questions</div>
     <p>Liouville proved in the 1830s that integrals like $\int e^{-x^2}$ cannot be
     written in elementary terms; the 1968 Risch algorithm lets computers decide
-    when a closed form exists.</p></div>
+    when a closed form exists at all — a rare case of a fully mechanical answer to
+    "can this be done by hand?"</p></div>
 </div>
 
 <div class="goals reveal">
   <div class="gl">By the end you can</div>
   <ul>
-    <li>Integrate by substitution and by parts.</li>
-    <li>Decompose with partial fractions.</li>
-    <li>Recognize when a trigonometric substitution helps.</li>
+    <li>Integrate by substitution and by parts, including repeated and circular
+    applications.</li>
+    <li>Decompose any rational function with partial fractions — linear, repeated,
+    and irreducible quadratic factors.</li>
+    <li>Recognize when a trigonometric substitution or a power-reduction identity
+    helps.</li>
+    <li>Explain, with an example, why "elementary antiderivative" is not
+    guaranteed.</li>
   </ul>
 </div>
 
 <div class="block reveal">
   <h3>Substitution and by parts</h3>
   <div class="box thm"><div class="bl">Rules</div>
-    <p>$\int f(g(x))g'(x)\,dx=\int f(u)\,du$ and $\int u\,dv=uv-\int v\,du$.</p></div>
-  <div class="box eg"><div class="bl">Example</div>
-    <p>$\int x e^x\,dx=xe^x-\int e^x\,dx=(x-1)e^x+C$ by parts.</p></div>
+    <p>$\displaystyle\int f(g(x))g'(x)\,dx=\int f(u)\,du$ (substitution, $u=g(x)$)
+    and $\displaystyle\int u\,dv=uv-\int v\,du$ (parts, from the product rule run
+    backwards).</p></div>
+  <div class="box eg"><div class="bl">Example <b>Basic parts</b></div>
+    <p>$\int x e^x\,dx$: let $u=x,\ dv=e^x dx$, so $du=dx,\ v=e^x$.</p>
+    <div class="step">$\int x e^x\,dx = xe^x-\int e^x\,dx=(x-1)e^x+C$.</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>Repeated parts</b></div>
+    <p>$\int x^2 e^x\,dx$.</p>
+    <div class="step">First pass: $u=x^2,\ dv=e^xdx$ gives
+    $x^2e^x-2\int xe^x\,dx$.</div>
+    <div class="step">Reuse the previous example: $=x^2e^x-2(x-1)e^x+C=
+    (x^2-2x+2)e^x+C$.</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>Circular parts</b></div>
+    <p>$\int e^x\cos x\,dx$.</p>
+    <div class="step">Parts twice ($u=\cos x$ then $u=\sin x$) returns the same
+    integral $I$ on the right: $I=e^x\cos x+e^x\sin x-I$.</div>
+    <div class="step">Solve for $I$: $2I=e^x(\cos x+\sin x)$, so
+    $I=\tfrac12e^x(\cos x+\sin x)+C$.</div>
+  </div>
+  <div class="checkpoint"><b>Which $u$ to pick?</b>
+    The mnemonic <em>LIATE</em> (Logarithmic, Inverse trig, Algebraic,
+    Trigonometric, Exponential) orders good choices of $u$ for parts — pick $u$
+    from as far left in that list as appears, since it differentiates toward
+    something simpler while $dv$ integrates easily.</div>
 </div>
 
 <div class="block reveal">
-  <h3>Partial fractions and trig substitution</h3>
-  <div class="box eg"><div class="bl">Example <b>Partial fractions</b></div>
-    <p>$\int\dfrac{dx}{x^2-1}=\tfrac12\ln\left|\dfrac{x-1}{x+1}\right|+C$.</p></div>
-  <p>For $\sqrt{a^2-x^2}$ use $x=a\sin\theta$; for $\sqrt{a^2+x^2}$, $x=a\tan\theta$.</p>
+  <h3>Partial fractions</h3>
+  <p>Any proper rational function $P(x)/Q(x)$ (degree of $P$ less than degree of
+  $Q$) splits into a sum of simpler pieces, one for each factor of $Q$.</p>
+  <div class="box thm"><div class="bl">The three cases</div>
+    <p>A factor $(x-a)$ contributes $\dfrac{A}{x-a}$; a repeated factor $(x-a)^k$
+    contributes $\dfrac{A_1}{x-a}+\cdots+\dfrac{A_k}{(x-a)^k}$; an irreducible
+    quadratic $(x^2+bx+c)$ contributes $\dfrac{Ax+B}{x^2+bx+c}$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Distinct linear factors</b></div>
+    <p>$\dfrac{1}{x^2-1}=\dfrac{A}{x-1}+\dfrac{B}{x+1}$.</p>
+    <div class="step">$1=A(x+1)+B(x-1)$. Set $x=1$: $A=\tfrac12$. Set $x=-1$:
+    $B=-\tfrac12$.</div>
+    <div class="step">$\int\dfrac{dx}{x^2-1}=\tfrac12\ln|x-1|-\tfrac12\ln|x+1|+C
+    =\tfrac12\ln\left|\dfrac{x-1}{x+1}\right|+C$.</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>Repeated factor</b></div>
+    <p>$\dfrac{x}{(x-1)^2}=\dfrac{A}{x-1}+\dfrac{B}{(x-1)^2}$.</p>
+    <div class="step">$x=A(x-1)+B$. Set $x=1$: $B=1$. Match $x$-coefficients:
+    $A=1$.</div>
+    <div class="step">$\int\dfrac{x\,dx}{(x-1)^2}=\ln|x-1|-\dfrac{1}{x-1}+C$.</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>Irreducible quadratic</b></div>
+    <p>$\dfrac{1}{x(x^2+1)}=\dfrac{A}{x}+\dfrac{Bx+C}{x^2+1}$.</p>
+    <div class="step">$1=A(x^2+1)+(Bx+C)x$. Set $x=0$: $A=1$. Matching
+    $x^2$-coefficients: $0=A+B\Rightarrow B=-1$; matching $x$-coefficients:
+    $C=0$.</div>
+    <div class="step">$\int\dfrac{dx}{x(x^2+1)}=\ln|x|-\tfrac12\ln(x^2+1)+C$.</div>
+  </div>
+  <div class="checkpoint"><b>What if the fraction isn't proper?</b>
+    Divide first. $\dfrac{x^3}{x-1}=x^2+x+1+\dfrac{1}{x-1}$ by polynomial long
+    division, and only the remainder term needs partial fractions.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Trigonometric substitution and trigonometric integrals</h3>
+  <div class="box thm"><div class="bl">The three substitutions</div>
+    <p>For $\sqrt{a^2-x^2}$ use $x=a\sin\theta$; for $\sqrt{a^2+x^2}$ use
+    $x=a\tan\theta$; for $\sqrt{x^2-a^2}$ use $x=a\sec\theta$. Each turns the
+    radical into a single trig factor via a Pythagorean identity.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\int\dfrac{dx}{\sqrt{4-x^2}}$, using $x=2\sin\theta$, $dx=2\cos\theta\,
+    d\theta$, $\sqrt{4-x^2}=2\cos\theta$.</p>
+    <div class="step">$\int\dfrac{2\cos\theta\,d\theta}{2\cos\theta}=\theta+C=
+    \arcsin\!\left(\dfrac{x}{2}\right)+C$.</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>Power-reduction</b></div>
+    <p>$\int\sin^2x\,dx$, using $\sin^2x=\tfrac12(1-\cos2x)$.</p>
+    <div class="step">$=\tfrac12x-\tfrac14\sin2x+C$.</div>
+  </div>
+  <p>For $\int\sin^mx\cos^nx\,dx$: if either power is odd, peel off one factor and
+  substitute with the other function; if both are even, use the half-angle
+  identities repeatedly.</p>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• Convert everything (including $dx$) to the new variable.<br>
-  • Change the limits or convert back — never mix.<br>
-  • Partial fractions need a proper fraction; divide first if not.</p></div>
+  <p>• Convert everything — including $dx$ — to the new variable; do not leave a
+  mix of $x$ and $u$.<br>
+  • With definite integrals under substitution, either change the limits or
+  convert back before evaluating — never mix the two.<br>
+  • Partial fractions require a <em>proper</em> fraction; divide first if the
+  numerator's degree is not smaller.<br>
+  • After a trig substitution, convert back to $x$ using a reference triangle,
+  including for $\theta$ that appears alone (as $\arcsin$, $\arctan$, etc.).<br>
+  • Not every elementary function has an elementary antiderivative — do not hunt
+  forever for a closed form that provably does not exist.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Work each one fully by hand before checking.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
+    <div class="q"><div class="ql">Practice 1 · Substitution</div>
       <p>$\int x\cos(x^2)\,dx$.</p>
-      <details><summary>Answer</summary><div class="ans">$u=x^2$:
+      <details><summary>Answer</summary><div class="ans">$u=x^2,\ du=2x\,dx$:
       $\tfrac12\sin(x^2)+C$.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
+    <div class="q"><div class="ql">Practice 2 · By parts</div>
       <p>$\int \ln x\,dx$.</p>
-      <details><summary>Answer</summary><div class="ans">By parts: $x\ln x-x+C$.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
+      <details><summary>Answer</summary><div class="ans">$u=\ln x,\ dv=dx$:
+      $x\ln x-x+C$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Definite integral</div>
       <p>$\int_0^1 x e^{-x}\,dx$.</p>
-      <details><summary>Answer</summary><div class="ans">$1-2e^{-1}$.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">By parts:
+      $[-xe^{-x}-e^{-x}]_0^1=1-2e^{-1}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Repeated linear factors</div>
+      <p>$\int\dfrac{dx}{x(x-1)^2}$.</p>
+      <details><summary>Solution</summary><div class="ans">
+      $\dfrac{1}{x(x-1)^2}=\dfrac{1}{x}-\dfrac{1}{x-1}+\dfrac{1}{(x-1)^2}$, so the
+      integral is $\ln|x|-\ln|x-1|-\dfrac{1}{x-1}+C$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Irreducible quadratic</div>
+      <p>$\int\dfrac{dx}{x^2+4}$.</p>
+      <details><summary>Answer</summary><div class="ans">
+      $\tfrac12\arctan(x/2)+C$.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Trig substitution</div>
+      <p>$\int\dfrac{dx}{x^2\sqrt{x^2+9}}$.</p>
+      <details><summary>Solution</summary><div class="ans">$x=3\tan\theta$
+      gives $\int\dfrac{\cos\theta}{9\sin^2\theta}\,d\theta=
+      -\dfrac{1}{9\sin\theta}+C=-\dfrac{\sqrt{x^2+9}}{9x}+C$.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Circular parts</div>
+      <p>$\int e^{2x}\sin x\,dx$.</p>
+      <details><summary>Solution</summary><div class="ans">Parts twice gives
+      $I=e^{2x}(2\sin x-\cos x)-4I$ up to sign bookkeeping; solving,
+      $I=\tfrac15e^{2x}(2\sin x-\cos x)+C$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · No elementary form</div>
+      <p>Why can't you find a closed-form antiderivative of
+      $\int\dfrac{\sin x}{x}\,dx$ by these techniques, even though the function is
+      perfectly smooth?</p>
+      <details><summary>Answer</summary><div class="ans">Liouville's theory shows
+      $\operatorname{Si}(x)=\int_0^x\tfrac{\sin t}{t}dt$ is provably not expressible
+      in elementary terms — no substitution or parts trick will ever produce one, no
+      matter how cleverly applied.</div></details></div>
   </div>
 </div>
 

@@ -16,72 +16,150 @@
 <div class="unit-no reveal">Unit 02 · Analysis 1B</div>
 <h1 class="ch-title reveal">Improper Integrals</h1>
 <p class="ch-intro reveal">Integrals over infinite intervals, or of functions that
-blow up, defined carefully as limits. The recurring question: does the limit
-exist?</p>
+blow up, defined carefully as limits. The recurring question is always the same:
+does the limit exist? The tests here are a direct rehearsal for the series tests
+two units from now.</p>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
   <div class="ci"><div class="cl">Why it exists</div>
     <p>Many vital integrals run to infinity or have a singularity — probability
-    distributions, decaying signals. Improper integrals give them a rigorous
-    meaning.</p></div>
+    distributions, decaying signals, gravitational potentials. Improper integrals
+    give them a rigorous meaning by taking a limit of ordinary, proper
+    integrals.</p></div>
   <div class="ci"><div class="cl">In the real world</div>
     <p>The Gaussian integral $\int_{-\infty}^{\infty}e^{-x^2}\,dx=\sqrt{\pi}$
-    normalizes the bell curve; Laplace and Fourier transforms over infinite domains
-    power signal processing and control engineering.</p></div>
+    normalizes the bell curve; Laplace and Fourier transforms over infinite
+    domains power signal processing and control engineering; the exponential
+    waiting-time distribution in queueing theory is defined by one.</p></div>
   <div class="ci"><div class="cl">Story &amp; open questions</div>
     <p>Torricelli's "Gabriel's Horn" (1640s) has finite volume but infinite surface
-    area — fillable with paint, yet impossible to paint. A vivid warning that
-    infinity defies intuition.</p></div>
+    area — fillable with a finite amount of paint, yet impossible to paint. A vivid
+    early warning that infinity defies intuition, and a direct ancestor of the
+    $p$-test below.</p></div>
 </div>
 
 <div class="goals reveal">
   <div class="gl">By the end you can</div>
   <ul>
-    <li>Evaluate type I (infinite interval) and type II (singular) integrals.</li>
-    <li>Apply the $p$-test.</li>
-    <li>Use the comparison test.</li>
+    <li>Evaluate type I (infinite interval) and type II (singular) improper
+    integrals as limits.</li>
+    <li>Apply the $p$-test to both.</li>
+    <li>Use direct and limit comparison to decide convergence without
+    evaluating.</li>
+    <li>Explain the difference between convergence and absolute convergence for
+    improper integrals.</li>
   </ul>
 </div>
 
 <div class="block reveal">
-  <h3>Definitions</h3>
+  <h3>Definitions and the $p$-test</h3>
   <div class="box def"><div class="bl">Definition</div>
-    <p>$\int_a^\infty f=\lim_{t\to\infty}\int_a^t f$; if $f$ blows up at $b$,
-    $\int_a^b f=\lim_{t\to b^-}\int_a^t f$. Existence of the limit is
-    convergence.</p></div>
+    <p>$\displaystyle\int_a^\infty f=\lim_{t\to\infty}\int_a^t f$. If $f$ is
+    unbounded near $b$, $\displaystyle\int_a^b f=\lim_{t\to b^-}\int_a^t f$. The
+    integral <em>converges</em> exactly when this limit exists (as a finite
+    number); otherwise it <em>diverges</em>. An integral improper at both ends is
+    split at any interior point, and both pieces must converge.</p></div>
   <div class="box thm"><div class="bl">$p$-test</div>
-    <p>$\int_1^\infty x^{-p}\,dx$ converges iff $p>1$; $\int_0^1 x^{-p}\,dx$
-    converges iff $p<1$.</p></div>
+    <p>$\displaystyle\int_1^\infty x^{-p}\,dx$ converges iff $p>1$;
+    $\displaystyle\int_0^1 x^{-p}\,dx$ converges iff $p&lt;1$. The two cases are
+    mirror images: near infinity, large $p$ decays fast enough; near $0$, only
+    small $p$ keeps the blow-up mild enough.</p></div>
+  <div class="box eg"><div class="bl">Proof of the type I case</div>
+    <div class="step">For $p\ne1$: $\displaystyle\int_1^t x^{-p}dx=
+    \dfrac{t^{1-p}-1}{1-p}$. As $t\to\infty$, $t^{1-p}\to0$ iff $1-p&lt;0$, i.e.
+    $p>1$.</div>
+    <div class="step">For $p=1$: $\int_1^t x^{-1}dx=\ln t\to\infty$, so it
+    diverges — the boundary case fails.</div>
+  </div>
 </div>
 
 <div class="block reveal">
-  <h3>Comparison</h3>
-  <div class="box thm"><div class="bl">Theorem</div>
-    <p>If $0\le f\le g$ and $\int g$ converges, so does $\int f$; if $\int f$
-    diverges, so does $\int g$.</p></div>
-  <div class="box eg"><div class="bl">Example</div>
-    <p>$\int_1^\infty\dfrac{dx}{x^2+1}$ converges, by comparison with $x^{-2}$.</p></div>
+  <h3>Comparison tests</h3>
+  <div class="box thm"><div class="bl">Direct comparison</div>
+    <p>If $0\le f\le g$ on $[a,\infty)$ and $\int_a^\infty g$ converges, so does
+    $\int_a^\infty f$; if $\int_a^\infty f$ diverges, so does $\int_a^\infty g$.
+    (Squeeze a nonnegative function between $0$ and something integrable, or below
+    something that blows up.)</p></div>
+  <div class="box thm"><div class="bl">Limit comparison</div>
+    <p>If $f,g\ge0$ and $\displaystyle\lim_{x\to\infty}\dfrac{f(x)}{g(x)}=L$ with
+    $0&lt;L&lt;\infty$, then $\int_a^\infty f$ and $\int_a^\infty g$ either both
+    converge or both diverge. Useful when direct comparison is awkward to set
+    up.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Direct comparison</b></div>
+    <p>$\int_1^\infty\dfrac{dx}{x^2+1}$ converges: $0\le\dfrac1{x^2+1}\le
+    \dfrac1{x^2}$ and $\int_1^\infty x^{-2}dx$ converges ($p=2>1$).</p></div>
+  <div class="box eg"><div class="bl">Example <b>Limit comparison</b></div>
+    <p>$\int_1^\infty\dfrac{x}{\sqrt{x^5+1}}\,dx$: compare with
+    $g(x)=x^{-3/2}$.</p>
+    <div class="step">$\dfrac{f(x)}{g(x)}=\dfrac{x\cdot x^{3/2}}{\sqrt{x^5+1}}=
+    \dfrac{x^{5/2}}{\sqrt{x^5+1}}\to1$ as $x\to\infty$.</div>
+    <div class="step">Since $\int_1^\infty x^{-3/2}dx$ converges ($p=3/2>1$), so
+    does the original.</div>
+  </div>
+  <div class="checkpoint"><b>Absolute convergence</b>
+    If $\int_a^\infty|f|$ converges, then $\int_a^\infty f$ converges too — this
+    lets comparison tests (which need $f\ge0$) apply indirectly to signed
+    functions, exactly as with series later. The converse can fail: an integral can
+    converge only <em>conditionally</em>.</div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• Always rewrite as a limit; never substitute $\infty$ directly.<br>
-  • Watch for a hidden singularity inside the interval.<br>
-  • Comparison needs nonnegative functions.</p></div>
+  <p>• Always rewrite as a limit; never substitute $\infty$ or the singular point
+  directly into the antiderivative.<br>
+  • Watch for a hidden singularity <em>inside</em> the interval, not just at the
+  endpoints — split the integral there.<br>
+  • Comparison (direct or limit) needs eventually nonnegative functions.<br>
+  • Limit comparison requires the limit to be a positive finite number — $L=0$ or
+  $L=\infty$ only give one-directional information.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Decide convergence before you try to evaluate — often you
+  don't need the antiderivative at all.</p>
   <div class="prac">
     <div class="q"><div class="ql">Practice 1</div>
       <p>$\int_0^\infty e^{-x}\,dx$.</p>
-      <details><summary>Answer</summary><div class="ans">$1$.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">$[-e^{-x}]_0^\infty=1$.</div></details></div>
     <div class="q"><div class="ql">Practice 2</div>
       <p>Does $\int_1^\infty\dfrac{dx}{x}$ converge?</p>
       <details><summary>Answer</summary><div class="ans">No; $\ln t\to\infty$
-      ($p=1$).</div></details></div>
+      ($p=1$, the boundary case).</div></details></div>
     <div class="q"><div class="ql">Practice 3</div>
       <p>Converge or diverge: $\int_1^\infty\dfrac{2+\sin x}{x^2}\,dx$?</p>
-      <details><summary>Hint</summary><div class="ans">$\le 3/x^2$; converges.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">$0\le
+      \tfrac{2+\sin x}{x^2}\le\tfrac{3}{x^2}$, and $\int x^{-2}dx$ converges, so it
+      converges by direct comparison.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Type II</div>
+      <p>Does $\int_0^1\dfrac{dx}{\sqrt x}$ converge? Evaluate it.</p>
+      <details><summary>Solution</summary><div class="ans">$p=1/2&lt;1$, converges.
+      $\lim_{t\to0^+}\int_t^1 x^{-1/2}dx=\lim_{t\to0^+}(2-2\sqrt t)=2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Both ends</div>
+      <p>Does $\int_0^\infty\dfrac{dx}{\sqrt x(1+x)}$ converge?</p>
+      <details><summary>Solution</summary><div class="ans">Split at $1$. Near
+      $0$, behaves like $x^{-1/2}$ ($p=1/2&lt;1$, converges). Near $\infty$, behaves
+      like $x^{-3/2}$ ($p=3/2>1$, converges). Both pieces converge, so the whole
+      integral converges.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Limit comparison</div>
+      <p>Does $\int_2^\infty\dfrac{\ln x}{x^2}\,dx$ converge?</p>
+      <details><summary>Hint</summary><div class="ans">For any $\varepsilon>0$,
+      eventually $\ln x\le x^\varepsilon$, so compare with $x^{-2+\varepsilon}$ for
+      small $\varepsilon$; it converges (and can also be evaluated directly by
+      parts).</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Absolute convergence</div>
+      <p>Show $\int_1^\infty\dfrac{\cos x}{x^2}\,dx$ converges.</p>
+      <details><summary>Answer</summary><div class="ans">$\left|\dfrac{\cos x}
+      {x^2}\right|\le\dfrac{1}{x^2}$, so the integral converges absolutely, hence
+      converges.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Gabriel's Horn</div>
+      <p>The horn formed by rotating $y=1/x$ for $x\ge1$ has volume
+      $\int_1^\infty\pi/x^2\,dx$ and surface area at least
+      $\int_1^\infty2\pi/x\,dx$. Show the volume is finite but the surface area is
+      infinite.</p>
+      <details><summary>Answer</summary><div class="ans">Volume: $p=2>1$,
+      converges to $\pi$. Surface area: bounded below by $\int 2\pi/x\,dx$, which
+      is the $p=1$ boundary case and diverges — so the true surface area is
+      infinite.</div></details></div>
   </div>
 </div>
 

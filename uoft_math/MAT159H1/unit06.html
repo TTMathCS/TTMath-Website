@@ -16,74 +16,161 @@
 <div class="unit-no reveal">Unit 06 · Analysis 1B</div>
 <h1 class="ch-title reveal">Uniform Convergence</h1>
 <p class="ch-intro reveal">The capstone idea of the course: a stronger kind of
-convergence for sequences of functions, strong enough to let you swap limits with
-integrals and derivatives.</p>
+convergence for sequences and series of functions, strong enough to let you swap
+limits with integrals and derivatives. Power series, next unit, are the main
+example.</p>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
   <div class="ci"><div class="cl">Why it exists</div>
     <p>Pointwise convergence is too weak: a limit of continuous functions can be
-    discontinuous, and you cannot freely swap limits with integrals. Uniform
-    convergence is the condition that fixes this.</p></div>
+    discontinuous, and you cannot freely swap limits with integrals or
+    derivatives. Uniform convergence is the extra condition that fixes both
+    problems at once.</p></div>
   <div class="ci"><div class="cl">In the real world</div>
     <p>It justifies term-by-term differentiation and integration of series — the
     silent step behind Fourier analysis, differential-equation solutions, and much
-    of applied mathematics.</p></div>
+    of applied mathematics and numerical computing.</p></div>
   <div class="ci"><div class="cl">Story &amp; open questions</div>
-    <p>Early 19th-century mathematicians made famous errors by assuming limits could
-    always be swapped. Weierstrass isolated uniform convergence as the missing
-    hypothesis — a milestone in the rigorisation of analysis.</p></div>
+    <p>Early 19th-century mathematicians, including Cauchy, made famous errors by
+    assuming limits of continuous functions were always continuous. Weierstrass
+    isolated uniform convergence in the 1840s–50s as the missing hypothesis — one
+    of the pivotal moments in the rigorisation of analysis.</p></div>
 </div>
 
 <div class="goals reveal">
   <div class="gl">By the end you can</div>
   <ul>
-    <li>Distinguish pointwise from uniform convergence.</li>
-    <li>Use the sup-norm test for uniform convergence.</li>
-    <li>State when limits, integrals, and derivatives may be exchanged.</li>
+    <li>Distinguish pointwise from uniform convergence, and show a limit is not
+    uniform via a sup-norm computation.</li>
+    <li>Apply the Weierstrass M-test to series of functions.</li>
+    <li>State (and sketch the proof of) why a uniform limit of continuous
+    functions is continuous.</li>
+    <li>State when limits, integrals, and derivatives may be exchanged with a
+    limit of functions.</li>
   </ul>
 </div>
 
 <div class="block reveal">
   <h3>Two kinds of convergence</h3>
   <div class="box def"><div class="bl">Definition</div>
-    <p>$f_n\to f$ <em>uniformly</em> on $S$ if $\sup_{x\in S}|f_n(x)-f(x)|\to0$. The
-    single $N$ works for all $x$ at once — that is the difference from pointwise.</p></div>
-  <div class="box eg"><div class="bl">Example</div>
-    <p>$f_n(x)=x^n$ on $[0,1]$ converges pointwise to a discontinuous limit (0 on
-    $[0,1)$, 1 at $1$), so the convergence is <em>not</em> uniform.</p></div>
+    <p>$f_n\to f$ <em>pointwise</em> on $S$ if $f_n(x)\to f(x)$ for each fixed
+    $x\in S$ (the $N$ in the ε–N definition may depend on $x$). $f_n\to f$
+    <em>uniformly</em> on $S$ if $\sup_{x\in S}|f_n(x)-f(x)|\to0$ — one $N$ works
+    for every $x\in S$ simultaneously.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Pointwise but not uniform</b></div>
+    <p>$f_n(x)=x^n$ on $[0,1]$.</p>
+    <div class="step">Pointwise limit: $f(x)=0$ for $x\in[0,1)$, $f(1)=1$ — a
+    discontinuous function, even though every $f_n$ is continuous.</div>
+    <div class="step">$\sup_{x\in[0,1]}|x^n-f(x)|=1$ for every $n$ (approached as
+    $x\to1^-$), so the convergence is <em>not</em> uniform.</div>
+  </div>
 </div>
 
 <div class="block reveal">
-  <h3>Why it matters</h3>
-  <div class="box thm"><div class="bl">Theorem</div>
-    <p>If $f_n\to f$ uniformly and each $f_n$ is continuous, then $f$ is continuous.
-    On a closed bounded interval, uniform convergence of integrable functions
-    permits $\int\lim=\lim\int$. For derivatives, one standard theorem also
-    requires $f_n'$ to converge uniformly and $f_n(x_0)$ to converge at one
-    point; then the limit is differentiable with derivative $\lim f_n'$.</p></div>
+  <h3>The Weierstrass M-test</h3>
+  <div class="box thm"><div class="bl">Theorem <b>M-test</b></div>
+    <p>Suppose $|f_n(x)|\le M_n$ for all $x\in S$, with $\sum M_n$ convergent.
+    Then $\sum f_n$ converges uniformly (and absolutely) on $S$. The idea:
+    bounding each term by a number independent of $x$ turns a question about
+    functions into an ordinary series question.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\displaystyle\sum_{n=1}^\infty\frac{\cos(nx)}{n^2}$ converges uniformly on
+    all of $\mathbb{R}$: $\left|\dfrac{\cos nx}{n^2}\right|\le\dfrac1{n^2}=M_n$,
+    and $\sum1/n^2$ converges.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Why uniform convergence matters</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Continuity is preserved</b></div>
+    <p>If $f_n\to f$ uniformly on $S$ and each $f_n$ is continuous, then $f$ is
+    continuous.</p></div>
+  <div class="box eg"><div class="bl">Proof sketch</div>
+    <div class="step">Fix $x_0\in S$ and $\varepsilon>0$. Uniform convergence
+    gives $N$ with $|f_N(x)-f(x)|&lt;\varepsilon/3$ for <em>every</em> $x\in S$ at
+    once.</div>
+    <div class="step">Continuity of $f_N$ at $x_0$ gives $\delta>0$ with
+    $|x-x_0|&lt;\delta\Rightarrow|f_N(x)-f_N(x_0)|&lt;\varepsilon/3$.</div>
+    <div class="step">Combine (the "add and subtract" trick again):
+    $|f(x)-f(x_0)|\le|f(x)-f_N(x)|+|f_N(x)-f_N(x_0)|+|f_N(x_0)-f(x_0)|&lt;
+    \varepsilon$. ∎ Note the middle term is the only one using continuity of a
+    single $f_N$; the outer two rely entirely on uniformity.</div>
+  </div>
+  <div class="box thm"><div class="bl">Swapping integrals and derivatives</div>
+    <p>If $f_n\to f$ uniformly on $[a,b]$ and each $f_n$ is integrable, then
+    $\int_a^b f=\lim_n\int_a^b f_n$. For derivatives: if $f_n\to f$ pointwise at
+    one point, each $f_n'$ exists and is continuous, and $f_n'\to g$
+    <em>uniformly</em>, then $f$ is differentiable with $f'=g$ — note the
+    stronger hypothesis needed on the derivatives, not the functions
+    themselves.</p></div>
+  <div class="checkpoint"><b>Why derivatives need more care</b>
+    Uniform convergence of $f_n$ alone does <em>not</em> give convergence of
+    $f_n'$: $f_n(x)=\tfrac1n\sin(n^2x)$ converges uniformly to $0$, but
+    $f_n'(x)=n\cos(n^2x)$ does not converge at all. This is why the derivative
+    theorem hypothesizes uniform convergence of $f_n'$ directly, not of
+    $f_n$.</div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• Pointwise convergence does not preserve continuity or allow swapping
-  limits.<br>
-  • Check the $\sup$ of the difference, not just each point.<br>
-  • Uniform convergence of $f_n$ does not by itself give convergence of
-  $f_n'$.</p></div>
+  <p>• Pointwise convergence does not preserve continuity and does not allow
+  swapping limits with integrals or derivatives in general.<br>
+  • Always compute the $\sup$ of the difference over the <em>whole</em> domain,
+  not just check a few points.<br>
+  • The M-test only ever proves uniform convergence — it can never be used to
+  show a series does <em>not</em> converge uniformly.<br>
+  • Uniform convergence of $f_n$ says nothing about $f_n'$ by itself; the
+  derivative-swap theorem needs uniform convergence of the derivatives.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
   <div class="prac">
     <div class="q"><div class="ql">Practice 1</div>
       <p>Show $f_n(x)=x/n$ converges uniformly to $0$ on $[0,1]$.</p>
-      <details><summary>Answer</summary><div class="ans">$\sup|x/n|=1/n\to0$.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">$\sup_{[0,1]}|x/n|=
+      1/n\to0$.</div></details></div>
     <div class="q"><div class="ql">Practice 2</div>
       <p>Show $f_n(x)=x^n$ is not uniform on $[0,1]$.</p>
-      <details><summary>Hint</summary><div class="ans">$\sup|x^n-f|=1$ near $x=1$
-      for every $n$.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">$\sup|x^n-f(x)|=1$
+      (approached as $x\to1^-$) for every $n$, so it does not tend to $0$.</div></details></div>
     <div class="q"><div class="ql">Practice 3</div>
-      <p>Does $f_n(x)=\dfrac{\sin(nx)}{n}$ converge uniformly on $\mathbb{R}$?</p>
-      <details><summary>Answer</summary><div class="ans">Yes; $\sup\le1/n\to0$.</div></details></div>
+      <p>Does $f_n(x)=\dfrac{\sin(nx)}{n}$ converge uniformly on
+      $\mathbb{R}$?</p>
+      <details><summary>Answer</summary><div class="ans">Yes;
+      $\sup|f_n(x)-0|\le1/n\to0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · M-test</div>
+      <p>Show $\displaystyle\sum_{n=1}^\infty\dfrac{x^n}{n^2}$ converges
+      uniformly on $[-1,1]$.</p>
+      <details><summary>Answer</summary><div class="ans">$\left|\tfrac{x^n}
+      {n^2}\right|\le\tfrac1{n^2}=M_n$ on $[-1,1]$, and $\sum1/n^2$ converges, so
+      the M-test applies.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Not uniform on an open interval</div>
+      <p>Show $\sum x^n$ converges uniformly on $[-\tfrac12,\tfrac12]$ but not on
+      $(-1,1)$.</p>
+      <details><summary>Solution</summary><div class="ans">On
+      $[-\tfrac12,\tfrac12]$: $|x^n|\le2^{-n}=M_n$ and $\sum2^{-n}$ converges, so
+      M-test applies. On $(-1,1)$ no single convergent $\sum M_n$ bounds
+      $|x^n|$ uniformly, since $\sup_{(-1,1)}|x|^n=1$ for every $n$.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Swapping integrals</div>
+      <p>Given $f_n\to f$ uniformly on $[0,1]$ with each $f_n$ continuous,
+      explain why $\lim_n\int_0^1 f_n(x)\,dx=\int_0^1 f(x)\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">
+      $\left|\int_0^1f_n-\int_0^1f\right|\le\int_0^1|f_n-f|\le
+      \sup_{[0,1]}|f_n-f|\to0$, using uniform convergence to bound the integral of
+      the difference by the sup-norm times the interval length.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · The derivative trap</div>
+      <p>Verify $f_n(x)=\tfrac1n\sin(n^2x)\to0$ uniformly on $\mathbb{R}$, but
+      $f_n'(0)$ does not converge.</p>
+      <details><summary>Answer</summary><div class="ans">$\sup|f_n(x)|\le1/n\to
+      0$, so $f_n\to0$ uniformly. But $f_n'(x)=n\cos(n^2x)$, so
+      $f_n'(0)=n\to\infty$ — it does not converge at all, showing uniform
+      convergence of $f_n$ says nothing about $f_n'$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Continuity contrapositive</div>
+      <p>$f_n(x)=x^n$ on $[0,1]$ has a discontinuous pointwise limit. What does
+      this immediately tell you about the mode of convergence, without any further
+      computation?</p>
+      <details><summary>Answer</summary><div class="ans">By the contrapositive of
+      "uniform limit of continuous functions is continuous," since each $f_n$ is
+      continuous but the limit is not, the convergence cannot be uniform.</div></details></div>
   </div>
 </div>
 

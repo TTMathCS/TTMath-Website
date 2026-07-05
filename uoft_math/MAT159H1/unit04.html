@@ -15,58 +15,102 @@
 <div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 04</div>
 <div class="unit-no reveal">Unit 04 · Analysis 1B</div>
 <h1 class="ch-title reveal">Taylor's Theorem</h1>
-<p class="ch-intro reveal">Approximating a function by a polynomial, with a precise
-formula for the error. This is the rigorous heart of "good enough"
-approximation.</p>
+<p class="ch-intro reveal">Approximating a function by a polynomial, with a
+precise formula for the error. This is the rigorous heart of "good enough"
+approximation, and the bridge from the Mean Value Theorem to the infinite series
+of the next two units.</p>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
   <div class="ci"><div class="cl">Why it exists</div>
-    <p>Polynomials are easy; most functions are not. Taylor's theorem says how well
-    a polynomial approximates a function, and exactly how big the error can be.</p></div>
+    <p>Polynomials are easy to compute, differentiate, and integrate; most
+    functions are not. Taylor's theorem says how well a polynomial approximates a
+    function near a point, and — crucially — puts an exact, provable bound on how
+    big the error can possibly be.</p></div>
   <div class="ci"><div class="cl">In the real world</div>
-    <p>It is how calculators evaluate functions, how physics linearizes hard
-    problems (small-angle $\sin\theta\approx\theta$), and how optimization methods
-    like Newton's are derived.</p></div>
+    <p>It is how calculators and computers evaluate $\sin$, $\cos$, $e^x$ to many
+    digits; how physics linearizes hard problems (small-angle
+    $\sin\theta\approx\theta$ in a pendulum); and how Newton's method for
+    root-finding is derived from the linear (degree-1) Taylor approximation.</p></div>
   <div class="ci"><div class="cl">Story &amp; open questions</div>
     <p>Brook Taylor published the series in 1715; Madhava in 14th-century India had
-    found the key cases three centuries earlier. A function can equal its Taylor
-    series only when the remainder tends to zero.</p></div>
+    found the key cases (sine, cosine, arctangent) three centuries earlier. A
+    function can fail to equal its own Taylor series everywhere it converges —
+    Cauchy's 1823 example $e^{-1/x^2}$ (at $x=0$) has every derivative zero at the
+    origin, so its Taylor series is identically $0$, yet the function itself is
+    not.</p></div>
 </div>
 
 <div class="goals reveal">
   <div class="gl">By the end you can</div>
   <ul>
-    <li>Write the Taylor polynomial of a function.</li>
-    <li>State Taylor's theorem with the Lagrange remainder.</li>
-    <li>Bound approximation errors.</li>
+    <li>Write the Taylor polynomial of a function at a point.</li>
+    <li>State Taylor's theorem with the Lagrange remainder, and sketch why it
+    follows from the Mean Value Theorem.</li>
+    <li>Bound approximation errors using the remainder formula.</li>
+    <li>Explain why a convergent Taylor series need not equal the function it
+    came from.</li>
   </ul>
 </div>
 
 <div class="block reveal">
-  <h3>The theorem</h3>
-  <div class="box thm"><div class="bl">Theorem <b>Taylor with remainder</b></div>
-    <p>$f(x)=\displaystyle\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k+R_n(x)$, where
-    $R_n(x)=\dfrac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$ for some $c$ between $a$ and
-    $x$.</p></div>
+  <h3>Taylor polynomials and the remainder theorem</h3>
+  <div class="box def"><div class="bl">Definition <b>Taylor polynomial</b></div>
+    <p>$\displaystyle T_n(x)=\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k$ — the
+    unique degree-$n$ polynomial matching $f$ and its first $n$ derivatives at
+    $a$.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Taylor with Lagrange remainder</b></div>
+    <p>If $f$ is $n+1$ times differentiable on an interval containing $a$ and
+    $x$, then $f(x)=T_n(x)+R_n(x)$ where
+    $R_n(x)=\dfrac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$ for some $c$ strictly between
+    $a$ and $x$.</p></div>
+  <div class="box eg"><div class="bl">Proof sketch</div>
+    <div class="step">The case $n=0$ is exactly the Mean Value Theorem:
+    $f(x)-f(a)=f'(c)(x-a)$.</div>
+    <div class="step">For general $n$, apply the Generalized (Cauchy) Mean Value
+    Theorem to $g(t)=f(x)-T_n$-built-at-$t$ and $h(t)=(x-t)^{n+1}$; both vanish
+    appropriately, and unwinding the ratio $g'/h'$ repeatedly isolates
+    $f^{(n+1)}(c)$ in the remainder term.</div>
+  </div>
   <div class="box eg"><div class="bl">Example</div>
-    <p>For $e^x$ about $0$: $e^x=1+x+\tfrac{x^2}{2}+\cdots+\tfrac{x^n}{n!}+R_n$,
-    with $R_n=\tfrac{e^c}{(n+1)!}x^{n+1}$.</p></div>
+    <p>For $e^x$ about $a=0$: $e^x=1+x+\tfrac{x^2}{2}+\cdots+\tfrac{x^n}{n!}+R_n$,
+    with $R_n(x)=\tfrac{e^c}{(n+1)!}x^{n+1}$ for some $c$ between $0$ and
+    $x$.</p></div>
 </div>
 
 <div class="block reveal">
-  <h3>Error bounds</h3>
-  <div class="box eg"><div class="bl">Example</div>
+  <h3>Error bounds in practice</h3>
+  <div class="box eg"><div class="bl">Example <b>Cosine near $0$</b></div>
     <p>View $1-\tfrac{x^2}{2}$ as the degree-3 Taylor polynomial of cosine (the
-    cubic coefficient is zero). Then the Lagrange error at $0.1$ is at most
+    cubic coefficient is zero, so $T_3=T_2$). Then $|f^{(4)}|=|\cos|\le1$
+    everywhere, so the Lagrange error at $x=0.1$ is at most
     $\dfrac{(0.1)^4}{4!}\approx4.2\times10^{-6}$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>How many terms for 4-decimal accuracy?</b></div>
+    <p>Estimate $e$ using $T_n(1)$ for $e^x$ at $a=0$, accurate to
+    $10^{-4}$.</p>
+    <div class="step">$|R_n(1)|=\dfrac{e^c}{(n+1)!}\le\dfrac{3}{(n+1)!}$ for
+    $0&lt;c&lt;1$ (using $e&lt;3$).</div>
+    <div class="step">Need $\dfrac{3}{(n+1)!}&lt;10^{-4}$: $n=7$ gives
+    $\tfrac{3}{40320}\approx7.4\times10^{-5}$, small enough.</div>
+  </div>
+  <div class="checkpoint"><b>Why bound $f^{(n+1)}$, not compute $c$?</b>
+    The theorem guarantees $c$ exists but never tells you where — the whole
+    technique is to bound $|f^{(n+1)}|$ over the <em>entire</em> interval between
+    $a$ and $x$, giving a worst-case bound that holds no matter what $c$ turns out
+    to be.</div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• The remainder point $c$ is unknown; bound $|f^{(n+1)}|$ over the interval.<br>
-  • A Taylor series can converge yet not to $f$ — only $R_n\to0$ guarantees
-  equality.<br>
-  • Centre matters: expanding about a nearby $a$ improves accuracy.</p></div>
+  <p>• The remainder point $c$ is unknown and generally different for each
+  $x$ — bound $|f^{(n+1)}|$ over the whole interval, don't try to pin down
+  $c$.<br>
+  • A Taylor series can converge yet not equal $f$ — only $R_n\to0$ as
+  $n\to\infty$ guarantees equality (Cauchy's $e^{-1/x^2}$ example above is the
+  standard warning).<br>
+  • Centre matters: expanding about a nearby $a$ shrinks $(x-a)^{n+1}$ and usually
+  improves accuracy dramatically.<br>
+  • $T_n$ has degree $n$ but may have fewer than $n$ nonzero terms (odd/even
+  symmetry can make coefficients vanish, as with $\cos x$ above).</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
@@ -75,13 +119,52 @@ approximation.</p>
       <p>Write the degree-3 Taylor polynomial of $\sin x$ about $0$.</p>
       <details><summary>Answer</summary><div class="ans">$x-\tfrac{x^3}{6}$.</div></details></div>
     <div class="q"><div class="ql">Practice 2</div>
-      <p>Bound the error of approximating $e^{0.5}$ by $1+0.5+\tfrac{0.25}{2}$.</p>
-      <details><summary>Hint</summary><div class="ans">$R_2\le\tfrac{e^{0.5}(0.5)^3}
-      {6}\approx0.034$.</div></details></div>
+      <p>Bound the error of approximating $e^{0.5}$ by
+      $1+0.5+\tfrac{0.25}{2}$.</p>
+      <details><summary>Solution</summary><div class="ans">$R_2(0.5)=
+      \dfrac{e^c(0.5)^3}{6}$ for $0&lt;c&lt;0.5$; using $e^{0.5}&lt;2$,
+      $|R_2|\le\tfrac{2(0.125)}{6}\approx0.042$.</div></details></div>
     <div class="q"><div class="ql">Practice 3</div>
       <p>Use a Taylor polynomial to estimate $\sqrt{1.1}$.</p>
-      <details><summary>Answer</summary><div class="ans">$\sqrt{1+x}\approx1+
-      \tfrac{x}{2}-\tfrac{x^2}{8}$ at $x=0.1$ gives $\approx1.0488$.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">
+      $\sqrt{1+x}\approx1+\tfrac{x}{2}-\tfrac{x^2}{8}$ at $x=0.1$ gives
+      $\approx1.0488$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Degree needed</div>
+      <p>How large must $n$ be so that $T_n(1)$ for $\sin x$ about $0$ is accurate
+      to within $10^{-6}$?</p>
+      <details><summary>Solution</summary><div class="ans">$|R_n(1)|\le
+      \dfrac{1}{(n+1)!}$ (since all derivatives of $\sin$ are bounded by $1$). Need
+      $(n+1)!>10^6$; $10!=3628800$ works, so $n=9$ suffices.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Small-angle approximation</div>
+      <p>Bound the error in $\sin\theta\approx\theta$ for $|\theta|\le0.1$
+      radians.</p>
+      <details><summary>Answer</summary><div class="ans">$T_2(\theta)=\theta$
+      (the quadratic coefficient is $0$), with remainder
+      $R_2(\theta)=-\tfrac{\cos c}{6}\theta^3$ for some $c$ between $0$ and
+      $\theta$. Since $|\cos c|\le1$,
+      $|R_2|\le\tfrac{(0.1)^3}{6}\approx1.7\times10^{-4}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Centre choice</div>
+      <p>Why does expanding $\ln x$ about $a=1$ (rather than $a=0$, where it's
+      undefined) make sense for estimating $\ln(1.05)$?</p>
+      <details><summary>Answer</summary><div class="ans">$a$ must be a point
+      where $f$ is smooth, and the error term scales with $(x-a)^{n+1}$ — choosing
+      $a=1$ close to $x=1.05$ makes $(x-a)=0.05$ small, giving fast convergence,
+      whereas $a=0$ is not even in the domain.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · When the series misleads</div>
+      <p>Explain why "the Taylor series of $f$ at $a$ converges for all $x$"
+      does <em>not</em> by itself prove $f(x)=T_\infty(x)$.</p>
+      <details><summary>Answer</summary><div class="ans">Convergence of the
+      series only says the partial sums $T_n(x)$ converge to <em>some</em> number;
+      whether that number is $f(x)$ additionally requires $R_n(x)\to0$, which is a
+      separate condition (false for Cauchy's $e^{-1/x^2}$ example at $a=0$).</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Newton's method link</div>
+      <p>Show that Newton's method update $x_{n+1}=x_n-f(x_n)/f'(x_n)$ is exactly
+      solving $T_1(x)=0$ for the degree-1 Taylor polynomial of $f$ centred at
+      $x_n$.</p>
+      <details><summary>Answer</summary><div class="ans">$T_1(x)=f(x_n)+
+      f'(x_n)(x-x_n)$. Setting $T_1(x)=0$ and solving for $x$ gives exactly
+      $x=x_n-f(x_n)/f'(x_n)$ — Newton's method takes one step toward the root of
+      the linear approximation.</div></details></div>
   </div>
 </div>
 
