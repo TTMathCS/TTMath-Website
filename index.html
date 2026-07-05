@@ -10,16 +10,13 @@
   :root {
     --bg: #f6f8f7;
     --surface: #ffffff;
-    --surface-soft: #eef6f3;
     --ink: #16212b;
     --muted: #5d6874;
     --line: #dce4e1;
     --teal: #0f7b72;
     --teal-dark: #0a5d56;
-    --blue: #244f86;
-    --gold: #a76f1f;
-    --red: #9f4d43;
-    --shadow: 0 16px 36px rgba(22, 33, 43, 0.08);
+    --shadow: 0 10px 24px rgba(22, 33, 43, 0.06);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   }
 
   * {
@@ -32,7 +29,6 @@
 
   body {
     margin: 0;
-    min-height: 100vh;
     color: var(--ink);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
@@ -47,6 +43,11 @@
     max-width: 100%;
   }
 
+  h1, h2, h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+  }
+
   .site-header {
     position: sticky;
     top: 0;
@@ -57,7 +58,7 @@
   }
 
   .nav-wrap {
-    max-width: 1180px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 14px 22px;
     display: flex;
@@ -75,7 +76,7 @@
   }
 
   .brand img {
-    width: 118px;
+    width: 110px;
     height: auto;
     display: block;
   }
@@ -87,10 +88,10 @@
   .top-nav {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 20px;
     color: var(--muted);
     font-size: 0.94rem;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .top-nav a {
@@ -109,9 +110,9 @@
     align-items: center;
     justify-content: center;
     min-height: 42px;
-    padding: 0 16px;
+    padding: 0 18px;
     border-radius: 8px;
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
     border: 1px solid transparent;
   }
@@ -125,7 +126,7 @@
   .button.secondary {
     background: #ffffff;
     color: var(--teal-dark);
-    border-color: rgba(15, 123, 114, 0.28);
+    border-color: rgba(15, 123, 114, 0.3);
   }
 
   .nav-cta:hover,
@@ -147,102 +148,94 @@
   }
 
   .hero-inner {
-    max-width: 1180px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 70px 22px 42px;
+    padding: 64px 22px 48px;
   }
 
   .eyebrow {
     margin: 0 0 12px;
     color: var(--teal);
-    font-size: 0.82rem;
-    font-weight: 900;
+    font-size: 0.8rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0;
+    letter-spacing: 0.06em;
   }
 
   h1 {
-    max-width: 800px;
+    max-width: 760px;
     margin: 0;
-    font-size: 3.45rem;
-    line-height: 1.04;
-    letter-spacing: 0;
+    font-size: 3.1rem;
+    line-height: 1.08;
   }
 
   .hero-copy {
-    max-width: 720px;
-    margin: 18px 0 0;
+    max-width: 640px;
+    margin: 16px 0 0;
     color: var(--muted);
-    font-size: 1.14rem;
+    font-size: 1.12rem;
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 28px;
+    margin-top: 26px;
   }
 
-  .hero-strip {
-    margin-top: 42px;
+  /* course paths at a glance */
+  .paths {
+    margin-top: 44px;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 12px;
   }
 
-  .strip-panel {
-    min-height: 156px;
-    padding: 18px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--surface-soft);
-    overflow: hidden;
-  }
-
-  .strip-panel.media {
-    grid-column: 1 / -1;
+  .path-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    background: #ffffff;
-    min-height: 0;
-    padding: clamp(12px, 2vw, 24px);
+    gap: 10px;
+    padding: 14px 18px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fbfdfc;
   }
 
-  .strip-panel.media img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
-
-  .strip-label {
-    margin: 0 0 8px;
+  .path-name {
+    min-width: 64px;
     color: var(--muted);
     font-size: 0.78rem;
-    font-weight: 900;
+    font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
-  .strip-panel strong {
-    display: block;
-    font-size: 1.2rem;
-    line-height: 1.24;
+  .chip {
+    padding: 4px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #ffffff;
+    font-size: 0.92rem;
+    font-weight: 600;
   }
 
-  .strip-panel p {
-    margin: 8px 0 0;
+  .chip.gold { background: #fdf6e3; border-color: #e0c36a; }
+  .chip.green { background: #e8f5e9; border-color: #7cb98a; }
+  .chip.blue { background: #e3f0fb; border-color: #7aa8d8; }
+
+  .path-sep {
     color: var(--muted);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   main {
-    max-width: 1180px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 46px 22px 58px;
+    padding: 48px 22px 64px;
   }
 
   .section {
-    margin-top: 52px;
+    margin-top: 56px;
   }
 
   .section:first-child {
@@ -254,21 +247,20 @@
     align-items: end;
     justify-content: space-between;
     gap: 24px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 
   .section-head h2 {
     margin: 0;
-    font-size: 1.55rem;
+    font-size: 1.7rem;
     line-height: 1.2;
-    letter-spacing: 0;
   }
 
   .section-head p {
-    max-width: 500px;
+    max-width: 460px;
     margin: 0;
     color: var(--muted);
-    font-size: 0.98rem;
+    font-size: 0.95rem;
   }
 
   .grid {
@@ -276,38 +268,32 @@
     gap: 18px;
   }
 
-  .program-grid {
-    grid-template-columns: 1fr;
+  .program-grid,
+  .resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .demo-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .resource-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .card {
-    position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100%;
-    padding: 24px;
+    padding: 26px;
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 10px;
     background: var(--surface);
     box-shadow: var(--shadow);
     color: inherit;
     text-decoration: none;
-    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    transition: transform 0.18s ease, border-color 0.18s ease;
   }
 
   .card:hover,
   .card:focus-visible {
-    transform: translateY(-3px);
-    border-color: rgba(15, 123, 114, 0.58);
-    box-shadow: 0 20px 48px rgba(22, 33, 43, 0.12);
+    transform: translateY(-2px);
+    border-color: rgba(15, 123, 114, 0.5);
     outline: none;
   }
 
@@ -319,92 +305,34 @@
     outline-offset: 3px;
   }
 
-  .card.ai {
-    background: #f9fffd;
-  }
-
-  .card.curriculum {
-    border-top: 5px solid var(--blue);
-  }
-
-  .card.demo-one {
-    border-top: 5px solid var(--gold);
-  }
-
-  .card.demo-two {
-    border-top: 5px solid var(--teal);
-  }
-
-  .card.demo-three {
-    border-top: 5px solid var(--red);
-  }
-
-  .card.resource {
-    border-top: 5px solid var(--blue);
-  }
-
   .label {
     align-self: flex-start;
-    margin-bottom: 12px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    background: rgba(15, 123, 114, 0.1);
+    margin-bottom: 14px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(15, 123, 114, 0.09);
     color: var(--teal-dark);
     font-size: 0.74rem;
-    font-weight: 900;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0;
-  }
-
-  .label.gold {
-    background: rgba(167, 111, 31, 0.12);
-    color: #7b5218;
-  }
-
-  .label.blue {
-    background: rgba(36, 79, 134, 0.1);
-    color: var(--blue);
-  }
-
-  .label.red {
-    background: rgba(159, 77, 67, 0.1);
-    color: var(--red);
+    letter-spacing: 0.04em;
   }
 
   .card h3 {
     margin: 0;
-    font-size: 1.32rem;
-    line-height: 1.24;
-    letter-spacing: 0;
+    font-size: 1.35rem;
+    line-height: 1.25;
   }
 
   .card p {
     margin: 10px 0 0;
     color: var(--muted);
-    font-size: 0.98rem;
-  }
-
-  .card-media {
-    margin: -6px -6px 18px;
-    padding: clamp(12px, 2vw, 24px);
-    min-height: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: #ffffff;
-  }
-
-  .card-media img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    font-size: 0.97rem;
   }
 
   .course-list {
     display: grid;
-    gap: 8px;
+    gap: 0;
     margin: 18px 0 0;
     padding: 0;
     list-style: none;
@@ -412,9 +340,9 @@
 
   .course-list li {
     display: grid;
-    grid-template-columns: 66px minmax(0, 1fr);
+    grid-template-columns: 60px minmax(0, 1fr);
     gap: 10px;
-    padding: 9px 0;
+    padding: 8px 0;
     border-top: 1px solid var(--line);
     color: var(--muted);
     font-size: 0.95rem;
@@ -426,39 +354,13 @@
 
   .card-link {
     margin-top: auto;
-    padding-top: 18px;
+    padding-top: 20px;
     color: var(--teal-dark);
-    font-weight: 900;
+    font-weight: 700;
   }
 
   .card-link::after {
     content: " \2192";
-  }
-
-  .mini-list {
-    display: grid;
-    gap: 11px;
-    margin: 18px 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .mini-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    color: var(--muted);
-    font-size: 0.96rem;
-  }
-
-  .mini-list li::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    margin-top: 9px;
-    border-radius: 2px;
-    background: var(--teal);
-    flex: 0 0 auto;
   }
 
   .footer {
@@ -467,7 +369,7 @@
   }
 
   .footer-inner {
-    max-width: 1180px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 26px 22px;
     display: flex;
@@ -490,14 +392,13 @@
     }
 
     h1 {
-      font-size: 2.45rem;
+      font-size: 2.3rem;
     }
 
     .hero-inner {
       padding-top: 44px;
     }
 
-    .hero-strip,
     .program-grid,
     .demo-grid,
     .resource-grid {
@@ -510,11 +411,6 @@
       padding: 12px 16px;
     }
 
-    .top-nav {
-      gap: 12px;
-      font-size: 0.9rem;
-    }
-
     .hero-inner,
     main,
     .footer-inner {
@@ -523,20 +419,15 @@
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: 2rem;
     }
 
-    .hero-copy {
-      font-size: 1.02rem;
+    .path-name {
+      width: 100%;
     }
 
     .card {
       padding: 20px;
-    }
-
-    .course-list li {
-      grid-template-columns: 1fr;
-      gap: 2px;
     }
   }
 
@@ -573,27 +464,32 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <p class="eyebrow">TTMath School Preview Hub</p>
-      <h1>Choose the right TTMath path with less confusion.</h1>
-      <p class="hero-copy">Start with the AI and CS course paths, compare the three school-site demos, or open advanced learning resources for math study.</p>
+      <p class="eyebrow">TTMath School</p>
+      <h1>Find your course path.</h1>
+      <p class="hero-copy">AI and CS course paths, three school-site demos, and math study resources — all from one page.</p>
       <div class="hero-actions">
         <a class="button primary" href="demo2/ai-path/">View AI Course Path</a>
         <a class="button secondary" href="demo2/">Open Recommended Demo</a>
       </div>
 
-      <div class="hero-strip" aria-label="Featured TTMath paths">
-        <div class="strip-panel media">
-          <img src="demo2/images/ai-path-diagram.svg" alt="AI-1, AI-2, and AI-3 course path diagram">
+      <div class="paths" aria-label="Course paths at a glance">
+        <div class="path-row">
+          <span class="path-name">AI Path</span>
+          <span class="chip gold">AI-1 Creator Foundations</span>
+          <span class="path-sep">then</span>
+          <span class="chip green">AI-2 Product Studio</span>
+          <span class="path-sep">or</span>
+          <span class="chip blue">AI-3 Algorithms</span>
         </div>
-        <div class="strip-panel">
-          <p class="strip-label">Clear Progression</p>
-          <strong>Three AI courses, one clear progression</strong>
-          <p>AI-1 Creator Foundations, AI-2 Product Studio, and AI-3 Algorithms.</p>
-        </div>
-        <div class="strip-panel">
-          <p class="strip-label">Site Demos</p>
-          <strong>Three visual directions for the school website</strong>
-          <p>Each demo now includes bilingual AI course navigation.</p>
+        <div class="path-row">
+          <span class="path-name">CS Path</span>
+          <span class="chip">CS1 Python</span>
+          <span class="path-sep">&#8594;</span>
+          <span class="chip">CS2 Java &amp; Algorithms</span>
+          <span class="path-sep">&#8594;</span>
+          <span class="chip">CS3 Advanced Algorithms</span>
+          <span class="path-sep">&#8594;</span>
+          <span class="chip">CCC / USACO</span>
         </div>
       </div>
     </div>
@@ -604,19 +500,16 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Start Here</p>
-          <h2 id="programs-title">Student Program Paths</h2>
+          <h2 id="programs-title">Course Paths</h2>
         </div>
-        <p>Use these paths to understand course options, prerequisites, and next steps.</p>
+        <p>Pick a path to see courses, prerequisites, and next steps.</p>
       </div>
 
       <div class="grid program-grid">
-        <a class="card ai" href="demo2/ai-path/">
-          <div class="card-media">
-            <img src="demo2/images/ai-path-diagram.svg" alt="TTMath AI path diagram">
-          </div>
+        <a class="card" href="demo2/ai-path/">
           <span class="label">New AI Path</span>
           <h3>AI Course Path / AI课程路径</h3>
-          <p>Students begin with creative AI foundations, then continue into product building or algorithm-focused AI based on coding and math readiness.</p>
+          <p>Start with creative AI foundations, then continue into product building or algorithm-focused AI based on coding and math readiness.</p>
           <ul class="course-list">
             <li><strong>AI-1</strong><span>Creator Foundations</span></li>
             <li><strong>AI-2</strong><span>Product Studio</span></li>
@@ -625,14 +518,14 @@
           <span class="card-link">Open AI Path</span>
         </a>
 
-        <a class="card curriculum" href="demo2/curriculum/">
-          <span class="label blue">CS Path</span>
+        <a class="card" href="demo2/curriculum/">
+          <span class="label">CS Path</span>
           <h3>CS Curriculum</h3>
           <p>Programming, computational thinking, and contest preparation organized from foundational classes to advanced CCC tracks.</p>
-          <ul class="mini-list">
-            <li>Clear placement for CS1 and CS2 students</li>
-            <li>Contest preparation stays connected to weekly classes</li>
-            <li>Works as the companion path beside the new AI program</li>
+          <ul class="course-list">
+            <li><strong>CS1</strong><span>Python Fundamentals</span></li>
+            <li><strong>CS2</strong><span>Java &amp; Algorithms</span></li>
+            <li><strong>CS3</strong><span>Advanced Algorithms</span></li>
           </ul>
           <span class="card-link">Open Curriculum</span>
         </a>
@@ -645,28 +538,28 @@
           <p class="eyebrow">Website Options</p>
           <h2 id="demos-title">Three Demo Sites</h2>
         </div>
-        <p>Use these to compare structure and visual style before choosing the version to publish as the main TTMath school site.</p>
+        <p>Compare structure and visual style before choosing the version to publish as the main school site.</p>
       </div>
 
       <div class="grid demo-grid">
-        <a class="card demo-one" href="demo1/">
-          <span class="label gold">Demo 1</span>
+        <a class="card" href="demo1/">
+          <span class="label">Demo 1</span>
           <h3>Classic School Site</h3>
           <p>Flat static pages with straightforward navigation for curriculum, contests, achievements, schedules, and AI courses.</p>
           <span class="card-link">Open Demo 1</span>
         </a>
 
-        <a class="card demo-two" href="demo2/">
-          <span class="label">Demo 2</span>
+        <a class="card" href="demo2/">
+          <span class="label">Demo 2 · Recommended</span>
           <h3>Recommended Public Demo</h3>
           <p>Shared header and footer, clean section pages, and the clearest structure for adding more program pages over time.</p>
           <span class="card-link">Open Demo 2</span>
         </a>
 
-        <a class="card demo-three" href="demo3/">
-          <span class="label red">Demo 3</span>
+        <a class="card" href="demo3/">
+          <span class="label">Demo 3</span>
           <h3>Modern Visual Site</h3>
-          <p>Alternate visual direction with the same bilingual AI Path and shared-layout navigation now aligned with Demo 2.</p>
+          <p>Alternate visual direction with the same bilingual AI Path and shared-layout navigation aligned with Demo 2.</p>
           <span class="card-link">Open Demo 3</span>
         </a>
       </div>
@@ -682,15 +575,15 @@
       </div>
 
       <div class="grid resource-grid">
-        <a class="card resource" href="uoft_math/">
-          <span class="label blue">Course Guides</span>
+        <a class="card" href="uoft_math/">
+          <span class="label">Course Guides</span>
           <h3>U of T Math</h3>
           <p>MAT137, MAT158, MAT159, and MAT240 guides with structured calculus and algebra notes.</p>
           <span class="card-link">Open Guides</span>
         </a>
 
-        <a class="card resource" href="math-notes/">
-          <span class="label gold">Class Notes</span>
+        <a class="card" href="math-notes/">
+          <span class="label">Class Notes</span>
           <h3>L3 Number Theory</h3>
           <p>Class notes, worked examples, proofs, modular arithmetic, and Chinese Remainder Theorem practice.</p>
           <span class="card-link">Open Notes</span>

@@ -1,68 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1140" viewBox="0 0 900 1140" font-family="Helvetica, Arial, sans-serif">
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0,0 L6,3 L0,6 z" fill="#555"/>
     </marker>
   </defs>
 
-  <rect x="1" y="1" width="1398" height="718" rx="14" fill="#ffffff" stroke="#ddd"/>
+  <rect x="1" y="1" width="898" height="1138" rx="14" fill="#ffffff" stroke="#ddd"/>
 
-  <!-- left: title + path flow -->
-  <text x="48" y="72" font-size="38" font-weight="bold" fill="#111">AI Course Path</text>
-  <text x="48" y="102" font-size="15" fill="#666">From AI basics to real products and international competition</text>
+  <!-- title -->
+  <text x="40" y="66" font-size="34" font-weight="bold" fill="#111">AI Course Path</text>
+  <text x="40" y="98" font-size="17" fill="#666">From AI basics to real products and international competition</text>
 
-  <rect x="170" y="150" width="260" height="64" rx="12" fill="#fdf6e3" stroke="#e0c36a" stroke-width="2"/>
-  <text x="300" y="178" font-size="20" font-weight="bold" text-anchor="middle" fill="#111">AI-1</text>
-  <text x="300" y="200" font-size="13" text-anchor="middle" fill="#555">Creator Foundations</text>
-  <text x="300" y="232" font-size="12" text-anchor="middle" fill="#888">Foundation course, grades 6&#8211;10</text>
-  <text x="300" y="249" font-size="12" text-anchor="middle" fill="#888">Starts no-code, then Python apps</text>
+  <!-- path flow -->
+  <rect x="210" y="132" width="480" height="94" rx="12" fill="#fdf6e3" stroke="#e0c36a" stroke-width="2"/>
+  <text x="450" y="172" font-size="24" font-weight="bold" text-anchor="middle" fill="#111">AI-1</text>
+  <text x="450" y="200" font-size="17" text-anchor="middle" fill="#555">Creator Foundations</text>
+  <text x="450" y="252" font-size="16" text-anchor="middle" fill="#888">Foundation course, grades 6&#8211;10</text>
+  <text x="450" y="274" font-size="16" text-anchor="middle" fill="#888">Starts no-code, then Python apps</text>
 
-  <line x1="300" y1="264" x2="190" y2="332" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-  <line x1="300" y1="264" x2="410" y2="332" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="300" y="303" font-size="13" text-anchor="middle" fill="#777">students branch by interest</text>
+  <line x1="450" y1="292" x2="245" y2="360" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="292" x2="655" y2="360" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="450" y="334" font-size="16" text-anchor="middle" fill="#777" stroke="#fff" stroke-width="6" paint-order="stroke">students branch by interest</text>
 
-  <rect x="85" y="340" width="200" height="64" rx="12" fill="#e8f5e9" stroke="#7cb98a" stroke-width="2"/>
-  <text x="185" y="368" font-size="18" font-weight="bold" text-anchor="middle" fill="#111">AI-2 Product Studio</text>
-  <text x="185" y="390" font-size="13" text-anchor="middle" fill="#555">Sep&#8211;Aug (3 terms)</text>
-  <text x="185" y="424" font-size="12" text-anchor="middle" fill="#888">Builder track</text>
-  <text x="185" y="441" font-size="12" text-anchor="middle" fill="#888">needs CS1 or AI-1B</text>
+  <rect x="55" y="368" width="380" height="140" rx="12" fill="#e8f5e9" stroke="#7cb98a" stroke-width="2"/>
+  <text x="245" y="410" font-size="22" font-weight="bold" text-anchor="middle" fill="#111">AI-2 Product Studio</text>
+  <text x="245" y="438" font-size="16" text-anchor="middle" fill="#555">Sep&#8211;Aug (3 terms)</text>
+  <text x="245" y="464" font-size="15" text-anchor="middle" fill="#888">Builder track</text>
+  <text x="245" y="486" font-size="15" text-anchor="middle" fill="#888">needs CS1 or AI-1B</text>
 
-  <rect x="315" y="340" width="200" height="64" rx="12" fill="#e3f0fb" stroke="#7aa8d8" stroke-width="2"/>
-  <text x="415" y="368" font-size="20" font-weight="bold" text-anchor="middle" fill="#111">AI-3 Algorithms</text>
-  <text x="415" y="390" font-size="13" text-anchor="middle" fill="#555">Sep&#8211;Aug (3 terms)</text>
-  <text x="415" y="424" font-size="12" text-anchor="middle" fill="#888">Algorithms track</text>
-  <text x="415" y="441" font-size="12" text-anchor="middle" fill="#888">needs CS2 + strong math (gr. 9+)</text>
+  <rect x="465" y="368" width="380" height="140" rx="12" fill="#e3f0fb" stroke="#7aa8d8" stroke-width="2"/>
+  <text x="655" y="410" font-size="22" font-weight="bold" text-anchor="middle" fill="#111">AI-3 Algorithms</text>
+  <text x="655" y="438" font-size="16" text-anchor="middle" fill="#555">Sep&#8211;Aug (3 terms)</text>
+  <text x="655" y="464" font-size="15" text-anchor="middle" fill="#888">Algorithms track</text>
+  <text x="655" y="486" font-size="15" text-anchor="middle" fill="#888">needs CS2 + strong math (gr. 9+)</text>
 
-  <!-- right: course descriptions -->
-  <rect x="600" y="50" width="760" height="620" rx="14" fill="none" stroke="#dce8e2"/>
+  <line x1="40" y1="548" x2="860" y2="548" stroke="#eee"/>
 
-  <rect x="630" y="90" width="64" height="64" rx="14" fill="#fdf1d7"/>
-  <circle cx="662" cy="117" r="12" fill="none" stroke="#c99b2e" stroke-width="2.5"/>
-  <line x1="656" y1="133" x2="668" y2="133" stroke="#c99b2e" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="658" y1="138" x2="666" y2="138" stroke="#c99b2e" stroke-width="2.5" stroke-linecap="round"/>
-  <text x="715" y="118" font-size="22" font-weight="bold" fill="#111">AI-1: Creator Foundations <tspan font-size="16" font-weight="normal" fill="#444">(AI Basics &amp; Projects)</tspan></text>
-  <text x="715" y="150" font-size="15" fill="#333">Foundation course for grades 6-10. Fall covers how AI works, prompting,</text>
-  <text x="715" y="176" font-size="15" fill="#333">responsible use, and no-code model training; Spring/Winter builds</text>
-  <text x="715" y="202" font-size="15" fill="#333">chatbots, vision and speech apps in Python; Summer Lab delivers a</text>
-  <text x="715" y="228" font-size="15" fill="#333">personal portfolio project - every class ends with something to show.</text>
+  <!-- course descriptions -->
+  <rect x="40" y="588" width="56" height="56" rx="12" fill="#fdf1d7"/>
+  <circle cx="68" cy="610" r="11" fill="none" stroke="#c99b2e" stroke-width="2.5"/>
+  <line x1="62" y1="625" x2="74" y2="625" stroke="#c99b2e" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="64" y1="630" x2="72" y2="630" stroke="#c99b2e" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="116" y="614" font-size="21" font-weight="bold" fill="#111">AI-1: Creator Foundations <tspan font-size="16" font-weight="normal" fill="#444">(AI Basics &amp; Projects)</tspan></text>
+  <text x="116" y="646" font-size="17" fill="#333">Foundation course for grades 6-10. Fall covers how AI works, prompting, responsible</text>
+  <text x="116" y="672" font-size="17" fill="#333">use, and no-code model training; Spring/Winter builds chatbots, vision and speech</text>
+  <text x="116" y="698" font-size="17" fill="#333">apps in Python; Summer Lab delivers a personal portfolio project - every class</text>
+  <text x="116" y="724" font-size="17" fill="#333">ends with something to show.</text>
 
-  <line x1="630" y1="258" x2="1330" y2="258" stroke="#eee"/>
+  <line x1="40" y1="756" x2="860" y2="756" stroke="#eee"/>
 
-  <rect x="630" y="295" width="64" height="64" rx="14" fill="#dff0e2"/>
-  <text x="662" y="335" font-size="22" font-weight="bold" text-anchor="middle" fill="#3e8e55" font-family="Menlo, Consolas, monospace">&lt;/&gt;</text>
-  <text x="715" y="323" font-size="22" font-weight="bold" fill="#111">AI-2: Product Studio <tspan font-size="16" font-weight="normal" fill="#444">(Real Product Development)</tspan></text>
-  <text x="715" y="355" font-size="15" fill="#333">Advanced project course run like a small software team: standups, code</text>
-  <text x="715" y="381" font-size="15" fill="#333">review, weekly demos. Students build systems the school really uses -</text>
-  <text x="715" y="407" font-size="15" fill="#333">the TTMath website AI assistant, school management system, learning</text>
-  <text x="715" y="433" font-size="15" fill="#333">tools, and carefully scoped internal prototypes.</text>
+  <rect x="40" y="788" width="56" height="56" rx="12" fill="#dff0e2"/>
+  <text x="68" y="823" font-size="20" font-weight="bold" text-anchor="middle" fill="#3e8e55" font-family="Menlo, Consolas, monospace">&lt;/&gt;</text>
+  <text x="116" y="814" font-size="21" font-weight="bold" fill="#111">AI-2: Product Studio <tspan font-size="16" font-weight="normal" fill="#444">(Real Product Development)</tspan></text>
+  <text x="116" y="846" font-size="17" fill="#333">Advanced project course run like a small software team: standups, code review,</text>
+  <text x="116" y="872" font-size="17" fill="#333">weekly demos. Students build systems the school really uses - the TTMath website</text>
+  <text x="116" y="898" font-size="17" fill="#333">AI assistant, school management system, learning tools, and internal prototypes.</text>
 
-  <line x1="630" y1="463" x2="1330" y2="463" stroke="#eee"/>
+  <line x1="40" y1="930" x2="860" y2="930" stroke="#eee"/>
 
-  <rect x="630" y="500" width="64" height="64" rx="14" fill="#dcebfa"/>
-  <polygon points="662,517 666,527.5 677.2,528.1 668.5,535.1 671.4,545.9 662,539.8 652.6,545.9 655.5,535.1 646.8,528.1 658,527.5" fill="#4a7fbe"/>
-  <text x="715" y="528" font-size="22" font-weight="bold" fill="#111">AI-3: Algorithms <tspan font-size="16" font-weight="normal" fill="#444">(Machine Learning &amp; Deep Learning)</tspan></text>
-  <text x="715" y="560" font-size="15" fill="#333">Algorithms course: how machine learning really works under the hood.</text>
-  <text x="715" y="586" font-size="15" fill="#333">Fall builds classical ML from scratch; Winter covers PyTorch and deep</text>
-  <text x="715" y="612" font-size="15" fill="#333">learning with contest practice; Summer is an optional bootcamp toward</text>
-  <text x="715" y="638" font-size="15" fill="#333">IOAI (held each August) - every student leaves with a Kaggle portfolio.</text>
+  <rect x="40" y="962" width="56" height="56" rx="12" fill="#dcebfa"/>
+  <polygon points="68,975 72,985.5 83.2,986.1 74.5,993.1 77.4,1003.9 68,997.8 58.6,1003.9 61.5,993.1 52.8,986.1 64,985.5" fill="#4a7fbe"/>
+  <text x="116" y="988" font-size="21" font-weight="bold" fill="#111">AI-3: Algorithms <tspan font-size="16" font-weight="normal" fill="#444">(Machine Learning &amp; Deep Learning)</tspan></text>
+  <text x="116" y="1020" font-size="17" fill="#333">Algorithms course: how machine learning really works under the hood. Fall builds</text>
+  <text x="116" y="1046" font-size="17" fill="#333">classical ML from scratch; Winter covers PyTorch and deep learning with contest</text>
+  <text x="116" y="1072" font-size="17" fill="#333">practice; Summer is an optional bootcamp toward IOAI (held each August) - every</text>
+  <text x="116" y="1098" font-size="17" fill="#333">student leaves with a Kaggle portfolio.</text>
 </svg>
