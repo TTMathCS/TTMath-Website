@@ -126,7 +126,7 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 .units li{counter-increment:c;border-top:1px solid var(--line)}
 .units a,.units .soon{display:grid;grid-template-columns:46px 1fr auto;gap:16px;
   align-items:baseline;padding:13px 12px 13px 0;text-decoration:none;color:inherit;
-  transition:padding .2s,background .2s}
+  max-width:640px;transition:padding .2s,background .2s}
 .units a:hover{padding-left:10px;background:var(--tint-blue)}
 .units a::before,.units .soon::before{content:counter(c,decimal-leading-zero);
   font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
