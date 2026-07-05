@@ -16,8 +16,20 @@
 <div class="unit-no reveal">Unit 06 · Analysis 1A</div>
 <h1 class="ch-title reveal">Derivatives</h1>
 <p class="ch-intro reveal">The derivative as a limit, with every rule proved. In
-analysis we also care about the fine print: differentiable implies continuous, but
-not the reverse.</p>
+analysis we also care about the fine print — differentiable implies continuous
+but not conversely, and a derivative can exist everywhere yet fail to be
+continuous. This unit builds both the rules and the counterexamples.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Compute derivatives from the limit definition.</li>
+    <li>Prove differentiable $\Rightarrow$ continuous.</li>
+    <li>Prove the product, quotient, and power rules; state the chain rule
+    carefully.</li>
+    <li>Analyze the classic counterexamples, like $x^2\sin(1/x)$.</li>
+  </ul>
+</div>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
@@ -29,61 +41,152 @@ not the reverse.</p>
     learning, where training a network is gradient descent — repeatedly following
     derivatives downhill.</p></div>
   <div class="ci"><div class="cl">Story &amp; open questions</div>
-    <p>Newton and Leibniz discovered it independently and feuded over credit for a
-    century; Leibniz's $dy/dx$ notation won. Weierstrass's nowhere-differentiable
-    function showed continuity is strictly weaker than differentiability.</p></div>
-</div>
-
-<div class="goals reveal">
-  <div class="gl">By the end you can</div>
-  <ul>
-    <li>Compute derivatives from the limit definition.</li>
-    <li>Prove differentiable $\Rightarrow$ continuous.</li>
-    <li>Prove the product, quotient, and chain rules.</li>
-  </ul>
+    <p>Newton and Leibniz discovered it independently and feuded over credit;
+    Leibniz's $dy/dx$ notation won. Weierstrass's nowhere-differentiable
+    continuous function later showed just how far continuity is from
+    differentiability.</p></div>
 </div>
 
 <div class="block reveal">
-  <h3>Definition</h3>
-  <div class="box def"><div class="bl">Definition</div>
-    <p>$f'(a)=\displaystyle\lim_{h\to0}\frac{f(a+h)-f(a)}{h}$ when the limit
-    exists.</p></div>
+  <h3>The definition</h3>
+  <div class="box def"><div class="bl">Definition <b>Derivative</b></div>
+    <p>$f$ is differentiable at $a$ if
+    $$f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}{h}$$ exists. Equivalently
+    $f'(a)=\displaystyle\lim_{x\to a}\frac{f(x)-f(a)}{x-a}$. Geometrically it is
+    the slope of the tangent line at $\big(a,f(a)\big)$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>From the definition</b></div>
+    <p>For $f(x)=\tfrac1x$ and $a\ne0$:</p>
+    <div class="step">$\dfrac{f(a+h)-f(a)}{h}=\dfrac1h\!\left(\dfrac{1}{a+h}
+    -\dfrac1a\right)=\dfrac{-1}{a(a+h)}$.</div>
+    <div class="step">As $h\to0$ (limit laws of Unit 3) this tends to
+    $-\dfrac{1}{a^2}$, so $f'(a)=-1/a^2$. ∎</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>A corner</b></div>
+    <p>For $f(x)=|x|$ at $0$, the quotient is $|h|/h$: it tends to $1$ from the
+    right and $-1$ from the left, so $f'(0)$ does not exist. One-sided
+    derivatives exist; the two-sided one does not.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Differentiable implies continuous</h3>
   <div class="box thm"><div class="bl">Theorem</div>
-    <p>Differentiable at $a$ $\Rightarrow$ continuous at $a$. The converse fails:
-    $|x|$ is continuous but not differentiable at $0$.</p></div>
+    <p>If $f$ is differentiable at $a$, then $f$ is continuous at $a$. The
+    converse fails ($|x|$ at $0$).</p></div>
+  <div class="box eg"><div class="bl">Proof</div>
+    <div class="step">For $x\ne a$,
+    $f(x)-f(a)=\dfrac{f(x)-f(a)}{x-a}\cdot(x-a)$.</div>
+    <div class="step">As $x\to a$, the first factor tends to $f'(a)$ and the
+    second to $0$, so $f(x)-f(a)\to f'(a)\cdot0=0$. ∎</div>
+  </div>
 </div>
 
 <div class="block reveal">
   <h3>The rules, proved</h3>
   <div class="box thm"><div class="bl">Theorem</div>
-    <p>$(fg)'=f'g+fg'$ and $(f\circ g)'(x)=f'(g(x))g'(x)$.</p></div>
-  <div class="box eg"><div class="bl">Proof idea <b>Product rule</b></div>
-    <div class="step">$\dfrac{f(x+h)g(x+h)-f(x)g(x)}{h}=\dfrac{f(x+h)-f(x)}{h}g(x+h)
-    +f(x)\dfrac{g(x+h)-g(x)}{h}.$</div>
-    <div class="step">Let $h\to0$, using continuity of $g$: $\to f'g+fg'$. ∎</div>
+    <p>If $f,g$ are differentiable at $x$: $(f+g)'=f'+g'$, &nbsp;
+    $(fg)'=f'g+fg'$, &nbsp; $\left(\dfrac fg\right)'=\dfrac{f'g-fg'}{g^2}$ when
+    $g(x)\ne0$, and the chain rule $(f\circ g)'(x)=f'(g(x))\,g'(x)$ when $f$ is
+    differentiable at $g(x)$.</p></div>
+  <div class="box eg"><div class="bl">Proof <b>Product rule</b></div>
+    <div class="step">Add and subtract $f(x+h)g(x)$:
+    $\dfrac{f(x+h)g(x+h)-f(x)g(x)}{h}
+    =f(x+h)\dfrac{g(x+h)-g(x)}{h}+\dfrac{f(x+h)-f(x)}{h}\,g(x).$</div>
+    <div class="step">As $h\to0$: $f(x+h)\to f(x)$ (differentiable ⇒ continuous),
+    so the whole expression tends to $f g'+f'g$. ∎</div>
+  </div>
+  <div class="box eg"><div class="bl">Proof <b>Power rule, by induction</b></div>
+    <div class="step">$n=1$: $(x)'=1=1\cdot x^0$. ✓</div>
+    <div class="step">If $(x^k)'=kx^{k-1}$, the product rule on
+    $x^{k+1}=x\cdot x^k$ gives $1\cdot x^k+x\cdot kx^{k-1}=(k+1)x^k$. ∎</div>
+  </div>
+  <div class="box eg"><div class="bl">Proof idea <b>Why the chain rule needs care</b></div>
+    <div class="step">The tempting proof multiplies and divides by
+    $g(x+h)-g(x)$ — which may be $0$ for $h$ arbitrarily small (it happens for
+    $g(x)=x^2\sin(1/x)$ at $0$).</div>
+    <div class="step">The fix: define $\varphi(y)=\dfrac{f(y)-f(g(x))}{y-g(x)}$
+    for $y\ne g(x)$ and $\varphi(g(x))=f'(g(x))$. Then $\varphi$ is continuous at
+    $g(x)$, the quotient equals $\varphi(g(x+h))\cdot\dfrac{g(x+h)-g(x)}{h}$
+    with no division by zero, and the limit is $f'(g(x))g'(x)$. ∎</div>
   </div>
 </div>
 
+<div class="block reveal">
+  <h3>The analysis showpiece: $x^2\sin(1/x)$</h3>
+  <div class="box eg"><div class="bl">Example <b>Differentiable everywhere,
+    derivative discontinuous</b></div>
+    <p>Let $h(x)=x^2\sin(1/x)$ for $x\ne0$ and $h(0)=0$.</p>
+    <div class="step">At $0$: $\left|\dfrac{h(t)-h(0)}{t}\right|
+    =|t\sin(1/t)|\le|t|\to0$, so $h'(0)=0$ — differentiable.</div>
+    <div class="step">For $x\ne0$, the rules give
+    $h'(x)=2x\sin(1/x)-\cos(1/x)$. As $x\to0$ the first term dies but
+    $\cos(1/x)$ oscillates between $\pm1$ forever — so $\lim_{x\to0}h'(x)$ does
+    not exist, and $h'$ is <em>not continuous</em> at $0$.</div>
+  </div>
+  <div class="checkpoint"><b>What this example teaches</b>
+    "Differentiable" does not mean "$f'$ is continuous." Functions with
+    continuous derivatives get their own name ($C^1$). Keep this example ready —
+    it settles many plausible-sounding false claims, and it returns in Unit 7
+    when we ask what derivatives <em>can</em> and cannot do.</div>
+</div>
+
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• The difference quotient is a limit, not $0/0$.<br>
+  <p>• The difference quotient is a limit — never plug in $h=0$.<br>
   • Don't drop the inner factor $g'(x)$ in the chain rule.<br>
-  • Continuity does not imply differentiability.</p></div>
+  • Continuity does not imply differentiability; corners and cusps are
+  everywhere.<br>
+  • $f'$ existing everywhere does not make $f'$ continuous —
+  see the showpiece above.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Spivak's exercises. Write a full solution before opening the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
+    <div class="q"><div class="ql">Practice 1 · Definition</div>
       <p>From the definition, find $f'(a)$ for $f(x)=\sqrt x$, $a>0$.</p>
-      <details><summary>Answer</summary><div class="ans">Rationalize:
-      $\dfrac{1}{2\sqrt a}$.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
+      <details><summary>Solution</summary><div class="ans">Rationalize:
+      $\dfrac{\sqrt{a+h}-\sqrt a}{h}=\dfrac{1}{\sqrt{a+h}+\sqrt a}
+      \to\dfrac{1}{2\sqrt a}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Theory</div>
       <p>Prove differentiability at $a$ implies continuity at $a$.</p>
-      <details><summary>Hint</summary><div class="ans">$f(x)-f(a)=\frac{f(x)-f(a)}{x-a}
-      (x-a)\to f'(a)\cdot0=0$.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
+      <details><summary>Solution</summary><div class="ans">
+      $f(x)-f(a)=\dfrac{f(x)-f(a)}{x-a}(x-a)\to f'(a)\cdot0=0$ as $x\to
+      a$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · A corner</div>
       <p>Show $|x|$ is not differentiable at $0$.</p>
-      <details><summary>Answer</summary><div class="ans">Left and right difference
-      quotients give $-1$ and $+1$; the limit does not exist.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">The difference quotient
+      $|h|/h$ is $+1$ for $h>0$ and $-1$ for $h&lt;0$; the two one-sided limits
+      disagree, so the limit does not exist.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Cubic from scratch</div>
+      <p>Compute $f'(a)$ for $f(x)=x^3$ directly from the definition.</p>
+      <details><summary>Solution</summary><div class="ans">
+      $\dfrac{(a+h)^3-a^3}{h}=3a^2+3ah+h^2\to3a^2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · The showpiece</div>
+      <p>Verify $h'(0)=0$ for $h(x)=x^2\sin(1/x)$, $h(0)=0$, straight from the
+      definition.</p>
+      <details><summary>Solution</summary><div class="ans">
+      $\left|\dfrac{h(t)}{t}\right|=|t\sin(1/t)|\le|t|$, and $|t|\to0$; squeeze
+      gives the limit $0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Differentiable at one point</div>
+      <p>Let $f(x)=x^2$ for rational $x$ and $f(x)=0$ for irrational $x$. Show
+      $f$ is differentiable at $0$ (and only there).</p>
+      <details><summary>Solution</summary><div class="ans">
+      $\left|\dfrac{f(h)}{h}\right|\le|h|\to0$, so $f'(0)=0$. At $a\ne0$, $f$ is
+      not even continuous (rationals give $\approx a^2$, irrationals give $0$),
+      so it cannot be differentiable there.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Even and odd</div>
+      <p>Prove: if $f$ is differentiable and even, then $f'$ is odd.</p>
+      <details><summary>Solution</summary><div class="ans">Differentiate
+      $f(-x)=f(x)$ with the chain rule: $-f'(-x)=f'(x)$, i.e.
+      $f'(-x)=-f'(x)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Quotient from product</div>
+      <p>Derive the quotient rule from the product rule and the derivative of
+      $1/g$.</p>
+      <details><summary>Solution</summary><div class="ans">First
+      $\left(\tfrac1g\right)'=-\tfrac{g'}{g^2}$ (definition, or chain rule with
+      $1/u$). Then
+      $\left(\tfrac fg\right)'=f'\cdot\tfrac1g+f\cdot\left(-\tfrac{g'}{g^2}\right)
+      =\dfrac{f'g-fg'}{g^2}$.</div></details></div>
   </div>
 </div>
 

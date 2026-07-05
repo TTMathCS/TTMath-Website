@@ -17,15 +17,26 @@
 <h1 class="ch-title reveal">The Three Hard Theorems</h1>
 <p class="ch-intro reveal">Intermediate Value, Boundedness, and Extreme Value —
 the theorems that make calculus work. Each looks obvious, and each genuinely needs
-the completeness of $\mathbb{R}$ from Unit 2.</p>
+the completeness of $\mathbb{R}$ from Unit 2. This unit is where the least upper
+bound axiom earns its keep.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Prove the Intermediate Value Theorem from completeness.</li>
+    <li>Explain the proofs of the Boundedness and Extreme Value theorems.</li>
+    <li>Use the theorems to produce roots, fixed points, and extrema.</li>
+    <li>Give counterexamples showing every hypothesis is needed.</li>
+  </ul>
+</div>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
   <div class="ci"><div class="cl">Why it exists</div>
     <p>"A continuous function that changes sign has a root" and "a continuous
-    function on a closed interval attains a maximum" feel obvious — but they are
-    false without completeness, and proving them is the whole point of building
-    $\mathbb{R}$ carefully.</p></div>
+    function on a closed interval attains a maximum" feel obvious — but over
+    $\mathbb{Q}$ both are false, and proving them over $\mathbb{R}$ is the whole
+    point of building the reals carefully.</p></div>
   <div class="ci"><div class="cl">In the real world</div>
     <p>The IVT guarantees that root-finding by bisection converges; the EVT
     guarantees that optimization problems actually have a solution to find. Both
@@ -36,56 +47,129 @@ the completeness of $\mathbb{R}$ from Unit 2.</p>
     sequence has a convergent subsequence) carries both their names.</p></div>
 </div>
 
-<div class="goals reveal">
-  <div class="gl">By the end you can</div>
-  <ul>
-    <li>State and prove the Intermediate Value Theorem.</li>
-    <li>State the Boundedness and Extreme Value theorems.</li>
-    <li>Use them to guarantee roots and extrema.</li>
-  </ul>
+<div class="block reveal">
+  <h3>Why $\mathbb{Q}$ breaks all three</h3>
+  <p>Take $f(x)=x^2-2$ on rational $[0,2]$. It is continuous, negative at $0$,
+  positive at $2$ — and has <em>no</em> rational root: the graph slips through the
+  hole at $\sqrt2$. Or take $g(x)=\dfrac{1}{x^2-2}$ on the same rational
+  interval: continuous everywhere it is defined, yet unbounded. Completeness is
+  not decoration; it is the load-bearing wall.</p>
 </div>
 
 <div class="block reveal">
-  <h3>Intermediate Value Theorem</h3>
+  <h3>The Intermediate Value Theorem</h3>
   <div class="box thm"><div class="bl">Theorem <b>IVT</b></div>
-    <p>If $f$ is continuous on $[a,b]$ and $y$ lies between $f(a)$ and $f(b)$, then
-    $f(c)=y$ for some $c\in[a,b]$.</p></div>
-  <div class="box eg"><div class="bl">Proof idea</div>
-    <div class="step">Suppose $f(a)&lt;0&lt;f(b)$. Let $c=\sup\{x:f(x)&lt;0\}$, which exists
-    by completeness.</div>
-    <div class="step">Continuity rules out $f(c)<0$ and $f(c)>0$, so $f(c)=0$. ∎</div>
+    <p>If $f$ is continuous on $[a,b]$ and $y$ lies between $f(a)$ and $f(b)$,
+    then $f(c)=y$ for some $c\in[a,b]$.</p></div>
+  <div class="box eg"><div class="bl">Proof <b>(for $f(a)&lt;0&lt;f(b)$, $y=0$; the
+    general case applies this to $f-y$)</b></div>
+    <div class="step">Let $A=\{x\in[a,b]:f(x)&lt;0\}$. It contains $a$ and is
+    bounded above by $b$, so $c=\sup A$ exists by completeness.</div>
+    <div class="step">If $f(c)>0$: sign preservation (Unit 4) gives $\delta>0$
+    with $f>0$ on $(c-\delta,c+\delta)$. Then no point of $A$ exceeds
+    $c-\delta$, so $c-\delta$ is an upper bound smaller than $c$ —
+    contradiction.</div>
+    <div class="step">If $f(c)&lt;0$: then $c&lt;b$ (as $f(b)>0$), and $f&lt;0$ on some
+    $(c-\delta,c+\delta)\subseteq[a,b]$, putting points of $A$ above $c$ —
+    contradicting "upper bound." So $f(c)=0$. ∎</div>
   </div>
+  <div class="box eg"><div class="bl">Example <b>Roots exist</b></div>
+    <p>Every $c>0$ has an $n$th root: $f(x)=x^n-c$ is continuous, $f(0)=-c&lt;0$,
+    and $f(1+c)\ge1+nc-c>0$ by Bernoulli's inequality (Unit 1), so the IVT gives a
+    root in $(0,1+c)$.</p></div>
 </div>
 
 <div class="block reveal">
-  <h3>Boundedness and Extreme Value</h3>
-  <div class="box thm"><div class="bl">Theorem <b>EVT</b></div>
-    <p>A continuous function on a closed bounded interval $[a,b]$ is bounded and
-    attains a maximum and a minimum value.</p></div>
-  <p>Both hypotheses are essential: $1/x$ on $(0,1]$ is continuous but unbounded;
-  $x$ on $(0,1)$ attains neither max nor min.</p>
+  <h3>Boundedness, then Extreme Value</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Boundedness</b></div>
+    <p>A continuous function on $[a,b]$ is bounded there.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">Let $A=\{x\in[a,b]:f\text{ is bounded on }[a,x]\}$; it
+    contains $a$ and is bounded above by $b$, so $\alpha=\sup A$ exists.</div>
+    <div class="step">Continuity at $\alpha$ bounds $f$ on a small interval
+    around $\alpha$ (take $\varepsilon=1$). Splicing this onto $[a,x]$ for some
+    $x\in A$ close to $\alpha$ shows: $\alpha\in A$, and if $\alpha&lt;b$ then
+    points beyond $\alpha$ would also lie in $A$ — impossible. So $\alpha=b$ and
+    $f$ is bounded on all of $[a,b]$. ∎</div>
+  </div>
+  <div class="box thm"><div class="bl">Theorem <b>Extreme Value (EVT)</b></div>
+    <p>A continuous function on $[a,b]$ attains a maximum and a minimum value.</p></div>
+  <div class="box eg"><div class="bl">Proof</div>
+    <div class="step">By boundedness, $M=\sup\{f(x):x\in[a,b]\}$ exists. Suppose
+    $f(x)&lt;M$ for every $x$.</div>
+    <div class="step">Then $g=\dfrac{1}{M-f}$ is continuous on $[a,b]$, hence
+    bounded: $g\le K$ for some $K>0$. That rearranges to $f\le M-\tfrac1K$,
+    making $M-\tfrac1K$ a smaller upper bound than the least one —
+    contradiction. So the max is attained; apply this to $-f$ for the min. ∎</div>
+  </div>
+  <div class="checkpoint"><b>Both hypotheses are essential</b>
+    $1/x$ on $(0,1]$ is continuous but unbounded (interval not closed at $0$);
+    $x$ on $(0,1)$ is bounded but attains neither max nor min; $\mathbb{R}$
+    itself is closed but not bounded, and $f(x)=x$ attains nothing. And a single
+    jump discontinuity breaks the IVT.</div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• The interval must be closed <em>and</em> bounded for the EVT.<br>
-  • The IVT gives existence of $c$, not its value or uniqueness.<br>
-  • Continuity is required throughout — one jump can break everything.</p></div>
+  <p>• The interval must be closed <em>and</em> bounded for boundedness and the
+  EVT.<br>
+  • The IVT gives existence of $c$, never its value or uniqueness.<br>
+  • "Attains" means some $c$ has $f(c)=M$ — a supremum alone is not a
+  maximum.<br>
+  • Continuity is needed on the whole interval; one bad point can break all
+  three theorems.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Spivak's exercises. Write a full solution before opening the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
+    <div class="q"><div class="ql">Practice 1 · A root</div>
       <p>Show $x^3-x-1=0$ has a real root.</p>
-      <details><summary>Answer</summary><div class="ans">$f(1)=-1<0$, $f(2)=5>0$;
-      by IVT a root lies in $(1,2)$.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
-      <p>Show any continuous $f:[0,1]\to[0,1]$ has a fixed point.</p>
-      <details><summary>Hint</summary><div class="ans">Apply the IVT to
-      $g(x)=f(x)-x$: $g(0)\ge0$, $g(1)\le0$.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
+      <details><summary>Answer</summary><div class="ans">$f(1)=-1&lt;0$ and
+      $f(2)=5>0$; by the IVT a root lies in $(1,2)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Fixed point</div>
+      <p>Show any continuous $f:[0,1]\to[0,1]$ has a fixed point:
+      $f(c)=c$.</p>
+      <details><summary>Solution</summary><div class="ans">Let $g(x)=f(x)-x$;
+      then $g(0)=f(0)\ge0$ and $g(1)=f(1)-1\le0$. If either is $0$ we are done;
+      otherwise the IVT gives $g(c)=0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Counterexample</div>
       <p>Why does the EVT fail for $f(x)=x$ on $(0,1)$?</p>
-      <details><summary>Answer</summary><div class="ans">The interval is open; the
-      sup $1$ and inf $0$ are never attained.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">The interval is open:
+      the sup $1$ and inf $0$ are limits of values but are never attained. No
+      contradiction with the EVT, whose hypothesis requires a closed
+      interval.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Odd degree</div>
+      <p>Prove every polynomial of odd degree has a real root.</p>
+      <details><summary>Solution</summary><div class="ans">Divide by the leading
+      coefficient, so $p(x)=x^n+\cdots$ with $n$ odd. For $|x|$ large the leading
+      term dominates: $p(x)>0$ for large $x>0$ and $p(x)&lt;0$ for large negative
+      $x$ (odd power). The IVT on a large interval gives a root.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Rational values</div>
+      <p>Suppose $f$ is continuous on $[0,1]$ and takes only rational values.
+      Prove $f$ is constant.</p>
+      <details><summary>Solution</summary><div class="ans">If
+      $f(x_0)\ne f(x_1)$, some irrational $y$ lies between them, and the IVT
+      forces $f$ to attain $y$ — contradicting "only rational values."</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Equal values half apart</div>
+      <p>Let $f$ be continuous on $[0,1]$ with $f(0)=f(1)$. Prove there is
+      $c\in[0,\tfrac12]$ with $f(c)=f(c+\tfrac12)$.</p>
+      <details><summary>Solution</summary><div class="ans">Let
+      $g(x)=f(x+\tfrac12)-f(x)$ on $[0,\tfrac12]$. Then
+      $g(0)+g(\tfrac12)=f(1)-f(0)=0$, so $g$ takes values of opposite sign (or a
+      zero) at the endpoints; the IVT gives $g(c)=0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Two roots</div>
+      <p>Show $x^4-2x-5=0$ has at least two real roots.</p>
+      <details><summary>Solution</summary><div class="ans">$p(0)=-5&lt;0$,
+      $p(2)=16-4-5=7>0$, and $p(-2)=16+4-5=15>0$. The IVT gives one root in
+      $(-2,0)$ and another in $(0,2)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Where EVT is used</div>
+      <p>Let $f$ be continuous on $[a,b]$ with $f(x)>0$ for all $x$. Prove there
+      is $m>0$ with $f(x)\ge m$ for every $x$ — and show this can fail on
+      $(a,b)$.</p>
+      <details><summary>Solution</summary><div class="ans">By the EVT, $f$ attains
+      a minimum $m=f(c)>0$, which works. On an open interval it fails: $f(x)=x$
+      on $(0,1)$ is positive with infimum $0$.</div></details></div>
   </div>
 </div>
 

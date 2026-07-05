@@ -16,10 +16,12 @@ const mathSymbols = {
   beta: ["mi", "β"],
   delta: ["mi", "δ"],
   Delta: ["mi", "Δ"],
+  eta: ["mi", "η"],
   lambda: ["mi", "λ"],
   pi: ["mi", "π"],
   theta: ["mi", "θ"],
   varepsilon: ["mi", "ε"],
+  varphi: ["mi", "φ"],
   approx: ["mo", "≈"],
   cap: ["mo", "∩"],
   cdot: ["mo", "⋅"],
@@ -34,8 +36,11 @@ const mathSymbols = {
   infty: ["mo", "∞"],
   land: ["mo", "∧"],
   le: ["mo", "≤"],
+  Leftarrow: ["mo", "⇐"],
   Longleftrightarrow: ["mo", "⟺"],
   Longrightarrow: ["mo", "⟹"],
+  longrightarrow: ["mo", "⟶"],
+  mapsto: ["mo", "↦"],
   ne: ["mo", "≠"],
   neg: ["mo", "¬"],
   notin: ["mo", "∉"],
@@ -55,8 +60,8 @@ const mathSymbols = {
 };
 
 const mathFunctions = new Set([
-  "arcsin", "arctan", "cos", "deg", "det", "dim", "exp", "gcd", "inf",
-  "ln", "log", "min", "sec", "sin", "sup", "tan"
+  "arccos", "arcsin", "arctan", "cos", "deg", "det", "dim", "exp", "gcd",
+  "inf", "ln", "log", "max", "min", "sec", "sin", "sup", "tan"
 ]);
 
 const largeOperators = {

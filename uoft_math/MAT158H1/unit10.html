@@ -15,9 +15,20 @@
 <div class="crumb reveal"><a href="index.html">MAT158H1</a><span>/</span>Unit 10</div>
 <div class="unit-no reveal">Unit 10 · Analysis 1A</div>
 <h1 class="ch-title reveal">The Fundamental Theorem of Calculus</h1>
-<p class="ch-intro reveal">The theorem that differentiation and integration are
-inverse operations — proved here from the Riemann definition and the Mean Value
-Theorem.</p>
+<p class="ch-intro reveal">Differentiation and integration are inverse operations —
+proved here from the Riemann definition, using the EVT for Part 1 and the Mean
+Value Theorem for Part 2. Everything built since Unit 2 comes together on this
+page.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State and prove both parts of the FTC.</li>
+    <li>Explain which hypotheses each part actually needs.</li>
+    <li>Evaluate integrals via antiderivatives.</li>
+    <li>Differentiate integrals with variable limits.</li>
+  </ul>
+</div>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
@@ -34,54 +45,119 @@ Theorem.</p>
     tricks into the central tool of science.</p></div>
 </div>
 
-<div class="goals reveal">
-  <div class="gl">By the end you can</div>
-  <ul>
-    <li>State and prove both parts of the FTC.</li>
-    <li>Evaluate integrals via antiderivatives.</li>
-    <li>Differentiate integrals with variable limits.</li>
-  </ul>
-</div>
-
 <div class="block reveal">
-  <h3>Part 1 — the area function</h3>
-  <div class="box thm"><div class="bl">Theorem</div>
-    <p>If $f$ is continuous and $F(x)=\int_a^x f$, then $F'(x)=f(x)$.</p></div>
-  <div class="box eg"><div class="bl">Proof idea</div>
-    <div class="step">$\dfrac{F(x+h)-F(x)}{h}=\dfrac1h\int_x^{x+h}f$ is an average of
-    $f$ over $[x,x+h]$.</div>
-    <div class="step">Continuity forces that average to $f(x)$ as $h\to0$. ∎</div>
+  <h3>Part 1 — the area function has derivative $f$</h3>
+  <div class="box thm"><div class="bl">Theorem <b>FTC, Part 1</b></div>
+    <p>Let $f$ be integrable on $[a,b]$ and $F(x)=\displaystyle\int_a^x f$. If
+    $f$ is continuous at $x$, then $F$ is differentiable at $x$ and
+    $F'(x)=f(x)$.</p></div>
+  <div class="box eg"><div class="bl">Proof <b>(for $h>0$; $h&lt;0$ is symmetric)</b></div>
+    <div class="step">Additivity gives
+    $F(x+h)-F(x)=\displaystyle\int_x^{x+h}f$. With
+    $m_h=\inf f$ and $M_h=\sup f$ on $[x,x+h]$, monotonicity yields
+    $m_h\,h\le F(x+h)-F(x)\le M_h\,h$, so
+    $m_h\le\dfrac{F(x+h)-F(x)}{h}\le M_h$.</div>
+    <div class="step">Continuity of $f$ at $x$ forces $m_h\to f(x)$ and
+    $M_h\to f(x)$ as $h\to0$: the difference quotient is squeezed to
+    $f(x)$. ∎</div>
   </div>
+  <div class="checkpoint"><b>What if $f$ is merely integrable?</b>
+    $F$ is still continuous — in fact Lipschitz: if $|f|\le K$ then
+    $|F(x+h)-F(x)|=\left|\int_x^{x+h}f\right|\le K|h|$. Integration always
+    smooths; differentiating the result needs continuity of $f$ at the point.
+    At a jump of $f$, $F$ has a corner.</div>
 </div>
 
 <div class="block reveal">
-  <h3>Part 2 — evaluation</h3>
-  <div class="box thm"><div class="bl">Theorem</div>
-    <p>If $f$ is continuous and $G'=f$, then $\int_a^b f=G(b)-G(a)$.</p></div>
-  <div class="box thm"><div class="bl">Variable limits</div>
-    <p>$\dfrac{d}{dx}\int_a^{g(x)}f(t)\,dt=f(g(x))g'(x)$ by the chain rule.</p></div>
+  <h3>Part 2 — evaluation by antiderivatives</h3>
+  <div class="box thm"><div class="bl">Theorem <b>FTC, Part 2</b></div>
+    <p>If $f$ is integrable on $[a,b]$ and $G$ is an antiderivative of $f$ on
+    $[a,b]$ (meaning $G'=f$ there), then
+    $$\int_a^b f=G(b)-G(a).$$</p></div>
+  <div class="box eg"><div class="bl">Proof <b>— the MVT does all the work</b></div>
+    <div class="step">Take any partition $a=x_0&lt;\dots&lt;x_n=b$. On each piece the
+    MVT gives $t_i\in(x_{i-1},x_i)$ with
+    $G(x_i)-G(x_{i-1})=G'(t_i)\,\Delta x_i=f(t_i)\,\Delta x_i$.</div>
+    <div class="step">Summing telescopes the left side:
+    $G(b)-G(a)=\sum_i f(t_i)\,\Delta x_i$. Since $m_i\le f(t_i)\le M_i$, this
+    lies between $L(f,P)$ and $U(f,P)$ — for <em>every</em> partition.</div>
+    <div class="step">Integrability says exactly one number sits between all
+    lower and upper sums, namely $\int_a^b f$. So
+    $G(b)-G(a)=\int_a^b f$. ∎</div>
+  </div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\displaystyle\int_1^e\frac{\ln x}{x}\,dx$: an antiderivative of
+    $\tfrac{\ln x}{x}$ is $\tfrac12(\ln x)^2$ (check by the chain rule), so the
+    value is $\tfrac12(1^2-0^2)=\tfrac12$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Variable limits</h3>
+  <div class="box thm"><div class="bl">Rule</div>
+    <p>For continuous $f$ and differentiable $g$,
+    $\dfrac{d}{dx}\displaystyle\int_a^{g(x)}f(t)\,dt=f\big(g(x)\big)\,g'(x)$ —
+    Part 1 composed with the chain rule. With both limits variable,
+    differentiate each and subtract.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$\dfrac{d}{dx}\displaystyle\int_0^{x^2}\cos t\,dt=\cos(x^2)\cdot2x$ —
+    and you can confirm it by evaluating the integral to $\sin(x^2)$ first.</p></div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• In Part 1 the variable is the upper limit; the dummy variable inside is
-  different.<br>
+  <p>• In Part 1 the variable is the upper limit; the dummy variable inside is a
+  different letter.<br>
   • With a variable upper limit $g(x)$, keep the $g'(x)$ factor.<br>
-  • Part 2 needs $f$ continuous and $G$ a genuine antiderivative on $[a,b]$.</p></div>
+  • Part 2 needs $G'=f$ on the whole interval — an antiderivative that misses
+  one point can change the game (corners in $F$ at jumps of $f$).<br>
+  • Part 1 at a discontinuity of $f$ can fail: $F$ need not be differentiable
+  there.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Spivak's exercises. Write a full solution before opening the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
-      <p>Compute $\dfrac{d}{dx}\int_0^{x^2}\cos t\,dt$.</p>
-      <details><summary>Answer</summary><div class="ans">$\cos(x^2)\cdot 2x$.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
-      <p>Evaluate $\int_1^e\dfrac{\ln x}{x}\,dx$.</p>
+    <div class="q"><div class="ql">Practice 1 · Variable limit</div>
+      <p>Compute $\dfrac{d}{dx}\displaystyle\int_0^{x^2}\cos t\,dt$.</p>
+      <details><summary>Answer</summary><div class="ans">$\cos(x^2)\cdot2x$, by
+      Part 1 and the chain rule.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Evaluate</div>
+      <p>Evaluate $\displaystyle\int_1^e\dfrac{\ln x}{x}\,dx$.</p>
       <details><summary>Answer</summary><div class="ans">Antiderivative
-      $\tfrac12(\ln x)^2$, value $\tfrac12$.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
-      <p>If $\int_0^x f=x e^x$, find $f$.</p>
-      <details><summary>Answer</summary><div class="ans">Differentiate:
-      $f(x)=(1+x)e^x$.</div></details></div>
+      $\tfrac12(\ln x)^2$; the value is $\tfrac12$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Recover $f$</div>
+      <p>If $f$ is continuous and $\displaystyle\int_0^x f=x e^x$ for all $x$,
+      find $f$.</p>
+      <details><summary>Answer</summary><div class="ans">Differentiate both sides
+      (Part 1): $f(x)=e^x+xe^x=(1+x)e^x$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Both limits</div>
+      <p>Find $F'(x)$ for $F(x)=\displaystyle\int_x^{2x}e^{-t^2}\,dt$.</p>
+      <details><summary>Solution</summary><div class="ans">Split at $0$ (or any
+      point) and apply the rule to each limit:
+      $F'(x)=2e^{-4x^2}-e^{-x^2}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · A functional equation</div>
+      <p>Suppose $f$ is continuous and
+      $\displaystyle\int_0^x f=\int_x^1 f$ for every $x\in[0,1]$. Prove
+      $f\equiv0$.</p>
+      <details><summary>Solution</summary><div class="ans">Both sides are
+      differentiable in $x$ (Part 1): the left has derivative $f(x)$, the right
+      $-f(x)$. So $f(x)=-f(x)$, forcing $f(x)=0$ for all $x$.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Evaluate</div>
+      <p>Evaluate $\displaystyle\int_0^{\pi}\sin x\,dx$.</p>
+      <details><summary>Answer</summary><div class="ans">$[-\cos
+      x]_0^{\pi}=-(-1)-(-1)=2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Chain both ways</div>
+      <p>Compute $\dfrac{d}{dx}\displaystyle\int_{\sin x}^{1}\sqrt{1+t^2}\,dt$.</p>
+      <details><summary>Solution</summary><div class="ans">The variable is the
+      lower limit: the derivative is
+      $-\sqrt{1+\sin^2x}\,\cos x$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Lipschitz area function</div>
+      <p>Let $f$ be continuous on $[a,b]$ and $F(x)=\int_a^x f$. Prove there is
+      $M$ with $|F(x)-F(y)|\le M|x-y|$ for all $x,y\in[a,b]$.</p>
+      <details><summary>Solution</summary><div class="ans">By the EVT,
+      $|f|\le M$ for some $M$. Then
+      $|F(x)-F(y)|=\left|\int_y^x f\right|\le\int_{[y,x]}|f|\le
+      M|x-y|$.</div></details></div>
   </div>
 </div>
 

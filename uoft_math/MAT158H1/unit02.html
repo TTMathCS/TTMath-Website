@@ -17,7 +17,18 @@
 <h1 class="ch-title reveal">The Real Numbers &amp; Least Upper Bounds</h1>
 <p class="ch-intro reveal">What separates $\mathbb{R}$ from $\mathbb{Q}$ is
 completeness — no gaps. The least upper bound axiom is the single foundation every
-deep theorem of analysis stands on.</p>
+deep theorem of analysis stands on. This unit is where the course stops taking the
+real numbers for granted.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State the ordered-field axioms of $\mathbb{R}$ and what they cover.</li>
+    <li>Define upper bound, supremum, and infimum, and compute them.</li>
+    <li>State the Least Upper Bound axiom and use the ε-characterization of sup.</li>
+    <li>Prove the Archimedean property and the density of $\mathbb{Q}$.</li>
+  </ul>
+</div>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
@@ -36,73 +47,150 @@ deep theorem of analysis stands on.</p>
     the objects calculus had used for two hundred years.</p></div>
 </div>
 
-<div class="goals reveal">
-  <div class="gl">By the end you can</div>
-  <ul>
-    <li>List the ordered-field axioms of $\mathbb{R}$.</li>
-    <li>Define upper bound, supremum, and infimum.</li>
-    <li>State and use the Least Upper Bound axiom.</li>
-    <li>Derive the Archimedean property from completeness.</li>
-  </ul>
+<div class="block reveal">
+  <h3>What the axioms say</h3>
+  <p>$\mathbb{R}$ is an <em>ordered field</em>: the field axioms govern $+$ and
+  $\cdot$ (associativity, commutativity, identities $0,1$, inverses,
+  distributivity), and the order axioms make $&lt;$ compatible with them
+  ($a&lt;b\Rightarrow a+c&lt;b+c$; and $a&lt;b$ with $c>0$ gives $ac&lt;bc$). Everything from
+  high-school algebra follows from these. But $\mathbb{Q}$ satisfies all of them
+  too — so one more axiom is needed to tell the two apart.</p>
 </div>
 
 <div class="block reveal">
   <h3>Bounds and the supremum</h3>
-  <div class="box def"><div class="bl">Definition <b>Supremum</b></div>
-    <p>$M$ is an upper bound of $S$ if $x\le M$ for all $x\in S$. The
+  <div class="box def"><div class="bl">Definition <b>Supremum &amp; infimum</b></div>
+    <p>$M$ is an <em>upper bound</em> of $S$ if $x\le M$ for all $x\in S$. The
     <em>supremum</em> $\sup S$ is the least upper bound: an upper bound that is
-    $\le$ every other upper bound. The infimum $\inf S$ is the greatest lower
-    bound.</p></div>
+    $\le$ every other upper bound. The <em>infimum</em> $\inf S$ is the greatest
+    lower bound.</p></div>
   <div class="box eg"><div class="bl">Example</div>
     <p>$S=\{1-\tfrac1n:n\in\mathbb{N}\}$ has $\sup S=1$, even though $1\notin S$.
-    The sup need not be attained.</p></div>
+    The sup need not be attained; when it is, it is called the maximum.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>ε-characterization</b></div>
+    <p>Let $s$ be an upper bound of $S$. Then $s=\sup S$ if and only if for every
+    $\varepsilon>0$ there is some $x\in S$ with $x>s-\varepsilon$.</p></div>
+  <div class="box eg"><div class="bl">Proof</div>
+    <div class="step">If $s=\sup S$ and some $\varepsilon>0$ had no such $x$, then
+    $s-\varepsilon$ would be an upper bound smaller than the least one —
+    impossible.</div>
+    <div class="step">Conversely, if every $s-\varepsilon$ fails to be an upper
+    bound, no number below $s$ is an upper bound, so $s$ is the least one. ∎</div>
+  </div>
 </div>
 
 <div class="block reveal">
   <h3>The completeness axiom</h3>
   <div class="box thm"><div class="bl">Axiom <b>Least Upper Bound</b></div>
     <p>Every nonempty subset of $\mathbb{R}$ that is bounded above has a supremum
-    in $\mathbb{R}$. This single axiom is what $\mathbb{Q}$ lacks.</p></div>
-  <p>It is the engine behind the Intermediate Value Theorem, the Extreme Value
-  Theorem, and the convergence of monotone sequences — all proved in later units.</p>
+    in $\mathbb{R}$.</p></div>
+  <p>This is exactly what $\mathbb{Q}$ lacks: $\{x\in\mathbb{Q}:x^2&lt;2\}$ is
+  nonempty and bounded above, but has no least upper bound <em>inside</em>
+  $\mathbb{Q}$ — its upper bounds pile up against the hole where $\sqrt2$ should
+  be. The axiom is the engine behind the Intermediate Value Theorem, the Extreme
+  Value Theorem, and the convergence of monotone sequences.</p>
+  <div class="box eg"><div class="bl">Example <b>$\sqrt2$ exists in $\mathbb{R}$</b></div>
+    <div class="step">Let $s=\sup\{x>0:x^2&lt;2\}$ — the set contains $1$ and is
+    bounded above by $2$, so $s$ exists by completeness.</div>
+    <div class="step">If $s^2&lt;2$: for small $h\in(0,1)$,
+    $(s+h)^2=s^2+2sh+h^2&lt;s^2+(2s+1)h$, which is $&lt;2$ once
+    $h&lt;\tfrac{2-s^2}{2s+1}$ — so $s+h$ is in the set, contradicting "upper
+    bound."</div>
+    <div class="step">If $s^2>2$: similarly $(s-h)^2>2$ for small $h>0$, making
+    $s-h$ a smaller upper bound, contradicting "least." So $s^2=2$. ∎</div>
+  </div>
+  <div class="checkpoint"><b>Sup versus max</b>
+    A maximum is a supremum that belongs to the set: $\sup(0,1)=1$ with no
+    maximum, while $\sup[0,1]=1=\max$. To prove $s=\sup S$, always prove two
+    things — $s$ is an upper bound, and nothing smaller is.</div>
 </div>
 
 <div class="block reveal">
-  <h3>The Archimedean property</h3>
-  <div class="box thm"><div class="bl">Theorem</div>
-    <p>For any real $x$ there is a natural number $n>x$. Equivalently, for any
-    $\varepsilon>0$ there is $n$ with $\tfrac1n<\varepsilon$.</p></div>
+  <h3>Two consequences you will use constantly</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Archimedean property</b></div>
+    <p>For any real $x$ there is $n\in\mathbb{N}$ with $n>x$. Equivalently: for
+    any $\varepsilon>0$ there is $n$ with $\tfrac1n&lt;\varepsilon$.</p></div>
+  <div class="box eg"><div class="bl">Proof</div>
+    <div class="step">If not, $\mathbb{N}$ is bounded above, so $s=\sup\mathbb{N}$
+    exists. Then $s-1$ is not an upper bound, so some $n\in\mathbb{N}$ has
+    $n>s-1$.</div>
+    <div class="step">But then $n+1>s$ with $n+1\in\mathbb{N}$ — contradicting
+    that $s$ is an upper bound of $\mathbb{N}$. ∎</div>
+  </div>
+  <div class="box thm"><div class="bl">Theorem <b>Density of $\mathbb{Q}$</b></div>
+    <p>Between any two reals $a&lt;b$ there is a rational number.</p></div>
   <div class="box eg"><div class="bl">Proof idea</div>
-    <div class="step">If $\mathbb{N}$ were bounded above it would have a supremum
-    $s$; then $s-1$ is not an upper bound, so some $n>s-1$, giving $n+1>s$ — a
-    contradiction.</div>
+    <div class="step">Pick $q\in\mathbb{N}$ with $\tfrac1q&lt;b-a$ (Archimedean
+    property), and let $p$ be the smallest integer with $p>qa$.</div>
+    <div class="step">Then $qa&lt;p\le qa+1$, so $a&lt;\tfrac pq\le a+\tfrac1q&lt;b$. ∎
+    (The irrationals are dense too — shift this argument by $\sqrt2$.)</div>
   </div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
   <p>• The supremum may not belong to the set; "max" requires it to be attained.<br>
-  • Completeness is about upper bounds existing as <em>real</em> numbers — that is
-  what fails in $\mathbb{Q}$.<br>
-  • To show $s=\sup S$: prove $s$ is an upper bound and that $s-\varepsilon$ is
-  not, for every $\varepsilon>0$.</p></div>
+  • Completeness says the sup exists as a <em>real</em> number — existence is the
+  whole content of the axiom.<br>
+  • A set with no upper bound has no supremum; writing $\sup S=\infty$ is
+  shorthand, not a real number.<br>
+  • To show $s=\sup S$, both halves are needed: upper bound, and least such.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Spivak's exercises. Write a full solution before opening the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
-      <p>Find $\sup$ and $\inf$ of $S=\{\tfrac1n:n\in\mathbb{N}\}$.</p>
-      <details><summary>Answer</summary><div class="ans">$\sup S=1$ (attained),
-      $\inf S=0$ (not attained).</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
-      <p>Prove that if $s=\sup S$ then for every $\varepsilon>0$ there is $x\in S$
+    <div class="q"><div class="ql">Practice 1 · Compute</div>
+      <p>Find $\sup$ and $\inf$ of $S=\{\tfrac1n:n\in\mathbb{N}\}$ and say which
+      are attained.</p>
+      <details><summary>Answer</summary><div class="ans">$\sup S=1$, attained at
+      $n=1$; $\inf S=0$, not attained.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · ε-characterization</div>
+      <p>Prove: if $s=\sup S$ then for every $\varepsilon>0$ there is $x\in S$
       with $x>s-\varepsilon$.</p>
-      <details><summary>Hint</summary><div class="ans">Else $s-\varepsilon$ is an
-      upper bound smaller than $s$, contradicting "least."</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
-      <p>Use the Archimedean property to show $\inf\{\tfrac1n\}=0$.</p>
-      <details><summary>Hint</summary><div class="ans">$0$ is a lower bound; for any
-      $\varepsilon>0$ some $\tfrac1n<\varepsilon$, so nothing larger than $0$ is a
-      lower bound.</div></details></div>
+      <details><summary>Solution</summary><div class="ans">Otherwise
+      $s-\varepsilon$ would be an upper bound of $S$ smaller than $s$,
+      contradicting that $s$ is the <em>least</em> upper bound.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Archimedes at work</div>
+      <p>Use the Archimedean property to prove
+      $\inf\{\tfrac1n:n\in\mathbb{N}\}=0$.</p>
+      <details><summary>Solution</summary><div class="ans">$0$ is a lower bound.
+      For any $\varepsilon>0$, some $\tfrac1n&lt;\varepsilon$, so no number above $0$
+      is a lower bound. Hence $0$ is the greatest lower bound.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Compute</div>
+      <p>Find $\sup$ and $\inf$ of $S=\{\tfrac{n}{n+1}:n\in\mathbb{N}\}$.</p>
+      <details><summary>Answer</summary><div class="ans">The terms
+      $\tfrac12,\tfrac23,\tfrac34,\dots$ increase toward $1$: $\inf
+      S=\tfrac12$ (attained), $\sup S=1$ (not attained — $\tfrac{n}{n+1}&lt;1$
+      always, yet $\tfrac{n}{n+1}>1-\varepsilon$ once
+      $n>\tfrac1\varepsilon$).</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Sup of a sum</div>
+      <p>For nonempty bounded sets, define $A+B=\{a+b:a\in A,\ b\in B\}$. Prove
+      $\sup(A+B)=\sup A+\sup B$.</p>
+      <details><summary>Solution</summary><div class="ans">Every $a+b\le\sup
+      A+\sup B$, so it is an upper bound. Given $\varepsilon>0$, pick $a>\sup
+      A-\tfrac\varepsilon2$ and $b>\sup B-\tfrac\varepsilon2$; then $a+b>\sup
+      A+\sup B-\varepsilon$. The ε-characterization finishes it.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Duality</div>
+      <p>For nonempty $S$ bounded below, let $-S=\{-x:x\in S\}$. Prove
+      $\inf S=-\sup(-S)$, so completeness gives infima for free.</p>
+      <details><summary>Solution</summary><div class="ans">$m$ is a lower bound of
+      $S$ iff $-m$ is an upper bound of $-S$. The greatest lower bound therefore
+      matches the least upper bound with a sign flip.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · A sup proof</div>
+      <p>Let $S=\{x\in\mathbb{R}:x^2&lt;3\}$. Prove $\sup S=\sqrt3$.</p>
+      <details><summary>Solution</summary><div class="ans">If $x\in S$ then
+      $x\le|x|&lt;\sqrt3$ (since $x^2&lt;3$), so $\sqrt3$ is an upper bound. For any
+      $\varepsilon\in(0,\sqrt3)$, $(\sqrt3-\varepsilon)^2&lt;3$, so
+      $\sqrt3-\varepsilon\in S$ — nothing below $\sqrt3$ is an upper
+      bound.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · An ε-trick to memorize</div>
+      <p>Prove: if $a\le b+\varepsilon$ for <em>every</em> $\varepsilon>0$, then
+      $a\le b$.</p>
+      <details><summary>Solution</summary><div class="ans">If instead $a>b$, take
+      $\varepsilon=\tfrac{a-b}2>0$. The hypothesis gives
+      $a\le b+\tfrac{a-b}2=\tfrac{a+b}2&lt;a$ — a contradiction. This one-line lemma
+      gets used all over analysis.</div></details></div>
   </div>
 </div>
 
