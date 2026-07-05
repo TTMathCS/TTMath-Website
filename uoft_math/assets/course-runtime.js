@@ -242,6 +242,20 @@ class LatexMathParser {
     }
 
     if (command === "sqrt") {
+      this.skipWhitespace();
+      if (this.source[this.position] === "[") {
+        // \sqrt[n]{x} -> nth root
+        this.position += 1;
+        const start = this.position;
+        while (this.position < this.source.length && this.source[this.position] !== "]") {
+          this.position += 1;
+        }
+        const index = new LatexMathParser(this.source.slice(start, this.position)).parse();
+        if (this.source[this.position] === "]") this.position += 1;
+        const root = createMathElement("mroot");
+        root.append(this.parseArgument(), index);
+        return root;
+      }
       const root = createMathElement("msqrt");
       root.append(this.parseArgument());
       return root;
