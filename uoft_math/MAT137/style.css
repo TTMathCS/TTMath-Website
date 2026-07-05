@@ -1,21 +1,28 @@
 /* Shared design system for the U of T course guides.
-   Lecture-notes look: plain paper for reading, graph-paper grid where math
-   gets drawn, and a pen-case colour code — blue ink for definitions, indigo
-   for theorems, green for worked examples, red for warnings. */
+   Three surfaces, so content always separates from its background:
+   a grey desk (the page), a white sheet (the reading column), and
+   recessed or tinted panels on the sheet. Pen-case colour code:
+   blue = definitions, indigo = theorems, green = examples, red = warnings. */
 
 :root{
-  --paper:#fcfcfb;--card:#ffffff;--ink:#22252c;--ink-soft:#555b66;
-  --line:#e3e3dd;--grid:rgba(42,92,174,.08);
+  --desk:#eceef1;--sheet:#ffffff;--well:#f4f5f7;
+  --ink:#1f2329;--ink-soft:#525a67;
+  --line:#d8dbe1;--line-soft:#e7e9ed;--grid:rgba(42,92,174,.09);
   --blue:#2a5cae;--indigo:#46409f;--green:#2e7d4f;--red:#c03b2d;--amber:#a1741f;
-  --tint-blue:#f2f5fa;--tint-indigo:#f3f3f9;--tint-green:#f2f8f4;
-  --tint-red:#faf2f0;--tint-amber:#faf6ec;
+  --tint-blue:#eaf1fa;--tint-indigo:#ededf9;--tint-green:#e9f5ee;
+  --tint-red:#faeae7;--tint-amber:#f8f1de;
+  --shadow-sheet:0 1px 2px rgba(15,23,42,.05),0 12px 32px rgba(15,23,42,.07);
+  --shadow-card:0 1px 3px rgba(15,23,42,.07);
 }
 [data-theme="dark"]{
-  --paper:#16181d;--card:#1e2128;--ink:#e7e9ee;--ink-soft:#a3aab8;
-  --line:#31353e;--grid:rgba(125,167,232,.07);
+  --desk:#0f1115;--sheet:#191d24;--well:#13161c;
+  --ink:#e8eaee;--ink-soft:#a5acba;
+  --line:#353b46;--line-soft:#272c35;--grid:rgba(125,167,232,.08);
   --blue:#7da7e8;--indigo:#a3a0e6;--green:#6cbd8e;--red:#e08272;--amber:#d2a955;
-  --tint-blue:#1d222c;--tint-indigo:#20212d;--tint-green:#1c2622;
-  --tint-red:#2a201e;--tint-amber:#282216;
+  --tint-blue:#1c2531;--tint-indigo:#211f31;--tint-green:#1a2b22;
+  --tint-red:#2e211d;--tint-amber:#2b2415;
+  --shadow-sheet:0 1px 2px rgba(0,0,0,.4),0 14px 36px rgba(0,0,0,.45);
+  --shadow-card:0 1px 3px rgba(0,0,0,.4);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -24,24 +31,20 @@ a:focus-visible,summary:focus-visible,button:focus-visible,
 input:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:2px}
 ::selection{background:rgba(42,92,174,.18)}
 
-body{background:var(--paper);color:var(--ink);
+body{background:var(--desk);color:var(--ink);
   font-family:Charter,"Iowan Old Style","Palatino Linotype",Georgia,serif;
   font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-
-/* two voices: sans for structure, mono for labels and numbering */
-.hd{font-family:"Avenir Next","Helvetica Neue","Segoe UI",system-ui,sans-serif}
-.mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace}
 
 /* ---------- theme toggle ---------- */
 .theme-toggle{position:fixed;right:14px;top:14px;z-index:50;
   font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink);background:var(--card);border:1px solid var(--line);
+  color:var(--ink);background:var(--sheet);border:1px solid var(--line);
   border-radius:999px;padding:6px 11px;cursor:pointer;
-  box-shadow:0 2px 10px rgba(0,0,0,.10);transition:border-color .2s,color .2s}
+  box-shadow:var(--shadow-card);transition:border-color .2s,color .2s}
 .theme-toggle:hover{border-color:var(--blue);color:var(--blue)}
 
-/* ---------- index layout (sidebar) ---------- */
+/* ---------- index layout: sidebar on the desk, main on a sheet ---------- */
 .wrap{max-width:1440px;margin:0 auto;padding:0 20px;
   display:grid;grid-template-columns:225px 1fr;gap:44px}
 nav.side{position:sticky;top:0;align-self:start;height:100vh;
@@ -61,15 +64,19 @@ nav.side .foot{margin-top:auto;font-size:10.5px;color:var(--ink-soft);
   font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   line-height:1.7;opacity:.75}
 
-main{padding:26px 0 64px;min-width:0}
+main{min-width:0;margin:26px 0 64px;padding:36px 44px 56px;
+  background:var(--sheet);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow-sheet)}
 
-/* ---------- chapter layout (single column) ---------- */
-.container{max-width:940px;margin:0 auto;padding:24px 18px 64px}
+/* ---------- chapter layout: one sheet on the desk ---------- */
+.container{max-width:960px;margin:28px auto 64px;padding:36px 44px 56px;
+  background:var(--sheet);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow-sheet)}
 
 /* ---------- hero: title over faint graph paper ---------- */
 header.hero{position:relative;margin-bottom:30px;padding:26px 0 30px;
   background:
-    linear-gradient(180deg,rgba(0,0,0,0) 0%,var(--paper) 92%),
+    linear-gradient(180deg,rgba(0,0,0,0) 0%,var(--sheet) 92%),
     linear-gradient(var(--grid) 1px,transparent 1px),
     linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:auto,24px 24px,24px 24px}
@@ -90,8 +97,8 @@ h1 em{font-style:italic;color:var(--blue)}
 @keyframes pop{to{opacity:1}}
 
 /* ---------- strategy note ---------- */
-.note{background:var(--tint-blue);border:1px solid var(--line);
-  border-left:3px solid var(--blue);border-radius:4px;
+.note{background:var(--tint-blue);border:1px solid var(--line-soft);
+  border-left:3px solid var(--blue);border-radius:6px;
   padding:20px 24px;margin-bottom:32px}
 .note h3{font-family:"Avenir Next","Helvetica Neue","Segoe UI",system-ui,sans-serif;
   font-weight:650;font-size:19px;margin-bottom:8px}
@@ -115,7 +122,7 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 20px}
 .chip{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:12px;font-weight:600;letter-spacing:.04em;padding:7px 12px;
-  border:1px solid var(--line);border-radius:3px;background:var(--card);
+  border:1px solid var(--line-soft);border-radius:4px;background:var(--well);
   display:flex;gap:8px;align-items:center}
 .chip b{color:var(--blue)}.chip.teal b{color:var(--green)}
 .chip small{font-weight:400;color:var(--ink-soft);
@@ -123,7 +130,7 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 
 /* ---------- unit index list ---------- */
 .units{list-style:none;counter-reset:c}
-.units li{counter-increment:c;border-top:1px solid var(--line)}
+.units li{counter-increment:c;border-top:1px solid var(--line-soft)}
 .units a,.units .soon{display:grid;grid-template-columns:46px 1fr auto;gap:16px;
   align-items:baseline;padding:13px 12px 13px 0;text-decoration:none;color:inherit;
   max-width:640px;transition:padding .2s,background .2s}
@@ -141,8 +148,8 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 
 /* ---------- prologue / epilogue bookend links ---------- */
 .bookend{display:flex;justify-content:space-between;align-items:center;gap:16px;
-  padding:14px 18px;margin:4px 0 8px;border:1px solid var(--line);
-  border-left:3px solid var(--blue);border-radius:4px;background:var(--card);
+  padding:14px 18px;margin:4px 0 8px;border:1px solid var(--line-soft);
+  border-left:3px solid var(--blue);border-radius:6px;background:var(--well);
   text-decoration:none;color:inherit;transition:border-color .2s,background .2s}
 .bookend:hover{border-color:var(--blue);background:var(--tint-blue)}
 .bookend h4{font-family:"Avenir Next","Helvetica Neue","Segoe UI",system-ui,sans-serif;
@@ -173,7 +180,7 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 .ch-intro{font-size:17px;color:var(--ink-soft);max-width:72ch;margin-bottom:10px}
 
 /* ---------- goals ---------- */
-.goals{background:var(--card);border:1px solid var(--line);border-radius:4px;
+.goals{background:var(--well);border:1px solid var(--line-soft);border-radius:6px;
   padding:14px 18px;margin:18px 0 26px}
 .goals .gl{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);
@@ -192,9 +199,9 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 .block li{margin:5px 0;max-width:70ch}
 
 /* boxed environments: definition / theorem / example / pitfall.
-   Colour lives in the rule and label, not behind the text. */
-.box{border-radius:4px;padding:13px 16px;margin:14px 0;
-  border:1px solid var(--line);background:var(--card)}
+   Tinted just enough to separate from the white sheet. */
+.box{border-radius:6px;padding:13px 16px;margin:14px 0;
+  border:1px solid var(--line-soft)}
 .box .bl{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
   margin-bottom:6px;display:flex;gap:10px;align-items:center}
@@ -209,13 +216,13 @@ section{margin-bottom:38px;scroll-margin-top:24px}
   font-size:16px;max-width:70ch}
 
 /* ---------- figures: math gets drawn on graph paper ---------- */
-.figure{margin:16px 0;background:var(--card);border:1px solid var(--line);
-  border-radius:4px;padding:14px 16px;overflow:hidden}
+.figure{margin:16px 0;background:var(--well);border:1px solid var(--line-soft);
+  border-radius:6px;padding:14px 16px;overflow:hidden}
 .figure .fig-title{font-family:"Avenir Next","Helvetica Neue","Segoe UI",system-ui,sans-serif;
   font-weight:600;font-size:16px;margin-bottom:3px}
 .figure .fig-note{font-size:13.5px;color:var(--ink-soft);margin:0 0 12px;max-width:68ch}
 .figure svg{display:block;width:100%;height:auto;border:1px solid var(--line);
-  border-radius:3px;background-color:var(--card);
+  border-radius:4px;background-color:var(--sheet);
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),
     linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:22px 22px}
@@ -226,8 +233,8 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 .figure svg .curve-line{fill:none;stroke:var(--blue);stroke-width:3}
 .figure svg .focus-line{fill:none;stroke:var(--red);stroke-width:2.5}
 .figure svg .secondary-line{fill:none;stroke:var(--amber);stroke-width:2;stroke-dasharray:6 4}
-.figure svg .focus-point{fill:var(--red);stroke:var(--card);stroke-width:2}
-.figure svg .secondary-point{fill:var(--amber);stroke:var(--card);stroke-width:2}
+.figure svg .focus-point{fill:var(--red);stroke:var(--sheet);stroke-width:2}
+.figure svg .secondary-point{fill:var(--amber);stroke:var(--sheet);stroke-width:2}
 .figure svg .input-band{fill:rgba(42,92,174,.16)}
 .figure svg .output-band{fill:rgba(192,59,45,.13)}
 .controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:14px}
@@ -235,18 +242,19 @@ section{margin-bottom:38px;scroll-margin-top:24px}
   font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);font-weight:600}
 .controls input[type="range"]{accent-color:var(--blue);min-width:220px;flex:1}
 .controls output{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:12px;color:var(--ink);background:var(--card);border:1px solid var(--line);
-  padding:5px 8px;border-radius:3px}
+  font-size:12px;color:var(--ink);background:var(--sheet);border:1px solid var(--line);
+  padding:5px 8px;border-radius:4px}
 .controls button{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper);
-  background:var(--blue);border:0;border-radius:3px;padding:8px 12px;cursor:pointer}
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sheet);
+  background:var(--blue);border:0;border-radius:4px;padding:8px 12px;cursor:pointer}
 .controls button:hover{background:var(--indigo)}
+[data-theme="dark"] .controls button{color:var(--desk)}
 .exh-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .exh-row svg{flex:1 1 320px;width:auto;min-width:0}
 .exh-row .calc-panel{flex:1 1 360px;margin-top:0}
 .calc-panel{margin-top:12px;font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:12.5px;line-height:1.95;color:var(--ink);border:1px solid var(--line);
-  border-radius:3px;padding:11px 14px;overflow-x:auto;background-color:var(--card);
+  border-radius:4px;padding:11px 14px;overflow-x:auto;background-color:var(--sheet);
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),
     linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:22px 22px}
@@ -254,21 +262,23 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 .calc-panel .res{color:var(--blue);font-weight:600}
 .calc-panel .pi{color:var(--red);font-weight:600}
 .proof-map{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;margin-top:14px}
-.proof-map .choice{background:var(--card);border:1px solid var(--line);padding:13px 14px;border-radius:4px}
+.proof-map .choice{background:var(--well);border:1px solid var(--line-soft);
+  padding:13px 14px;border-radius:6px}
 .proof-map .choice b{display:block;
   font-family:"Avenir Next","Helvetica Neue","Segoe UI",system-ui,sans-serif;
   font-weight:600;font-size:15.5px;margin-bottom:3px}
 .proof-map .choice span{display:block;font-size:13.5px;color:var(--ink-soft);line-height:1.5}
 .proof-map .arrow{align-self:center;color:var(--blue);
   font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-weight:600}
-.logic-table{width:100%;border-collapse:collapse;margin:15px 0;font-size:15px;background:var(--card)}
+.logic-table{width:100%;border-collapse:collapse;margin:15px 0;font-size:15px;background:var(--sheet)}
 .logic-table th,.logic-table td{padding:8px 10px;border:1px solid var(--line);text-align:center}
 .logic-table th{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo)}
+  font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);
+  background:var(--well)}
 .logic-table .false{color:var(--red);font-weight:600}
 .logic-table .true{color:var(--green);font-weight:600}
-.checkpoint{border:1px solid var(--line);border-left:3px solid var(--indigo);
-  border-radius:4px;padding:11px 14px;margin:14px 0;background:var(--tint-indigo);font-size:15px}
+.checkpoint{border:1px solid var(--line-soft);border-left:3px solid var(--indigo);
+  border-radius:6px;padding:11px 14px;margin:14px 0;background:var(--tint-indigo);font-size:15px}
 .checkpoint b{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);
   display:block;margin-bottom:4px}
@@ -276,8 +286,8 @@ section{margin-bottom:38px;scroll-margin-top:24px}
 /* ---------- practice ---------- */
 .prac-intro{font-size:14px;color:var(--ink-soft);margin:5px 0 12px;max-width:72ch}
 .prac{display:flex;flex-direction:column;gap:9px;margin-top:6px}
-.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blue);
-  padding:11px 14px;border-radius:4px}
+.q{background:var(--well);border:1px solid var(--line-soft);border-left:3px solid var(--blue);
+  padding:11px 14px;border-radius:6px}
 .q .ql{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
   font-weight:600;margin-bottom:4px}
@@ -287,12 +297,13 @@ details summary{cursor:pointer;
   font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);
   list-style:none;display:inline-flex;align-items:center;gap:6px;
-  border:1px solid var(--line);padding:4px 10px;border-radius:3px;
-  transition:background .2s,color .2s}
+  background:var(--sheet);border:1px solid var(--line);padding:4px 10px;
+  border-radius:4px;transition:background .2s,color .2s}
 details summary::-webkit-details-marker{display:none}
 details summary::before{content:"+";font-weight:600}
 details[open] summary::before{content:"–"}
-details summary:hover{background:var(--blue);color:var(--paper);border-color:var(--blue)}
+details summary:hover{background:var(--blue);color:var(--sheet);border-color:var(--blue)}
+[data-theme="dark"] details summary:hover{color:var(--desk)}
 details .ans{margin-top:8px;font-size:15px;color:var(--ink);padding-left:12px;
   border-left:2px solid var(--line);max-width:68ch}
 
@@ -316,7 +327,7 @@ details .ans{margin-top:8px;font-size:15px;color:var(--ink);padding-left:12px;
 
 /* ---------- misc ---------- */
 .bp{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.bp .card{background:var(--card);border:1px solid var(--line);border-radius:4px;
+.bp .card{background:var(--well);border:1px solid var(--line-soft);border-radius:6px;
   padding:16px 18px;transition:border-color .2s,transform .2s}
 .bp .card:hover{transform:translateY(-3px);border-color:var(--blue)}
 .bp .card .n{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
@@ -328,21 +339,21 @@ details .ans{margin-top:8px;font-size:15px;color:var(--ink);padding-left:12px;
 .src a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--line)}
 .src a:hover{border-color:var(--blue)}
 .lic{margin-top:18px;font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:11.5px;color:var(--ink-soft);line-height:1.8;background:var(--card);
-  border:1px dashed var(--line);padding:14px 16px;border-radius:4px}
+  font-size:11.5px;color:var(--ink-soft);line-height:1.8;background:var(--well);
+  border:1px dashed var(--line);padding:14px 16px;border-radius:6px}
 
 /* context / story panel */
-.context{margin:22px 0;border:1px solid var(--line);border-radius:4px;
-  background:var(--card);overflow:hidden}
+.context{margin:22px 0;border:1px solid var(--line-soft);border-radius:6px;
+  background:var(--well);overflow:hidden}
 .context .ctxh{font-family:"Avenir Next","Helvetica Neue","Segoe UI",system-ui,sans-serif;
   font-weight:600;font-size:15.5px;padding:10px 18px;color:var(--ink);
-  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;
-  background-color:var(--card);
+  border-bottom:1px solid var(--line-soft);display:flex;align-items:center;gap:10px;
+  background-color:var(--sheet);
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),
     linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:22px 22px}
 .context .ctxh::before{content:"❖";font-size:12px;color:var(--blue)}
-.context .ci{padding:11px 18px;border-top:1px solid var(--line)}
+.context .ci{padding:11px 18px;border-top:1px solid var(--line-soft)}
 .context .ci:first-of-type{border-top:none}
 .context .cl{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
   font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
@@ -362,10 +373,11 @@ footer.end{border-top:2px solid var(--ink);padding-top:20px;
 .assessment-bank .q .ql{color:var(--indigo)}
 
 @media(max-width:880px){
-  .wrap{grid-template-columns:1fr;gap:0;padding:0 14px}
-  .container{padding-right:14px;padding-left:14px}
+  .wrap{grid-template-columns:1fr;gap:0;padding:0 10px}
+  main{margin:0 0 40px;padding:22px 18px 40px;border-radius:8px}
+  .container{margin:10px 10px 40px;padding:22px 18px 40px;border-radius:8px;max-width:none}
   nav.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;gap:8px 14px;
-    padding:26px 0;border-bottom:1px solid var(--line)}
+    padding:22px 8px;border-bottom:none}
   nav.side .brand,nav.side .sub{width:100%}nav.side .sub{margin-bottom:6px}
   nav.side a{border-left:none;border-bottom:2px solid var(--line);padding:4px 0}
   nav.side .foot{display:none}.curve{display:none}.bp{grid-template-columns:1fr}
