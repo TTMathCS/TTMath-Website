@@ -17,7 +17,19 @@
 <h1 class="ch-title reveal">Subspaces, Span &amp; Independence</h1>
 <p class="ch-intro reveal">The three ideas that organize a vector space from the
 inside: which subsets are themselves spaces, what a set of vectors generates, and
-when vectors carry genuinely independent information.</p>
+when vectors carry genuinely independent information. Together they set up the
+notion of a basis in Unit 3.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Prove or refute that a subset is a subspace with the three-part test.</li>
+    <li>Describe the span of a set and prove it is the smallest subspace
+    containing it.</li>
+    <li>Decide linear independence from the definition, over any field.</li>
+    <li>Prove the standard facts about dependence and redundant vectors.</li>
+  </ul>
+</div>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
@@ -34,52 +46,144 @@ when vectors carry genuinely independent information.</p>
     theory of dimension.</p></div>
 </div>
 
-<div class="goals reveal">
-  <div class="gl">By the end you can</div>
-  <ul>
-    <li>Test whether a subset is a subspace.</li>
-    <li>Describe the span of a set of vectors.</li>
-    <li>Decide linear independence.</li>
-  </ul>
+<div class="block reveal">
+  <h3>Subspaces</h3>
+  <div class="box def"><div class="bl">Definition <b>Subspace</b></div>
+    <p>$W\subseteq V$ is a subspace if it is itself a vector space under the
+    operations of $V$.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Subspace test</b></div>
+    <p>$W\subseteq V$ is a subspace if and only if: (i) $0\in W$; (ii) $u+v\in W$
+    whenever $u,v\in W$; (iii) $av\in W$ whenever $a\in F$, $v\in W$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">The eight axioms are equations that already hold in $V$, so
+    they hold automatically for elements of $W$. The only things that can fail
+    are the closures and the presence of $0$ and inverses — and
+    $-v=(-1)v$ comes from closure under scalars. ∎</div>
+  </div>
+  <div class="box eg"><div class="bl">Examples and a non-example</div>
+    <div class="step">Subspaces: the solution set of a homogeneous system
+    $Ax=0$; the symmetric matrices inside $M_{n\times n}(F)$; the polynomials
+    with $p(0)=0$.</div>
+    <div class="step">Non-example: the union of the two axes in $\mathbb{R}^2$.
+    It passes the zero and scalar tests but fails closure under addition:
+    $(1,0)+(0,1)=(1,1)$ lies on neither axis.</div>
+  </div>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>Any intersection of subspaces of $V$ is a subspace. (Unions usually are
+    not — the example above.)</p></div>
 </div>
 
 <div class="block reveal">
-  <h3>Subspaces and span</h3>
-  <div class="box def"><div class="bl">Definition</div>
-    <p>$W\subseteq V$ is a subspace if it contains $0$ and is closed under addition
-    and scalar multiplication. The <em>span</em> of $S$ is the set of all linear
-    combinations of vectors in $S$ — the smallest subspace containing $S$.</p></div>
+  <h3>Span</h3>
+  <div class="box def"><div class="bl">Definition <b>Span</b></div>
+    <p>A <em>linear combination</em> of $v_1,\dots,v_k$ is
+    $a_1v_1+\cdots+a_kv_k$ with $a_i\in F$. The <em>span</em> of a set $S$ is
+    the set of all linear combinations of finitely many vectors of $S$ (and
+    $\operatorname{span}\,\emptyset=\{0\}$).</p></div>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>$\operatorname{span}(S)$ is a subspace of $V$, and it is the smallest one
+    containing $S$: any subspace containing $S$ contains
+    $\operatorname{span}(S)$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">Sums and scalar multiples of linear combinations are again
+    linear combinations — that gives the subspace. And a subspace containing $S$
+    is closed under exactly the operations used to build combinations, so it
+    swallows all of them. ∎</div>
+  </div>
 </div>
 
 <div class="block reveal">
   <h3>Linear independence</h3>
   <div class="box def"><div class="bl">Definition</div>
-    <p>$v_1,\dots,v_k$ are linearly independent if $c_1v_1+\cdots+c_kv_k=0$ forces
-    every $c_i=0$. Otherwise one vector is a combination of the others.</p></div>
-  <div class="box eg"><div class="bl">Example</div>
-    <p>$(1,0),(0,1)$ are independent; $(1,2),(2,4)$ are dependent since the second
-    is twice the first.</p></div>
+    <p>$v_1,\dots,v_k$ are <em>linearly independent</em> if
+    $a_1v_1+\cdots+a_kv_k=0$ forces $a_1=\cdots=a_k=0$. Otherwise they are
+    <em>dependent</em>: some nontrivial combination gives $0$.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Dependence means redundancy</b></div>
+    <p>Vectors $v_1,\dots,v_k$ (with $k\ge2$) are dependent iff some $v_j$ is a
+    linear combination of the others — and then removing $v_j$ does not change
+    the span.</p></div>
+  <div class="box eg"><div class="bl">Proof</div>
+    <div class="step">If $a_1v_1+\cdots+a_kv_k=0$ with some $a_j\ne0$, divide by
+    $a_j$ (field!) and solve for $v_j$. Conversely, if
+    $v_j=\sum_{i\ne j}c_iv_i$, then $\sum_{i\ne j}c_iv_i+(-1)v_j=0$ is a
+    nontrivial combination. ∎</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>The field matters</b></div>
+    <p>Take $u=(1,1,0)$, $v=(0,1,1)$, $w=(1,0,1)$.</p>
+    <div class="step">Over $\mathbb{R}$: $a u+b v+c w=0$ gives $a+c=0$,
+    $a+b=0$, $b+c=0$; substituting, $2c=0$, so $a=b=c=0$ — independent.</div>
+    <div class="step">Over $\mathbb{Z}_2$: $u+v+w=(2,2,2)=(0,0,0)$ —
+    dependent! The step "$2c=0\Rightarrow c=0$" fails when $2=0$. Independence
+    is a statement about the scalars as much as the vectors.</div>
+  </div>
+  <div class="checkpoint"><b>How to run an independence check</b>
+    Write $a_1v_1+\cdots+a_kv_k=0$, read off one linear equation per coordinate,
+    and solve the homogeneous system. Exactly the trivial solution ⇒
+    independent; any free variable ⇒ dependent, and the free variable hands you
+    an explicit dependence.</div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• A subspace must contain the zero vector.<br>
-  • Independence is about the <em>only</em> solution being trivial.<br>
-  • Span grows with more vectors; independence shrinks.</p></div>
+  <p>• A subspace must contain the zero vector — check it first.<br>
+  • Independence means the <em>only</em> combination giving $0$ is trivial; it
+  is not "no two are parallel" (three coplanar vectors in $\mathbb{R}^3$ can be
+  pairwise non-parallel yet dependent).<br>
+  • Any set containing the zero vector is dependent: $1\cdot0=0$
+  nontrivially.<br>
+  • Adding vectors can only grow the span; removing a <em>dependent</em> vector
+  keeps it unchanged.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Friedberg, Insel &amp; Spence exercises. Write a full solution before opening
+  the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
-      <p>Is the set of polynomials with $p(0)=0$ a subspace of $P(\mathbb{R})$?</p>
-      <details><summary>Answer</summary><div class="ans">Yes — closed under $+$ and
-      scalars, contains the zero polynomial.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
+    <div class="q"><div class="ql">Practice 1 · Subspace test</div>
+      <p>Is $\{p\in P(\mathbb{R}):p(0)=0\}$ a subspace of $P(\mathbb{R})$?</p>
+      <details><summary>Answer</summary><div class="ans">Yes: the zero polynomial
+      qualifies, and if $p(0)=q(0)=0$ then $(p+q)(0)=0$ and $(ap)(0)=0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Independence</div>
       <p>Are $(1,1,0),(0,1,1),(1,0,-1)$ independent in $\mathbb{R}^3$?</p>
-      <details><summary>Answer</summary><div class="ans">No — the third equals the
-      first minus the second.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
-      <p>What is $\operatorname{span}\{(1,0),(0,1)\}$?</p>
-      <details><summary>Answer</summary><div class="ans">All of $\mathbb{R}^2$.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">No — the third equals
+      the first minus the second, so the set is dependent.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Span</div>
+      <p>What is $\operatorname{span}\{(1,0),(0,1)\}$ in $\mathbb{R}^2$? And
+      $\operatorname{span}\{(1,2)\}$?</p>
+      <details><summary>Answer</summary><div class="ans">All of $\mathbb{R}^2$;
+      and the line $\{(t,2t):t\in\mathbb{R}\}$ through the origin.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Union</div>
+      <p>Show the union of the $x$-axis and $y$-axis is not a subspace of
+      $\mathbb{R}^2$.</p>
+      <details><summary>Solution</summary><div class="ans">$(1,0)$ and $(0,1)$
+      belong, but their sum $(1,1)$ lies on neither axis — closure under
+      addition fails.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Intersection</div>
+      <p>Prove that the intersection of two subspaces of $V$ is a subspace.</p>
+      <details><summary>Solution</summary><div class="ans">$0$ lies in both. If
+      $u,v$ lie in both, then $u+v$ and $av$ lie in each (both are subspaces),
+      hence in the intersection. The three-part test passes.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Polynomials</div>
+      <p>Prove $1,x,x^2$ are independent in $P(\mathbb{R})$.</p>
+      <details><summary>Solution</summary><div class="ans">If $a+bx+cx^2$ is the
+      zero polynomial, all its coefficients vanish by definition of polynomial
+      equality — so $a=b=c=0$. (Or: evaluate at $x=0$ to get $a=0$, then at
+      $x=\pm1$ to force $b=c=0$.)</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Field dependence</div>
+      <p>Show $(1,1,0),(0,1,1),(1,0,1)$ are independent over $\mathbb{R}$ but
+      dependent over $\mathbb{Z}_2$.</p>
+      <details><summary>Solution</summary><div class="ans">Over $\mathbb{R}$ the
+      system $a+c=a+b=b+c=0$ forces $2c=0$, so all vanish. Over $\mathbb{Z}_2$
+      the sum of the three vectors is $(2,2,2)=(0,0,0)$ — a nontrivial
+      dependence, because $2=0$ there.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · New from old</div>
+      <p>Suppose $u,v,w$ are independent in a real vector space. Prove
+      $u+v,\ v+w,\ u+w$ are independent.</p>
+      <details><summary>Solution</summary><div class="ans">If
+      $a(u+v)+b(v+w)+c(u+w)=0$, regroup: $(a+c)u+(a+b)v+(b+c)w=0$. Independence
+      gives $a+c=a+b=b+c=0$; subtracting equations yields $b=c$, then $2b=0$,
+      so $a=b=c=0$. (Over $\mathbb{Z}_2$ this fails — the three sums are
+      dependent there.)</div></details></div>
   </div>
 </div>
 

@@ -15,73 +15,157 @@
 <div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 08</div>
 <div class="unit-no reveal">Unit 08 · Algebra I</div>
 <h1 class="ch-title reveal">Determinants</h1>
-<p class="ch-intro reveal">One number that detects invertibility, measures how a map
-scales volume, and behaves multiplicatively. Simple to state, surprisingly deep to
-justify.</p>
-
-<div class="context reveal">
-  <div class="ctxh">Why it matters &amp; where it comes from</div>
-  <div class="ci"><div class="cl">Why it exists</div>
-    <p>The determinant answers "is this matrix invertible?" with a single scalar,
-    and geometrically it is the factor by which the map scales area or volume —
-    zero meaning the space collapses.</p></div>
-  <div class="ci"><div class="cl">In the real world</div>
-    <p>Jacobian determinants rescale integrals under change of variables (essential
-    in probability and physics); determinants signal singular configurations in
-    robotics and graphics.</p></div>
-  <div class="ci"><div class="cl">Story &amp; open questions</div>
-    <p>Determinants predate matrices — Leibniz and the Japanese mathematician Seki
-    studied them in the 1600s. Computing them efficiently for large matrices is done
-    by the row reduction of Unit 7, not the cofactor formula.</p></div>
-</div>
+<p class="ch-intro reveal">One scalar that decides invertibility, scales volume,
+and behaves perfectly under products. The definition takes some care; after that,
+three row-operation rules do all the computing, and
+$\det(AB)=\det A\,\det B$ does all the theory.</p>
 
 <div class="goals reveal">
   <div class="gl">By the end you can</div>
   <ul>
-    <li>Compute determinants by cofactor expansion and row reduction.</li>
-    <li>Use the key properties, including $\det(AB)=\det A\det B$.</li>
+    <li>Compute determinants by cofactor expansion and by row reduction.</li>
+    <li>Use the three row-operation rules and the alternating property.</li>
+    <li>Prove and apply $\det(AB)=\det A\,\det B$.</li>
     <li>Connect $\det A\ne0$ with invertibility.</li>
   </ul>
 </div>
 
-<div class="block reveal">
-  <h3>Definition and properties</h3>
-  <div class="box def"><div class="bl">Definition</div>
-    <p>The determinant is the unique function of the rows that is linear in each
-    row, alternating (a repeated row gives $0$), and equals $1$ on the identity.
-    Cofactor expansion computes it.</p></div>
-  <div class="box thm"><div class="bl">Key properties</div>
-    <p>$\det(AB)=\det A\det B$; $\det A^{-1}=1/\det A$; $A$ is invertible iff
-    $\det A\ne0$; row swaps flip the sign.</p></div>
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>The determinant is the unique scalar that measures how a linear map scales
+    signed volume — which is why it vanishes exactly when the map squashes space
+    flat, i.e. fails to be invertible.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Jacobian determinants govern change of variables in multivariable calculus
+    and probability; determinants test invertibility in computer algebra; and the
+    characteristic polynomial of Unit 10 is a determinant.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Determinants predate matrices — Seki and Leibniz used them in the 1680s to
+    solve systems. Cauchy proved the product rule in 1812; the modern
+    "multilinear alternating" viewpoint is what survives into higher
+    mathematics.</p></div>
 </div>
 
 <div class="block reveal">
-  <h3>Computing</h3>
-  <div class="box eg"><div class="bl">Example</div>
-    <p>$\det\!\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)=ad-bc$. For
-    larger matrices, reduce to triangular form and multiply the diagonal (tracking
-    sign changes).</p></div>
+  <h3>Definition and small cases</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>$\det\!\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)=ad-bc$.
+    For $n\times n$, define recursively by <em>cofactor expansion</em> along the
+    first row: $\det A=\sum_j(-1)^{1+j}a_{1j}\det(A_{1j})$, where $A_{1j}$
+    deletes row $1$ and column $j$. (Expansion along any row or column gives the
+    same value.)</p></div>
+  <div class="box eg"><div class="bl">Example <b>$3\times3$ by cofactors</b></div>
+    <p>$A=\left(\begin{smallmatrix}1&2&3\\4&5&6\\7&8&10\end{smallmatrix}\right)$:</p>
+    <div class="step">$\det A=1(5\cdot10-6\cdot8)-2(4\cdot10-6\cdot7)
+    +3(4\cdot8-5\cdot7)$</div>
+    <div class="step">$=1(2)-2(-2)+3(-3)=2+4-9=-3$.</div>
+  </div>
+  <div class="box thm"><div class="bl">Theorem <b>Structural properties</b></div>
+    <p>$\det$ is linear in each row separately (multilinear), flips sign when two
+    rows are swapped (alternating), and $\det I=1$. These three properties
+    characterize it uniquely. Consequences: a repeated row gives determinant
+    $0$; a triangular matrix's determinant is the product of its diagonal
+    entries; $\det(A^t)=\det A$.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Computing by row reduction</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Row-operation rules</b></div>
+    <p>Swapping two rows multiplies $\det$ by $-1$; scaling a row by $c$
+    multiplies it by $c$; adding a multiple of one row to another leaves it
+    unchanged.</p></div>
+  <div class="box eg"><div class="bl">Proof idea <b>for the third rule</b></div>
+    <div class="step">By multilinearity, the new determinant is the old one plus
+    $c$ times a determinant with a repeated row — and that term is $0$ by the
+    alternating property. ∎</div>
+  </div>
+  <div class="checkpoint"><b>Which method to use</b>
+    Cofactors are fine to $3\times3$ or when a row is mostly zeros; beyond that,
+    row-reduce to triangular and multiply the diagonal, tracking swaps and
+    scalings. Elimination computes an $n\times n$ determinant in about $n^3$
+    steps; cofactors take $n!$ — the difference between instant and
+    impossible.</div>
+</div>
+
+<div class="block reveal">
+  <h3>The two big theorems</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Invertibility test</b></div>
+    <p>$A$ is invertible iff $\det A\ne0$.</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">Row-reduce $A$ to its RREF $R$; each operation multiplies
+    the determinant by a nonzero factor, so $\det A\ne0$ iff $\det R\ne0$.</div>
+    <div class="step">If $A$ is invertible, $R=I$ and $\det R=1$. If not, $R$
+    has a zero row and $\det R=0$. ∎</div>
+  </div>
+  <div class="box thm"><div class="bl">Theorem <b>Product rule</b></div>
+    <p>$\det(AB)=\det A\,\det B$. Consequences:
+    $\det(A^{-1})=\dfrac{1}{\det A}$, similar matrices have equal determinants
+    (Unit 6), and $\det(cA)=c^n\det A$ for $n\times n$ matrices (scale each of
+    the $n$ rows).</p></div>
+  <div class="box eg"><div class="bl">Proof idea</div>
+    <div class="step">If $A$ is singular, both sides are $0$ (AB cannot have
+    full rank). If $A$ is invertible, write it as a product of elementary
+    matrices; for each elementary $E$, the row-operation rules say exactly that
+    $\det(EB)=\det E\,\det B$. Peel off one factor at a time. ∎</div>
+  </div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• $\det(A+B)\ne\det A+\det B$ in general.<br>
-  • A row swap multiplies the determinant by $-1$; scaling a row scales it.<br>
-  • Cofactor expansion is fine by hand but far too slow for large matrices — use
-  row reduction.</p></div>
+  <p>• $\det(A+B)\ne\det A+\det B$ in general — the determinant is linear in
+  each <em>row</em>, not in the matrix.<br>
+  • $\det(cA)=c^n\det A$, not $c\det A$ — every row picks up the factor.<br>
+  • Track your row operations: forgetting a swap's sign or a scaling factor is
+  the classic computational error.<br>
+  • The cofactor signs follow the checkerboard $(-1)^{i+j}$, starting with $+$
+  in the top-left.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Friedberg, Insel &amp; Spence exercises. Write a full solution before opening
+  the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
+    <div class="q"><div class="ql">Practice 1 · Warm-up</div>
       <p>Compute $\det\!\left(\begin{smallmatrix}2&1\\4&3\end{smallmatrix}\right)$.</p>
       <details><summary>Answer</summary><div class="ans">$2\cdot3-1\cdot4=2$.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
-      <p>If $\det A=5$ for a $3\times3$ matrix, find $\det(2A)$.</p>
+    <div class="q"><div class="ql">Practice 2 · Cofactors</div>
+      <p>Compute
+      $\det\!\left(\begin{smallmatrix}1&2&3\\4&5&6\\7&8&10\end{smallmatrix}\right)$.</p>
+      <details><summary>Answer</summary><div class="ans">$2+4-9=-3$ (expansion
+      shown in the unit). With the $10$ replaced by $9$ the rows would be
+      dependent and the determinant $0$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Scaling</div>
+      <p>If $A$ is $3\times3$ with $\det A=5$, find $\det(2A)$.</p>
       <details><summary>Answer</summary><div class="ans">$2^3\cdot5=40$.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
-      <p>What does $\det A=0$ tell you about $A\mathbf{x}=\mathbf{0}$?</p>
-      <details><summary>Answer</summary><div class="ans">It has a nonzero solution;
-      $A$ is not invertible.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Inverse</div>
+      <p>Prove $\det(A^{-1})=\dfrac{1}{\det A}$ for invertible $A$.</p>
+      <details><summary>Solution</summary><div class="ans">
+      $1=\det I=\det(AA^{-1})=\det A\,\det(A^{-1})$; divide.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Repeated row</div>
+      <p>Prove that a matrix with two equal rows has determinant $0$
+      (assume the field does not have $1+1=0$).</p>
+      <details><summary>Solution</summary><div class="ans">Swapping the two equal
+      rows changes nothing but negates the determinant: $\det A=-\det A$, so
+      $2\det A=0$ and $\det A=0$. (Over $\mathbb{Z}_2$ one argues instead via
+      multilinearity.)</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Triangular</div>
+      <p>Show the determinant of an upper-triangular matrix is the product of
+      its diagonal entries.</p>
+      <details><summary>Solution</summary><div class="ans">Expand along the
+      first column repeatedly: only the diagonal entry survives at each step,
+      each time reducing to the smaller triangular block.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Elementary matrices</div>
+      <p>Find the determinants of the three kinds of elementary matrices.</p>
+      <details><summary>Answer</summary><div class="ans">Swap: $-1$. Scale a row
+      by $c$: $c$. Add a multiple of a row to another: $1$. (These are exactly
+      the row-operation rules applied to $I$.)</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · A tiny Vandermonde</div>
+      <p>Compute $\det\!\left(\begin{smallmatrix}1&a\\1&b\end{smallmatrix}\right)$
+      and interpret the answer for independence of $(1,a)$ and $(1,b)$.</p>
+      <details><summary>Answer</summary><div class="ans">$b-a$: the two vectors
+      are independent iff $a\ne b$ — a first taste of the Vandermonde
+      determinant that powers polynomial interpolation.</div></details></div>
   </div>
 </div>
 

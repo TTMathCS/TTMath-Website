@@ -16,7 +16,9 @@ const mathSymbols = {
   beta: ["mi", "β"],
   delta: ["mi", "δ"],
   Delta: ["mi", "Δ"],
+  emptyset: ["mi", "∅"],
   eta: ["mi", "η"],
+  gamma: ["mi", "γ"],
   lambda: ["mi", "λ"],
   pi: ["mi", "π"],
   theta: ["mi", "θ"],
@@ -37,6 +39,7 @@ const mathSymbols = {
   land: ["mo", "∧"],
   le: ["mo", "≤"],
   Leftarrow: ["mo", "⇐"],
+  Leftrightarrow: ["mo", "⇔"],
   Longleftrightarrow: ["mo", "⟺"],
   Longrightarrow: ["mo", "⟹"],
   longrightarrow: ["mo", "⟶"],
@@ -67,6 +70,7 @@ const mathFunctions = new Set([
 const largeOperators = {
   int: "∫",
   lim: "lim",
+  prod: "∏",
   sum: "∑"
 };
 

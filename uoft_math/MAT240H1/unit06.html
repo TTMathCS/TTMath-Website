@@ -16,8 +16,19 @@
 <div class="unit-no reveal">Unit 06 · Algebra I</div>
 <h1 class="ch-title reveal">Change of Basis &amp; Similarity</h1>
 <p class="ch-intro reveal">The same linear map looks like different matrices in
-different bases. Similarity is the relationship between those matrices — and the
-key to finding a basis where the map is simple.</p>
+different bases. Change of basis is the translation rule, and similarity is the
+equivalence it induces — the key to hunting for a basis in which the map is
+simple, which is the whole story of Unit 10.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>Compute coordinate vectors and the change-of-coordinates matrix.</li>
+    <li>Derive and use $[T]_{\beta'}=P^{-1}[T]_{\beta}\,P$.</li>
+    <li>Prove similarity is an equivalence relation and list its invariants.</li>
+    <li>Show two matrices are (or cannot be) similar.</li>
+  </ul>
+</div>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
@@ -30,62 +41,131 @@ key to finding a basis where the map is simple.</p>
     decoupling systems of differential equations in engineering and finance.</p></div>
   <div class="ci"><div class="cl">Story &amp; open questions</div>
     <p>The search for the "best" basis for a given map leads straight to eigenvalues
-    and the diagonalization problem of Unit 9 — and, when diagonalization fails, to
+    and the diagonalization problem of Unit 10 — and, when diagonalization fails, to
     the Jordan form studied in MAT247.</p></div>
 </div>
 
-<div class="goals reveal">
-  <div class="gl">By the end you can</div>
-  <ul>
-    <li>Write a change-of-coordinates matrix.</li>
-    <li>Convert a map's matrix between bases.</li>
-    <li>Define similar matrices and list their shared invariants.</li>
-  </ul>
+<div class="block reveal">
+  <h3>Coordinates and the change-of-coordinates matrix</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>For an ordered basis $\beta=\{v_1,\dots,v_n\}$, the coordinate vector
+    $[v]_\beta$ lists the unique coefficients with $v=\sum a_iv_i$. If $\beta'$
+    is a second basis, the <em>change-of-coordinates matrix</em> $P$ has the
+    $\beta$-coordinates of the $\beta'$-vectors as its columns, and
+    $$[v]_{\beta}=P\,[v]_{\beta'}.$$ $P$ is invertible, and $P^{-1}$ translates
+    in the other direction.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>In $\mathbb{R}^2$ with $\beta'=\{(1,1),(1,-1)\}$ and $\beta$ standard:
+    $P=\left(\begin{smallmatrix}1&1\\1&-1\end{smallmatrix}\right)$. For
+    $v=(5,1)$: solve $a(1,1)+b(1,-1)=(5,1)$, so $a+b=5$, $a-b=1$, giving
+    $[v]_{\beta'}=(3,2)$ — and indeed $P\,(3,2)=(5,1)$. ✓</p></div>
 </div>
 
 <div class="block reveal">
-  <h3>Change of coordinates</h3>
-  <div class="box def"><div class="bl">Definition</div>
-    <p>If $P$ has the new basis vectors as columns (in old coordinates), then old
-    coordinates $=P\cdot$(new coordinates). For an operator $T:V\to V$ using the
-    same basis change in domain and codomain,
-    $[T]_{\text{new}}=P^{-1}[T]_{\text{old}}P$. More generally, if $P$ changes
-    domain coordinates and $Q$ changes codomain coordinates, then
-    $[T]_{\text{new}}=Q^{-1}[T]_{\text{old}}P$.</p></div>
+  <h3>What happens to the matrix of an operator</h3>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>For an operator $T:V\to V$ and bases $\beta,\beta'$ with
+    change-of-coordinates matrix $P$ (from $\beta'$ to $\beta$),
+    $$[T]_{\beta'}=P^{-1}\,[T]_{\beta}\,P.$$</p></div>
+  <div class="box eg"><div class="bl">Proof <b>— just follow the coordinates</b></div>
+    <div class="step">Take $\beta'$-coordinates of $v$, translate to $\beta$
+    ($P$), apply the map ($[T]_\beta$), translate back ($P^{-1}$):
+    $[T(v)]_{\beta'}=P^{-1}[T]_\beta P\,[v]_{\beta'}$.</div>
+    <div class="step">The matrix that does this for all $v$ is unique, so it is
+    $[T]_{\beta'}$. ∎</div>
+  </div>
+  <div class="box eg"><div class="bl">Example <b>A map made diagonal</b></div>
+    <p>$T(x,y)=(3x+y,\ x+3y)$ has standard matrix
+    $A=\left(\begin{smallmatrix}3&1\\1&3\end{smallmatrix}\right)$.</p>
+    <div class="step">$T(1,1)=(4,4)=4\,(1,1)$ and
+    $T(1,-1)=(2,-2)=2\,(1,-1)$.</div>
+    <div class="step">So in the basis $\{(1,1),(1,-1)\}$ the matrix is
+    $\left(\begin{smallmatrix}4&0\\0&2\end{smallmatrix}\right)$ — the same map,
+    now decoupled. This is a preview of eigenvectors (Unit 10).</div>
+  </div>
 </div>
 
 <div class="block reveal">
   <h3>Similarity</h3>
   <div class="box def"><div class="bl">Definition</div>
-    <p>$A$ and $B$ are <em>similar</em> if $B=P^{-1}AP$ for some invertible $P$.
-    Similar matrices represent the same linear map in different bases.</p></div>
-  <div class="box thm"><div class="bl">Invariants</div>
-    <p>Similar matrices share determinant, trace, rank, characteristic polynomial,
-    and eigenvalues.</p></div>
+    <p>$A,B\in M_{n\times n}(F)$ are <em>similar</em> if $B=P^{-1}AP$ for some
+    invertible $P$. By the theorem above, similar matrices are exactly the
+    matrices of one operator in different bases.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Invariants</b></div>
+    <p>Similar matrices have the same determinant, trace, rank, characteristic
+    polynomial, and eigenvalues. Quick proofs:
+    $\det(P^{-1}AP)=\det(P)^{-1}\det A\det P=\det A$, and
+    $\operatorname{tr}(P^{-1}(AP))=\operatorname{tr}((AP)P^{-1})
+    =\operatorname{tr}A$ using $\operatorname{tr}(XY)=\operatorname{tr}(YX)$.</p></div>
+  <div class="checkpoint"><b>Invariants refute, they do not prove</b>
+    Different trace ⇒ not similar: instant. But equal invariants do not force
+    similarity —
+    $\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$ and the identity
+    share det, trace, rank, and characteristic polynomial, yet only the identity
+    is similar to the identity ($P^{-1}IP=I$). Deciding similarity in general
+    needs canonical forms (MAT247).</div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• Mind the direction: $[T]_{\text{new}}=P^{-1}[T]_{\text{old}}P$, not the
-  reverse.<br>
-  • Similar is stronger than "same determinant"; it requires the conjugating
-  $P$.<br>
-  • Not every matrix is similar to a diagonal one (Unit 9).</p></div>
+  <p>• Mind the direction: $[T]_{\beta'}=P^{-1}[T]_{\beta}P$ where $P$ carries
+  $\beta'$-coordinates to $\beta$-coordinates.<br>
+  • The columns of $P$ are the <em>new</em> basis vectors written in the
+  <em>old</em> coordinates.<br>
+  • Sharing det/trace/eigenvalues does not make matrices similar — see the
+  checkpoint.<br>
+  • Similarity uses one basis change on both sides ($P$ and $P^{-1}$); using two
+  unrelated matrices $Q^{-1}AP$ is a different, weaker equivalence.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Friedberg, Insel &amp; Spence exercises. Write a full solution before opening
+  the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
+    <div class="q"><div class="ql">Practice 1 · Invariants</div>
       <p>Are similar matrices guaranteed to have the same eigenvalues?</p>
       <details><summary>Answer</summary><div class="ans">Yes — they share the
-      characteristic polynomial.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
-      <p>If $B=P^{-1}AP$, relate $\det A$ and $\det B$.</p>
-      <details><summary>Answer</summary><div class="ans">Equal:
-      $\det B=\det(P)^{-1}\det A\det P=\det A$.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
-      <p>Is the identity similar to any matrix besides itself?</p>
-      <details><summary>Answer</summary><div class="ans">No — $P^{-1}IP=I$ for all
-      $P$.</div></details></div>
+      characteristic polynomial:
+      $\det(P^{-1}AP-tI)=\det(P^{-1}(A-tI)P)=\det(A-tI)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Determinant</div>
+      <p>If $B=P^{-1}AP$, prove $\det B=\det A$.</p>
+      <details><summary>Solution</summary><div class="ans">Multiplicativity:
+      $\det B=\det(P^{-1})\det A\det P=\dfrac{1}{\det P}\det A\det P
+      =\det A$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Rigid identity</div>
+      <p>Which matrices are similar to the identity?</p>
+      <details><summary>Answer</summary><div class="ans">Only $I$ itself:
+      $P^{-1}IP=I$ for every invertible $P$. (Same for any scalar matrix
+      $cI$.)</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Coordinates</div>
+      <p>Find $[v]_{\beta'}$ for $v=(5,1)$ and
+      $\beta'=\{(1,1),(1,-1)\}$.</p>
+      <details><summary>Solution</summary><div class="ans">$a+b=5$ and $a-b=1$
+      give $a=3$, $b=2$: $[v]_{\beta'}=(3,2)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Diagonalize by hand</div>
+      <p>Compute the matrix of $T(x,y)=(3x+y,\ x+3y)$ in the basis
+      $\{(1,1),(1,-1)\}$.</p>
+      <details><summary>Solution</summary><div class="ans">$T(1,1)=4(1,1)$ and
+      $T(1,-1)=2(1,-1)$, so the matrix is
+      $\left(\begin{smallmatrix}4&0\\0&2\end{smallmatrix}\right)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Trace</div>
+      <p>Using $\operatorname{tr}(XY)=\operatorname{tr}(YX)$, prove similar
+      matrices have equal trace.</p>
+      <details><summary>Solution</summary><div class="ans">
+      $\operatorname{tr}(P^{-1}(AP))=\operatorname{tr}((AP)P^{-1})
+      =\operatorname{tr}(A)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Equivalence relation</div>
+      <p>Prove similarity is reflexive, symmetric, and transitive.</p>
+      <details><summary>Solution</summary><div class="ans">$A=I^{-1}AI$;
+      if $B=P^{-1}AP$ then $A=(P^{-1})^{-1}B\,P^{-1}$; and
+      $C=Q^{-1}BQ$ gives $C=(PQ)^{-1}A(PQ)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Not similar</div>
+      <p>Show $\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$ and
+      $I$ are not similar, even though they share determinant, trace, rank, and
+      characteristic polynomial.</p>
+      <details><summary>Solution</summary><div class="ans">Everything similar to
+      $I$ equals $I$ (Practice 3), and this matrix is not $I$. Moral: the common
+      invariants are necessary, never sufficient.</div></details></div>
   </div>
 </div>
 

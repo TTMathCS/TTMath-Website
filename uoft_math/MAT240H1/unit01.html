@@ -16,8 +16,20 @@
 <div class="unit-no reveal">Unit 01 · Algebra I</div>
 <h1 class="ch-title reveal">Fields &amp; Vector Spaces</h1>
 <p class="ch-intro reveal">Linear algebra starts not with matrices but with axioms:
-a field of scalars and a vector space over it. Everything later is a consequence of
-these rules.</p>
+a field of scalars and a vector space over it. Everything later — bases,
+dimension, eigenvalues — is a consequence of these rules, which is why the first
+proofs in the course are about the axioms themselves.</p>
+
+<div class="goals reveal">
+  <div class="gl">By the end you can</div>
+  <ul>
+    <li>State the field axioms and work in $\mathbb{Q}$, $\mathbb{R}$,
+    $\mathbb{C}$, and $\mathbb{Z}_p$.</li>
+    <li>State the eight vector space axioms.</li>
+    <li>Prove the first consequences: $0v=0$, $(-1)v=-v$, cancellation.</li>
+    <li>Verify whether a given set with given operations is a vector space.</li>
+  </ul>
+</div>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
@@ -35,55 +47,132 @@ these rules.</p>
     pure and applied mathematics alike.</p></div>
 </div>
 
-<div class="goals reveal">
-  <div class="gl">By the end you can</div>
-  <ul>
-    <li>State the field axioms and give examples ($\mathbb{R}$, $\mathbb{C}$,
-    $\mathbb{Z}_p$).</li>
-    <li>State the vector space axioms.</li>
-    <li>Verify whether a given set is a vector space.</li>
-  </ul>
-</div>
-
 <div class="block reveal">
   <h3>Fields</h3>
   <div class="box def"><div class="bl">Definition <b>Field</b></div>
-    <p>A set with $+$ and $\times$ satisfying the usual associative, commutative,
-    distributive, identity, and inverse laws (every nonzero element invertible).
-    Examples: $\mathbb{Q},\mathbb{R},\mathbb{C}$, and $\mathbb{Z}_p$ for prime
-    $p$.</p></div>
+    <p>A field $F$ is a set with two operations $+$ and $\cdot$ such that both are
+    associative and commutative, distributivity holds, there are identities $0\ne1$,
+    every element has an additive inverse, and every <em>nonzero</em> element has a
+    multiplicative inverse. Examples: $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$, and
+    the integers mod $p$, written $\mathbb{Z}_p$, for <em>prime</em> $p$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Why $p$ must be prime</b></div>
+    <div class="step">In $\mathbb{Z}_6$: $2\cdot3=6\equiv0$, yet $2\ne0$ and
+    $3\ne0$. If $2$ had an inverse $u$, then
+    $3=(u\cdot2)\cdot3=u\cdot0=0$ — false. So $\mathbb{Z}_6$ is not a field.</div>
+    <div class="step">For prime $p$, every $a\not\equiv0$ has an inverse — e.g. in
+    $\mathbb{Z}_5$, $3^{-1}=2$ because $3\cdot2=6\equiv1$. ∎</div>
+  </div>
+  <div class="checkpoint"><b>Why a field and not something weaker?</b>
+    Linear algebra constantly divides by scalars — to normalize a vector, to solve
+    $ax=b$, to run row reduction. Division by every nonzero scalar is exactly what
+    the field axioms guarantee and what $\mathbb{Z}$ or $\mathbb{Z}_6$ lack.</div>
 </div>
 
 <div class="block reveal">
   <h3>Vector spaces</h3>
   <div class="box def"><div class="bl">Definition <b>Vector space</b></div>
-    <p>A set $V$ over a field $F$ with vector addition and scalar multiplication
-    obeying eight axioms (associativity and commutativity of $+$, a zero vector,
-    additive inverses, and the scalar-multiplication and distributive laws).</p></div>
+    <p>A vector space over a field $F$ is a set $V$ with vector addition and
+    scalar multiplication satisfying, for all $u,v,w\in V$ and $a,b\in F$:
+    (VS1) $u+v=v+u$; (VS2) $(u+v)+w=u+(v+w)$; (VS3) a zero vector with
+    $v+0=v$; (VS4) additive inverses; (VS5) $1v=v$; (VS6) $(ab)v=a(bv)$;
+    (VS7) $a(u+v)=au+av$; (VS8) $(a+b)v=av+bv$.</p></div>
   <div class="box eg"><div class="bl">Examples</div>
-    <p>$F^n$, the polynomials $P(F)$, the $m\times n$ matrices, and the functions
-    $F\to F$ are all vector spaces.</p></div>
+    <p>$F^n$ (coordinate tuples), the $m\times n$ matrices $M_{m\times n}(F)$, the
+    polynomials $P(F)$, and the functions from any set $S$ into $F$ — with
+    pointwise operations — are all vector spaces over $F$. So is $\mathbb{C}$ as a
+    vector space over $\mathbb{R}$: the field of scalars is part of the data.</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>First proofs from the axioms</h3>
+  <div class="box thm"><div class="bl">Theorem <b>Cancellation</b></div>
+    <p>If $u+w=v+w$ in a vector space, then $u=v$.</p></div>
+  <div class="box eg"><div class="bl">Proof</div>
+    <div class="step">Add the inverse $-w$ (VS4) to both sides and use
+    associativity (VS2): $u=(u+w)+(-w)=(v+w)+(-w)=v$. ∎ (Consequence: the zero
+    vector and inverses are unique.)</div>
+  </div>
+  <div class="box thm"><div class="bl">Theorem <b>Basic identities</b></div>
+    <p>For every $v\in V$ and $a\in F$: $0v=0$, &nbsp; $a\,0=0$, &nbsp;
+    $(-1)v=-v$, &nbsp; and $av=0$ implies $a=0$ or $v=0$.</p></div>
+  <div class="box eg"><div class="bl">Proof <b>of two of them</b></div>
+    <div class="step">$0v=(0+0)v=0v+0v$ by VS8; cancel $0v$ to get $0v=0$. ∎</div>
+    <div class="step">$v+(-1)v=1v+(-1)v=(1+(-1))v=0v=0$, so $(-1)v$ is the
+    additive inverse of $v$. ∎</div>
+    <div class="step">If $av=0$ with $a\ne0$: $v=1v=(a^{-1}a)v=a^{-1}(av)
+    =a^{-1}0=0$ — this is where "every nonzero scalar is invertible" earns its
+    keep. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>How to verify (or refute) a vector space</h3>
+  <div class="box eg"><div class="bl">Routine</div>
+    <div class="step">First check the two closures: is $u+v$ in the set? is $av$
+    in the set? Most non-examples already fail here.</div>
+    <div class="step">Locate the zero vector and check it belongs to the set.</div>
+    <div class="step">Only then walk the eight axioms — for subsets of a known
+    vector space with the inherited operations, the axioms are automatic and
+    closure is the whole question (Unit 2).</div>
+  </div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• Closure under both operations must be checked first.<br>
-  • The zero vector must actually lie in the set.<br>
-  • Scalars come from a field — over $\mathbb{Z}_p$, arithmetic wraps around.</p></div>
+  <p>• Closure under both operations must be checked first — it is not an
+  axiom you get for free.<br>
+  • The zero vector must actually lie in the set; a set missing $0$ is
+  disqualified immediately.<br>
+  • Scalars come from the field: over $\mathbb{Z}_p$ arithmetic wraps around, and
+  facts like "$2\ne0$" can fail (in $\mathbb{Z}_2$, $2=0$).<br>
+  • $0v=0$ and $(-1)v=-v$ are theorems, not axioms — a proof may not assume
+  them before proving them.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Friedberg, Insel &amp; Spence exercises. Write a full solution before opening
+  the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
-      <p>Is $\{(x,y):x+y=0\}\subseteq\mathbb{R}^2$ a vector space?</p>
-      <details><summary>Answer</summary><div class="ans">Yes — closed under addition
-      and scalars, contains $0$.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
+    <div class="q"><div class="ql">Practice 1 · Subset check</div>
+      <p>Is $\{(x,y):x+y=0\}\subseteq\mathbb{R}^2$, with the usual operations, a
+      vector space?</p>
+      <details><summary>Answer</summary><div class="ans">Yes. It contains
+      $(0,0)$, and sums and scalar multiples of solutions of $x+y=0$ still
+      satisfy it.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Subset check</div>
       <p>Is $\{(x,y):x+y=1\}$ a vector space?</p>
       <details><summary>Answer</summary><div class="ans">No — it does not contain
-      $(0,0)$.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
-      <p>Compute $3\times 4$ in $\mathbb{Z}_5$.</p>
-      <details><summary>Answer</summary><div class="ans">$12\equiv2\pmod 5$.</div></details></div>
+      $(0,0)$, and it is not closed: the sum of two solutions has $x+y=2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Modular arithmetic</div>
+      <p>Compute $3\cdot4$ and $3+4$ in $\mathbb{Z}_5$.</p>
+      <details><summary>Answer</summary><div class="ans">$12\equiv2$ and
+      $7\equiv2\pmod 5$ — both equal $2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · From the axioms</div>
+      <p>Prove from the axioms that $0v=0$ for every vector $v$.</p>
+      <details><summary>Solution</summary><div class="ans">$0v=(0+0)v=0v+0v$ by
+      VS8; adding $-(0v)$ to both sides (cancellation) leaves $0=0v$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · From the axioms</div>
+      <p>Prove $(-1)v=-v$, i.e. that $(-1)v$ is the additive inverse of $v$.</p>
+      <details><summary>Solution</summary><div class="ans">
+      $v+(-1)v=(1+(-1))v=0v=0$ using VS5, VS8, and Practice 4; uniqueness of
+      inverses (cancellation) finishes it.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Inverses mod p</div>
+      <p>Find $4^{-1}$ in $\mathbb{Z}_7$.</p>
+      <details><summary>Answer</summary><div class="ans">$4\cdot2=8\equiv1
+      \pmod 7$, so $4^{-1}=2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Not a field</div>
+      <p>Show that $\mathbb{Z}_6$ is not a field.</p>
+      <details><summary>Solution</summary><div class="ans">$2\cdot3\equiv0$ with
+      $2,3\ne0$. A field has no such zero divisors: if $2^{-1}$ existed, then
+      $3=2^{-1}(2\cdot3)=0$, a contradiction.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · The field matters</div>
+      <p>Explain why $\mathbb{R}$ is a vector space over $\mathbb{Q}$, and why
+      $\mathbb{Q}$ is <em>not</em> a vector space over $\mathbb{R}$ with the
+      usual operations.</p>
+      <details><summary>Answer</summary><div class="ans">Real numbers can be
+      added and multiplied by rational scalars, and all eight axioms hold. But
+      $\mathbb{Q}$ is not closed under multiplication by real scalars:
+      $\sqrt2\cdot1\notin\mathbb{Q}$.</div></details></div>
   </div>
 </div>
 

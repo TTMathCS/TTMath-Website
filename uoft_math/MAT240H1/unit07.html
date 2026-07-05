@@ -15,78 +15,164 @@
 <div class="crumb reveal"><a href="index.html">MAT240H1</a><span>/</span>Unit 07</div>
 <div class="unit-no reveal">Unit 07 · Algebra I</div>
 <h1 class="ch-title reveal">Systems &amp; Elementary Operations</h1>
-<p class="ch-intro reveal">Row reduction is the computational workhorse — it reveals
-rank, solves systems, and inverts matrices, all by the same three elementary
-moves.</p>
-
-<div class="context reveal">
-  <div class="ctxh">Why it matters &amp; where it comes from</div>
-  <div class="ci"><div class="cl">Why it exists</div>
-    <p>Row reduction is the concrete algorithm behind the abstract theory: it turns
-    "does a solution exist?" into a mechanical procedure that also computes rank and
-    inverses.</p></div>
-  <div class="ci"><div class="cl">In the real world</div>
-    <p>Solving $A\mathbf{x}=\mathbf{b}$ is everywhere — circuit analysis, least
-    squares regression, computer graphics, and the linear solves at the core of
-    scientific computing.</p></div>
-  <div class="ci"><div class="cl">Story &amp; open questions</div>
-    <p>The method is called Gaussian elimination, though versions appear in a
-    Chinese text from around 200 BC. How fast matrices can be multiplied and
-    inverted is still an open research frontier.</p></div>
-</div>
+<p class="ch-intro reveal">Row reduction is the computational workhorse of the
+course — it reveals rank, solves systems, and inverts matrices, all with the same
+three elementary moves. The theory explains <em>why</em> the moves are legal: each
+one is multiplication by an invertible matrix.</p>
 
 <div class="goals reveal">
   <div class="gl">By the end you can</div>
   <ul>
-    <li>Apply the three elementary row operations.</li>
-    <li>Read rank and solutions from row-echelon form.</li>
-    <li>Invert a matrix by row reduction.</li>
+    <li>Row-reduce a matrix and read off its rank and the solution set.</li>
+    <li>Explain row operations as left multiplication by elementary matrices.</li>
+    <li>Decide consistency with the rank test, and count free variables.</li>
+    <li>Invert a matrix with the $[A\,|\,I]$ algorithm and justify it.</li>
   </ul>
 </div>
 
-<div class="block reveal">
-  <h3>Elementary operations</h3>
-  <div class="box def"><div class="bl">Definition</div>
-    <p>Swap two rows, scale a row by a nonzero scalar, or add a multiple of one row
-    to another. Each corresponds to multiplying by an invertible elementary
-    matrix.</p></div>
-  <div class="box thm"><div class="bl">Theorem</div>
-    <p>Row operations preserve the solution set of a system and the row space; the
-    number of nonzero rows in echelon form is the rank.</p></div>
+<div class="context reveal">
+  <div class="ctxh">Why it matters &amp; where it comes from</div>
+  <div class="ci"><div class="cl">Why it exists</div>
+    <p>Almost every question so far — independence, span, rank, invertibility —
+    reduces to solving a linear system. Row reduction is the one algorithm that
+    answers them all.</p></div>
+  <div class="ci"><div class="cl">In the real world</div>
+    <p>Gaussian elimination is among the most-executed algorithms on Earth — the
+    engine inside solvers for engineering, economics, and scientific computing,
+    and (with pivoting) the core of numerical linear algebra libraries.</p></div>
+  <div class="ci"><div class="cl">Story &amp; open questions</div>
+    <p>Versions of elimination appear in the Chinese <em>Nine Chapters</em> two
+    thousand years ago; Gauss systematized it for astronomy. The exact complexity
+    of matrix computation is still open — the true exponent of matrix
+    multiplication is unknown.</p></div>
 </div>
 
 <div class="block reveal">
-  <h3>Solving and inverting</h3>
-  <div class="box eg"><div class="bl">Example <b>Solution types</b></div>
-    <p>After reduction: a pivot in every variable column gives a unique solution; a
-    free column gives infinitely many; a row $0=1$ gives none.</p></div>
-  <p>To invert $A$: row-reduce $[A\,|\,I]$ to $[I\,|\,A^{-1}]$.</p>
+  <h3>The three moves, and why they are legal</h3>
+  <div class="box def"><div class="bl">Definition <b>Elementary row operations</b></div>
+    <p>(1) swap two rows; (2) multiply a row by a <em>nonzero</em> scalar;
+    (3) add a multiple of one row to another. An <em>elementary matrix</em> is
+    the result of one such move applied to $I$; performing the move on $A$ is
+    the same as computing $EA$.</p></div>
+  <div class="box thm"><div class="bl">Theorem</div>
+    <p>Every elementary matrix is invertible, and its inverse is elementary (undo
+    the move). Consequently row operations change neither the solution set of
+    $Ax=0$ nor the rank — they replace $A$ by $EA$ with $E$ invertible.</p></div>
+  <div class="checkpoint"><b>Why solutions survive</b>
+    If $Ax=0$ then $(EA)x=E0=0$; if $(EA)x=0$ then $Ax=E^{-1}0=0$. Same null
+    space, both directions — that is the entire justification for elimination,
+    and it needs $E$ invertible, which is why "multiply a row by $0$" is
+    forbidden.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Echelon form, rank, and solving</h3>
+  <div class="box def"><div class="bl">Definition</div>
+    <p>A matrix is in <em>reduced row echelon form</em> (RREF) when each nonzero
+    row starts with a leading $1$, each leading $1$ sits strictly to the right of
+    the one above, and each leading $1$ is the only nonzero entry in its column.
+    Every matrix has a unique RREF; the number of leading $1$s is its
+    rank.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Consistency and freedom</b></div>
+    <p>$Ax=b$ is consistent iff
+    $\operatorname{rank}(A)=\operatorname{rank}(A\,|\,b)$ — a pivot in the
+    augmented column is the contradiction $0=1$. When consistent, the solutions
+    have $n-\operatorname{rank}(A)$ free parameters: one particular solution
+    plus the null space.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Solve a system</b></div>
+    <p>$x+2y=5$, &nbsp; $3x+4y=11$.</p>
+    <div class="step">Row-reduce
+    $\left(\begin{smallmatrix}1&2&5\\3&4&11\end{smallmatrix}\right)$: subtract
+    $3\times$ row 1 to get $(0,-2,-4)$, i.e. $y=2$; back-substitute
+    $x=5-2y=1$.</div>
+    <div class="step">Rank $2$, no free variables — the unique solution is
+    $(1,2)$. ✓ (Check: $3\cdot1+4\cdot2=11$.)</div>
+  </div>
+  <div class="box thm"><div class="bl">Corollary <b>Wide homogeneous systems</b></div>
+    <p>A homogeneous system with more unknowns than equations has a nontrivial
+    solution: rank $\le$ number of equations $&lt;$ number of unknowns, so a
+    free variable exists. (This is the engine inside the Replacement Theorem of
+    Unit 3.)</p></div>
+</div>
+
+<div class="block reveal">
+  <h3>Inverting a matrix</h3>
+  <div class="box thm"><div class="bl">Theorem <b>The $[A\,|\,I]$ algorithm</b></div>
+    <p>$A$ is invertible iff its RREF is $I$. In that case the row operations
+    carrying $A$ to $I$ carry $I$ to $A^{-1}$ — because
+    $E_k\cdots E_1A=I$ means $A^{-1}=E_k\cdots E_1$, which is exactly what
+    lands on the right half of $[A\,|\,I]$.</p></div>
+  <div class="box eg"><div class="bl">Example</div>
+    <p>$A=\left(\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\right)$:
+    reducing $[A\,|\,I]$ gives
+    $A^{-1}=\left(\begin{smallmatrix}-2&1\\3/2&-1/2\end{smallmatrix}\right)$.</p>
+    <div class="step">Check: $AA^{-1}=
+    \left(\begin{smallmatrix}-2+3&1-1\\-6+6&3-2\end{smallmatrix}\right)=I$. ✓
+    (For $2\times2$, this matches the shortcut: swap the diagonal, negate the
+    off-diagonal, divide by $\det A=-2$.)</div>
+  </div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• Scaling by zero is not allowed.<br>
-  • A row $0=1$ (inconsistent) means no solution; do not keep reducing for one.<br>
-  • Free variables parametrize infinitely many solutions — write the general
-  form.</p></div>
+  <p>• Scaling a row by $0$ is not a row operation — it destroys information and
+  has no inverse.<br>
+  • For $Ax=b$, row-reduce the <em>augmented</em> matrix; operating on $A$
+  alone loses $b$'s bookkeeping.<br>
+  • "No free variables" needs a pivot in <em>every column</em> of $A$, not
+  every row.<br>
+  • Over $\mathbb{Z}_p$ the same algorithm runs verbatim — just divide using
+  modular inverses.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
+  <p class="prac-intro">Original problems written for this guide in the style of
+  Friedberg, Insel &amp; Spence exercises. Write a full solution before opening
+  the answer.</p>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
-      <p>How many solutions has a $3\times3$ system whose matrix has rank $2$ and is
-      consistent?</p>
-      <details><summary>Answer</summary><div class="ans">Infinitely many — one free
-      variable.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
-      <p>When is $A\mathbf{x}=\mathbf{b}$ guaranteed solvable for every
-      $\mathbf{b}$?</p>
-      <details><summary>Answer</summary><div class="ans">When $A$ has full row rank
-      (rank $=$ number of rows).</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
-      <p>What does a row of zeros in echelon form indicate?</p>
-      <details><summary>Answer</summary><div class="ans">That row contributes no
-      pivot. Rank is the total number of nonzero echelon rows; a zero row alone
-      does not prove that rank dropped by exactly one.</div></details></div>
+    <div class="q"><div class="ql">Practice 1 · Solve</div>
+      <p>Solve $x+2y=5$, $3x+4y=11$ by row reduction.</p>
+      <details><summary>Solution</summary><div class="ans">Eliminating gives
+      $-2y=-4$, so $y=2$, then $x=1$. Unique solution $(1,2)$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Rank</div>
+      <p>Find the rank of
+      $\left(\begin{smallmatrix}1&2&3\\2&4&6\\1&1&1\end{smallmatrix}\right)$.</p>
+      <details><summary>Solution</summary><div class="ans">Row 2 is twice row 1
+      and dies; row 3 is not a multiple of row 1. Two nonzero rows remain: rank
+      $2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Free variables</div>
+      <p>A homogeneous system has $3$ equations and $5$ unknowns. Must it have a
+      nontrivial solution? How many free variables at least?</p>
+      <details><summary>Answer</summary><div class="ans">Yes: rank $\le3$, so at
+      least $5-3=2$ free variables — a solution space of dimension at least
+      $2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Invert</div>
+      <p>Invert $A=\left(\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\right)$.</p>
+      <details><summary>Answer</summary><div class="ans">
+      $A^{-1}=\left(\begin{smallmatrix}-2&1\\3/2&-1/2\end{smallmatrix}\right)$;
+      verify $AA^{-1}=I$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Inconsistent</div>
+      <p>Show $x+y=1$, $2x+2y=3$ has no solution, using ranks.</p>
+      <details><summary>Solution</summary><div class="ans">Reducing the
+      augmented matrix leaves the row $(0\ 0\,|\,1)$, i.e. $0=1$:
+      $\operatorname{rank}A=1$ but the augmented rank is $2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Elementary matrices</div>
+      <p>Write the elementary matrix that swaps the rows of a $2\times2$ matrix,
+      and find its inverse.</p>
+      <details><summary>Answer</summary><div class="ans">
+      $E=\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$, and
+      $E^{-1}=E$ — swapping twice undoes itself.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Uniqueness</div>
+      <p>Prove: if $A$ is invertible, then $Ax=b$ has exactly one solution.</p>
+      <details><summary>Solution</summary><div class="ans">$x=A^{-1}b$ works:
+      $A(A^{-1}b)=b$. And any solution satisfies
+      $x=A^{-1}(Ax)=A^{-1}b$ — existence and uniqueness in two lines.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · A finite field count</div>
+      <p>How many solutions does $x+y+z=0$ have over $\mathbb{Z}_2$?</p>
+      <details><summary>Solution</summary><div class="ans">Rank $1$, so the
+      solution space has dimension $2$ over $\mathbb{Z}_2$ — hence
+      $2^2=4$ solutions: $(0,0,0),(1,1,0),(1,0,1),(0,1,1)$. Dimension counts
+      <em>parameters</em>, and over a finite field you can literally count the
+      points.</div></details></div>
   </div>
 </div>
 
