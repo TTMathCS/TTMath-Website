@@ -17,74 +17,166 @@
 <h1 class="ch-title reveal">Sequences &amp; Cauchy Sequences</h1>
 <p class="ch-intro reveal">Sequences in their rigorous form, plus the Cauchy
 criterion — convergence detected without knowing the limit. This is the deep idea
-the analysis stream adds beyond ordinary calculus.</p>
+the analysis stream adds beyond ordinary calculus, and it is what makes
+$\mathbb{R}$ different from $\mathbb{Q}$.</p>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
   <div class="ci"><div class="cl">Why it exists</div>
-    <p>Sometimes you must know a sequence converges without naming its limit. The
-    Cauchy criterion does exactly that, and it is how the completeness of
-    $\mathbb{R}$ is most usefully expressed.</p></div>
+    <p>Sometimes you must know a sequence converges without naming its limit —
+    the limit may not have a closed form at all. The Cauchy criterion does exactly
+    that, and it is how the completeness of $\mathbb{R}$ is most usefully
+    expressed and used in practice.</p></div>
   <div class="ci"><div class="cl">In the real world</div>
     <p>Every iterative algorithm is a sequence — Newton's method, fixed-point
-    iteration, machine-learning training loops. "Cauchy" is the practical test that
-    successive iterates stop changing.</p></div>
+    iteration, gradient descent, machine-learning training loops. "Cauchy" is the
+    practical test that successive iterates stop changing, which is exactly the
+    stopping criterion these algorithms use.</p></div>
   <div class="ci"><div class="cl">Story &amp; open questions</div>
-    <p>Cantor and Dedekind used Cauchy sequences to construct $\mathbb{R}$ in the
+    <p>Cantor and Dedekind used Cauchy sequences (and Dedekind cuts,
+    respectively) to construct $\mathbb{R}$ rigorously from $\mathbb{Q}$ in the
     1870s. Zeno's 450 BC paradox of Achilles and the tortoise is resolved by the
-    limit of such a sequence.</p></div>
+    limit of exactly such a sequence of positions.</p></div>
 </div>
 
 <div class="goals reveal">
   <div class="gl">By the end you can</div>
   <ul>
-    <li>State the ε–N definition and prove sequence limits.</li>
-    <li>Apply the Monotone Convergence Theorem.</li>
-    <li>State the Cauchy criterion and why it matters.</li>
+    <li>State the ε–N definition and prove sequence limits directly from it.</li>
+    <li>Use the limit laws (sum, product, quotient) instead of re-deriving from
+    ε–N each time.</li>
+    <li>Apply the Monotone Convergence Theorem and the Bolzano–Weierstrass
+    theorem.</li>
+    <li>State the Cauchy criterion, prove one direction, and explain why it fails
+    in $\mathbb{Q}$.</li>
   </ul>
 </div>
 
 <div class="block reveal">
-  <h3>Limits and monotone convergence</h3>
+  <h3>The ε–N definition and limit laws</h3>
   <div class="box def"><div class="bl">Definition</div>
-    <p>$\lim a_n=L$: $\forall\varepsilon>0\ \exists N$ with $n\ge N\Rightarrow
-    |a_n-L|<\varepsilon$.</p></div>
-  <div class="box thm"><div class="bl">Monotone Convergence</div>
-    <p>An increasing sequence bounded above converges to its supremum.</p></div>
+    <p>$\lim a_n=L$ means: $\forall\varepsilon>0\ \exists N\in\mathbb{N}$ such
+    that $n\ge N\Rightarrow|a_n-L|&lt;\varepsilon$. Informally, the tail of the
+    sequence eventually stays as close to $L$ as you like.</p></div>
+  <div class="box thm"><div class="bl">Limit laws</div>
+    <p>If $a_n\to L$ and $b_n\to M$, then $a_n+b_n\to L+M$, $a_nb_n\to LM$, and
+    (if $M\ne0$) $a_n/b_n\to L/M$. Every one of these follows from the triangle
+    inequality applied to the ε–N definitions of the two sequences — the same
+    "add and subtract" trick from Unit 1's absolute-value work.</p></div>
+  <div class="box eg"><div class="bl">Example <b>Direct ε–N proof</b></div>
+    <p>Prove $\lim\dfrac{2n+1}{n}=2$.</p>
+    <div class="step">$\left|\dfrac{2n+1}{n}-2\right|=\dfrac1n$. Given
+    $\varepsilon>0$, choose $N>1/\varepsilon$; then $n\ge N\Rightarrow
+    \tfrac1n\le\tfrac1N&lt;\varepsilon$. ∎</div>
+  </div>
+</div>
+
+<div class="block reveal">
+  <h3>Monotone convergence and Bolzano–Weierstrass</h3>
+  <div class="box thm"><div class="bl">Monotone Convergence Theorem</div>
+    <p>An increasing sequence bounded above converges, to $\sup\{a_n\}$
+    (symmetrically for decreasing and bounded below). This is really the
+    completeness axiom of $\mathbb{R}$ restated for sequences: the supremum
+    exists by completeness, and the tail must get close to it or else a smaller
+    upper bound would exist.</p></div>
+  <div class="box thm"><div class="bl">Bolzano–Weierstrass</div>
+    <p>Every bounded sequence of real numbers has a convergent subsequence. (Proof
+    idea: repeatedly bisect an interval containing infinitely many terms, always
+    keeping the half that still contains infinitely many terms; the nested
+    intervals pin down a limit.)</p></div>
+  <div class="checkpoint"><b>Bounded but not convergent</b>
+    $a_n=(-1)^n$ is bounded but does not converge — Bolzano–Weierstrass only
+    promises a convergent <em>subsequence</em> ($a_{2n}\to1$), not convergence of
+    the whole sequence.</div>
 </div>
 
 <div class="block reveal">
   <h3>Cauchy sequences</h3>
   <div class="box def"><div class="bl">Definition <b>Cauchy</b></div>
-    <p>$(a_n)$ is Cauchy if $\forall\varepsilon>0\ \exists N$ with $m,n\ge
-    N\Rightarrow|a_m-a_n|<\varepsilon$.</p></div>
-  <div class="box thm"><div class="bl">Theorem</div>
-    <p>In $\mathbb{R}$, a sequence converges iff it is Cauchy. (This is the
-    completeness of $\mathbb{R}$ restated.)</p></div>
+    <p>$(a_n)$ is Cauchy if $\forall\varepsilon>0\ \exists N$ such that $m,n\ge
+    N\Rightarrow|a_m-a_n|&lt;\varepsilon$ — terms compare to <em>each other</em>,
+    with no reference to a limit.</p></div>
+  <div class="box thm"><div class="bl">Theorem <b>Completeness of $\mathbb{R}$</b></div>
+    <p>A sequence of real numbers converges if and only if it is Cauchy.</p></div>
+  <div class="box eg"><div class="bl">Proof <b>convergent $\Rightarrow$ Cauchy</b></div>
+    <div class="step">Suppose $a_n\to L$. Given $\varepsilon>0$, choose $N$ with
+    $|a_n-L|&lt;\varepsilon/2$ for $n\ge N$.</div>
+    <div class="step">For $m,n\ge N$: $|a_m-a_n|\le|a_m-L|+|L-a_n|&lt;
+    \varepsilon/2+\varepsilon/2=\varepsilon$. ∎</div>
+  </div>
+  <div class="checkpoint"><b>The other direction needs completeness</b>
+    Cauchy $\Rightarrow$ convergent uses Bolzano–Weierstrass: a Cauchy sequence is
+    bounded, so it has a convergent subsequence by B–W; the Cauchy condition then
+    forces the <em>whole</em> sequence to converge to that same subsequential
+    limit. This step genuinely needs completeness — it is exactly where the proof
+    would break in $\mathbb{Q}$.</div>
 </div>
 
 <div class="box warn reveal"><div class="bl">Common pitfalls</div>
-  <p>• "Cauchy" compares terms to <em>each other</em>, not to a limit.<br>
-  • Cauchy implies convergent only because $\mathbb{R}$ is complete — it fails in
-  $\mathbb{Q}$.<br>
-  • A bounded sequence need not converge unless it is also monotone or has a
-  convergent subsequence.</p></div>
+  <p>• "Cauchy" compares terms to <em>each other</em>, not to a (possibly unknown)
+  limit — do not write $|a_n-L|$ in a Cauchy proof.<br>
+  • Cauchy implies convergent only because $\mathbb{R}$ is complete — the sequence
+  of rational truncations of $\sqrt2$ is Cauchy in $\mathbb{Q}$ but has no limit
+  <em>in</em> $\mathbb{Q}$.<br>
+  • A bounded sequence need not converge unless it is also monotone, or you only
+  extract a convergent subsequence (Bolzano–Weierstrass), not the whole
+  sequence.<br>
+  • In a limit-law computation, each individual limit must be known to exist
+  first — you cannot split $\lim(a_n/b_n)$ this way if $b_n\to0$.</p></div>
 
 <div class="block reveal">
   <h3>Practice</h3>
   <div class="prac">
-    <div class="q"><div class="ql">Practice 1</div>
+    <div class="q"><div class="ql">Practice 1 · ε–N</div>
       <p>Prove $\lim\dfrac{n}{n+1}=1$.</p>
       <details><summary>Answer</summary><div class="ans">$\left|\tfrac{n}{n+1}-1
-      \right|=\tfrac1{n+1}<\varepsilon$ for $n>1/\varepsilon$.</div></details></div>
-    <div class="q"><div class="ql">Practice 2</div>
-      <p>Show $a_1=\sqrt2,\ a_{n+1}=\sqrt{2+a_n}$ converges and find the limit.</p>
-      <details><summary>Hint</summary><div class="ans">Increasing and bounded by
-      $2$; limit solves $L=\sqrt{2+L}$, so $L=2$.</div></details></div>
-    <div class="q"><div class="ql">Practice 3</div>
+      \right|=\tfrac1{n+1}&lt;\varepsilon$ for $n>1/\varepsilon-1$.</div></details></div>
+    <div class="q"><div class="ql">Practice 2 · Monotone convergence</div>
+      <p>Show $a_1=\sqrt2,\ a_{n+1}=\sqrt{2+a_n}$ converges and find the
+      limit.</p>
+      <details><summary>Solution</summary><div class="ans">Increasing (by
+      induction, using $a_n&lt;2\Rightarrow a_{n+1}=\sqrt{2+a_n}&lt;2$) and bounded above
+      by $2$, so it converges by MCT. The limit $L$ satisfies $L=\sqrt{2+L}$, giving
+      $L^2-L-2=0$, so $L=2$.</div></details></div>
+    <div class="q"><div class="ql">Practice 3 · Cauchy, directly</div>
       <p>Why is $a_n=(-1)^n$ not Cauchy?</p>
-      <details><summary>Answer</summary><div class="ans">Consecutive terms differ by
-      $2$, so no tail stays within $\varepsilon=1$.</div></details></div>
+      <details><summary>Answer</summary><div class="ans">Consecutive terms differ
+      by $2$, so for $\varepsilon=1$ no $N$ works: taking $m=n+1\ge N$ always gives
+      $|a_m-a_n|=2\ge\varepsilon$.</div></details></div>
+    <div class="q"><div class="ql">Practice 4 · Limit laws</div>
+      <p>Given $a_n\to3$ and $b_n\to-2$, find $\lim\dfrac{2a_n+b_n^2}{a_n b_n}$.</p>
+      <details><summary>Answer</summary><div class="ans">$\dfrac{2(3)+(-2)^2}
+      {3\cdot(-2)}=\dfrac{10}{-6}=-\dfrac53$.</div></details></div>
+    <div class="q"><div class="ql">Practice 5 · Bolzano–Weierstrass</div>
+      <p>$a_n=\sin(n)$. Explain why a convergent subsequence must exist, without
+      finding one explicitly.</p>
+      <details><summary>Answer</summary><div class="ans">$(a_n)$ is bounded
+      ($|\sin n|\le1$), so Bolzano–Weierstrass guarantees a convergent subsequence,
+      even though no closed form for it is obvious.</div></details></div>
+    <div class="q"><div class="ql">Practice 6 · Cauchy from a recursive bound</div>
+      <p>If $|a_{n+1}-a_n|\le\dfrac{1}{2^n}$ for all $n$, show $(a_n)$ is
+      Cauchy.</p>
+      <details><summary>Solution</summary><div class="ans">For $m>n$, the
+      triangle inequality gives $|a_m-a_n|\le\sum_{k=n}^{m-1}|a_{k+1}-a_k|\le
+      \sum_{k=n}^{\infty}2^{-k}=2^{1-n}\to0$ as $n\to\infty$, so the tail differences
+      can be made $&lt;\varepsilon$.</div></details></div>
+    <div class="q"><div class="ql">Practice 7 · Why $\mathbb{Q}$ fails</div>
+      <p>Let $a_n$ be the decimal truncation of $\sqrt2$ to $n$ places (so
+      $a_1=1.4,\ a_2=1.41,\dots$). Explain why $(a_n)$ is Cauchy in $\mathbb{Q}$ but
+      the completeness theorem "converges iff Cauchy" does not hold in
+      $\mathbb{Q}$.</p>
+      <details><summary>Answer</summary><div class="ans">The terms get
+      arbitrarily close together (Cauchy), but the only possible limit is
+      $\sqrt2\notin\mathbb{Q}$ — so a Cauchy sequence of rationals need not converge
+      to a rational. Completeness is precisely the extra axiom that rules this out
+      in $\mathbb{R}$.</div></details></div>
+    <div class="q"><div class="ql">Practice 8 · Subsequences</div>
+      <p>Prove: if every subsequence of $(a_n)$ has a further subsequence
+      converging to the same limit $L$, then $a_n\to L$.</p>
+      <details><summary>Solution</summary><div class="ans">Suppose not: then some
+      $\varepsilon>0$ has infinitely many $n$ with $|a_n-L|\ge\varepsilon$, giving a
+      subsequence bounded away from $L$ — no further subsequence of it can converge
+      to $L$, contradicting the hypothesis.</div></details></div>
   </div>
 </div>
 
