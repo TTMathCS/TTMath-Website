@@ -186,12 +186,12 @@
   .hero-strip {
     margin-top: 42px;
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
+    grid-template-columns: 1.7fr 0.9fr 0.9fr;
     gap: 14px;
   }
 
   .strip-panel {
-    min-height: 148px;
+    min-height: 230px;
     padding: 18px;
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -208,7 +208,7 @@
 
   .strip-panel.media img {
     width: 100%;
-    height: 168px;
+    height: 250px;
     object-fit: contain;
   }
 
@@ -384,7 +384,7 @@
   .card-media {
     margin: -6px -6px 18px;
     padding: 12px;
-    min-height: 172px;
+    min-height: 260px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -395,7 +395,7 @@
 
   .card-media img {
     width: 100%;
-    height: 148px;
+    height: 236px;
     object-fit: contain;
   }
 
@@ -529,6 +529,15 @@
 
     .card {
       padding: 20px;
+    }
+
+    .strip-panel {
+      min-height: 190px;
+    }
+
+    .strip-panel.media img,
+    .card-media img {
+      height: 190px;
     }
 
     .course-list li {

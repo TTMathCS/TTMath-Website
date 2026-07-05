@@ -7,9 +7,13 @@
 /* AI Path */
 .ai-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
-  gap: 32px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.ai-hero-copy {
+  max-width: 900px;
 }
 
 .ai-eyebrow {
@@ -44,7 +48,7 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   box-shadow: var(--shadow);
-  padding: 14px;
+  padding: clamp(12px, 2vw, 22px);
 }
 
 .ai-diagram-frame img {
