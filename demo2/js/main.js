@@ -107,6 +107,13 @@ function setupLanguageSwitcher() {
         el.setAttribute('placeholder', value);
       }
     });
+
+    document.querySelectorAll('img[data-i18n-src-en]').forEach(el => {
+      const value = el.getAttribute(`data-i18n-src-${lang}`) || el.getAttribute('data-i18n-src-en');
+      if (value) {
+        el.setAttribute('src', value);
+      }
+    });
   };
 
   if (languageSelect) {

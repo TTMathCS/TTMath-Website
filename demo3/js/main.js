@@ -94,6 +94,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const v = el.getAttribute(`data-i18n-placeholder-${lang}`) || el.getAttribute('data-i18n-placeholder-en');
       if (v) el.setAttribute('placeholder', v);
     });
+    document.querySelectorAll('img[data-i18n-src-en]').forEach(el => {
+      const v = el.getAttribute(`data-i18n-src-${lang}`) || el.getAttribute('data-i18n-src-en');
+      if (v) el.setAttribute('src', v);
+    });
   };
 
   if (languageSelect) {

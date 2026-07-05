@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1140" viewBox="0 0 900 1140" font-family="'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="898" height="1138" rx="14" fill="#ffffff" stroke="#ddd"/>
+
+  <!-- title -->
+  <text x="40" y="66" font-size="34" font-weight="bold" fill="#111">AI课程路径</text>
+  <text x="40" y="98" font-size="17" fill="#666">从AI入门，到做出真实产品，再到国际竞赛</text>
+
+  <!-- path flow -->
+  <rect x="210" y="132" width="480" height="94" rx="12" fill="#fdf6e3" stroke="#e0c36a" stroke-width="2"/>
+  <text x="450" y="172" font-size="24" font-weight="bold" text-anchor="middle" fill="#111">AI-1</text>
+  <text x="450" y="200" font-size="17" text-anchor="middle" fill="#555">创作基础</text>
+  <text x="450" y="252" font-size="16" text-anchor="middle" fill="#888">基础课程，适合6&#8211;10年级</text>
+  <text x="450" y="274" font-size="16" text-anchor="middle" fill="#888">先零代码入门，再用Python做应用</text>
+
+  <line x1="450" y1="292" x2="245" y2="360" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="292" x2="655" y2="360" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="450" y="334" font-size="16" text-anchor="middle" fill="#777" stroke="#fff" stroke-width="6" paint-order="stroke">按兴趣选择方向</text>
+
+  <rect x="55" y="368" width="380" height="140" rx="12" fill="#e8f5e9" stroke="#7cb98a" stroke-width="2"/>
+  <text x="245" y="410" font-size="22" font-weight="bold" text-anchor="middle" fill="#111">AI-2 产品工作室</text>
+  <text x="245" y="438" font-size="16" text-anchor="middle" fill="#555">9月&#8211;8月（共3个学期）</text>
+  <text x="245" y="464" font-size="15" text-anchor="middle" fill="#888">产品开发方向</text>
+  <text x="245" y="486" font-size="15" text-anchor="middle" fill="#888">需完成CS1或AI-1B</text>
+
+  <rect x="465" y="368" width="380" height="140" rx="12" fill="#e3f0fb" stroke="#7aa8d8" stroke-width="2"/>
+  <text x="655" y="410" font-size="22" font-weight="bold" text-anchor="middle" fill="#111">AI-3 算法</text>
+  <text x="655" y="438" font-size="16" text-anchor="middle" fill="#555">9月&#8211;8月（共3个学期）</text>
+  <text x="655" y="464" font-size="15" text-anchor="middle" fill="#888">算法方向</text>
+  <text x="655" y="486" font-size="15" text-anchor="middle" fill="#888">需完成CS2，数学基础扎实（9年级+）</text>
+
+  <line x1="40" y1="548" x2="860" y2="548" stroke="#eee"/>
+
+  <!-- course descriptions -->
+  <rect x="40" y="588" width="56" height="56" rx="12" fill="#fdf1d7"/>
+  <circle cx="68" cy="610" r="11" fill="none" stroke="#c99b2e" stroke-width="2.5"/>
+  <line x1="62" y1="625" x2="74" y2="625" stroke="#c99b2e" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="64" y1="630" x2="72" y2="630" stroke="#c99b2e" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="116" y="614" font-size="21" font-weight="bold" fill="#111">AI-1：创作基础 <tspan font-size="16" font-weight="normal" fill="#444">（AI基础与项目）</tspan></text>
+  <text x="116" y="646" font-size="17" fill="#333">面向6-10年级的基础课程。秋季学习AI原理、提示词、负责任使用与零代码</text>
+  <text x="116" y="672" font-size="17" fill="#333">模型训练；冬春季用Python制作聊天机器人、图像与语音应用；夏季实验室</text>
+  <text x="116" y="698" font-size="17" fill="#333">完成个人作品集项目&#8212;&#8212;每节课都有可以展示的成果。</text>
+
+  <line x1="40" y1="756" x2="860" y2="756" stroke="#eee"/>
+
+  <rect x="40" y="788" width="56" height="56" rx="12" fill="#dff0e2"/>
+  <text x="68" y="823" font-size="20" font-weight="bold" text-anchor="middle" fill="#3e8e55" font-family="Menlo, Consolas, monospace">&lt;/&gt;</text>
+  <text x="116" y="814" font-size="21" font-weight="bold" fill="#111">AI-2：产品工作室 <tspan font-size="16" font-weight="normal" fill="#444">（真实产品开发）</tspan></text>
+  <text x="116" y="846" font-size="17" fill="#333">按小型软件团队的方式上课：每日站会、代码评审、每周演示。学生开发学校</text>
+  <text x="116" y="872" font-size="17" fill="#333">真正在用的系统&#8212;&#8212;TTMath网站AI助手、教务管理系统、学习工具，</text>
+  <text x="116" y="898" font-size="17" fill="#333">以及规模可控的内部原型项目。</text>
+
+  <line x1="40" y1="930" x2="860" y2="930" stroke="#eee"/>
+
+  <rect x="40" y="962" width="56" height="56" rx="12" fill="#dcebfa"/>
+  <polygon points="68,975 72,985.5 83.2,986.1 74.5,993.1 77.4,1003.9 68,997.8 58.6,1003.9 61.5,993.1 52.8,986.1 64,985.5" fill="#4a7fbe"/>
+  <text x="116" y="988" font-size="21" font-weight="bold" fill="#111">AI-3：算法 <tspan font-size="16" font-weight="normal" fill="#444">（机器学习与深度学习）</tspan></text>
+  <text x="116" y="1020" font-size="17" fill="#333">深入理解机器学习的底层原理。秋季从零实现经典机器学习算法；冬季学习</text>
+  <text x="116" y="1046" font-size="17" fill="#333">PyTorch与深度学习，并配合竞赛训练；夏季为可选的IOAI集训营</text>
+  <text x="116" y="1072" font-size="17" fill="#333">（IOAI每年8月举行）&#8212;&#8212;每位学生都将积累自己的Kaggle作品集。</text>
+</svg>
