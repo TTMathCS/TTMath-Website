@@ -14,16 +14,16 @@
   <header class="hero">
     <div class="kicker">U of T Mathematics · Course Guide Library</div>
     <h1>Build the proof skills, <em>course by course.</em></h1>
-    <p class="lede">A local, searchable library of detailed course guides. Each
-    chapter includes definitions, theorems, worked reasoning, common pitfalls,
-    and practice designed for mastery. The four core guides now include a
-    textbook-aligned study spine so students can move from the local notes into
-    the same style of problems used in rigorous U of T math courses.</p>
+    <p class="lede">A local, searchable library of detailed course guides and
+    planned upper-year course entries. Each finished guide includes definitions,
+    theorems, worked reasoning, common pitfalls, and practice designed for
+    mastery. Planned entries mark the courses to build next for mathematics,
+    probability, statistics, and PhD-preparation pathways.</p>
 
     <div class="stats" aria-label="Library summary">
-      <div><strong id="course-count">4</strong><span>course guides</span></div>
+      <div><strong id="course-count">4</strong><span>catalog entries</span></div>
       <div><strong id="chapter-count">42</strong><span>detailed chapters</span></div>
-      <div><strong>Local</strong><span>first-party files only</span></div>
+      <div><strong id="guide-count">4</strong><span>complete guides</span></div>
     </div>
   </header>
 
@@ -57,10 +57,62 @@
       </noscript>
     </section>
 
-    <section class="reference-section" aria-labelledby="reference-title">
+    <section class="pathway-section" aria-labelledby="phd-title">
       <div class="section-heading">
         <div>
           <span class="section-number">02</span>
+          <h2 id="phd-title">Probability/Statistics PhD Prep</h2>
+        </div>
+      </div>
+      <div class="pathway-grid">
+        <article class="pathway-card">
+          <h3>Official specialist spine</h3>
+          <p>For Mathematics &amp; Its Applications: Probability/Statistics, treat
+          these as the baseline course families before adding research depth.</p>
+          <ul>
+            <li><code>MAT237Y1</code> or <code>MAT257Y1</code></li>
+            <li><code>MAT223H1</code>/<code>MAT240H1</code> and <code>MAT224H1</code>/<code>MAT247H1</code></li>
+            <li><code>MAT244H1</code> or <code>MAT267H1</code></li>
+            <li><code>STA237H1</code>/<code>STA257H1</code>, then <code>STA238H1</code>/<code>STA261H1</code></li>
+            <li><code>STA347H1</code>, <code>MAT377H1</code>, or <code>MAT370H1</code></li>
+          </ul>
+        </article>
+        <article class="pathway-card">
+          <h3>Top PhD theory track</h3>
+          <p>For UofT, Princeton, and other highly selective U.S. PhD programs,
+          bias toward the proof-heavy versions and the hardest analysis/probability
+          sequence you can do well in.</p>
+          <ul>
+            <li><code>MAT257Y1</code>, <code>MAT327H1</code>, <code>MAT337H1</code>, <code>MAT357H1</code></li>
+            <li><code>MAT457H1</code> and <code>MAT458H1</code> if analysis is your strength</li>
+            <li><code>MAT377H1</code>, <code>STA347H1</code>/<code>STA357H1</code>, <code>STA447H1</code></li>
+            <li><code>STA422H1</code>, <code>STA452H1</code>, <code>STA453H1</code></li>
+            <li><code>MAT436H1</code> for functional analysis/operator background</li>
+          </ul>
+        </article>
+        <article class="pathway-card">
+          <h3>Research and letters track</h3>
+          <p>Prestigious PhD admissions are not just a checklist. Use upper-year
+          courses to create research evidence and strong letters.</p>
+          <ul>
+            <li><code>STA490Y1</code> or <code>STA492H1</code> for communication and seminar work</li>
+            <li><code>MAT497Y1</code>, <code>MAT499Y1</code>, <code>STA496H1</code>/<code>STA497H1</code> for readings</li>
+            <li><code>STA410H1</code> and <code>STA414H1</code> for computational statistics/ML depth</li>
+            <li><code>STA437H1</code>, <code>STA442H1</code>, <code>STA457H1</code>, <code>STA475H1</code> for applied depth</li>
+            <li>Prioritize A-range grades in theory courses over collecting too many electives.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="pathway-note"><strong>Planning note.</strong> The official degree
+      audit comes from Degree Explorer and the UofT Calendar; this PhD sequence is
+      strategic advice for students aiming at research programs, including UofT,
+      Princeton, Stanford, Berkeley, Chicago, Harvard, MIT, and similar departments.</p>
+    </section>
+
+    <section class="reference-section" aria-labelledby="reference-title">
+      <div class="section-heading">
+        <div>
+          <span class="section-number">03</span>
           <h2 id="reference-title">Library Notes</h2>
         </div>
       </div>
@@ -85,7 +137,7 @@
     </section>
 
     <section class="add-section" aria-labelledby="add-title">
-      <span class="section-number">03</span>
+      <span class="section-number">04</span>
       <h2 id="add-title">Adding A Future Course</h2>
       <p>Create its folder and course pages, then add one object to
       <code>assets/courses.js</code>. The catalog automatically adds the card,

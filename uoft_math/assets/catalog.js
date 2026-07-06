@@ -7,6 +7,7 @@
   var search = document.getElementById("course-search");
   var resultCount = document.getElementById("result-count");
   var courseCount = document.getElementById("course-count");
+  var guideCount = document.getElementById("guide-count");
   var chapterCount = document.getElementById("chapter-count");
   var activeSubject = "All";
   var localCoursePath = /^[A-Za-z0-9_-]+\/index\.html$/;
@@ -32,12 +33,14 @@
     ].concat(course.topics || []).join(" ").toLowerCase();
   }
 
-  function safeCoursePath(path) {
-    return localCoursePath.test(path) ? path : "#";
+  function hasLocalGuide(course) {
+    return course.path && localCoursePath.test(course.path);
   }
 
   function makeCourseCard(course) {
-    var card = element("a", "course-card");
+    var card = hasLocalGuide(course)
+      ? element("a", "course-card")
+      : element("article", "course-card planned-card");
     var top = element("div", "card-top");
     var identity = element("div");
     var code = element("span", "course-code", course.code);
@@ -46,15 +49,19 @@
     var description = element("p", "course-description", course.description);
     var facts = element("dl", "course-facts");
     var topics = element("div", "topic-list");
-    var action = element("span", "card-action", "Open course guide");
+    var action = element("span", "card-action", hasLocalGuide(course)
+      ? "Open course guide"
+      : "Planned guide entry");
 
-    card.href = safeCoursePath(course.path);
+    if (hasLocalGuide(course)) {
+      card.href = course.path;
+    }
     identity.append(code, title);
     top.append(identity, subject);
 
     [
-      ["Term", course.term],
-      ["Chapters", String(course.chapters)],
+      ["Level", course.term],
+      ["Guide", course.chapters ? String(course.chapters) + " chapters" : "Not built"],
       ["Status", course.status]
     ].forEach(function (fact) {
       facts.append(element("dt", "", fact[0]), element("dd", "", fact[1]));
@@ -113,6 +120,9 @@
   }
 
   courseCount.textContent = String(courses.length);
+  if (guideCount) {
+    guideCount.textContent = String(courses.filter(hasLocalGuide).length);
+  }
   chapterCount.textContent = String(courses.reduce(function (total, course) {
     return total + course.chapters;
   }, 0));
