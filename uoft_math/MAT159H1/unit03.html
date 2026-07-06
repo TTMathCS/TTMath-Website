@@ -180,6 +180,43 @@ $\mathbb{R}$ different from $\mathbb{Q}$.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT159H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Sequence convergence.</strong> Use epsilon definitions, subsequences, and limit laws.</li>
+    <li><strong>Cauchy criterion.</strong> Use completeness of $\mathbb{R}$ to identify convergence through Cauchy behavior.</li>
+    <li><strong>Monotone convergence.</strong> Prove existence of limits for monotone bounded sequences.</li>
+    <li><strong>Limits with series.</strong> Prepare partial-sum arguments for infinite series.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT159H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The sequence spine is: convergence implies Cauchy; completeness gives Cauchy implies convergence; monotone bounded sequences are the most common existence tool.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    When a limit is guessed from algebra, prove existence first with monotonicity, boundedness, or Cauchy estimates.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Cauchy proof</div>
+      <p>Show $a_n=1/n$ is Cauchy.</p>
+      <details><summary>Guide</summary><div class="ans">Given $\epsilon>0$, choose $N>2/\epsilon$. For $m,n\ge N$, $|1/n-1/m|\le1/n+1/m&lt;\epsilon$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Not Cauchy</div>
+      <p>Explain why $a_n=(-1)^n$ is not Cauchy.</p>
+      <details><summary>Guide</summary><div class="ans">Terms with opposite parity remain distance $2$ apart arbitrarily far out.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Subsequence test</div>
+      <p>If two subsequences have different limits, what follows about the original sequence?</p>
+      <details><summary>Guide</summary><div class="ans">The original sequence cannot converge, because every subsequence of a convergent sequence has the same limit.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Recursive</div>
+      <p>For $a_{n+1}=(a_n+2/a_n)/2$ with $a_1>0$, what would you try to prove before taking limits?</p>
+      <details><summary>Guide</summary><div class="ans">Show positivity, boundedness below by $\sqrt2$ after the first step, and monotone decrease when above $\sqrt2$; then the limit equation gives $L=\sqrt2$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit02.html">← Unit 02<span>Improper integrals</span></a>
   <a class="n" href="unit04.html">Unit 04 →<span>Taylor's theorem</span></a>

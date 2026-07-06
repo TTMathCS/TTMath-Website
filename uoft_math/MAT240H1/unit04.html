@@ -173,6 +173,43 @@ basis.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT240H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Linear maps.</strong> Verify additivity and homogeneity and understand maps by their action on a basis.</li>
+    <li><strong>Kernel and image.</strong> Use null space and range as subspaces that measure failure of injectivity and surjectivity.</li>
+    <li><strong>Isomorphism.</strong> Recognize structure-preserving bijective linear maps.</li>
+    <li><strong>Matrix representation preview.</strong> Translate abstract maps into coordinate matrices once bases are chosen.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT240H1 calendar topics as the coverage spine, and pair lecture notes with a Friedberg-Insel-Spence-style linear algebra text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The linear-map spine is: define on a basis, extend linearly, analyze kernel and image, then represent by a matrix after choosing bases.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    A linear transformation is completely determined by basis-vector images; exploit that before doing coordinate computations.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Linearity</div>
+      <p>Is $T(x,y)=(x+1,y)$ linear?</p>
+      <details><summary>Guide</summary><div class="ans">No. A linear map must send $(0,0)$ to $(0,0)$, but this sends it to $(1,0)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Kernel</div>
+      <p>Find the kernel of $T(x,y,z)=(x+y,z)$.</p>
+      <details><summary>Guide</summary><div class="ans">Solve $x+y=0$ and $z=0$, so the kernel is $\{(t,-t,0):t\in F\}$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Basis images</div>
+      <p>If $T(e_1)=(1,2)$ and $T(e_2)=(3,4)$, find $T(a,b)$.</p>
+      <details><summary>Guide</summary><div class="ans">By linearity, $T(a,b)=a(1,2)+b(3,4)=(a+3b,2a+4b)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Injectivity</div>
+      <p>State the kernel test for injectivity.</p>
+      <details><summary>Guide</summary><div class="ans">A linear map is injective iff its kernel is $\{0\}$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit03.html">← Unit 03<span>Bases &amp; dimension</span></a>
   <a class="n" href="unit05.html">Unit 05 →<span>Rank–nullity &amp; matrices</span></a>

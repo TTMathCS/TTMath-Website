@@ -177,6 +177,43 @@ well-defined number.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT240H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Bases.</strong> Use bases as independent spanning lists and as coordinate systems.</li>
+    <li><strong>Dimension.</strong> Prove all bases have the same size and use dimension to compare subspaces.</li>
+    <li><strong>Exchange ideas.</strong> Use replacement/exchange lemmas to move between spanning lists and independent lists.</li>
+    <li><strong>Finite-dimensional structure.</strong> Know maximal independent equals minimal spanning in finite dimensions.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT240H1 calendar topics as the coverage spine, and pair lecture notes with a Friedberg-Insel-Spence-style linear algebra text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The basis spine is: spanning gives existence of coordinates, independence gives uniqueness, and dimension counts how many coordinates are needed.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    When proving a list is a basis, decide whether a dimension shortcut is allowed; if not, prove spanning and independence directly.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Basis check</div>
+      <p>Show $(1,0,0),(0,1,0),(0,0,1)$ is a basis of $F^3$.</p>
+      <details><summary>Guide</summary><div class="ans">Every vector has a unique coordinate expression in this list, so it spans and is independent.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Dimension shortcut</div>
+      <p>In a 3-dimensional space, why do three independent vectors form a basis?</p>
+      <details><summary>Guide</summary><div class="ans">A linearly independent list of length equal to the dimension is automatically spanning by the extension theorem.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Subspace dimension</div>
+      <p>If $W$ is a proper subspace of a finite-dimensional $V$, what can be said about dim $W$?</p>
+      <details><summary>Guide</summary><div class="ans">dim $W<\dim V$. If dimensions were equal, a basis of $W$ would extend to a basis of $V$ without adding vectors, forcing $W=V$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Coordinates</div>
+      <p>Find coordinates of $p(x)=2+x$ in basis $(1,x,x^2)$ for $P_2(F)$.</p>
+      <details><summary>Guide</summary><div class="ans">The coordinate vector is $(2,1,0)$ relative to that ordered basis.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit02.html">← Unit 02<span>Subspaces, span &amp; independence</span></a>
   <a class="n" href="unit04.html">Unit 04 →<span>Linear transformations</span></a>

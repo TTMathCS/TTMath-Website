@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>Unit 1 — Integration Techniques · MAT159H1</title>
+<title>Unit 1 — FTC, Transcendentals &amp; Integration Techniques · MAT159H1</title>
 <link rel="stylesheet" href="style.css">
 <script src="../assets/theme.js"></script>
 </head>
@@ -14,11 +14,12 @@
 
 <div class="crumb reveal"><a href="index.html">MAT159H1</a><span>/</span>Unit 01</div>
 <div class="unit-no reveal">Unit 01 · Analysis 1B</div>
-<h1 class="ch-title reveal">Integration Techniques</h1>
-<p class="ch-intro reveal">Finding antiderivatives takes pattern-matching, not a
-formula. These are the standard moves — substitution, parts, partial fractions,
-and trigonometric substitution — and a reminder that some integrals have no
-elementary answer at all.</p>
+<h1 class="ch-title reveal">FTC, Transcendentals &amp; Integration Techniques</h1>
+<p class="ch-intro reveal">MAT159 starts from the rigorous integral theory built
+in MAT158: the Fundamental Theorem of Calculus, elementary transcendental
+functions, and then the practical techniques for evaluating integrals. Finding
+antiderivatives takes pattern-matching, not a formula, so this unit reviews the
+foundation before building the standard toolkit.</p>
 
 <div class="context reveal">
   <div class="ctxh">Why it matters &amp; where it comes from</div>
@@ -44,6 +45,10 @@ elementary answer at all.</p>
   <ul>
     <li>Integrate by substitution and by parts, including repeated and circular
     applications.</li>
+    <li>Use both parts of the FTC to move between accumulation functions,
+    antiderivatives, and definite integrals.</li>
+    <li>Recall the derivative and antiderivative rules for logarithmic,
+    exponential, trigonometric, and inverse trigonometric functions.</li>
     <li>Decompose any rational function with partial fractions — linear, repeated,
     and irreducible quadratic factors.</li>
     <li>Recognize when a trigonometric substitution or a power-reduction identity
@@ -51,6 +56,41 @@ elementary answer at all.</p>
     <li>Explain, with an example, why "elementary antiderivative" is not
     guaranteed.</li>
   </ul>
+</div>
+
+<div class="block reveal">
+  <h3>FTC and antiderivatives</h3>
+  <p>The techniques below only make sense because the FTC connects derivatives to
+  definite integrals. In proof-based calculus, you should be able to state the
+  hypotheses each time, especially continuity of the integrand.</p>
+  <div class="box thm"><div class="bl">Theorem <b>FTC, both parts</b></div>
+    <p>If $f$ is continuous on an interval and $F(x)=\int_a^x f(t)\,dt$, then
+    $F'(x)=f(x)$. If $G'=f$ on $[a,b]$, then
+    $$\int_a^b f(x)\,dx=G(b)-G(a).$$</p></div>
+  <div class="box eg"><div class="bl">Example <b>accumulation function</b></div>
+    <p>For $H(x)=\int_1^{x^2}\ln(1+t^2)\,dt$, combine FTC Part 1 with the chain
+    rule: $H'(x)=2x\ln(1+x^4)$.</p></div>
+  <div class="checkpoint"><b>Definite substitution.</b>
+    For $\int_a^b f(g(x))g'(x)\,dx$, set $u=g(x)$ and change the limits to
+    $u=g(a)$ and $u=g(b)$. This is the FTC version of substitution and prevents
+    mixing variables at the endpoint step.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Elementary transcendental functions</h3>
+  <p>The official MAT159 topic list includes elementary transcendental functions
+  because they are the main sources and targets of integration techniques. The
+  rules below should be memorized with their domain conditions.</p>
+  <div class="box thm"><div class="bl">Core derivative and integral rules</div>
+    <p>$\dfrac{d}{dx}e^x=e^x$, $\dfrac{d}{dx}\ln x=1/x$ for $x>0$,
+    $\dfrac{d}{dx}\sin x=\cos x$, $\dfrac{d}{dx}\cos x=-\sin x$, and
+    $\dfrac{d}{dx}\arctan x=1/(1+x^2)$. Therefore
+    $\int e^x dx=e^x+C$, $\int dx/x=\ln|x|+C$, and
+    $\int dx/(1+x^2)=\arctan x+C$.</p></div>
+  <div class="box eg"><div class="bl">Example <b>domain matters</b></div>
+    <p>$\int \dfrac{2x}{x^2-1}\,dx=\ln|x^2-1|+C$ on any interval that avoids
+    $x=\pm1$. The absolute value is not decoration: the logarithm formula is
+    local on intervals where the denominator keeps one sign.</p></div>
 </div>
 
 <div class="block reveal">
@@ -143,6 +183,11 @@ elementary answer at all.</p>
   mix of $x$ and $u$.<br>
   • With definite integrals under substitution, either change the limits or
   convert back before evaluating — never mix the two.<br>
+  • FTC Part 1 differentiates an integral with a variable endpoint; FTC Part 2
+  evaluates a definite integral using an antiderivative. Keep the two roles
+  separate.<br>
+  • $\int dx/x=\ln|x|+C$, not just $\ln x+C$, unless the interval is already
+  restricted to $x>0$.<br>
   • Partial fractions require a <em>proper</em> fraction; divide first if the
   numerator's degree is not smaller.<br>
   • After a trig substitution, convert back to $x$ using a reference triangle,
@@ -193,6 +238,52 @@ elementary answer at all.</p>
       $\operatorname{Si}(x)=\int_0^x\tfrac{\sin t}{t}dt$ is provably not expressible
       in elementary terms — no substitution or parts trick will ever produce one, no
       matter how cleverly applied.</div></details></div>
+    <div class="q"><div class="ql">Practice 9 · FTC with chain rule</div>
+      <p>Differentiate $F(x)=\int_0^{\sin x} e^{t^2}\,dt$.</p>
+      <details><summary>Answer</summary><div class="ans">By FTC Part 1 and the chain
+      rule, $F'(x)=e^{\sin^2 x}\cos x$.</div></details></div>
+    <div class="q"><div class="ql">Practice 10 · Transcendental antiderivative</div>
+      <p>Evaluate $\int \dfrac{3x^2}{1+x^6}\,dx$.</p>
+      <details><summary>Solution</summary><div class="ans">Let $u=x^3$, so
+      $du=3x^2dx$. The integral becomes $\int du/(1+u^2)=\arctan(u)+C
+      =\arctan(x^3)+C$.</div></details></div>
+  </div>
+</div>
+
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT159H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>FTC review.</strong> Use both parts of the Fundamental Theorem for accumulation functions and definite integrals.</li>
+    <li><strong>Transcendentals.</strong> Recall log, exponential, trig, and inverse trig derivative/antiderivative rules with domains.</li>
+    <li><strong>Techniques.</strong> Use substitution, parts, partial fractions, trig identities, and trig substitution.</li>
+    <li><strong>Non-elementary integrals.</strong> Recognize that some smooth elementary functions have no elementary antiderivative.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT159H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The integration spine is: identify the derivative rule being reversed, carry all domain and endpoint conditions, and verify by differentiating the final answer.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Keep a technique log: for each problem, record the cue that selected the method and the derivative check at the end.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · FTC chain</div>
+      <p>Differentiate $\int_1^{e^x}\ln(1+t^2)dt$.</p>
+      <details><summary>Guide</summary><div class="ans">FTC plus chain rule gives $e^x\ln(1+e^{2x})$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Parts choice</div>
+      <p>Evaluate $\int x^2\ln x\,dx$ for $x>0$.</p>
+      <details><summary>Guide</summary><div class="ans">Let $u=\ln x$, $dv=x^2dx$. The result is $x^3\ln x/3-x^3/9+C$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Partial fractions</div>
+      <p>Integrate $\int dx/(x^2+x)$.</p>
+      <details><summary>Guide</summary><div class="ans">Use $1/(x(x+1))=1/x-1/(x+1)$, so the integral is $\ln|x|-\ln|x+1|+C$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · No closed form</div>
+      <p>Why should $\int e^{-x^2}dx$ not be attacked forever with substitutions?</p>
+      <details><summary>Guide</summary><div class="ans">It is a standard non-elementary antiderivative; use definite integrals, series, or numerical methods instead of expecting elementary closure.</div></details></div>
   </div>
 </div>
 

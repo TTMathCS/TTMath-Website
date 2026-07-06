@@ -176,6 +176,44 @@ one is multiplication by an invertible matrix.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT240H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Linear systems.</strong> Interpret solution sets as empty, affine, or subspace-like depending on consistency and homogeneity.</li>
+    <li><strong>Elementary operations.</strong> Use row operations as multiplication by elementary matrices.</li>
+    <li><strong>Row reduction.</strong> Find pivots, free variables, rank, inverse matrices, and solution parametrizations.</li>
+    <li><strong>Invertibility.</strong> Connect invertible matrices to unique solutions and full rank.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT240H1 calendar topics as the coverage spine, and pair lecture notes with a Friedberg-Insel-Spence-style linear algebra text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The systems spine is: row operations preserve solution sets, row echelon form reveals rank and free variables, and elementary matrices encode the operations.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    After row reduction, translate back from rows to the original question: solution set, rank, inverse, or basis.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Consistency</div>
+      <p>What row pattern in an augmented matrix proves inconsistency?</p>
+      <details><summary>Guide</summary><div class="ans">A row of the form $[0\ 0\ \cdots\ 0\mid c]$ with $c
+e0$ means $0=c$, impossible.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Free variables</div>
+      <p>If a system in 5 unknowns has rank 3 and is consistent, how many parameters are in the solution set?</p>
+      <details><summary>Guide</summary><div class="ans">There are $5-3=2$ free variables.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Elementary matrix</div>
+      <p>What does left multiplication by an elementary matrix do?</p>
+      <details><summary>Guide</summary><div class="ans">It performs the corresponding elementary row operation on the matrix being multiplied.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Invertibility test</div>
+      <p>State three equivalent conditions for an $n	imes n$ matrix to be invertible.</p>
+      <details><summary>Guide</summary><div class="ans">Examples: rank $n$, RREF is identity, columns form a basis, determinant nonzero, homogeneous system has only zero solution.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit06.html">← Unit 06<span>Change of basis &amp; similarity</span></a>
   <a class="n" href="unit08.html">Unit 08 →<span>Determinants</span></a>

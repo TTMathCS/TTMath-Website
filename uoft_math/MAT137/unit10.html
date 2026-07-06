@@ -166,6 +166,43 @@ and arc length. The skill is setting up the right integral.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT137 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Area and signed area.</strong> Set up integrals for area between curves using top-minus-bottom or right-minus-left.</li>
+    <li><strong>Volumes.</strong> Use disks, washers, and shells with a clear axis of rotation and radius function.</li>
+    <li><strong>Average value.</strong> Interpret $f_{avg}=rac1{b-a}\int_a^b f$ and connect it to accumulation.</li>
+    <li><strong>Physical applications.</strong> Translate density, work, and rate problems into integrals with units.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the Alfonso Gracia-Saz MAT137 materials as the primary local spine, with the current UofT single-variable calculus topic split as the completeness check. The added items are original study prompts, not copied textbook exercises.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The application spine is: slice the object, write the small piece, integrate the small pieces over the correct interval, and check units.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Before computing, name the variable of integration and the geometry of one slice; if that sentence is vague, the integral is probably wrong.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Area between curves</div>
+      <p>Find the area between $y=x$ and $y=x^2$ on $[0,1]$.</p>
+      <details><summary>Guide</summary><div class="ans">Top minus bottom is $x-x^2$, so the area is $\int_0^1(x-x^2)dx=1/2-1/3=1/6$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Washer setup</div>
+      <p>Set up the volume from rotating the region under $y=\sqrt{x}$ on $[0,4]$ about the $x$-axis.</p>
+      <details><summary>Guide</summary><div class="ans">Washers have radius $\sqrt{x}$, so $V=\pi\int_0^4(\sqrt{x})^2dx=\pi\int_0^4 x dx$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Average value</div>
+      <p>Find the average value of $f(x)=x^2$ on $[0,3]$.</p>
+      <details><summary>Guide</summary><div class="ans">Compute $(1/3)\int_0^3 x^2dx=(1/3)(9)=3$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Units</div>
+      <p>If density is kg/m and position is measured in meters, what units should $\int_a^b ho(x)dx$ have?</p>
+      <details><summary>Guide</summary><div class="ans">The integrand contributes kg/m and $dx$ contributes m, so the integral has units kg: total mass.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit09.html">← Unit 09<span>Integration methods</span></a>
   <a class="n" href="unit11.html">Unit 11 →<span>Sequences</span></a>

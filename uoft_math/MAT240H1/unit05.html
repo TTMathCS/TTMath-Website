@@ -176,6 +176,43 @@ matrices.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT240H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Rank-nullity.</strong> Use dim domain = nullity + rank for finite-dimensional maps.</li>
+    <li><strong>Matrices.</strong> Represent linear maps relative to ordered bases and interpret columns as images of basis vectors.</li>
+    <li><strong>Rank.</strong> Connect column space, row space, pivot count, and image dimension.</li>
+    <li><strong>Nullity.</strong> Solve homogeneous systems to describe kernels.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT240H1 calendar topics as the coverage spine, and pair lecture notes with a Friedberg-Insel-Spence-style linear algebra text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The matrix spine is: choose bases, write columns from images, row-reduce to expose pivots, then read rank and nullity as dimensions.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Keep the abstract map and its coordinate matrix separate; a matrix represents a map only after bases are fixed.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Rank-nullity</div>
+      <p>If $T:F^5	o F^3$ has nullity $2$, what is its rank?</p>
+      <details><summary>Guide</summary><div class="ans">Rank-nullity gives rank $=5-2=3$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Column meaning</div>
+      <p>What is the first column of a matrix representation of $T$?</p>
+      <details><summary>Guide</summary><div class="ans">It is the coordinate vector of $T$ applied to the first domain basis vector, expressed in the codomain basis.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Injective or surjective</div>
+      <p>Can a linear map $F^5	o F^3$ be injective?</p>
+      <details><summary>Guide</summary><div class="ans">No. Nullity is at least $2$ by rank-nullity because rank is at most $3$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Kernel system</div>
+      <p>How do you find the kernel of a matrix $A$?</p>
+      <details><summary>Guide</summary><div class="ans">Solve $Ax=0$ by row reduction; the free variables parametrize a basis for the null space.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit04.html">← Unit 04<span>Linear transformations</span></a>
   <a class="n" href="unit06.html">Unit 06 →<span>Change of basis &amp; similarity</span></a>

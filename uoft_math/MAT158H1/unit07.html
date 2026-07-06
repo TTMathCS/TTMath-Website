@@ -176,6 +176,43 @@ one of the most examinable sequences in the course, and every link is short.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Fermat and Rolle.</strong> Use extrema to produce zero derivatives under endpoint equality.</li>
+    <li><strong>MVT.</strong> Prove and apply the mean value theorem as the central derivative theorem.</li>
+    <li><strong>Consequences.</strong> Derive constant, monotone, Lipschitz, and inequality results.</li>
+    <li><strong>Error control.</strong> Use derivative bounds to control function-value changes.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The theorem chain is Fermat, Rolle, MVT, then every derivative-controls-function corollary.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    In applications, identify the interval endpoints first; MVT always compares two function values over a closed interval.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · MVT statement</div>
+      <p>State the hypotheses and conclusion of the Mean Value Theorem.</p>
+      <details><summary>Guide</summary><div class="ans">Continuity on $[a,b]$ and differentiability on $(a,b)$ imply some $c\in(a,b)$ satisfies $f\prime(c)=(f(b)-f(a))/(b-a)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Constant derivative</div>
+      <p>Prove if $f\prime=0$ on an interval then $f$ is constant.</p>
+      <details><summary>Guide</summary><div class="ans">For any two points, MVT gives the difference quotient equals $0$, so the function values are equal.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Bound</div>
+      <p>If $|f\prime(x)|\le3$ on $[a,b]$, prove $|f(b)-f(a)|\le3|b-a|$.</p>
+      <details><summary>Guide</summary><div class="ans">Apply MVT and take absolute values.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Hypothesis failure</div>
+      <p>Why does Rolle fail for $f(x)=|x|$ on $[-1,1]$?</p>
+      <details><summary>Guide</summary><div class="ans">The endpoint values match, but $f$ is not differentiable at $0$, and there is no point with derivative $0$ in the differentiable parts.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit06.html">← Unit 06<span>Derivatives</span></a>
   <a class="n" href="unit08.html">Unit 08 →<span>Inverse functions</span></a>

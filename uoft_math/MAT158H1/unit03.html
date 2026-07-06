@@ -218,6 +218,43 @@ analyst carries around.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Epsilon-delta limits.</strong> Prove limits directly and know how to negate the definition.</li>
+    <li><strong>Limit laws.</strong> Justify algebra of limits instead of using it as magic.</li>
+    <li><strong>One-sided and infinite behavior.</strong> Recognize when a two-sided finite limit is not the right object.</li>
+    <li><strong>Sequential criterion.</strong> Use sequences approaching a point to prove or disprove limits when appropriate.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The limit spine is: quantify closeness in the range, choose closeness in the domain, then verify implication under punctured-neighborhood hypotheses.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Before computing a limit, decide whether the task asks for proof, disproof, or use of a theorem; each has a different standard template.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Direct limit</div>
+      <p>Prove $\lim_{x	o1}(2x+3)=5$.</p>
+      <details><summary>Guide</summary><div class="ans">Use $|(2x+3)-5|=2|x-1|$ and choose $\delta=\epsilon/2$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Product law idea</div>
+      <p>State the main bounding idea behind proving the product law for limits.</p>
+      <details><summary>Guide</summary><div class="ans">Write $fg-LM=f(g-M)+M(f-L)$ and bound $f$ near the point while making $g-M$ and $f-L$ small.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Sequential disproof</div>
+      <p>Use sequences to show $\lim_{x	o0}\sin(1/x)$ does not exist.</p>
+      <details><summary>Guide</summary><div class="ans">Choose $x_n=1/(\pi/2+2\pi n)$ giving value $1$, and $y_n=1/(3\pi/2+2\pi n)$ giving value $-1$. Both approach $0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · One-sided</div>
+      <p>Why does $\lim_{x	o0} |x|/x$ not exist?</p>
+      <details><summary>Guide</summary><div class="ans">The right-hand limit is $1$ and the left-hand limit is $-1$, so the two-sided limit fails.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit02.html">← Unit 02<span>Real numbers &amp; LUB</span></a>
   <a class="n" href="unit04.html">Unit 04 →<span>Continuous functions</span></a>

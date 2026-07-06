@@ -187,6 +187,43 @@ notion of a basis in Unit 3.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT240H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Subspaces.</strong> Use the zero vector, addition closure, and scalar closure test.</li>
+    <li><strong>Span.</strong> Interpret span as all finite linear combinations and as the smallest subspace containing a set.</li>
+    <li><strong>Independence.</strong> Prove linear independence by showing only the trivial combination is zero.</li>
+    <li><strong>Coordinates preview.</strong> Understand spanning and independence as the ingredients of bases.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT240H1 calendar topics as the coverage spine, and pair lecture notes with a Friedberg-Insel-Spence-style linear algebra text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The spine is: subspace test, span as construction, independence as uniqueness, then basis as both spanning and independent.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    For every set of vectors, ask two separate questions: can it create every vector, and can it create zero in a nontrivial way?</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Subspace test</div>
+      <p>Is $\{(x,y):x+y=0\}$ a subspace of $F^2$?</p>
+      <details><summary>Guide</summary><div class="ans">Yes. It contains $(0,0)$ and is closed under addition and scalar multiplication because the equation is homogeneous.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Not subspace</div>
+      <p>Is $\{(x,y):x+y=1\}$ a subspace?</p>
+      <details><summary>Guide</summary><div class="ans">No. It does not contain the zero vector and is not closed under scalar multiplication.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Independence</div>
+      <p>Test whether $(1,0),(1,1)$ are independent in $F^2$.</p>
+      <details><summary>Guide</summary><div class="ans">If $a(1,0)+b(1,1)=(0,0)$, then $(a+b,b)=(0,0)$, so $b=0$ and $a=0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Span</div>
+      <p>Describe span$\{(1,1),(1,-1)\}$ over a field of characteristic not $2$.</p>
+      <details><summary>Guide</summary><div class="ans">They span all of $F^2$ because any $(x,y)$ is $((x+y)/2)(1,1)+((x-y)/2)(1,-1)$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit01.html">← Unit 01<span>Fields &amp; vector spaces</span></a>
   <a class="n" href="unit03.html">Unit 03 →<span>Bases &amp; dimension</span></a>

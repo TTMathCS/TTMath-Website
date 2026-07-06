@@ -168,6 +168,43 @@ course.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT159H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Radius and interval.</strong> Find radius of convergence and test endpoints separately.</li>
+    <li><strong>Termwise operations.</strong> Differentiate and integrate power series inside the radius of convergence.</li>
+    <li><strong>Taylor series.</strong> Connect Taylor coefficients to function derivatives and convergence to the original function.</li>
+    <li><strong>Uniform convergence on compact subintervals.</strong> Use power-series convergence to justify termwise operations away from endpoints.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT159H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The power-series spine is: radius first, endpoint behavior second, then algebraic operations within the open interval of convergence.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    When manipulating a power series, state the interval on which the manipulation is justified.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Radius</div>
+      <p>Find the radius of $\sum x^n/n$.</p>
+      <details><summary>Guide</summary><div class="ans">Ratio or root test gives radius $1$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Endpoints</div>
+      <p>Determine the interval of convergence for $\sum x^n/n$.</p>
+      <details><summary>Guide</summary><div class="ans">At $x=1$ it is harmonic and diverges; at $x=-1$ it is alternating harmonic and converges. Interval: $[-1,1)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Termwise integration</div>
+      <p>Use $1/(1-x)=\sum x^n$ to get a series for $\ln(1-x)$.</p>
+      <details><summary>Guide</summary><div class="ans">Integrate termwise from $0$ to $x$: $-\ln(1-x)=\sum_{n=0}^\infty x^{n+1}/(n+1)$ for $|x|<1$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Differentiate</div>
+      <p>Differentiate $\sum x^n$ inside its radius and identify the sum.</p>
+      <details><summary>Guide</summary><div class="ans">Termwise derivative gives $\sum_{n=1}^\infty n x^{n-1}=1/(1-x)^2$ for $|x|<1$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit06.html">← Unit 06<span>Uniform convergence</span></a>
   <a class="n" href="index.html">Back to Index<span>All chapters</span></a>

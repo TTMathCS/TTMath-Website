@@ -168,6 +168,43 @@ functions apart (partial fractions).</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT137 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Substitution.</strong> Recognize chain-rule structure in indefinite and definite integrals.</li>
+    <li><strong>Integration by parts.</strong> Reverse the product rule and choose $u$ so differentiation simplifies.</li>
+    <li><strong>Partial fractions.</strong> Use algebraic decomposition for rational functions after polynomial division when needed.</li>
+    <li><strong>Trig methods.</strong> Use identities and substitutions for powers of trig functions and radicals.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the Alfonso Gracia-Saz MAT137 materials as the primary local spine, with the current UofT single-variable calculus topic split as the completeness check. The added items are original study prompts, not copied textbook exercises.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The technique chain is: simplify algebra first, choose the derivative rule being reversed, then check the answer by differentiating.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Make technique choice explicit: write one sentence saying why substitution, parts, partial fractions, or trig substitution is appropriate before computing.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Substitution</div>
+      <p>Evaluate $\int x(1+x^2)^5\,dx$.</p>
+      <details><summary>Guide</summary><div class="ans">Let $u=1+x^2$, $du=2x dx$. The integral is $u^6/12+C=(1+x^2)^6/12+C$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Parts</div>
+      <p>Evaluate $\int x\ln x\,dx$ for $x>0$.</p>
+      <details><summary>Guide</summary><div class="ans">Take $u=\ln x$, $dv=x dx$. Then the integral is $(x^2/2)\ln x-\int x/2 dx=(x^2/2)\ln x-x^2/4+C$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Partial fractions</div>
+      <p>Decompose $1/(x^2-4)$ and integrate.</p>
+      <details><summary>Guide</summary><div class="ans">Use $1/(x^2-4)=A/(x-2)+B/(x+2)$ with $A=1/4$, $B=-1/4$. The integral is $(1/4)\ln|x-2|-(1/4)\ln|x+2|+C$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Check by differentiating</div>
+      <p>Why is differentiating your final answer a required final step in integration-technique problems?</p>
+      <details><summary>Guide</summary><div class="ans">The techniques involve substitutions, algebra, and constants where errors are easy. Differentiating confirms the antiderivative returns the original integrand on the intended domain.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit08.html">← Unit 08<span>The Fundamental Theorem</span></a>
   <a class="n" href="unit10.html">Unit 10 →<span>Applications of the integral</span></a>

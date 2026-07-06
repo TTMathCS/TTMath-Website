@@ -245,6 +245,43 @@ apply them.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT137 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Definition.</strong> Use the derivative as a limit of difference quotients and know what differentiability says geometrically and analytically.</li>
+    <li><strong>Rules.</strong> Prove and use linearity, product, quotient, and chain rules from the limit definition.</li>
+    <li><strong>Local linearity.</strong> Interpret $f(a+h)=f(a)+f\prime(a)h+o(h)$ as the reason tangent-line approximations work.</li>
+    <li><strong>Failures.</strong> Recognize corners, cusps, vertical tangents, and discontinuities as common causes of non-differentiability.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the Alfonso Gracia-Saz MAT137 materials as the primary local spine, with the current UofT single-variable calculus topic split as the completeness check. The added items are original study prompts, not copied textbook exercises.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The theorem chain is: differentiability implies continuity, algebra of limits gives derivative rules, and the chain rule turns composition into a reusable engine.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    When solving derivative problems, separate the proof of the rule from the computation using the rule; both are tested in proof-based calculus.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Definition computation</div>
+      <p>Compute the derivative of $f(x)=x^2$ at $a$ from the limit definition.</p>
+      <details><summary>Guide</summary><div class="ans">Use $[(a+h)^2-a^2]/h=2a+h$, whose limit as $h	o0$ is $2a$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Proof rule</div>
+      <p>Prove the product rule assuming $f$ and $g$ are differentiable at $a$.</p>
+      <details><summary>Guide</summary><div class="ans">Add and subtract $f(a+h)g(a)$ in the difference quotient, split into two terms, and use continuity of $f$ or $g$ that follows from differentiability.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Non-differentiable point</div>
+      <p>Show $|x|$ is not differentiable at $0$.</p>
+      <details><summary>Guide</summary><div class="ans">The right difference quotient is $1$ and the left difference quotient is $-1$, so the derivative limit does not exist.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Linear approximation</div>
+      <p>Use differentials to estimate $\sqrt{4.04}$.</p>
+      <details><summary>Guide</summary><div class="ans">For $f(x)=\sqrt{x}$ at $a=4$, $f(4)=2$ and $f\prime(4)=1/4$. The estimate is $2+(1/4)(0.04)=2.01$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit02.html">← Unit 02<span>Limits &amp; continuity</span></a>
   <a class="n" href="unit04.html">Unit 04 →<span>Transcendental functions</span></a>

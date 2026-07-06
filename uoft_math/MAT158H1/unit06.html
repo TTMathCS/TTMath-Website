@@ -190,6 +190,44 @@ continuous. This unit builds both the rules and the counterexamples.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Derivative definition.</strong> Use difference quotients and prove differentiability statements from first principles.</li>
+    <li><strong>Differentiability implies continuity.</strong> Know the proof and the reason the converse fails.</li>
+    <li><strong>Derivative rules.</strong> Prove and use linearity, product, quotient, and chain rules.</li>
+    <li><strong>Tangent approximation.</strong> Connect differentiability to best linear approximation.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The derivative spine is: limit of difference quotient, algebra of limits, continuity consequence, and local linear approximation.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    When proving a rule, write the difference quotient first; when computing, state which already-proved rule justifies each step.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · First principles</div>
+      <p>Compute $(x^3)\prime$ from the definition.</p>
+      <details><summary>Guide</summary><div class="ans">Use $[(x+h)^3-x^3]/h=3x^2+3xh+h^2$, which tends to $3x^2$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Continuity consequence</div>
+      <p>Prove differentiability at $a$ implies continuity at $a$.</p>
+      <details><summary>Guide</summary><div class="ans">Write $f(x)-f(a)=[(f(x)-f(a))/(x-a)](x-a)$ for $x
+e a$. The first factor tends to $f\prime(a)$ and the second to $0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Converse failure</div>
+      <p>Give a continuous function that is not differentiable at $0$.</p>
+      <details><summary>Guide</summary><div class="ans">$f(x)=|x|$ is continuous at $0$ but has left derivative $-1$ and right derivative $1$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Chain rule use</div>
+      <p>Differentiate $(1+x^2)^5$ and name the rule.</p>
+      <details><summary>Guide</summary><div class="ans">By the chain rule, the derivative is $5(1+x^2)^4(2x)=10x(1+x^2)^4$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit05.html">← Unit 05<span>The three hard theorems</span></a>
   <a class="n" href="unit07.html">Unit 07 →<span>The Mean Value Theorem</span></a>

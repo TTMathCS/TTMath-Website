@@ -203,6 +203,43 @@ null spaces find the eigenvectors, and change of basis cashes them in.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT240H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Eigenvectors.</strong> Solve $Tv=\lambda v$ or $(A-\lambda I)v=0$ and distinguish eigenvalues from eigenvectors.</li>
+    <li><strong>Characteristic polynomial.</strong> Use det$(xI-A)$ or det$(A-\lambda I)$ consistently to find eigenvalues.</li>
+    <li><strong>Diagonalization.</strong> Use eigenbasis criteria and geometric/algebraic multiplicity.</li>
+    <li><strong>Cayley-Hamilton and minimal polynomial.</strong> Use polynomial identities in $A$ to connect characteristic and minimal polynomials.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT240H1 calendar topics as the coverage spine, and pair lecture notes with a Friedberg-Insel-Spence-style linear algebra text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The eigenvalue spine is: roots of the characteristic polynomial give candidate eigenvalues, eigenspaces give eigenvectors, and enough eigenvectors give diagonalization.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    For every diagonalization problem, compute eigenspace dimensions; factoring the characteristic polynomial is only the first half.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Eigenvalue equation</div>
+      <p>What equation determines eigenvectors for eigenvalue $\lambda$?</p>
+      <details><summary>Guide</summary><div class="ans">Solve $(A-\lambda I)v=0$ for nonzero $v$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Diagonalizable criterion</div>
+      <p>When is an $n	imes n$ matrix diagonalizable over $F$?</p>
+      <details><summary>Guide</summary><div class="ans">It is diagonalizable over $F$ iff $F^n$ has a basis of eigenvectors for the matrix, equivalently the sum of eigenspace dimensions is $n$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Cayley-Hamilton</div>
+      <p>State the Cayley-Hamilton theorem.</p>
+      <details><summary>Guide</summary><div class="ans">Every square matrix satisfies its own characteristic polynomial: if $p_A(t)=\det(tI-A)$, then $p_A(A)=0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Minimal polynomial test</div>
+      <p>State the minimal-polynomial criterion for diagonalizability when it splits.</p>
+      <details><summary>Guide</summary><div class="ans">The operator is diagonalizable iff its minimal polynomial splits into distinct linear factors.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit09.html">← Unit 09<span>Polynomials over a field</span></a>
   <a class="n" href="index.html">Back to Index<span>All chapters</span></a>

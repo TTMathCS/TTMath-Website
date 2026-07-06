@@ -264,6 +264,43 @@ series — is built on. Spend real time until you can write ε–δ proofs cold.
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT137 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Limits.</strong> Use the epsilon-delta definition, limit laws, squeeze arguments, and one-sided limits.</li>
+    <li><strong>Continuity.</strong> Connect continuity at a point to limits and continuity on intervals to global behavior.</li>
+    <li><strong>The real line.</strong> Use order, intervals, absolute value inequalities, and least-upper-bound intuition when choosing delta.</li>
+    <li><strong>Existence theorems.</strong> Keep IVT and EVT ready because they power root-existence and maximum-minimum arguments later.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the Alfonso Gracia-Saz MAT137 materials as the primary local spine, with the current UofT single-variable calculus topic split as the completeness check. The added items are original study prompts, not copied textbook exercises.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The core chain is: limit definition gives pointwise control; continuity transfers nearby input control to output control; compact-interval theorems give existence.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    For every limit problem, write the target inequality first, then work backward to choose a delta that makes it true.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Epsilon-delta</div>
+      <p>Prove from the definition that $\lim_{x	o2}(3x-1)=5$.</p>
+      <details><summary>Guide</summary><div class="ans">Require $|(3x-1)-5|=3|x-2|&lt;\epsilon$. Choose $\delta=\epsilon/3$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Continuity</div>
+      <p>Show that $f(x)=x^2$ is continuous at $a$ using epsilon-delta reasoning.</p>
+      <details><summary>Guide</summary><div class="ans">Use $|x^2-a^2|=|x-a||x+a|$. First restrict $|x-a|&lt;1$ so $|x+a|\le 2|a|+1$, then choose $\delta\le\epsilon/(2|a|+1)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · IVT</div>
+      <p>Prove that $x^3+x-1=0$ has a root in $(0,1)$.</p>
+      <details><summary>Guide</summary><div class="ans">The polynomial is continuous, $f(0)=-1$, and $f(1)=1$. IVT gives a point in $(0,1)$ where $f=0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Non-example</div>
+      <p>Give a function with $\lim_{x	o0} f(x)$ not existing even though both one-sided limits are finite.</p>
+      <details><summary>Guide</summary><div class="ans">Take $f(x)=0$ for $x&lt;0$ and $f(x)=1$ for $x&gt;0$. The left and right limits are finite but unequal, so the two-sided limit does not exist.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit01.html">← Unit 01<span>Logic &amp; proofs</span></a>
   <a class="n" href="unit03.html">Unit 03 →<span>Derivatives</span></a>

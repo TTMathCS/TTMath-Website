@@ -176,6 +176,43 @@ final units.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT137 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Sequence limits.</strong> Use epsilon definitions and limit laws for sequences.</li>
+    <li><strong>Monotone convergence.</strong> Know when monotone bounded sequences converge and how to find the limit.</li>
+    <li><strong>Cauchy viewpoint.</strong> Use Cauchy behavior as a convergence criterion in complete settings.</li>
+    <li><strong>Recursive sequences.</strong> Analyze fixed points, monotonicity, and boundedness before passing limits through recurrences.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the Alfonso Gracia-Saz MAT137 materials as the primary local spine, with the current UofT single-variable calculus topic split as the completeness check. The added items are original study prompts, not copied textbook exercises.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The sequence spine is: define convergence precisely, use monotone bounded arguments for existence, then identify the only possible limit by algebra.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    For recursive sequences, never pass to the limit before proving the sequence actually converges.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Epsilon proof</div>
+      <p>Prove $1/n	o0$.</p>
+      <details><summary>Guide</summary><div class="ans">Given $\epsilon>0$, choose $N>1/\epsilon$. If $n\ge N$, then $|1/n-0|\le1/N&lt;\epsilon$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Monotone bounded</div>
+      <p>Show $a_n=1-1/n$ converges using monotone bounded convergence.</p>
+      <details><summary>Guide</summary><div class="ans">The sequence increases and is bounded above by $1$, so it converges. Directly, the limit is $1$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Cauchy</div>
+      <p>Explain why every convergent sequence is Cauchy.</p>
+      <details><summary>Guide</summary><div class="ans">If $a_n	o L$, make $|a_n-L|&lt;\epsilon/2$ and $|a_m-L|&lt;\epsilon/2$ for large $m,n$; then use the triangle inequality.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Recursive caution</div>
+      <p>If $a_{n+1}=\sqrt{2+a_n}$ and $a_1=1$, what must be proved before solving $L=\sqrt{2+L}$?</p>
+      <details><summary>Guide</summary><div class="ans">You must prove convergence, usually by showing the sequence is increasing and bounded above by $2$. Then the fixed-point equation gives $L=2$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit10.html">← Unit 10<span>Applications of the integral</span></a>
   <a class="n" href="unit12.html">Unit 12 →<span>Improper integrals</span></a>

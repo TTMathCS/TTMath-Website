@@ -18,6 +18,8 @@
   <a href="../index.html">All Courses</a>
   <a href="#about" data-t>About</a>
   <a href="#units" data-t>Chapters</a>
+  <a href="#textbook" data-t>Textbook Spine</a>
+  <a href="#practice" data-t>Practice Plan</a>
   <a href="#resources" data-t>Resources</a>
   <div class="foot">LINEAR ALGEBRA<br>TEXT: FRIEDBERG<br>CO-REQ MAT158/159</div>
 </nav>
@@ -77,22 +79,129 @@
       <p>Row reduction, rank, and inverses.</p></div><span class="go">Open →</span></a></li>
     <li><a href="unit08.html"><div><h4>Determinants</h4>
       <p>Definition, properties, $\det(AB)=\det A\det B$.</p></div><span class="go">Open →</span></a></li>
-    <li><a href="unit09.html"><div><h4>Polynomials over a field</h4>
-      <p>Division, factorization, minimal polynomials, and resultants.</p></div><span class="go">Open →</span></a></li>
+    <li><a href="unit09.html"><div><h4>Polynomials, UFD &amp; resultants</h4>
+      <p>Division, unique factorization, resultants, and minimal polynomials.</p></div><span class="go">Open →</span></a></li>
     <li><a href="unit10.html"><div><h4>Eigenvalues &amp; diagonalization</h4>
       <p>Characteristic polynomial, diagonalizability, Cayley–Hamilton.</p></div><span class="go">Open →</span></a></li>
   </ol>
 </section>
 
+<section id="textbook" class="reveal">
+  <div class="sec-head"><span class="no">02</span><h2>Textbook Spine</h2></div>
+  <p class="sec-sub">The public calendar confirms MAT240H1's proof-based linear
+  algebra topics. This guide uses Friedberg, Insel &amp; Spence,
+  <em>Linear Algebra</em>, as the companion text because its abstract-vector-space
+  order matches the course: fields and vector spaces before matrices. Check the
+  current syllabus for the exact edition and assigned problems.</p>
+
+  <div class="context">
+    <div class="ctxh">Unit-to-textbook alignment</div>
+    <div class="ci"><div class="cl">Vector spaces first</div>
+      <p>Units 1-3 pair with the text's opening chapters on fields, vector
+      spaces, subspaces, span, independence, bases, and dimension. The practice
+      target is proof from axioms, not row reduction.</p></div>
+    <div class="ci"><div class="cl">Maps and matrices</div>
+      <p>Units 4-7 pair with linear transformations, rank-nullity, matrix
+      representations, change of basis, similarity, systems, elementary
+      operations, and inverses.</p></div>
+    <div class="ci"><div class="cl">Structure theorems</div>
+      <p>Units 8-10 pair with determinants, polynomials over fields, eigenvalues,
+      diagonalization, minimal polynomials, and Cayley-Hamilton. This is where
+      computations become structural statements about operators.</p></div>
+  </div>
+
+  <div class="bp">
+    <div class="card"><div class="n">DEFINE</div><h4>Start from objects</h4>
+      <p>Always name the field, vector space, basis, and linear map before writing
+      a matrix. The same matrix can represent different maps under different
+      bases.</p></div>
+    <div class="card"><div class="n">PROVE</div><h4>Use theorem templates</h4>
+      <p>Rank-nullity, dimension, determinant multiplicativity, and
+      diagonalization each have standard proof shapes. Memorize the shape, not
+      the wording.</p></div>
+    <div class="card"><div class="n">COMPUTE</div><h4>Compute with meaning</h4>
+      <p>Every row reduction, determinant, coordinate vector, or characteristic
+      polynomial should answer a structural question: injective, spanning,
+      invertible, similar, or diagonalizable?</p></div>
+    <div class="card"><div class="n">COMPARE</div><h4>Use multiple fields</h4>
+      <p>Redo small examples over $\mathbb{R}$, $\mathbb{C}$, and $\mathbb{Z}_p$.
+      Many MAT240 pitfalls come from assuming real-number behavior over every
+      field.</p></div>
+  </div>
+</section>
+
+<section id="practice" class="reveal">
+  <div class="sec-head"><span class="no">03</span><h2>Practice Plan</h2></div>
+  <p class="sec-sub">MAT240 practice should alternate between proof and
+  computation. The unit pages give guided questions; use this course-level mix
+  to build exam readiness.</p>
+
+  <div class="bp">
+    <div class="card"><div class="n">01</div><h4>Axiom checks</h4>
+      <p>For every new object, check closure, zero, inverses, and scalar
+      compatibility before using vector-space theorems.</p></div>
+    <div class="card"><div class="n">02</div><h4>Basis discipline</h4>
+      <p>Convert between coordinate-free statements and coordinate matrices.
+      Write the basis explicitly every time.</p></div>
+    <div class="card"><div class="n">03</div><h4>Proof-computation pairs</h4>
+      <p>Pair each computation with a proof question: row reduction with
+      rank-nullity, determinants with invertibility, eigenvectors with invariant
+      subspaces.</p></div>
+    <div class="card"><div class="n">04</div><h4>Counterexample sets</h4>
+      <p>Build examples where hypotheses fail: dependent spanning lists, maps
+      with same rank but not similar, non-diagonalizable matrices, and fields
+      where a polynomial does not split.</p></div>
+  </div>
+
+  <div class="block">
+    <h3>Course-wide challenge bank</h3>
+    <p class="prac-intro">These mix proof and computation in the style expected
+    from a theoretical linear algebra course.</p>
+    <div class="prac">
+      <div class="q"><div class="ql">Challenge 1 · Subspace</div>
+        <p>Let $W=\{p\in P_3(\mathbb{R}):p(1)=0\}$. Prove $W$ is a subspace and
+        find a basis.</p>
+        <details><summary>Solution sketch</summary><div class="ans">Evaluation at
+        $1$ is linear, so $W$ is its null space and hence a subspace. Since
+        $p(1)=0$ iff $p(x)=(x-1)q(x)$ with $\deg q\le2$, a basis is
+        $\{x-1,\ x(x-1),\ x^2(x-1)\}$.</div></details></div>
+      <div class="q"><div class="ql">Challenge 2 · Rank-nullity</div>
+        <p>If $T:P_2(\mathbb{R})\to P_2(\mathbb{R})$ is defined by
+        $T(p)=p'$, find $\operatorname{rank}(T)$ and $\operatorname{nullity}(T)$.</p>
+        <details><summary>Solution sketch</summary><div class="ans">The null
+        space consists of constant polynomials, so nullity is $1$. The image is
+        all polynomials of degree at most $1$, so rank is $2$. Rank-nullity gives
+        $2+1=\dim P_2=3$.</div></details></div>
+      <div class="q"><div class="ql">Challenge 3 · Determinant meaning</div>
+        <p>Prove that if $A$ and $B$ are similar matrices, then
+        $\det A=\det B$.</p>
+        <details><summary>Solution sketch</summary><div class="ans">If
+        $B=P^{-1}AP$, then
+        $\det B=\det(P^{-1})\det(A)\det(P)=\det(A)$ because
+        $\det(P^{-1})=1/\det(P)$.</div></details></div>
+      <div class="q"><div class="ql">Challenge 4 · Diagonalization</div>
+        <p>Is the linear map with matrix $A$ having rows $(2,1)$ and $(0,2)$
+        diagonalizable over $\mathbb{R}$?</p>
+        <details><summary>Solution sketch</summary><div class="ans">The only
+        eigenvalue is $2$. The eigenspace solves
+        $(A-2I)v=0$. Since $A-2I$ has rows $(0,1)$ and $(0,0)$, this means
+        $v_2=0$ and the eigenspace is one-dimensional. A $2\times2$ matrix needs
+        two independent eigenvectors to be diagonalizable, so $A$ is not
+        diagonalizable.</div></details></div>
+    </div>
+  </div>
+</section>
+
 <section id="resources" class="reveal">
-  <div class="sec-head"><span class="no">02</span><h2>Resources</h2></div>
+  <div class="sec-head"><span class="no">04</span><h2>Resources</h2></div>
   <p class="src">
     <a href="https://artsci.calendar.utoronto.ca/course/mat240h1">MAT240H1 — official calendar listing</a><br>
     <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">3Blue1Brown — Essence of Linear Algebra (intuition)</a>
   </p>
   <p class="lic">Companion text used by this guide: Friedberg, Insel &amp; Spence,
-  <em>Linear Algebra</em>. Co-requisite MAT158H1 + MAT159H1 (or MAT157Y1).
-  Sequel MAT247H1. Verify details against the official calendar each year.</p>
+  <em>Linear Algebra</em>. The public calendar confirms the MAT240H1 topic list
+  but does not publish a current instructor textbook. Verify the assigned text,
+  edition, and problem numbers against the active syllabus each year.</p>
 </section>
 
 <footer class="end">

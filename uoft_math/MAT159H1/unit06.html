@@ -174,6 +174,43 @@ example.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT159H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Pointwise convergence.</strong> Find the limit function point by point.</li>
+    <li><strong>Uniform convergence.</strong> Control $\sup_x |f_n(x)-f(x)|$ and know why it is stronger.</li>
+    <li><strong>Weierstrass M-test.</strong> Prove uniform convergence of function series using numeric majorants.</li>
+    <li><strong>Interchange theorems.</strong> Know when limits may pass through continuity, integration, and differentiation.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT159H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The uniform-convergence spine is: identify the pointwise limit, estimate the worst-case error, then use uniform convergence to preserve structure.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Never interchange a limit with an integral or derivative until the relevant uniform hypothesis has been checked.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Pointwise not uniform</div>
+      <p>Analyze $f_n(x)=x^n$ on $[0,1]$.</p>
+      <details><summary>Guide</summary><div class="ans">The pointwise limit is $0$ on $[0,1)$ and $1$ at $1$, so convergence is not uniform because uniform limits of continuous functions are continuous.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Sup norm</div>
+      <p>Show $f_n(x)=x/n$ converges uniformly to $0$ on $[0,1]$.</p>
+      <details><summary>Guide</summary><div class="ans">The sup error is $\sup_{[0,1]} x/n=1/n	o0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · M-test</div>
+      <p>Prove $\sum x^n/n^2$ converges uniformly on $[-1,1]$.</p>
+      <details><summary>Guide</summary><div class="ans">Since $|x^n/n^2|\le1/n^2$ and $\sum1/n^2$ converges, the M-test applies.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Continuity preservation</div>
+      <p>If continuous $f_n$ converge uniformly to $f$, what can you conclude?</p>
+      <details><summary>Guide</summary><div class="ans">The limit function $f$ is continuous. The proof uses a three-term epsilon argument with uniform convergence and continuity of one chosen $f_N$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit05.html">← Unit 05<span>Infinite series</span></a>
   <a class="n" href="unit07.html">Unit 07 →<span>Power series</span></a>

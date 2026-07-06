@@ -158,6 +158,43 @@ integrals without ever returning to sums.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT137 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>FTC Part 1.</strong> Differentiate accumulation functions and handle variable upper or lower limits.</li>
+    <li><strong>FTC Part 2.</strong> Evaluate definite integrals using antiderivatives under the right continuity hypotheses.</li>
+    <li><strong>Net change.</strong> Interpret integrals of rates as total change.</li>
+    <li><strong>Substitution connection.</strong> See substitution for definite integrals as a consequence of the chain rule and FTC.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the Alfonso Gracia-Saz MAT137 materials as the primary local spine, with the current UofT single-variable calculus topic split as the completeness check. The added items are original study prompts, not copied textbook exercises.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The spine is: accumulation creates antiderivatives, antiderivatives evaluate accumulation, and the two halves close the loop between differentiation and integration.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    For every FTC problem, label which part of the FTC is being used; many errors come from applying Part 2 when the task needs Part 1 plus chain rule.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Variable endpoint</div>
+      <p>Differentiate $F(x)=\int_2^{x^3}\sqrt{1+t^4}\,dt$.</p>
+      <details><summary>Guide</summary><div class="ans">FTC Part 1 plus chain rule gives $F\prime(x)=3x^2\sqrt{1+x^{12}}$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Lower endpoint</div>
+      <p>Differentiate $G(x)=\int_x^1 e^{-t^2}\,dt$.</p>
+      <details><summary>Guide</summary><div class="ans">Rewrite as $-\int_1^x e^{-t^2}\,dt$, so $G\prime(x)=-e^{-x^2}$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Net change</div>
+      <p>If $v(t)=3t^2$ meters/sec, find displacement from $t=1$ to $t=3$.</p>
+      <details><summary>Guide</summary><div class="ans">Compute $\int_1^3 3t^2dt=[t^3]_1^3=26$ meters.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Hypothesis check</div>
+      <p>Why does FTC Part 1 require continuity in the usual statement?</p>
+      <details><summary>Guide</summary><div class="ans">Continuity ensures the average value of the integrand over shrinking intervals approaches the point value; without it, the accumulation function may fail to have derivative equal to the integrand at discontinuities.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit07.html">← Unit 07<span>Definition of the integral</span></a>
   <a class="n" href="unit09.html">Unit 09 →<span>Integration methods</span></a>

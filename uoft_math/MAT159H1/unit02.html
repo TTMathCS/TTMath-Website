@@ -163,6 +163,43 @@ two units from now.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT159H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Infinite intervals.</strong> Rewrite integrals over unbounded intervals as limits.</li>
+    <li><strong>Singular endpoints.</strong> Split intervals at vertical asymptotes and take one-sided limits.</li>
+    <li><strong>Comparison.</strong> Use direct and limit comparison with p-integrals, exponentials, and rational functions.</li>
+    <li><strong>Absolute convergence.</strong> Compare $\int f$ and $\int |f|$ for sign-changing functions.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT159H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The improper-integral spine is: locate every improper point, split the integral there, and require every resulting limit to converge.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Most mistakes come from evaluating an antiderivative across a singularity without splitting; make the split visible in your work.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · p-test</div>
+      <p>Decide convergence of $\int_2^\infty dx/(x(\ln x)^2)$.</p>
+      <details><summary>Guide</summary><div class="ans">Use $u=\ln x$; the integral becomes $\int_{\ln2}^\infty u^{-2}du$, which converges.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Limit comparison</div>
+      <p>Determine convergence of $\int_1^\infty (3x^2+1)/(x^5+x)dx$.</p>
+      <details><summary>Guide</summary><div class="ans">The integrand behaves like $3/x^3$, and $\int_1^\infty x^{-3}dx$ converges, so limit comparison gives convergence.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Singularity</div>
+      <p>Analyze $\int_0^1 dx/x$.</p>
+      <details><summary>Guide</summary><div class="ans">It equals $\lim_{a	o0^+}\int_a^1 dx/x=\lim_{a	o0^+}-\ln a=\infty$, so it diverges.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Absolute value</div>
+      <p>If $\int |f|$ converges, what can you conclude about $\int f$?</p>
+      <details><summary>Guide</summary><div class="ans">It converges absolutely, hence converges. Proof uses Cauchy criterion or comparison of positive and negative parts.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit01.html">← Unit 01<span>Integration techniques</span></a>
   <a class="n" href="unit03.html">Unit 03 →<span>Sequences &amp; Cauchy sequences</span></a>

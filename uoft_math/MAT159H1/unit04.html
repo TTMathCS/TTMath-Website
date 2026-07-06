@@ -168,6 +168,43 @@ of the next two units.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT159H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Taylor polynomials.</strong> Compute Taylor polynomials around a center with derivative data.</li>
+    <li><strong>Remainders.</strong> Use Lagrange, integral, or alternating remainders to justify approximation.</li>
+    <li><strong>Local approximation.</strong> Know what order of contact means and how error scales.</li>
+    <li><strong>Applications.</strong> Use Taylor theorem for limits, inequalities, and numerical estimates.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT159H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The Taylor spine is: polynomial matching derivative data, theorem with remainder, and explicit error control on a stated interval.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    A Taylor answer without a remainder statement is only a formal polynomial; attach the error term whenever approximation is the point.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Polynomial</div>
+      <p>Find the degree-4 Taylor polynomial for $\cos x$ at $0$.</p>
+      <details><summary>Guide</summary><div class="ans">$1-x^2/2+x^4/24$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Limit</div>
+      <p>Use Taylor expansion to compute $\lim_{x	o0}(\sin x-x)/x^3$.</p>
+      <details><summary>Guide</summary><div class="ans">$\sin x=x-x^3/6+O(x^5)$, so the limit is $-1/6$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Remainder bound</div>
+      <p>Bound the error of $\sin xpprox x$ for $|x|\le0.1$.</p>
+      <details><summary>Guide</summary><div class="ans">Using Taylor with remainder, $|\sin x-x|\le |x|^3/6\le 0.1^3/6$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Center</div>
+      <p>Why is a Taylor polynomial about $a=1$ different from one about $a=0$?</p>
+      <details><summary>Guide</summary><div class="ans">It matches derivatives at a different point, so it gives local accuracy near $1$ rather than near $0$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit03.html">← Unit 03<span>Sequences &amp; Cauchy</span></a>
   <a class="n" href="unit05.html">Unit 05 →<span>Infinite series</span></a>

@@ -171,6 +171,43 @@ uniform convergence and power series that close the course.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT159H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Partial sums.</strong> Define series convergence through convergence of partial sums.</li>
+    <li><strong>Positive series.</strong> Use comparison, limit comparison, integral, ratio, and root tests.</li>
+    <li><strong>Signed series.</strong> Use absolute convergence and alternating series tests.</li>
+    <li><strong>Error estimates.</strong> Estimate tails for geometric, alternating, and integral-test series.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT159H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The series spine is: first test whether terms go to zero, then select a convergence test based on term structure, then estimate the tail if needed.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    For final-exam style problems, write the test name and its hypotheses before the computation.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Geometric</div>
+      <p>For what $x$ does $\sum x^n$ converge?</p>
+      <details><summary>Guide</summary><div class="ans">It converges for $|x|<1$ and diverges for $|x|\ge1$; when convergent the sum from $0$ is $1/(1-x)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Integral test</div>
+      <p>Use the integral test on $\sum 1/(n\ln n)$ for $n\ge2$.</p>
+      <details><summary>Guide</summary><div class="ans">Compare to $\int_2^\infty dx/(x\ln x)=\infty$, so the series diverges.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Root test</div>
+      <p>Apply the root test to $\sum (2n/(3n+1))^n$.</p>
+      <details><summary>Guide</summary><div class="ans">The nth root tends to $2/3$, so the series converges.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Alternating error</div>
+      <p>How many terms guarantee the alternating harmonic sum is within $0.01$ of its limit?</p>
+      <details><summary>Guide</summary><div class="ans">The alternating error is at most the next term. Need $1/(N+1)<0.01$, so $N+1>100$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit04.html">← Unit 04<span>Taylor's theorem</span></a>
   <a class="n" href="unit06.html">Unit 06 →<span>Uniform convergence</span></a>

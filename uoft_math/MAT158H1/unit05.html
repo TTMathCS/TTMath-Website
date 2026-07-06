@@ -173,6 +173,43 @@ bound axiom earns its keep.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>IVT.</strong> Use continuity on intervals to prove root and value-existence statements.</li>
+    <li><strong>EVT.</strong> Use compactness to guarantee maxima and minima.</li>
+    <li><strong>Uniform continuity.</strong> Understand why continuous functions on closed bounded intervals are uniformly continuous.</li>
+    <li><strong>Compactness logic.</strong> See how completeness and boundedness power the three hard theorems.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The spine is: completeness gives compactness behavior, compactness plus continuity gives extrema, and connectedness plus continuity gives intermediate values.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    For each theorem, memorize the hypotheses by finding examples that fail when one hypothesis is removed.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · IVT</div>
+      <p>Show that $\cos x=x$ has a solution in $(0,1)$.</p>
+      <details><summary>Guide</summary><div class="ans">Let $f(x)=\cos x-x$. It is continuous, $f(0)=1>0$, and $f(1)<0$, so IVT gives a root.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · EVT hypothesis</div>
+      <p>Give an example of a continuous function on an open interval that has no maximum.</p>
+      <details><summary>Guide</summary><div class="ans">The function $f(x)=x$ on $(0,1)$ is continuous but has no maximum because values approach $1$ without attaining it.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Uniform continuity</div>
+      <p>Why is $f(x)=x^2$ uniformly continuous on $[0,10]$?</p>
+      <details><summary>Guide</summary><div class="ans">It is continuous on a closed bounded interval, so the Heine-Cantor theorem applies. Directly, $|x^2-y^2|\le20|x-y|$ there.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Hypothesis failure</div>
+      <p>Why can IVT fail for a discontinuous function?</p>
+      <details><summary>Guide</summary><div class="ans">A jump function can take negative values on one side and positive values on the other while skipping $0$, so sign change alone is not enough.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit04.html">← Unit 04<span>Continuous functions</span></a>
   <a class="n" href="unit06.html">Unit 06 →<span>Derivatives</span></a>

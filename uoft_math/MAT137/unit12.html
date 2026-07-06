@@ -173,6 +173,43 @@ the same: does that limit exist?</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT137 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Improper intervals.</strong> Handle infinite intervals by limits of proper integrals.</li>
+    <li><strong>Unbounded integrands.</strong> Handle vertical asymptotes by cutting the interval at the singular point.</li>
+    <li><strong>Comparison tests.</strong> Use direct and limit comparison to prove convergence or divergence.</li>
+    <li><strong>Absolute convergence.</strong> Separate convergence of $\int f$ from convergence of $\int |f|$ when signs oscillate.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the Alfonso Gracia-Saz MAT137 materials as the primary local spine, with the current UofT single-variable calculus topic split as the completeness check. The added items are original study prompts, not copied textbook exercises.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The improper-integral spine is: replace the suspect endpoint by a variable endpoint, compute or estimate the proper integral, then take a limit.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Always identify the exact source of impropriety before integrating; a single integral may need more than one limiting piece.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · p-integral</div>
+      <p>For which $p$ does $\int_1^\infty x^{-p}dx$ converge?</p>
+      <details><summary>Guide</summary><div class="ans">It converges exactly when $p>1$; integrating gives a finite limit only in that case.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Vertical asymptote</div>
+      <p>Determine whether $\int_0^1 x^{-1/2}dx$ converges.</p>
+      <details><summary>Guide</summary><div class="ans">Use $\lim_{a	o0^+}\int_a^1 x^{-1/2}dx=\lim_{a	o0^+}2(1-\sqrt a)=2$, so it converges.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Comparison</div>
+      <p>Show $\int_1^\infty e^{-x^2}dx$ converges.</p>
+      <details><summary>Guide</summary><div class="ans">For $x\ge1$, $x^2\ge x$, so $e^{-x^2}\le e^{-x}$. Since $\int_1^\infty e^{-x}dx$ converges, comparison applies.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Split point</div>
+      <p>Why must $\int_{-1}^1 1/x\,dx$ not be assigned value $0$ by symmetry?</p>
+      <details><summary>Guide</summary><div class="ans">It is improper at $0$ and must be split into $\int_{-1}^0$ and $\int_0^1$. Both diverge, so the improper integral diverges even though the principal value is $0$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit11.html">← Unit 11<span>Sequences</span></a>
   <a class="n" href="unit13.html">Unit 13 →<span>Series</span></a>

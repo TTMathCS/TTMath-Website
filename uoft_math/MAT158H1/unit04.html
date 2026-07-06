@@ -189,6 +189,43 @@ this unit builds the small lemmas those proofs will quietly rely on.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Continuity at a point.</strong> Use the epsilon-delta definition and sequence characterization.</li>
+    <li><strong>Algebra and composition.</strong> Prove continuity is preserved under sums, products, quotients where defined, and composition.</li>
+    <li><strong>Interval behavior.</strong> Understand how continuity interacts with connected intervals.</li>
+    <li><strong>Uniform continuity preview.</strong> Notice when delta can be chosen independently of the point, especially on compact intervals.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The continuity spine is: local limit equality at every point, algebra and composition preserve it, and interval/compactness theorems give global conclusions.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    When a function is piecewise, check the formula inside each piece and then check the boundary points with one-sided limits.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Definition</div>
+      <p>Prove $f(x)=3x-2$ is continuous at every $a$.</p>
+      <details><summary>Guide</summary><div class="ans">For a target $\epsilon$, choose $\delta=\epsilon/3$ so $|f(x)-f(a)|=3|x-a|&lt;\epsilon$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Composition</div>
+      <p>If $f$ is continuous at $a$ and $g$ is continuous at $f(a)$, prove $g\circ f$ is continuous at $a$.</p>
+      <details><summary>Guide</summary><div class="ans">Given epsilon for $g$, get eta around $f(a)$; then use continuity of $f$ to make $|f(x)-f(a)|&lt;\eta$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Piecewise</div>
+      <p>For what $c$ is $f(x)=x^2$ for $x<1$ and $f(x)=cx+1$ for $x\ge1$ continuous at $1$?</p>
+      <details><summary>Guide</summary><div class="ans">Need left value $1$ equal right value $c+1$, so $c=0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Not continuous</div>
+      <p>Show the Dirichlet function $1_{\mathbb{Q}}$ is discontinuous at every real number.</p>
+      <details><summary>Guide</summary><div class="ans">Every interval contains rationals and irrationals, so values near any point oscillate between $1$ and $0$ and cannot approach one limit.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit03.html">← Unit 03<span>Limits</span></a>
   <a class="n" href="unit05.html">Unit 05 →<span>The three hard theorems</span></a>

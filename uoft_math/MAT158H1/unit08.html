@@ -176,6 +176,43 @@ as inverses.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Injectivity.</strong> Use monotonicity or derivative sign information to prove a function has an inverse.</li>
+    <li><strong>Continuity of inverse.</strong> Know when inverses of continuous monotone functions remain continuous.</li>
+    <li><strong>Inverse derivative.</strong> Apply $(f^{-1})\prime(y)=1/f\prime(f^{-1}(y))$ under the right hypotheses.</li>
+    <li><strong>Transcendental bridge.</strong> Use inverse-function results for logarithms and inverse trigonometric functions.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The inverse-function spine is: prove one-to-one, identify the inverse domain and range, then differentiate through the reciprocal derivative rule.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Always compute the derivative of the inverse at an output by first finding the corresponding input.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Inverse point</div>
+      <p>If $f(3)=10$ and $f\prime(3)=-2$, compute $(f^{-1})\prime(10)$ if the theorem applies.</p>
+      <details><summary>Guide</summary><div class="ans">It is $1/f\prime(3)=-1/2$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Monotone inverse</div>
+      <p>Explain why a continuous strictly increasing function on an interval has an inverse on its range.</p>
+      <details><summary>Guide</summary><div class="ans">Strict increase gives injectivity, so each output in the range has exactly one input; continuity controls interval behavior of the range.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Derivative formula</div>
+      <p>Derive $(\ln x)\prime=1/x$ using $\ln$ as the inverse of $e^x$.</p>
+      <details><summary>Guide</summary><div class="ans">If $y=\ln x$, then $x=e^y$. The inverse derivative gives $dy/dx=1/e^y=1/x$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Domain check</div>
+      <p>Why is $x^2$ not invertible on all of $\mathbb{R}$ but invertible on $[0,\infty)$?</p>
+      <details><summary>Guide</summary><div class="ans">On all real numbers it is not one-to-one because $x$ and $-x$ have the same square. On $[0,\infty)$ it is strictly increasing.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit07.html">← Unit 07<span>The Mean Value Theorem</span></a>
   <a class="n" href="unit09.html">Unit 09 →<span>The Riemann integral</span></a>

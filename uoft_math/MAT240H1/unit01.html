@@ -176,6 +176,43 @@ proofs in the course are about the axioms themselves.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT240H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Fields.</strong> Work over arbitrary fields, including $\mathbb{R}$, $\mathbb{C}$, and finite fields such as $\mathbb{Z}_p$.</li>
+    <li><strong>Vector spaces.</strong> Verify all vector-space axioms and recognize standard/nonstandard examples.</li>
+    <li><strong>Scalars matter.</strong> Track how the chosen field changes linear combinations and dimensions.</li>
+    <li><strong>Examples.</strong> Use coordinate spaces, polynomial spaces, function spaces, and matrix spaces as recurring models.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT240H1 calendar topics as the coverage spine, and pair lecture notes with a Friedberg-Insel-Spence-style linear algebra text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The algebra spine is: choose the field, define addition and scalar multiplication, verify closure and axioms, then reason about vectors abstractly.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Before solving any linear algebra problem, write the field in the margin; many MAT240 traps come from changing the field without noticing.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Field check</div>
+      <p>Why is $\mathbb{Z}_p$ a field when $p$ is prime?</p>
+      <details><summary>Guide</summary><div class="ans">Every nonzero residue mod $p$ has a multiplicative inverse because gcd$(a,p)=1$, so Bezout gives $ax+py=1$ and hence $ax\equiv1\pmod p$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Vector space example</div>
+      <p>Show the set of polynomials of degree at most $3$ over $F$ is a vector space.</p>
+      <details><summary>Guide</summary><div class="ans">Closure under addition and scalar multiplication holds, and the usual polynomial operations inherit the vector-space axioms from coefficients in $F$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Non-example</div>
+      <p>Why are polynomials of exactly degree $3$ not a vector space?</p>
+      <details><summary>Guide</summary><div class="ans">The zero polynomial is not degree $3$, and sums can drop degree, e.g. $x^3+(-x^3)=0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Field dependence</div>
+      <p>Compare $\mathbb{C}$ as a vector space over $\mathbb{C}$ and over $\mathbb{R}$.</p>
+      <details><summary>Guide</summary><div class="ans">Over $\mathbb{C}$ it has dimension $1$ with basis $\{1\}$; over $\mathbb{R}$ it has dimension $2$ with basis $\{1,i\}$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="index.html">← Index<span>All chapters</span></a>
   <a class="n" href="unit02.html">Unit 02 →<span>Subspaces, span &amp; independence</span></a>

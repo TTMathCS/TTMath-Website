@@ -200,6 +200,43 @@ right and the Fundamental Theorem (next unit) is a short proof.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Riemann definition.</strong> Use partitions, tags, upper sums, lower sums, and mesh to define the integral.</li>
+    <li><strong>Integrability criteria.</strong> Prove integrability for continuous, monotone, and simple discontinuous examples.</li>
+    <li><strong>Properties.</strong> Use linearity, order, additivity over intervals, and absolute-value inequalities for integrals.</li>
+    <li><strong>Approximation.</strong> Relate sums and integrals through limiting procedures.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The Riemann spine is: bounded function, partitions, upper-lower gap, integrability, then algebraic properties of the integral.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Every definition proof should end by making an upper-lower gap smaller than an arbitrary epsilon.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Criterion</div>
+      <p>State the Riemann integrability criterion using upper and lower sums.</p>
+      <details><summary>Guide</summary><div class="ans">A bounded function is integrable iff for every $\epsilon>0$ some partition satisfies $U(f,P)-L(f,P)&lt;\epsilon$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Monotone integrability</div>
+      <p>Sketch why every monotone function on $[a,b]$ is Riemann integrable.</p>
+      <details><summary>Guide</summary><div class="ans">Use equally spaced partitions. The total upper-lower gap telescopes to roughly $(f(b)-f(a))\Delta x$, which can be made small.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Order property</div>
+      <p>Prove if $f\le g$ on $[a,b]$, then $\int f\le\int g$.</p>
+      <details><summary>Guide</summary><div class="ans">For every partition, lower/upper sums respect the order; pass to integrals, or apply nonnegativity to $g-f$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · One-point change</div>
+      <p>Does changing a Riemann integrable function at one point change its integral?</p>
+      <details><summary>Guide</summary><div class="ans">No. Isolate that point in a tiny interval; the contribution to upper-lower sums can be made arbitrarily small.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit08.html">← Unit 08<span>Inverse functions</span></a>
   <a class="n" href="unit10.html">Unit 10 →<span>The Fundamental Theorem</span></a>

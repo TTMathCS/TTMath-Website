@@ -206,6 +206,43 @@ rush it: an ε–δ proof is nothing but quantifiers handled correctly.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Logic.</strong> Handle quantifiers, negations, implications, and proof by contradiction cleanly.</li>
+    <li><strong>Sets and functions.</strong> Use images, preimages, injective/surjective language, and set operations.</li>
+    <li><strong>Proof discipline.</strong> Separate assumptions, claims, and conclusions so later analysis proofs are readable.</li>
+    <li><strong>Counterexamples.</strong> Disprove false universal statements with minimal examples.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>Analysis proofs are mostly careful quantifier management: choose epsilon, produce delta or N, then verify every implication in order.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Rewrite each definition in words, symbols, and a negated form; all three versions appear in tests.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Quantifier order</div>
+      <p>Explain why "for every $\epsilon$ there exists $N$" is different from "there exists $N$ for every $\epsilon$."</p>
+      <details><summary>Guide</summary><div class="ans">The first lets $N$ depend on the tolerance; the second asks one $N$ to work for all tolerances, usually impossible for convergence definitions.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Contrapositive</div>
+      <p>Prove: if $n^2$ is even, then $n$ is even.</p>
+      <details><summary>Guide</summary><div class="ans">Use contrapositive. If $n$ is odd, $n=2k+1$, so $n^2=4k^2+4k+1$ is odd.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Preimage</div>
+      <p>Show $f^{-1}(A\cap B)=f^{-1}(A)\cap f^{-1}(B)$.</p>
+      <details><summary>Guide</summary><div class="ans">An element $x$ is in the left side iff $f(x)\in A\cap B$, iff $f(x)\in A$ and $f(x)\in B$, iff $x$ is in both preimages.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Counterexample</div>
+      <p>Disprove: every injective function is surjective.</p>
+      <details><summary>Guide</summary><div class="ans">The function $f:\mathbb{N}	o\mathbb{N}$ by $f(n)=n+1$ is injective but misses $1$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="index.html">← Index<span>All chapters</span></a>
   <a class="n" href="unit02.html">Unit 02 →<span>Real numbers &amp; least upper bounds</span></a>

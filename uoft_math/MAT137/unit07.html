@@ -182,6 +182,43 @@ the Fundamental Theorem (next unit) meaningful rather than magical.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT137 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Riemann sums.</strong> Build lower sums, upper sums, tagged sums, partitions, and mesh size from the definition.</li>
+    <li><strong>Integrability.</strong> Know why continuous functions and monotone functions are Riemann integrable.</li>
+    <li><strong>Area meaning.</strong> Interpret the integral as signed accumulation, not just geometric area.</li>
+    <li><strong>Definition proofs.</strong> Use upper-lower sum estimates to prove integrability and compute simple integrals from first principles.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the Alfonso Gracia-Saz MAT137 materials as the primary local spine, with the current UofT single-variable calculus topic split as the completeness check. The added items are original study prompts, not copied textbook exercises.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The definition chain is: partitions approximate the area, upper and lower sums trap all tagged sums, and integrability means the trap can be made arbitrarily tight.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    For a proof problem, draw the partition behavior first; for a computation problem, identify whether symmetry, geometry, or a limit of sums is fastest.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Upper-lower criterion</div>
+      <p>State the upper-lower sum criterion for Riemann integrability.</p>
+      <details><summary>Guide</summary><div class="ans">A bounded function on $[a,b]$ is Riemann integrable iff for every $\epsilon>0$ there is a partition $P$ such that $U(f,P)-L(f,P)&lt;\epsilon$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Constant function</div>
+      <p>Compute $\int_a^b c\,dx$ from the definition.</p>
+      <details><summary>Guide</summary><div class="ans">Every upper and lower sum equals $c(b-a)$ if $c\ge0$; for general constant $c$, tagged sums still equal $c(b-a)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Discontinuous example</div>
+      <p>Is the function $f=1$ at $0$ and $0$ elsewhere on $[0,1]$ Riemann integrable?</p>
+      <details><summary>Guide</summary><div class="ans">Yes. It is bounded and differs from $0$ at one point only; upper sums can be made small by isolating $0$ in a tiny subinterval, and lower sums are $0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Signed area</div>
+      <p>Explain why $\int_{-1}^1 x\,dx=0$ without antiderivatives.</p>
+      <details><summary>Guide</summary><div class="ans">The positive area on $[0,1]$ and negative area on $[-1,0]$ cancel by odd symmetry.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit06.html">← Unit 06<span>Applications of derivatives</span></a>
   <a class="n" href="unit08.html">Unit 08 →<span>The Fundamental Theorem</span></a>

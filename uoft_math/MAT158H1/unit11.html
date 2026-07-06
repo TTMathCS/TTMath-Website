@@ -190,6 +190,43 @@ from the FTC of Unit 10 and the inverse function theorem of Unit 8.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Exponential and logarithm.</strong> Construct and differentiate exponential/logarithmic functions rigorously.</li>
+    <li><strong>Trig functions.</strong> Use trigonometric identities and derivative rules with proof awareness.</li>
+    <li><strong>Inverse functions.</strong> Derive inverse trig derivatives from inverse-function theory.</li>
+    <li><strong>Growth and inequalities.</strong> Use MVT and convexity to prove standard exponential/logarithmic inequalities.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The transcendental spine is: define carefully, prove monotonicity/invertibility, differentiate, then derive identities and inequalities.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Do not treat formulas as isolated facts; connect each formula to FTC, inverse functions, or the differential equation $y\prime=y$.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Log inequality</div>
+      <p>Prove $\ln x\le x-1$ for $x>0$.</p>
+      <details><summary>Guide</summary><div class="ans">Let $h(x)=x-1-\ln x$. Then $h\prime(x)=1-1/x$, so $h$ decreases to $0$ on $(0,1]$ and increases from $0$ on $[1,\infty)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Exp inequality</div>
+      <p>Prove $e^x\ge1+x$.</p>
+      <details><summary>Guide</summary><div class="ans">Use $h(x)=e^x-1-x$ and derivative sign, or convexity of $e^x$ at $0$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Inverse trig</div>
+      <p>Differentiate $rccos x$.</p>
+      <details><summary>Guide</summary><div class="ans">Let $y=rccos x$, so $x=\cos y$ and $y\in[0,\pi]$. Then $dy/dx=1/(-\sin y)=-1/\sqrt{1-x^2}$ for $-1<x<1$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Growth</div>
+      <p>Show $\lim_{x	o\infty}\ln x/x=0$ using LHopital if available.</p>
+      <details><summary>Guide</summary><div class="ans">It is an $\infty/\infty$ form; derivative quotient is $(1/x)/1=1/x	o0$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit10.html">← Unit 10<span>The Fundamental Theorem</span></a>
   <a class="n" href="index.html">Back to Index<span>All chapters</span></a>

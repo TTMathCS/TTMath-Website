@@ -18,6 +18,8 @@
   <a href="../index.html">All Courses</a>
   <a href="#about" data-t>About</a>
   <a href="#units" data-t>Chapters</a>
+  <a href="#textbook" data-t>Textbook Spine</a>
+  <a href="#practice" data-t>Practice Plan</a>
   <a href="#resources" data-t>Resources</a>
   <div class="foot">RIGOROUS ANALYSIS<br>TEXT: SPIVAK<br>MATH SPECIALIST CORE</div>
 </nav>
@@ -86,17 +88,114 @@
   </ol>
 </section>
 
+<section id="textbook" class="reveal">
+  <div class="sec-head"><span class="no">02</span><h2>Textbook Spine</h2></div>
+  <p class="sec-sub">The public U of T calendar gives the official topic list,
+  but not a year-specific textbook. This guide uses Spivak's <em>Calculus</em>
+  as the companion text because its proof style matches the course: definitions
+  first, theorem proof second, computation last. Always verify the current
+  instructor's assigned text on Quercus or the syllabus.</p>
+
+  <div class="context">
+    <div class="ctxh">Unit-to-textbook alignment</div>
+    <div class="ci"><div class="cl">Foundations</div>
+      <p>Units 1-2 pair with Spivak's opening work on logic, functions, number
+      systems, order, and the least-upper-bound property. Read for proof grammar:
+      how examples become definitions and how definitions become theorems.</p></div>
+    <div class="ci"><div class="cl">Limits and continuity</div>
+      <p>Units 3-5 pair with Spivak's development of limits, continuous
+      functions, and the hard interval theorems. Treat the Intermediate Value
+      Theorem, boundedness theorem, and Extreme Value Theorem as the central
+      proof targets of the first half.</p></div>
+    <div class="ci"><div class="cl">Differentiation and integration</div>
+      <p>Units 6-11 pair with Spivak's derivative chapters, inverse functions,
+      Riemann integration, the Fundamental Theorem of Calculus, and the rigorous
+      construction of elementary transcendental functions.</p></div>
+  </div>
+
+  <div class="bp">
+    <div class="card"><div class="n">READ</div><h4>Read after lecture</h4>
+      <p>Use the local unit first for orientation, then read the matching Spivak
+      section slowly enough to reconstruct every omitted algebra step.</p></div>
+    <div class="card"><div class="n">PROVE</div><h4>Rebuild theorem proofs</h4>
+      <p>For each theorem, close the book and write the dependency chain: which
+      definitions and previous results are being used?</p></div>
+    <div class="card"><div class="n">DRILL</div><h4>Mix routine and proof work</h4>
+      <p>Do computational exercises only after the proof setup is clear. MAT158
+      tests whether computation is justified, not just whether it is correct.</p></div>
+    <div class="card"><div class="n">CHECK</div><h4>Use the calendar topics</h4>
+      <p>The local chapter order follows the official topic list: elementary
+      logic, limits, continuity, least upper bounds, interval theorems,
+      derivatives, inverse functions, integrals, FTC, and transcendental
+      functions.</p></div>
+  </div>
+</section>
+
+<section id="practice" class="reveal">
+  <div class="sec-head"><span class="no">03</span><h2>Practice Plan</h2></div>
+  <p class="sec-sub">Use the unit pages for guided questions, then graduate to
+  textbook-style proof sets. A good MAT158 week has four layers.</p>
+
+  <div class="bp">
+    <div class="card"><div class="n">01</div><h4>Definition translation</h4>
+      <p>Write every claim in quantifier form before solving. This is mandatory
+      for limits, continuity, differentiability, integrability, and suprema.</p></div>
+    <div class="card"><div class="n">02</div><h4>Theorem reconstruction</h4>
+      <p>Redo one major proof each week without notes: least upper bound,
+      squeeze, IVT, EVT, MVT, inverse function theorem, or FTC.</p></div>
+    <div class="card"><div class="n">03</div><h4>Spivak-style exercises</h4>
+      <p>Choose a balanced set: two routine checks, two proof problems, one
+      counterexample, and one problem where you must decide which theorem applies.</p></div>
+    <div class="card"><div class="n">04</div><h4>Error correction</h4>
+      <p>Rewrite failed solutions in full sentences. The target is not only the
+      answer; it is a proof a grader can follow line by line.</p></div>
+  </div>
+
+  <div class="block">
+    <h3>Course-wide challenge bank</h3>
+    <p class="prac-intro">These are not replacements for textbook exercises.
+    They are checkpoint problems that test the proof muscles MAT158 uses most.</p>
+    <div class="prac">
+      <div class="q"><div class="ql">Challenge 1 · Supremum</div>
+        <p>Let $A=\{x\in\mathbb{R}:x^2&lt;2\}$. Prove that $\sup A=\sqrt2$.</p>
+        <details><summary>Solution sketch</summary><div class="ans">First
+        $\sqrt2$ is an upper bound: if $x&gt;\sqrt2$ then $x^2&gt;2$. If
+        $u&lt;\sqrt2$, choose $x$ with $u&lt;x&lt;\sqrt2$; then $x^2&lt;2$, so
+        $x\in A$ and $u$ is not an upper bound. Thus $\sqrt2$ is the least upper
+        bound.</div></details></div>
+      <div class="q"><div class="ql">Challenge 2 · Limit proof</div>
+        <p>Prove $\lim_{x\to a}x^2=a^2$ directly from the definition.</p>
+        <details><summary>Solution sketch</summary><div class="ans">
+        $|x^2-a^2|=|x-a||x+a|$. First force $|x-a|&lt;1$, so
+        $|x+a|\le |x-a|+2|a|&lt;1+2|a|$. Then choose
+        $\delta=\min(1,\varepsilon/(1+2|a|))$.</div></details></div>
+      <div class="q"><div class="ql">Challenge 3 · IVT</div>
+        <p>Prove that $x^3+x-1=0$ has a solution in $(0,1)$.</p>
+        <details><summary>Solution sketch</summary><div class="ans">Let
+        $f(x)=x^3+x-1$. It is continuous. Since $f(0)=-1$ and $f(1)=1$, the
+        Intermediate Value Theorem gives some $c\in(0,1)$ with $f(c)=0$.</div></details></div>
+      <div class="q"><div class="ql">Challenge 4 · FTC check</div>
+        <p>Let $F(x)=\int_1^x \dfrac{1}{1+t^2}\,dt$. Prove $F$ is increasing and
+        compute $F'(x)$.</p>
+        <details><summary>Solution sketch</summary><div class="ans">The
+        integrand is positive, so if $x&lt;y$ then
+        $F(y)-F(x)=\int_x^y(1+t^2)^{-1}dt&gt;0$. By the Fundamental Theorem of
+        Calculus, $F'(x)=1/(1+x^2)$.</div></details></div>
+    </div>
+  </div>
+</section>
+
 <section id="resources" class="reveal">
-  <div class="sec-head"><span class="no">02</span><h2>Resources</h2></div>
+  <div class="sec-head"><span class="no">04</span><h2>Resources</h2></div>
   <p class="src">
     <a href="https://artsci.calendar.utoronto.ca/course/mat158h1">MAT158H1 — official calendar listing</a><br>
     <a href="../MAT137/index.html">MAT137 guide — summer preparation</a><br>
     <a href="https://www.youtube.com/channel/UCLzpR8AiHx9h_-yt2fAxd_A">MAT137 video library (same topics)</a>
   </p>
   <p class="lic">Companion text used by this guide: Spivak, <em>Calculus</em>.
-  MAT158H1 is mandatory for the Mathematics Specialist and related programs.
-  MAT240H1 pairs naturally with it but is not listed as a MAT158H1 co-requisite.
-  Verify details against the official calendar each year.</p>
+  The public calendar confirms the MAT158H1 topic list but does not publish a
+  current instructor textbook. Verify the assigned text, edition, and problem
+  numbers against the active syllabus each year.</p>
 </section>
 
 <footer class="end">

@@ -161,6 +161,43 @@ page.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT158H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>FTC Part 1.</strong> Prove and use differentiability of accumulation functions.</li>
+    <li><strong>FTC Part 2.</strong> Evaluate integrals using antiderivatives and prove the net-change formula.</li>
+    <li><strong>Substitution.</strong> Connect substitution to FTC and chain rule.</li>
+    <li><strong>Regularity.</strong> Track continuity hypotheses for the integrand and differentiability hypotheses for antiderivatives.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT158H1 calendar topics as the coverage spine, and pair lecture notes with a Spivak-style proof-calculus text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The FTC spine is: continuity gives differentiable accumulation; any antiderivative differs by a constant; definite integrals become endpoint differences.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    In proof questions, separate the construction of an antiderivative from the uniqueness-up-to-constant argument.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · FTC derivative</div>
+      <p>Differentiate $F(x)=\int_a^x f(t)dt$ when $f$ is continuous.</p>
+      <details><summary>Guide</summary><div class="ans">FTC Part 1 gives $F\prime(x)=f(x)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Endpoint difference</div>
+      <p>If $G\prime=f$, prove $\int_a^b f=G(b)-G(a)$.</p>
+      <details><summary>Guide</summary><div class="ans">By FTC Part 1, $F(x)=\int_a^x f$ is an antiderivative. Then $F-G$ is constant by MVT consequences, and evaluating at $a,b$ gives the formula.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Chain endpoint</div>
+      <p>Differentiate $\int_0^{x^2}\cos(t^3)dt$.</p>
+      <details><summary>Guide</summary><div class="ans">FTC Part 1 plus chain rule gives $2x\cos(x^6)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Substitution</div>
+      <p>Explain substitution for definite integrals as an FTC result.</p>
+      <details><summary>Guide</summary><div class="ans">If $u=g(x)$, then an antiderivative of $f(g(x))g\prime(x)$ is $F(g(x))$ where $F\prime=f$; endpoints become $g(a)$ and $g(b)$.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit09.html">← Unit 09<span>The Riemann integral</span></a>
   <a class="n" href="unit11.html">Unit 11 →<span>Transcendental functions</span></a>

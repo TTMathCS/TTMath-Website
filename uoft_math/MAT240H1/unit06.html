@@ -169,6 +169,43 @@ simple, which is the whole story of Unit 10.</p>
   </div>
 </div>
 
+
+<div class="block reveal">
+  <h3>Expanded topic checklist</h3>
+  <p><strong>Course coverage.</strong> This unit is part of the complete MAT240H1 topic map. It should cover the following items before you move on:</p>
+  <ul>
+    <li><strong>Change of basis.</strong> Convert coordinate vectors between ordered bases using transition matrices.</li>
+    <li><strong>Similarity.</strong> Recognize matrices of the same operator in different bases as similar matrices.</li>
+    <li><strong>Invariants.</strong> Know trace, determinant, rank, characteristic polynomial, and eigenvalues are preserved under similarity.</li>
+    <li><strong>Coordinate discipline.</strong> Distinguish vectors from coordinate columns and operators from their representing matrices.</li>
+  </ul>
+  <div class="box thm"><div class="bl">Textbook/source alignment</div>
+    <p>Use the current UofT MAT240H1 calendar topics as the coverage spine, and pair lecture notes with a Friedberg-Insel-Spence-style linear algebra text for extra reading. The exact assigned textbook should still be checked against the instructor syllabus.</p></div>
+  <div class="box eg"><div class="bl">Core theorem map</div>
+    <p>The spine is: coordinates depend on basis, vectors do not; changing basis conjugates operator matrices by an invertible transition matrix.</p></div>
+  <div class="checkpoint"><b>Study routine.</b>
+    Whenever a formula has $P^{-1}AP$, label which basis each matrix converts from and to.</div>
+</div>
+
+<div class="block reveal">
+  <h3>Deep practice extensions</h3>
+  <p class="prac-intro">Use these after the main practice set. They are designed to force definition-level reasoning, theorem selection, and mixed application rather than routine calculation only.</p>
+  <div class="prac">
+    <div class="q"><div class="ql">Extension 1 · Transition matrix</div>
+      <p>What are the columns of the change-of-basis matrix from basis $B$ to the standard basis?</p>
+      <details><summary>Guide</summary><div class="ans">They are the vectors of $B$ written in standard coordinates.</div></details></div>
+    <div class="q"><div class="ql">Extension 2 · Similarity</div>
+      <p>Define what it means for matrices $A$ and $B$ to be similar.</p>
+      <details><summary>Guide</summary><div class="ans">They are similar if there is an invertible matrix $P$ such that $B=P^{-1}AP$.</div></details></div>
+    <div class="q"><div class="ql">Extension 3 · Invariant</div>
+      <p>Prove determinant is preserved under similarity.</p>
+      <details><summary>Guide</summary><div class="ans">det$(P^{-1}AP)=\det(P^{-1})\det(A)\det(P)=\det(A)$.</div></details></div>
+    <div class="q"><div class="ql">Extension 4 · Concept</div>
+      <p>Why does similarity preserve eigenvalues?</p>
+      <details><summary>Guide</summary><div class="ans">Similar matrices represent the same operator in different bases, and algebraically they have the same characteristic polynomial.</div></details></div>
+  </div>
+</div>
+
 <div class="navrow reveal">
   <a href="unit05.html">← Unit 05<span>Rank–nullity &amp; matrices</span></a>
   <a class="n" href="unit07.html">Unit 07 →<span>Systems &amp; elementary operations</span></a>
