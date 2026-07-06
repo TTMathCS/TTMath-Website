@@ -120,12 +120,12 @@ a.course-row:hover .row-title{color:var(--blue)}
 .planned-row{color:var(--muted)}
 .course-code{flex:0 0 5.8rem;color:var(--blue);font-size:.72rem}
 .planned-row .course-code{color:var(--muted)}
-.row-title{flex:1;min-width:0;font-weight:600;font-size:.93rem;
+.row-title{flex:0 1 auto;min-width:0;font-weight:600;font-size:.93rem;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .planned-row .row-title{font-weight:500}
 .subject-tag{flex:none;padding:.1rem .4rem;color:var(--green);font-size:.68rem;
   border:1px solid var(--line-soft);border-radius:4px;background:var(--well)}
-.row-meta{flex:0 0 7rem;color:var(--muted);font-size:.78rem;text-align:right}
+.row-meta{flex:none;margin-left:auto;color:var(--muted);font-size:.78rem;text-align:right}
 a.course-row .row-meta{color:var(--blue)}
 .empty-state{grid-column:1/-1;padding:3rem;border:1px dashed var(--line);
   border-radius:8px;color:var(--muted);background:var(--well);text-align:center}
