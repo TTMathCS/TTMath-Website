@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="TTMath hub: school website demos, L3 number theory notes, and the U of T math learning path.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>TTMath Hub</title>
 <style>
   :root{
@@ -14,14 +14,12 @@
     --blue:#2a5cae;--green:#2e7d4f;
     --shadow:0 1px 2px rgba(15,23,42,.05),0 12px 32px rgba(15,23,42,.07);
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --desk:#0f1115;--sheet:#191d24;--well:#13161c;
-      --ink:#e8eaee;--muted:#a5acba;
-      --line:#353b46;--line-soft:#272c35;--grid:rgba(125,167,232,.08);
-      --blue:#7da7e8;--green:#6cbd8e;
-      --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 36px rgba(0,0,0,.45);
-    }
+  [data-theme="dark"]{
+    --desk:#0f1115;--sheet:#191d24;--well:#13161c;
+    --ink:#e8eaee;--muted:#a5acba;
+    --line:#353b46;--line-soft:#272c35;--grid:rgba(125,167,232,.08);
+    --blue:#7da7e8;--green:#6cbd8e;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 36px rgba(0,0,0,.45);
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -35,6 +33,14 @@
   .sheet{width:min(720px,100%);background:var(--sheet);
     border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);
     padding:34px 38px 30px}
+
+  .theme-toggle{position:fixed;right:14px;top:14px;z-index:50;
+    font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink);background:var(--sheet);border:1px solid var(--line);
+    border-radius:999px;padding:6px 11px;cursor:pointer;
+    box-shadow:var(--shadow);transition:border-color .2s,color .2s}
+  .theme-toggle:hover{border-color:var(--blue);color:var(--blue)}
 
   header{margin-bottom:26px;padding:18px 0 22px;
     background:
@@ -93,6 +99,7 @@
     .rows .go{display:none}
   }
 </style>
+<script src="uoft_math/assets/theme.js"></script>
 </head>
 <body>
   <div class="sheet">
