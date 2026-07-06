@@ -38,42 +38,26 @@
     return course.path && localCoursePath.test(course.path);
   }
 
-  function makeCourseCard(course) {
-    var card = hasLocalGuide(course)
-      ? element("a", "course-card")
-      : element("article", "course-card planned-card");
-    var top = element("div", "card-top");
-    var identity = element("div");
-    var code = element("span", "course-code", course.code);
-    var title = element("h3", "", course.title);
-    var subject = element("span", "subject-tag", course.subject);
-    var description = element("p", "course-description", course.description);
-    var facts = element("dl", "course-facts");
-    var topics = element("div", "topic-list");
-    var action = element("span", "card-action", hasLocalGuide(course)
-      ? "Open course guide"
-      : "Planned guide entry");
+  function makeCourseRow(course) {
+    var row = hasLocalGuide(course)
+      ? element("a", "course-row")
+      : element("article", "course-row planned-row");
 
     if (hasLocalGuide(course)) {
-      card.href = course.path;
+      row.href = course.path;
     }
-    identity.append(code, title);
-    top.append(identity, subject);
+    // one line per course; the description survives as a hover tooltip
+    row.title = course.description;
 
-    [
-      ["Level", course.term],
-      ["Guide", course.chapters ? String(course.chapters) + " chapters" : "Not built"],
-      ["Status", course.status]
-    ].forEach(function (fact) {
-      facts.append(element("dt", "", fact[0]), element("dd", "", fact[1]));
-    });
-
-    (course.topics || []).forEach(function (topic) {
-      topics.append(element("span", "", topic));
-    });
-
-    card.append(top, description, facts, topics, action);
-    return card;
+    row.append(
+      element("span", "course-code", course.code),
+      element("span", "row-title", course.title),
+      element("span", "subject-tag", course.subject),
+      element("span", "row-meta", hasLocalGuide(course)
+        ? String(course.chapters) + " chapters →"
+        : "planned")
+    );
+    return row;
   }
 
   function levelSort(first, second) {
@@ -97,14 +81,14 @@
     var count = element("p", "", groupCourses.length + (
       groupCourses.length === 1 ? " course" : " courses"
     ));
-    var cards = element("div", "course-grid");
+    var list = element("div", "course-list");
 
     groupCourses.forEach(function (course) {
-      cards.append(makeCourseCard(course));
+      list.append(makeCourseRow(course));
     });
 
     heading.append(title, count);
-    section.append(heading, cards);
+    section.append(heading, list);
     return section;
   }
 
