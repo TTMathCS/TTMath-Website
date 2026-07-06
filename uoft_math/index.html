@@ -28,23 +28,78 @@
   </header>
 
   <main>
-    <section class="catalog-section" aria-labelledby="catalog-title">
+    <section class="pathway-section" aria-labelledby="selection-title">
       <div class="section-heading">
         <div>
           <span class="section-number">01</span>
-          <h2 id="catalog-title">Course Catalog</h2>
+          <h2 id="selection-title">Suggested Course Selection</h2>
         </div>
-        <p id="result-count" aria-live="polite">Showing all courses.</p>
+      </div>
+      <div class="pathway-grid">
+        <article class="pathway-card">
+          <h3>Year 2: choose the proof-heavy spine</h3>
+          <p>For a student aiming at UofT, Princeton, or another top statistics /
+          probability PhD program, the second-year goal is transcript credibility:
+          hard analysis, hard algebra, and theoretical probability.</p>
+          <ul>
+            <li><code>MAT247H1</code> rather than <code>MAT224H1</code> when possible</li>
+            <li><code>MAT257Y1</code> rather than <code>MAT237Y1</code> when possible</li>
+            <li><code>MAT267H1</code> rather than <code>MAT244H1</code> when possible</li>
+            <li><code>STA257H1</code> and <code>STA261H1</code> for the theory stream</li>
+            <li><code>CSC148H1</code> or equivalent programming for computation/research</li>
+          </ul>
+        </article>
+        <article class="pathway-card">
+          <h3>Year 3: build analysis and probability depth</h3>
+          <p>The third-year target is a coherent theory profile: topology/real
+          analysis plus upper-year probability/statistics, with enough applied
+          statistics to stay credible as a statistics applicant.</p>
+          <ul>
+            <li><code>MAT327H1</code> and <code>MAT337H1</code>; add <code>MAT357H1</code> if prepared</li>
+            <li><code>MAT377H1</code> or <code>STA347H1</code>/<code>STA357H1</code></li>
+            <li><code>STA302H1</code> plus <code>STA355H1</code> or <code>STA365H1</code></li>
+            <li><code>MAT301H1</code> and <code>MAT334H1</code> for breadth in the specialist plan</li>
+            <li><code>MAT332H1</code>, <code>MAT344H1</code>, or <code>APM348H1</code> for related structures</li>
+          </ul>
+        </article>
+        <article class="pathway-card">
+          <h3>Year 4: signal research readiness</h3>
+          <p>For Princeton-level applications, use fourth year to show you can
+          handle graduate-style mathematics and produce strong research letters.</p>
+          <ul>
+            <li><code>MAT457H1</code> and <code>MAT458H1</code> if real analysis is a strength</li>
+            <li><code>MAT436H1</code> for functional analysis/operator background</li>
+            <li><code>STA422H1</code>, <code>STA452H1</code>, <code>STA453H1</code>, and <code>STA447H1</code></li>
+            <li><code>STA410H1</code> or <code>STA414H1</code> for computation/ML depth</li>
+            <li><code>MAT497Y1</code>, <code>MAT499Y1</code>, <code>STA496H1</code>, or <code>STA497H1</code> for supervised reading/research</li>
+          </ul>
+        </article>
+      </div>
+      <p class="pathway-note"><strong>Planning note.</strong> The official degree
+      audit comes from Degree Explorer and the UofT Calendar. This suggested
+      course selection is strategic advice, not a guarantee: grades, letters,
+      research fit, writing, and faculty advocacy matter at least as much as the
+      course list for UofT, Princeton, Stanford, Berkeley, Chicago, Harvard, MIT,
+      and similar departments.</p>
+    </section>
+
+    <section class="catalog-section" aria-labelledby="catalog-title">
+      <div class="section-heading">
+        <div>
+          <span class="section-number">02</span>
+          <h2 id="catalog-title">Course Catalog by Year</h2>
+        </div>
+        <p id="result-count" aria-live="polite">Showing all courses, grouped by year.</p>
       </div>
 
       <div class="catalog-tools">
         <label for="course-search">Search courses and topics</label>
         <input id="course-search" type="search" autocomplete="off"
-          placeholder="Try limits, proofs, series, or algebra">
+          placeholder="Try Year 3, probability, topology, ROP, or STA452">
         <div id="course-filters" class="filters" aria-label="Filter by subject"></div>
       </div>
 
-      <div id="course-grid" class="course-grid"></div>
+      <div id="course-grid" class="course-results"></div>
 
       <noscript>
         <div class="noscript-list">
@@ -55,58 +110,6 @@
           <a href="MAT240H1/index.html">MAT240H1 · Algebra I</a>
         </div>
       </noscript>
-    </section>
-
-    <section class="pathway-section" aria-labelledby="phd-title">
-      <div class="section-heading">
-        <div>
-          <span class="section-number">02</span>
-          <h2 id="phd-title">Probability/Statistics PhD Prep</h2>
-        </div>
-      </div>
-      <div class="pathway-grid">
-        <article class="pathway-card">
-          <h3>Official specialist spine</h3>
-          <p>For Mathematics &amp; Its Applications: Probability/Statistics, treat
-          these as the baseline course families before adding research depth.</p>
-          <ul>
-            <li><code>MAT237Y1</code> or <code>MAT257Y1</code></li>
-            <li><code>MAT223H1</code>/<code>MAT240H1</code> and <code>MAT224H1</code>/<code>MAT247H1</code></li>
-            <li><code>MAT244H1</code> or <code>MAT267H1</code></li>
-            <li><code>STA237H1</code>/<code>STA257H1</code>, then <code>STA238H1</code>/<code>STA261H1</code></li>
-            <li><code>STA347H1</code>, <code>MAT377H1</code>, or <code>MAT370H1</code></li>
-          </ul>
-        </article>
-        <article class="pathway-card">
-          <h3>Top PhD theory track</h3>
-          <p>For UofT, Princeton, and other highly selective U.S. PhD programs,
-          bias toward the proof-heavy versions and the hardest analysis/probability
-          sequence you can do well in.</p>
-          <ul>
-            <li><code>MAT257Y1</code>, <code>MAT327H1</code>, <code>MAT337H1</code>, <code>MAT357H1</code></li>
-            <li><code>MAT457H1</code> and <code>MAT458H1</code> if analysis is your strength</li>
-            <li><code>MAT377H1</code>, <code>STA347H1</code>/<code>STA357H1</code>, <code>STA447H1</code></li>
-            <li><code>STA422H1</code>, <code>STA452H1</code>, <code>STA453H1</code></li>
-            <li><code>MAT436H1</code> for functional analysis/operator background</li>
-          </ul>
-        </article>
-        <article class="pathway-card">
-          <h3>Research and letters track</h3>
-          <p>Prestigious PhD admissions are not just a checklist. Use upper-year
-          courses to create research evidence and strong letters.</p>
-          <ul>
-            <li><code>STA490Y1</code> or <code>STA492H1</code> for communication and seminar work</li>
-            <li><code>MAT497Y1</code>, <code>MAT499Y1</code>, <code>STA496H1</code>/<code>STA497H1</code> for readings</li>
-            <li><code>STA410H1</code> and <code>STA414H1</code> for computational statistics/ML depth</li>
-            <li><code>STA437H1</code>, <code>STA442H1</code>, <code>STA457H1</code>, <code>STA475H1</code> for applied depth</li>
-            <li>Prioritize A-range grades in theory courses over collecting too many electives.</li>
-          </ul>
-        </article>
-      </div>
-      <p class="pathway-note"><strong>Planning note.</strong> The official degree
-      audit comes from Degree Explorer and the UofT Calendar; this PhD sequence is
-      strategic advice for students aiming at research programs, including UofT,
-      Princeton, Stanford, Berkeley, Chicago, Harvard, MIT, and similar departments.</p>
     </section>
 
     <section class="reference-section" aria-labelledby="reference-title">

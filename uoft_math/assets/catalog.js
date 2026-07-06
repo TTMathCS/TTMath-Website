@@ -11,6 +11,7 @@
   var chapterCount = document.getElementById("chapter-count");
   var activeSubject = "All";
   var localCoursePath = /^[A-Za-z0-9_-]+\/index\.html$/;
+  var levelOrder = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
   function element(tag, className, text) {
     var node = document.createElement(tag);
@@ -75,6 +76,38 @@
     return card;
   }
 
+  function levelSort(first, second) {
+    var firstIndex = levelOrder.indexOf(first);
+    var secondIndex = levelOrder.indexOf(second);
+    if (firstIndex === -1) {
+      firstIndex = levelOrder.length;
+    }
+    if (secondIndex === -1) {
+      secondIndex = levelOrder.length;
+    }
+    return firstIndex === secondIndex
+      ? first.localeCompare(second)
+      : firstIndex - secondIndex;
+  }
+
+  function makeCourseGroup(level, groupCourses) {
+    var section = element("section", "course-year-group");
+    var heading = element("div", "year-heading");
+    var title = element("h3", "", level);
+    var count = element("p", "", groupCourses.length + (
+      groupCourses.length === 1 ? " course" : " courses"
+    ));
+    var cards = element("div", "course-grid");
+
+    groupCourses.forEach(function (course) {
+      cards.append(makeCourseCard(course));
+    });
+
+    heading.append(title, count);
+    section.append(heading, cards);
+    return section;
+  }
+
   function renderCourses() {
     var query = search.value.trim().toLowerCase();
     var visible = courses.filter(function (course) {
@@ -84,17 +117,26 @@
     });
 
     grid.replaceChildren();
-    visible.forEach(function (course) {
-      grid.append(makeCourseCard(course));
-    });
-
     if (!visible.length) {
       grid.append(element("p", "empty-state", "No courses match this search yet."));
+    } else {
+      var groups = {};
+      visible.forEach(function (course) {
+        var level = course.term || "Other";
+        if (!groups[level]) {
+          groups[level] = [];
+        }
+        groups[level].push(course);
+      });
+
+      Object.keys(groups).sort(levelSort).forEach(function (level) {
+        grid.append(makeCourseGroup(level, groups[level]));
+      });
     }
 
     resultCount.textContent = visible.length === courses.length
-      ? "Showing all " + courses.length + " courses."
-      : "Showing " + visible.length + " of " + courses.length + " courses.";
+      ? "Showing all " + courses.length + " courses, grouped by year."
+      : "Showing " + visible.length + " of " + courses.length + " courses, grouped by year.";
   }
 
   function renderFilters() {
