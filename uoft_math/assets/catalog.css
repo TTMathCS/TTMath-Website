@@ -158,7 +158,7 @@ h2{margin-bottom:0;font-family:"Avenir Next","Helvetica Neue","Segoe UI",system-
   font-family:"Avenir Next","Helvetica Neue","Segoe UI",system-ui,sans-serif;font-weight:600}
 .reference-grid p{margin-bottom:0;color:var(--muted)}
 
-.pathway-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.pathway-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 .pathway-card{padding:1.1rem 1.2rem;border:1px solid var(--line);
   border-top:3px solid var(--green);border-radius:8px;background:var(--sheet);
   box-shadow:var(--shadow-card)}
