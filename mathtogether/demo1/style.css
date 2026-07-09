@@ -20,7 +20,7 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-section,footer{scroll-margin-top:78px}
+section,footer{scroll-margin-top:56px}
 
 body{
   overflow-x:hidden;
@@ -46,22 +46,11 @@ h1,h2,h3{font-family:"STIX Two Text",Georgia,serif;font-weight:600}
 /* ------------------------------------------------- nav */
 body>nav{
   position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;
-  flex-wrap:wrap;padding:10px clamp(16px,5vw,64px);
+  flex-wrap:wrap;padding:7px clamp(16px,5vw,64px);
   background:rgba(8,13,27,.88);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
   box-shadow:0 12px 30px rgba(0,0,0,.18);
 }
-body>nav .brand{display:flex;align-items:center;gap:9px;font-family:"STIX Two Text",serif;
-  font-weight:600;font-size:19px;color:var(--ink);text-decoration:none;
-  min-width:max-content;padding:6px 12px 6px 8px;border-radius:8px;
-  background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(84,215,183,.05));
-  border:1px solid rgba(218,225,255,.18);box-shadow:inset 0 1px rgba(255,255,255,.06)}
-body>nav .brand img{width:46px;height:46px;object-fit:contain;
-  filter:drop-shadow(0 0 10px rgba(255,200,87,.4))}
-.brand-copy{display:grid;line-height:1.05}
-.brand-copy strong{font:600 20px/1.05 "STIX Two Text",Georgia,serif;color:#fff}
-.brand-copy small{font:600 11px/1.1 "IBM Plex Mono",ui-monospace,monospace;
-  letter-spacing:.08em;text-transform:lowercase;color:var(--mint);margin-top:4px}
 body>nav .links{margin-left:auto;display:flex;gap:4px 18px;flex-wrap:wrap;align-items:center}
 body>nav .links a{color:#dfe5ff;text-decoration:none;font-weight:600;font-size:14px;position:relative}
 body>nav .links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;
@@ -99,8 +88,12 @@ header::before{
   gap:clamp(22px,3.5vw,52px);align-items:start;max-width:1520px;margin:0 0 0 auto;
 }
 .hero-in{position:relative;max-width:620px;min-width:0;padding-top:30px}
-.hero-badge{width:132px;height:132px;object-fit:contain;margin-bottom:16px;
+.hero-brand{display:flex;align-items:center;gap:18px;margin-bottom:18px;text-align:left}
+.hero-brand img{width:118px;height:118px;object-fit:contain;
   filter:drop-shadow(0 0 20px rgba(255,200,87,.45))}
+.hero-brand strong{display:block;font:600 34px/1.05 "STIX Two Text",Georgia,serif;color:#fff}
+.hero-brand small{display:block;margin-top:7px;font:600 13px/1 "IBM Plex Mono",ui-monospace,monospace;
+  letter-spacing:.1em;text-transform:lowercase;color:var(--mint)}
 .eyebrow{
   display:flex;align-items:center;gap:8px;flex-wrap:wrap;
   font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--mint);
@@ -621,7 +614,7 @@ details[open]>summary::before{content:"− "}
 .dlg-close:hover{background:rgba(8,13,27,.85)}
 
 /* team org chart */
-.team-grid{grid-template-columns:repeat(auto-fit,minmax(270px,330px));justify-content:center}
+.team-grid{grid-template-columns:repeat(auto-fit,minmax(250px,310px));justify-content:center}
 .tier{text-align:center}
 .tier+.tier::before{content:"";display:block;width:2px;height:30px;
   background:repeating-linear-gradient(180deg,var(--ink) 0 4px,transparent 4px 9px);
@@ -633,7 +626,7 @@ details[open]>summary::before{content:"− "}
 /* member cards flip in 3D: fixed height so nothing resizes on click */
 .member{
   background:none;border:none;box-shadow:none;padding:0;text-align:center;
-  height:360px;perspective:1100px;cursor:pointer;
+  height:330px;perspective:1100px;cursor:pointer;
 }
 .member .flip{position:relative;width:100%;height:100%;
   transform-style:preserve-3d;transition:transform .65s cubic-bezier(.3,.1,.2,1)}
@@ -650,6 +643,7 @@ details[open]>summary::before{content:"− "}
   background-size:22px 22px,22px 22px,auto,auto;
   box-shadow:0 18px 42px rgba(5,10,30,.3),inset 0 1px rgba(255,255,255,.55);
 }
+.member .front{display:flex;flex-direction:column;justify-content:center;align-items:center}
 .member .back{transform:rotateY(180deg);text-align:left;overflow-y:auto;padding:18px 17px}
 .member .back h3{font-size:17px;margin-bottom:8px}
 .member .back p{font-size:13.5px;line-height:1.5;color:#3c4568;margin-top:8px}
@@ -703,11 +697,11 @@ footer .btn:hover{background:var(--violet);border-color:var(--violet)}
 .reveal.in{opacity:1;transform:none}
 
 @media (max-width:640px){
-  body>nav{justify-content:center;padding:10px 16px}
-  body>nav .brand{width:100%;justify-content:center}
-  body>nav .brand img{width:44px;height:44px}
-  .brand-copy strong{font-size:20px}
-  body>nav .links{width:100%;min-width:0;max-width:354px;margin-left:0;justify-content:flex-start;gap:8px 14px}
+  body>nav{justify-content:center;padding:8px 16px}
+  body>nav .links{width:100%;min-width:0;max-width:354px;margin-left:0;justify-content:center;gap:8px 14px}
+  .hero-brand{gap:14px}
+  .hero-brand img{width:88px;height:88px}
+  .hero-brand strong{font-size:25px}
   body>nav .links a{font-size:13.5px;white-space:nowrap}
   body>nav .links a[href="#involved"],body>nav .links a[href="#faq"]{display:none}
   header{padding:24px 18px 28px}
