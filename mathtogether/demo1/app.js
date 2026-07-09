@@ -4,7 +4,7 @@ var coords = sky.querySelector('.coords');
 var discovery = sky.querySelector('.discovery-card');
 var constellation = sky.querySelector('.constellations');
 var lastPoint = null;
-var lastMathematicianName = '';
+var lastLegendName = '';
 var maxTrailSegments = 5;
 var maxDots = 9;
 
@@ -140,7 +140,7 @@ var topics = [
   }
 ];
 
-var mathematicians = [
+var legends = [
   {
     name: 'Archimedes',
     src: '../assets/img/mathematicians/archimedes.jpg',
@@ -180,6 +180,46 @@ var mathematicians = [
     name: 'Alan Turing',
     src: '../assets/img/mathematicians/turing.jpg',
     note: 'Computability, codebreaking, and machine intelligence.'
+  },
+  {
+    name: 'Blaise Pascal',
+    src: '../assets/img/legends/pascal.jpg',
+    note: 'Probability, projective geometry, pressure, and Pascal triangle.'
+  },
+  {
+    name: 'Sofia Kovalevskaya',
+    src: '../assets/img/legends/sofia-kovalevskaya.jpg',
+    note: 'Analysis, differential equations, and a path-breaking math career.'
+  },
+  {
+    name: 'Albert Einstein',
+    src: '../assets/img/legends/einstein.jpg',
+    note: 'Relativity, spacetime, and physics powered by mathematical imagination.'
+  },
+  {
+    name: 'Marie Curie',
+    src: '../assets/img/legends/curie.jpg',
+    note: 'Radioactivity, chemistry, physics, and two Nobel Prizes.'
+  },
+  {
+    name: 'Katherine Johnson',
+    src: '../assets/img/legends/katherine-johnson.jpg',
+    note: 'Orbital mechanics and calculations that helped send astronauts to space.'
+  },
+  {
+    name: 'Galileo Galilei',
+    src: '../assets/img/legends/galileo.jpg',
+    note: 'Motion, astronomy, experiments, and the language of mathematics.'
+  },
+  {
+    name: 'Charles Darwin',
+    src: '../assets/img/legends/darwin.jpg',
+    note: 'Evolution, natural selection, and the patient art of evidence.'
+  },
+  {
+    name: 'Grace Hopper',
+    src: '../assets/img/legends/grace-hopper.jpg',
+    note: 'Programming languages, compilers, and making computers more human.'
   }
 ];
 
@@ -187,12 +227,12 @@ function pick(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
-function pickMathematician() {
-  var choices = mathematicians.filter(function (m) {
-    return m.name !== lastMathematicianName;
+function pickLegend() {
+  var choices = legends.filter(function (m) {
+    return m.name !== lastLegendName;
   });
-  var item = pick(choices.length ? choices : mathematicians);
-  lastMathematicianName = item.name;
+  var item = pick(choices.length ? choices : legends);
+  lastLegendName = item.name;
   return item;
 }
 
@@ -261,7 +301,7 @@ function updateDiscovery(kind, item) {
     kicker.className = 'discovery-kicker';
     img.src = item.src;
     img.alt = item.name + ' portrait';
-    kicker.textContent = 'Mathematician cameo';
+    kicker.textContent = 'Legend cameo';
     name.textContent = item.name;
     note.textContent = item.note;
     text.appendChild(kicker);
@@ -289,6 +329,18 @@ function updateDiscovery(kind, item) {
   discovery.appendChild(title);
   discovery.appendChild(formula);
   discovery.appendChild(explainer);
+}
+
+function positionDiscovery(px, py, r) {
+  var labelWidth = Math.min(330, r.width - 54);
+  var side = px > r.width * 0.58 ? 'left' : 'right';
+  var x = side === 'left' ?
+    clamp(px - 58, labelWidth + 12, r.width - 18) :
+    clamp(px + 58, 18, r.width - labelWidth - 16);
+  var y = clamp(py, 84, r.height - 92);
+  discovery.dataset.side = side;
+  discovery.style.setProperty('--tag-x', x + 'px');
+  discovery.style.setProperty('--tag-y', y + 'px');
 }
 
 function plotPoint(px, py, r) {
@@ -380,11 +432,12 @@ function discover(px, py) {
   var roll = Math.random();
   var kind = roll < 0.28 ? 'portrait' : roll < 0.54 ? 'formula' :
     roll < 0.78 ? 'conjecture' : 'topic';
-  var item = kind === 'portrait' ? pickMathematician() :
+  var item = kind === 'portrait' ? pickLegend() :
     kind === 'formula' ? pick(formulas) :
     kind === 'conjecture' ? pick(conjectures) : pick(topics);
 
   plotPoint(px, py, r);
+  positionDiscovery(px, py, r);
   updateDiscovery(kind, item);
   if (kind === 'portrait') showPortrait(safeX, safeY, item);
   else showFormula(safeX, safeY, item);
