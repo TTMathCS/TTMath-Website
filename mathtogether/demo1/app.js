@@ -364,6 +364,32 @@ sky.addEventListener('keydown', function (e) {
   discover(90 + Math.random() * (r.width - 180), 80 + Math.random() * (r.height - 170));
 });
 
+// News stories open in a reading overlay instead of stretching the card.
+var dlg = document.createElement('dialog');
+dlg.className = 'story-dialog';
+dlg.innerHTML = '<button class="dlg-close" aria-label="Close">×</button><div class="dlg-body"></div>';
+document.body.appendChild(dlg);
+var dlgBody = dlg.querySelector('.dlg-body');
+dlg.querySelector('.dlg-close').addEventListener('click', function () { dlg.close(); });
+dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+document.querySelectorAll('.story').forEach(function (s) {
+  var details = s.querySelector('details');
+  if (!details) return;
+  details.querySelector('summary').addEventListener('click', function (e) {
+    e.preventDefault();
+    dlgBody.innerHTML = '';
+    ['img', 'h3', '.date'].forEach(function (sel) {
+      var el = s.querySelector(sel);
+      if (el) dlgBody.appendChild(el.cloneNode(true));
+    });
+    details.querySelectorAll('p').forEach(function (p) {
+      dlgBody.appendChild(p.cloneNode(true));
+    });
+    dlg.showModal();
+  });
+});
+
 // Team cards flip like award medals: person on the front, bio on the back.
 document.querySelectorAll('.member').forEach(function (m) {
   var flip = document.createElement('div');
