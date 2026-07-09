@@ -375,7 +375,7 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
   content:"{";position:absolute;left:0;top:-.08em;font-size:2.15em;line-height:1;
 }
 .portrait-burst{
-  display:grid;justify-items:center;gap:8px;width:156px;color:#fff;text-align:center;
+  display:grid;justify-items:center;gap:8px;width:216px;color:#fff;text-align:center;
   animation:portraitPop 7.4s ease forwards;
 }
 .portrait-burst img{
@@ -385,12 +385,16 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
   filter:saturate(1.04) contrast(1.03);
 }
 .portrait-burst b{
-  display:block;width:max-content;max-width:170px;padding:6px 11px 2px;border-radius:999px;
-  background:rgba(10,14,35,.86);border:1px solid rgba(143,240,215,.38);
+  display:block;width:max-content;max-width:210px;padding:5px 12px;border-radius:999px;
+  background:rgba(10,14,35,.9);border:1px solid rgba(143,240,215,.38);
   box-shadow:0 12px 24px rgba(0,0,0,.28);
-  font-size:13px;line-height:1.15;
+  font-size:13px;line-height:1.2;
 }
-.portrait-burst span{display:block;font-size:11px;color:#9ff0dc}
+.portrait-burst span{
+  display:block;padding:7px 11px;border-radius:6px;font-size:11.5px;line-height:1.4;color:#d3daf5;
+  background:rgba(10,14,35,.86);border:1px solid rgba(143,240,215,.24);
+  box-shadow:0 12px 24px rgba(0,0,0,.28);
+}
 @keyframes flashStar{from{scale:.9;opacity:.62}to{scale:1.18;opacity:1}}
 @keyframes burstFloat{
   0%{opacity:0;transform:translate(-50%,-38%) scale(.72)}

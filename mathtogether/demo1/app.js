@@ -137,84 +137,139 @@ var topics = [
 
 var legends = [
   {
+    name: 'Euclid',
+    src: '../assets/img/legends/euclid.jpg',
+    note: 'Wrote The Elements — 13 books that defined geometry and proof for 2,000+ years.'
+  },
+  {
+    name: 'Pythagoras',
+    src: '../assets/img/legends/pythagoras.jpg',
+    note: 'The theorem linking right triangles to numbers; taught that number rules everything.'
+  },
+  {
     name: 'Archimedes',
     src: '../assets/img/mathematicians/archimedes.jpg',
-    note: 'Geometry, levers, and the method of exhaustion.'
+    note: 'Nailed π between 3 10/71 and 3 1/7, law of the lever, buoyancy — antiquity at its peak.'
   },
   {
-    name: 'Leonhard Euler',
-    src: '../assets/img/mathematicians/euler.jpg',
-    note: 'Graph theory, analysis, notation, and the identity.'
+    name: 'René Descartes',
+    src: '../assets/img/legends/descartes.jpg',
+    note: 'Invented the Cartesian plane — the very grid this sky is drawn on.'
   },
   {
-    name: 'Carl Friedrich Gauss',
-    src: '../assets/img/mathematicians/gauss.jpg',
-    note: 'Number theory, geometry, statistics, and magnetism.'
-  },
-  {
-    name: 'Ada Lovelace',
-    src: '../assets/img/mathematicians/lovelace.jpg',
-    note: 'An early vision of symbolic computation.'
-  },
-  {
-    name: 'Isaac Newton',
-    src: '../assets/img/mathematicians/newton.jpg',
-    note: 'Calculus, motion, optics, and mathematical physics.'
-  },
-  {
-    name: 'Emmy Noether',
-    src: '../assets/img/mathematicians/noether.jpg',
-    note: 'Symmetry, conservation laws, and modern algebra.'
-  },
-  {
-    name: 'Srinivasa Ramanujan',
-    src: '../assets/img/mathematicians/ramanujan.jpg',
-    note: 'Infinite series, partitions, and startling identities.'
-  },
-  {
-    name: 'Alan Turing',
-    src: '../assets/img/mathematicians/turing.jpg',
-    note: 'Computability, codebreaking, and machine intelligence.'
+    name: 'Pierre de Fermat',
+    src: '../assets/img/legends/fermat.jpg',
+    note: 'Founded modern number theory; his Last Theorem took 358 years to prove.'
   },
   {
     name: 'Blaise Pascal',
     src: '../assets/img/legends/pascal.jpg',
-    note: 'Probability, projective geometry, pressure, and Pascal triangle.'
+    note: 'Pascal’s triangle, probability theory with Fermat, and a working calculator at 19.'
+  },
+  {
+    name: 'Isaac Newton',
+    src: '../assets/img/mathematicians/newton.jpg',
+    note: 'Invented calculus, then used it to explain motion and gravity.'
+  },
+  {
+    name: 'Gottfried Leibniz',
+    src: '../assets/img/legends/leibniz.jpg',
+    note: 'Co-invented calculus — the dy/dx and ∫ notation we still write today.'
+  },
+  {
+    name: 'Leonhard Euler',
+    src: '../assets/img/mathematicians/euler.jpg',
+    note: 'Most prolific mathematician ever: e^iπ + 1 = 0, graph theory, 850+ works.'
+  },
+  {
+    name: 'Carl Friedrich Gauss',
+    src: '../assets/img/mathematicians/gauss.jpg',
+    note: 'The "Prince of Mathematics": number theory, least squares, the Gaussian curve.'
+  },
+  {
+    name: 'Évariste Galois',
+    src: '../assets/img/legends/galois.jpg',
+    note: 'Created group theory by age 20, settling when equations can be solved.'
+  },
+  {
+    name: 'Bernhard Riemann',
+    src: '../assets/img/legends/riemann.jpg',
+    note: 'Riemann surfaces, the hypothesis on primes, and the geometry behind relativity.'
+  },
+  {
+    name: 'Henri Poincaré',
+    src: '../assets/img/legends/poincare.png',
+    note: 'Founded topology and chaos theory; his conjecture stood for a century.'
+  },
+  {
+    name: 'David Hilbert',
+    src: '../assets/img/legends/hilbert.jpg',
+    note: 'His 23 problems set the agenda for 20th-century mathematics.'
   },
   {
     name: 'Sofia Kovalevskaya',
     src: '../assets/img/legends/sofia-kovalevskaya.jpg',
-    note: 'Analysis, differential equations, and a path-breaking math career.'
+    note: 'First woman to earn a math doctorate; Cauchy–Kovalevskaya theorem.'
+  },
+  {
+    name: 'Srinivasa Ramanujan',
+    src: '../assets/img/mathematicians/ramanujan.jpg',
+    note: 'Self-taught genius: ~3,900 identities, partitions, and mock theta functions.'
+  },
+  {
+    name: 'Emmy Noether',
+    src: '../assets/img/mathematicians/noether.jpg',
+    note: 'Noether’s theorem: every symmetry hides a conservation law.'
   },
   {
     name: 'Albert Einstein',
     src: '../assets/img/legends/einstein.jpg',
-    note: 'Relativity, spacetime, and physics powered by mathematical imagination.'
-  },
-  {
-    name: 'Marie Curie',
-    src: '../assets/img/legends/curie.jpg',
-    note: 'Radioactivity, chemistry, physics, and two Nobel Prizes.'
-  },
-  {
-    name: 'Katherine Johnson',
-    src: '../assets/img/legends/katherine-johnson.jpg',
-    note: 'Orbital mechanics and calculations that helped send astronauts to space.'
+    note: 'General relativity — gravity explained as curved spacetime.'
   },
   {
     name: 'Galileo Galilei',
     src: '../assets/img/legends/galileo.jpg',
-    note: 'Motion, astronomy, experiments, and the language of mathematics.'
+    note: '"The universe is written in the language of mathematics" — and he proved it.'
   },
   {
-    name: 'Charles Darwin',
-    src: '../assets/img/legends/darwin.jpg',
-    note: 'Evolution, natural selection, and the patient art of evidence.'
+    name: 'Ada Lovelace',
+    src: '../assets/img/mathematicians/lovelace.jpg',
+    note: 'Wrote the first computer program — a century before computers existed.'
+  },
+  {
+    name: 'Alan Turing',
+    src: '../assets/img/mathematicians/turing.jpg',
+    note: 'The Turing machine, breaking Enigma, and the test for machine minds.'
+  },
+  {
+    name: 'John von Neumann',
+    src: '../assets/img/legends/von-neumann.gif',
+    note: 'Game theory, the stored-program computer, and the math of quantum mechanics.'
   },
   {
     name: 'Grace Hopper',
     src: '../assets/img/legends/grace-hopper.jpg',
-    note: 'Programming languages, compilers, and making computers more human.'
+    note: 'Built the first compiler and made programming speak English.'
+  },
+  {
+    name: 'Katherine Johnson',
+    src: '../assets/img/legends/katherine-johnson.jpg',
+    note: 'Hand-computed NASA’s orbits for Mercury and Apollo 11.'
+  },
+  {
+    name: 'Paul Erdős',
+    src: '../assets/img/legends/erdos.jpg',
+    note: '1,500+ papers with 500+ collaborators — math’s great connector.'
+  },
+  {
+    name: 'Maryam Mirzakhani',
+    src: '../assets/img/legends/mirzakhani.jpg',
+    note: 'First woman to win the Fields Medal (2014), for the geometry of surfaces.'
+  },
+  {
+    name: 'Terence Tao',
+    src: '../assets/img/legends/tao.jpg',
+    note: 'IMO gold at 13 — youngest ever — and the 2006 Fields Medal.'
   }
 ];
 
@@ -324,7 +379,7 @@ function showPortrait(x, y, item) {
   img.src = item.src;
   img.alt = item.name + ' portrait';
   name.textContent = item.name;
-  note.textContent = 'legend unlocked';
+  note.textContent = item.note;
   card.appendChild(img);
   card.appendChild(name);
   card.appendChild(note);
