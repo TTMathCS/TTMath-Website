@@ -1,7 +1,12 @@
 var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var sky = document.querySelector('.sky-stage');
 var coords = sky.querySelector('.coords');
+var discovery = sky.querySelector('.discovery-card');
+var constellation = sky.querySelector('.constellations');
+var lastPoint = null;
 var lastLegendName = '';
+var maxTrailSegments = 5;
+var maxDots = 9;
 
 var formulas = [
   {
@@ -96,6 +101,45 @@ var conjectures = [
   }
 ];
 
+var topics = [
+  {
+    kicker: 'Math world',
+    title: 'Topology',
+    formulaHtml: 'shape without measuring',
+    note: 'Study what survives stretching, twisting, and continuous deformation.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Fractals and chaos',
+    formulaHtml: 'z → z<sup>2</sup> + c',
+    note: 'Tiny changes, infinite detail, and patterns that never quite settle.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Graph theory',
+    formulaHtml: 'vertices + edges = networks',
+    note: 'The math of routes, friendships, competitions, maps, and algorithms.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Modular arithmetic',
+    formulaHtml: 'a ≡ b <span class="mod">(mod&nbsp;n)</span>',
+    note: 'Clock math that powers contests, cryptography, and number theory.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Game theory',
+    formulaHtml: 'strategy + incentives',
+    note: 'A way to reason about choices when everyone else is thinking too.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Combinatorics',
+    formulaHtml: 'count the impossible-looking set',
+    note: 'Arrangements, invariants, clever counting, and olympiad problem magic.'
+  }
+];
+
 var legends = [
   {
     name: 'Archimedes',
@@ -153,6 +197,11 @@ var legends = [
     note: 'Relativity, spacetime, and physics powered by mathematical imagination.'
   },
   {
+    name: 'Marie Curie',
+    src: '../assets/img/legends/curie.jpg',
+    note: 'Radioactivity, chemistry, physics, and two Nobel Prizes.'
+  },
+  {
     name: 'Katherine Johnson',
     src: '../assets/img/legends/katherine-johnson.jpg',
     note: 'Orbital mechanics and calculations that helped send astronauts to space.'
@@ -161,6 +210,11 @@ var legends = [
     name: 'Galileo Galilei',
     src: '../assets/img/legends/galileo.jpg',
     note: 'Motion, astronomy, experiments, and the language of mathematics.'
+  },
+  {
+    name: 'Charles Darwin',
+    src: '../assets/img/legends/darwin.jpg',
+    note: 'Evolution, natural selection, and the patient art of evidence.'
   },
   {
     name: 'Grace Hopper',
@@ -198,8 +252,8 @@ document.querySelectorAll('.curve').forEach(function (p, i) {
   });
 });
 
-// Sprinkle a night sky inside the Cartesian panel.
-for (var i = 0; i < 80; i++) {
+// Sprinkle a night sky inside the observatory-sized Cartesian panel.
+for (var i = 0; i < 120; i++) {
   var s = document.createElement('span');
   s.className = 'star';
   var sz = 1 + Math.random() * 1.6;
@@ -209,18 +263,17 @@ for (var i = 0; i < 80; i++) {
   sky.insertBefore(s, sky.firstChild);
 }
 
-// A lone shooting star, random direction and random timing.
+// A shooting star crosses the panel every so often.
 function meteor() {
   var m = document.createElement('div');
   m.className = 'meteor';
-  m.style.top = (10 + Math.random() * 65) + '%';
-  m.style.left = (15 + Math.random() * 70) + '%';
-  m.style.setProperty('--angle', Math.floor(Math.random() * 360) + 'deg');
+  m.style.top = (Math.random() * 55) + '%';
+  m.style.left = (20 + Math.random() * 68) + '%';
   sky.appendChild(m);
   m.addEventListener('animationend', function () { m.remove(); });
-  setTimeout(meteor, 5000 + Math.random() * 11000);
+  setTimeout(meteor, 3200 + Math.random() * 6000);
 }
-if (!still) setTimeout(meteor, 2500);
+if (!still) setTimeout(meteor, 1600);
 
 // Live (x, y) readout: the panel is a real coordinate plane, 26px per unit.
 sky.addEventListener('mousemove', function (e) {
@@ -230,14 +283,100 @@ sky.addEventListener('mousemove', function (e) {
   coords.textContent = '(x, y) = (' + x + ', ' + y + ')';
 });
 
-// One burst per click: a flashing star plus a single card with the details.
+function updateDiscovery(kind, item) {
+  discovery.classList.remove('pulse');
+  void discovery.offsetWidth;
+  discovery.classList.add('pulse');
+  while (discovery.firstChild) discovery.firstChild.remove();
+
+  if (kind === 'portrait') {
+    var wrap = document.createElement('div');
+    var img = document.createElement('img');
+    var text = document.createElement('div');
+    var kicker = document.createElement('p');
+    var name = document.createElement('h3');
+    var note = document.createElement('p');
+
+    wrap.className = 'discovery-person';
+    kicker.className = 'discovery-kicker';
+    img.src = item.src;
+    img.alt = item.name + ' portrait';
+    kicker.textContent = 'Legend cameo';
+    name.textContent = item.name;
+    note.textContent = item.note;
+    text.appendChild(kicker);
+    text.appendChild(name);
+    text.appendChild(note);
+    wrap.appendChild(img);
+    wrap.appendChild(text);
+    discovery.appendChild(wrap);
+    return;
+  }
+
+  var label = document.createElement('p');
+  var title = document.createElement('h3');
+  var formula = document.createElement('p');
+  var explainer = document.createElement('p');
+
+  label.className = 'discovery-kicker';
+  formula.className = 'formula math-display';
+  label.textContent = item.kicker || (kind === 'conjecture' ? 'Open conjecture' :
+    kind === 'topic' ? 'Math world' : 'Theorem flash');
+  title.textContent = item.title;
+  formula.innerHTML = item.formulaHtml;
+  explainer.textContent = item.note;
+  discovery.appendChild(label);
+  discovery.appendChild(title);
+  discovery.appendChild(formula);
+  discovery.appendChild(explainer);
+}
+
+function positionDiscovery(px, py, r) {
+  var labelWidth = Math.min(330, r.width - 54);
+  var side = px > r.width * 0.58 ? 'left' : 'right';
+  var x = side === 'left' ?
+    clamp(px - 58, labelWidth + 12, r.width - 18) :
+    clamp(px + 58, 18, r.width - labelWidth - 16);
+  var y = clamp(py, 84, r.height - 92);
+  discovery.dataset.side = side;
+  discovery.style.setProperty('--tag-x', x + 'px');
+  discovery.style.setProperty('--tag-y', y + 'px');
+}
+
+function plotPoint(px, py, r) {
+  var d = document.createElement('div');
+  d.className = 'dot';
+  d.style.left = px + 'px';
+  d.style.top = py + 'px';
+  d.innerHTML = '<i></i><span>(' + (px / 26).toFixed(1) + ', ' +
+                ((r.height - py) / 26).toFixed(1) + ')</span>';
+  sky.appendChild(d);
+
+  var point = { x: px / r.width * 100, y: py / r.height * 100 };
+  if (lastPoint) {
+    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', lastPoint.x.toFixed(2));
+    line.setAttribute('y1', lastPoint.y.toFixed(2));
+    line.setAttribute('x2', point.x.toFixed(2));
+    line.setAttribute('y2', point.y.toFixed(2));
+    constellation.appendChild(line);
+  }
+  lastPoint = point;
+
+  while (constellation.children.length > maxTrailSegments) {
+    constellation.firstElementChild.remove();
+  }
+
+  var dots = sky.querySelectorAll('.dot');
+  if (dots.length > maxDots) dots[0].remove();
+}
+
 function showFormula(x, y, item) {
   var b = document.createElement('div');
   var star = document.createElement('span');
   var label = document.createElement('span');
   var title = document.createElement('b');
   var formula = document.createElement('em');
-  var note = document.createElement('small');
 
   b.className = 'spark-burst';
   b.style.left = x + 'px';
@@ -246,18 +385,14 @@ function showFormula(x, y, item) {
   label.className = 'spark-formula';
   title.textContent = item.kicker ? item.kicker + ' · ' + item.title : item.title;
   formula.innerHTML = item.formulaHtml;
-  note.textContent = item.note;
   label.appendChild(title);
   label.appendChild(formula);
-  label.appendChild(note);
   b.appendChild(star);
   b.appendChild(label);
   sky.appendChild(b);
 
-  b.addEventListener('animationend', function (e) {
-    if (e.target === b) b.remove();
-  });
-  cap('.spark-burst,.portrait-burst', 2);
+  b.addEventListener('animationend', function () { b.remove(); });
+  cap('.spark-burst', 4);
 }
 
 function showPortrait(x, y, item) {
@@ -272,16 +407,14 @@ function showPortrait(x, y, item) {
   img.src = item.src;
   img.alt = item.name + ' portrait';
   name.textContent = item.name;
-  note.textContent = item.note;
+  note.textContent = 'legend unlocked';
   card.appendChild(img);
   card.appendChild(name);
   card.appendChild(note);
   sky.appendChild(card);
 
-  card.addEventListener('animationend', function (e) {
-    if (e.target === card) card.remove();
-  });
-  cap('.spark-burst,.portrait-burst', 2);
+  card.addEventListener('animationend', function () { card.remove(); });
+  cap('.portrait-burst', 3);
 }
 
 function cap(selector, limit) {
@@ -295,10 +428,19 @@ function cap(selector, limit) {
 function discover(px, py) {
   var r = sky.getBoundingClientRect();
   var safeX = clamp(px, 86, r.width - 86);
-  var safeY = clamp(py, 96, r.height - 120);
+  var safeY = clamp(py, 70, r.height - 110);
+  var roll = Math.random();
+  var kind = roll < 0.28 ? 'portrait' : roll < 0.54 ? 'formula' :
+    roll < 0.78 ? 'conjecture' : 'topic';
+  var item = kind === 'portrait' ? pickLegend() :
+    kind === 'formula' ? pick(formulas) :
+    kind === 'conjecture' ? pick(conjectures) : pick(topics);
 
-  if (Math.random() < 0.4) showPortrait(safeX, safeY, pickLegend());
-  else showFormula(safeX, safeY, pick(Math.random() < 0.65 ? formulas : conjectures));
+  plotPoint(px, py, r);
+  positionDiscovery(px, py, r);
+  updateDiscovery(kind, item);
+  if (kind === 'portrait') showPortrait(safeX, safeY, item);
+  else showFormula(safeX, safeY, item);
 }
 
 sky.addEventListener('click', function (e) {
