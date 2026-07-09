@@ -12,7 +12,6 @@ document.querySelectorAll('.curve').forEach(function (p, i) {
     requestAnimationFrame(function () { p.style.strokeDashoffset = 0; });
   });
 });
-document.querySelector('.pts').classList.add('go');
 
 // live (x, y) readout — the hero is a real coordinate plane, 26px per unit
 var coords = document.querySelector('.coords');
