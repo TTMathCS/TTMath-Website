@@ -174,7 +174,7 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
 .stats b{font-family:"STIX Two Text",serif;font-size:27px;font-weight:600;
   color:var(--violet);display:block}
 .stats li:nth-child(even) b{color:var(--gold)}
-.stats li{font-size:13px;color:#c6cfee}
+.stats li{font-size:13px;color:#c6cfee;text-align:center}
 
 .sky-stage{
   position:relative;isolation:isolate;overflow:visible;justify-self:end;width:100%;
