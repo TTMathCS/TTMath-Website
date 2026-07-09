@@ -518,18 +518,19 @@ blockquote{
 }
 blockquote .note{display:block;margin-top:6px;font-size:15px;color:var(--muted)}
 
-/* cards share one plotted star-atlas language: bright notebook panels, glowing intersection dot */
+/* cards are cream index cards pinned on the dark blue: light paper, faint graph lines */
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
 .cards article,.story,.member,.faq{
+  color:#242b49;
   background:
-    linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px),
-    linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
-    radial-gradient(260px 140px at 18% 0,rgba(84,215,183,.24),transparent 72%),
-    linear-gradient(180deg,rgba(43,67,138,.98),rgba(24,42,101,.98));
+    linear-gradient(90deg,rgba(74,104,200,.10) 1px,transparent 1px),
+    linear-gradient(rgba(74,104,200,.09) 1px,transparent 1px),
+    radial-gradient(260px 140px at 18% 0,rgba(84,215,183,.15),transparent 72%),
+    linear-gradient(180deg,#fffdf6,#f7f2e3);
   background-size:22px 22px,22px 22px,auto,auto;
   border:1px solid rgba(223,230,255,.42);border-radius:6px;
   position:relative;transition:transform .15s,box-shadow .15s,border-color .15s;
-  box-shadow:0 18px 42px rgba(5,10,30,.26),inset 0 1px rgba(255,255,255,.10);
+  box-shadow:0 18px 42px rgba(5,10,30,.34),inset 0 1px #fff;
 }
 .cards article:hover,.story:hover,.member:hover{
   transform:translateY(-4px);border-color:rgba(255,200,87,.58);
@@ -547,8 +548,8 @@ blockquote .note{display:block;margin-top:6px;font-size:15px;color:var(--muted)}
   opacity:.78;z-index:1;pointer-events:none;
 }
 .cards h3{font-size:19px;margin-bottom:8px}
-.cards p{color:var(--muted);font-size:15px;margin-bottom:10px}
-.cards a{font-weight:600;text-decoration:none;color:var(--gold)}
+.cards p{color:#525c7e;font-size:15px;margin-bottom:10px}
+.cards a{font-weight:600;text-decoration:none;color:#a2770e}
 .cards a:hover{text-decoration:underline}
 
 .live-points{list-style:none;counter-reset:pt;max-width:66ch;margin:24px 0}
@@ -577,14 +578,14 @@ h3.sub{margin:30px 0 12px;font-size:23px}
 }
 .story h3{font-size:18px;padding:14px 18px 2px}
 .story .date{font-size:11px;font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--coral);padding:4px 18px 8px}
-.story>p{padding:0 18px 16px;font-size:15px;color:var(--muted)}
+  text-transform:uppercase;color:#c9432f;padding:4px 18px 8px}
+.story>p{padding:0 18px 16px;font-size:15px;color:#525c7e}
 .story details{padding:0 18px 16px}
-.story summary,.member summary{cursor:pointer;font-weight:600;color:var(--gold);
+.story summary,.member summary{cursor:pointer;font-weight:600;color:#a2770e;
   font-size:14.5px;list-style:none}
 .story summary::before,.member summary::before{content:"+ "}
 details[open]>summary::before{content:"− "}
-.story details p{font-size:15px;color:var(--muted);margin-top:10px}
+.story details p{font-size:15px;color:#525c7e;margin-top:10px}
 
 /* team org chart */
 .team-grid{grid-template-columns:repeat(auto-fit,minmax(230px,280px));justify-content:center}
@@ -599,10 +600,10 @@ details[open]>summary::before{content:"− "}
 .member{
   padding:20px 18px;text-align:center;
   background:
-    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),
-    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-    radial-gradient(180px 120px at 50% 0,rgba(255,200,87,.24),transparent 70%),
-    linear-gradient(180deg,rgba(48,72,144,.98),rgba(25,43,104,.98));
+    linear-gradient(90deg,rgba(74,104,200,.10) 1px,transparent 1px),
+    linear-gradient(rgba(74,104,200,.09) 1px,transparent 1px),
+    radial-gradient(180px 120px at 50% 0,rgba(255,200,87,.20),transparent 70%),
+    linear-gradient(180deg,#fffdf6,#f7f2e3);
   background-size:22px 22px,22px 22px,auto,auto;
 }
 .member img{width:108px;height:108px;object-fit:cover;border-radius:50%;
@@ -610,9 +611,9 @@ details[open]>summary::before{content:"− "}
   box-shadow:0 0 0 5px rgba(143,132,255,.12),0 14px 28px rgba(0,0,0,.28)}
 .member:nth-child(even) img{border-color:var(--coral)}
 .member h3{font-size:18px}
-.member .role{font-size:13px;color:var(--muted);margin-bottom:8px}
+.member .role{font-size:13px;color:#525c7e;margin-bottom:8px}
 .member details{text-align:left}
-.member details p{font-size:14px;color:var(--muted);margin-top:8px}
+.member details p{font-size:14px;color:#525c7e;margin-top:8px}
 
 #involved{
   background:
@@ -630,7 +631,7 @@ details[open]>summary::before{content:"− "}
 .faq+.faq{margin-top:10px}
 .faq summary{cursor:pointer;font-family:"STIX Two Text",serif;font-weight:600;font-size:17.5px}
 .faq[open]{border-color:var(--violet)}
-.faq p{margin-top:8px;color:var(--muted)}
+.faq p{margin-top:8px;color:#525c7e}
 
 /* ------------------------------------------------- footer */
 footer{
