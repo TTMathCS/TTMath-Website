@@ -62,6 +62,84 @@ var formulas = [
   }
 ];
 
+var conjectures = [
+  {
+    kicker: 'Open conjecture',
+    title: 'Riemann hypothesis',
+    formulaHtml: 'ζ(s) = 0 ⇒ Re(s) = <span class="math-frac"><span>1</span><span>2</span></span>',
+    note: 'The hidden rhythm of prime numbers may sit on one critical line.'
+  },
+  {
+    kicker: 'Open conjecture',
+    title: 'Collatz conjecture',
+    formulaHtml: 'n → <span class="piecewise"><span>n / 2</span><span>3n + 1</span></span> → 1 ?',
+    note: 'A rule simple enough for middle school, still undefeated.'
+  },
+  {
+    kicker: 'Open conjecture',
+    title: 'Goldbach conjecture',
+    formulaHtml: 'Every even n &gt; 2 = p + q',
+    note: 'Can every even number split into two primes? We still do not know.'
+  },
+  {
+    kicker: 'Open conjecture',
+    title: 'Twin prime conjecture',
+    formulaHtml: 'Infinitely many p where p + 2 is prime?',
+    note: 'Prime pairs keep appearing; proving they never run out is another story.'
+  },
+  {
+    kicker: 'Open conjecture',
+    title: 'P vs NP',
+    formulaHtml: 'P ?= NP',
+    note: 'If solutions are easy to check, are they always easy to find?'
+  },
+  {
+    kicker: 'Open conjecture',
+    title: 'Birch and Swinnerton-Dyer',
+    formulaHtml: 'rank E(ℚ) ↔ order of zero of L(E,s)',
+    note: 'A bridge between rational points and the analytic behavior of elliptic curves.'
+  }
+];
+
+var topics = [
+  {
+    kicker: 'Math world',
+    title: 'Topology',
+    formulaHtml: 'shape without measuring',
+    note: 'Study what survives stretching, twisting, and continuous deformation.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Fractals and chaos',
+    formulaHtml: 'z → z<sup>2</sup> + c',
+    note: 'Tiny changes, infinite detail, and patterns that never quite settle.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Graph theory',
+    formulaHtml: 'vertices + edges = networks',
+    note: 'The math of routes, friendships, competitions, maps, and algorithms.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Modular arithmetic',
+    formulaHtml: 'a ≡ b <span class="mod">(mod&nbsp;n)</span>',
+    note: 'Clock math that powers contests, cryptography, and number theory.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Game theory',
+    formulaHtml: 'strategy + incentives',
+    note: 'A way to reason about choices when everyone else is thinking too.'
+  },
+  {
+    kicker: 'Math world',
+    title: 'Combinatorics',
+    formulaHtml: 'count the impossible-looking set',
+    note: 'Arrangements, invariants, clever counting, and olympiad problem magic.'
+  }
+];
+
 var mathematicians = [
   {
     name: 'Archimedes',
@@ -202,7 +280,8 @@ function updateDiscovery(kind, item) {
 
   label.className = 'discovery-kicker';
   formula.className = 'formula math-display';
-  label.textContent = 'Theorem flash';
+  label.textContent = item.kicker || (kind === 'conjecture' ? 'Open conjecture' :
+    kind === 'topic' ? 'Math world' : 'Theorem flash');
   title.textContent = item.title;
   formula.innerHTML = item.formulaHtml;
   explainer.textContent = item.note;
@@ -252,7 +331,7 @@ function showFormula(x, y, item) {
   b.style.top = y + 'px';
   star.className = 'spark-star';
   label.className = 'spark-formula';
-  title.textContent = item.title;
+  title.textContent = item.kicker ? item.kicker + ' · ' + item.title : item.title;
   formula.innerHTML = item.formulaHtml;
   label.appendChild(title);
   label.appendChild(formula);
@@ -298,12 +377,16 @@ function discover(px, py) {
   var r = sky.getBoundingClientRect();
   var safeX = clamp(px, 86, r.width - 86);
   var safeY = clamp(py, 70, r.height - 110);
-  var portrait = Math.random() < 0.44;
-  var item = portrait ? pickMathematician() : pick(formulas);
+  var roll = Math.random();
+  var kind = roll < 0.28 ? 'portrait' : roll < 0.54 ? 'formula' :
+    roll < 0.78 ? 'conjecture' : 'topic';
+  var item = kind === 'portrait' ? pickMathematician() :
+    kind === 'formula' ? pick(formulas) :
+    kind === 'conjecture' ? pick(conjectures) : pick(topics);
 
   plotPoint(px, py, r);
-  updateDiscovery(portrait ? 'portrait' : 'formula', item);
-  if (portrait) showPortrait(safeX, safeY, item);
+  updateDiscovery(kind, item);
+  if (kind === 'portrait') showPortrait(safeX, safeY, item);
   else showFormula(safeX, safeY, item);
 }
 
