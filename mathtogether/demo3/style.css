@@ -1,0 +1,165 @@
+/* demo 3 — maple poster: flat brand colours from the MTC logo, big type, thick rules */
+
+:root{
+  --white:#ffffff;
+  --ink:#132430;
+  --sky:#2f9fd8;
+  --skysoft:#e3f2fb;
+  --maple:#f2812e;
+  --maplesoft:#fdeede;
+  --navy:#14456b;
+  --line:#132430;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{background:var(--white);color:var(--ink);font:16.5px/1.65 Inter,system-ui,sans-serif}
+
+a{color:var(--navy)}
+a:focus-visible{outline:3px solid var(--maple);outline-offset:2px}
+img{max-width:100%}
+
+h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700}
+
+nav{
+  position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;
+  flex-wrap:wrap;padding:12px clamp(16px,5vw,64px);
+  background:var(--white);border-bottom:3px solid var(--line);
+}
+nav .brand{display:flex;align-items:center;gap:9px;font-family:"Space Grotesk",sans-serif;
+  font-weight:700;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+nav .brand img{width:34px;height:auto}
+nav .links{margin-left:auto;display:flex;gap:4px 18px;flex-wrap:wrap;align-items:center}
+nav .links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px}
+nav .links a:hover{color:var(--sky)}
+nav .join{background:var(--maple);color:#fff !important;padding:7px 16px;border-radius:0;font-weight:700}
+nav .join:hover{background:var(--navy)}
+
+/* hero: solid sky panel, poster type */
+header{
+  background:var(--sky);color:#fff;text-align:center;
+  padding:70px clamp(22px,7vw,96px) 56px;position:relative;overflow:hidden;
+  border-bottom:3px solid var(--line);
+}
+.hero-logo{width:104px;background:#fff;border-radius:50%;padding:10px;margin-bottom:24px;
+  border:3px solid var(--line)}
+.paper-head{
+  font:700 12px/1.4 "Space Grotesk",sans-serif;letter-spacing:.22em;text-transform:uppercase;
+  color:#fff;margin-bottom:18px;opacity:.9;
+}
+h1{font-size:clamp(27px,8vw,76px);line-height:1.02;letter-spacing:-.03em;max-width:16ch;margin:0 auto}
+mark{color:#fff;padding:0 6px;
+  background:linear-gradient(transparent 62%,var(--maple) 62%)}
+.lede{margin:26px auto 0;max-width:66ch;font-size:17px;color:#f2faff}
+
+.note{font:700 12px/1.5 "Space Grotesk",sans-serif;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--maplesoft);margin-top:10px}
+.note.center{text-align:center;color:var(--maple);margin-top:24px}
+
+.cta-row{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{
+  display:inline-block;background:var(--maple);color:#fff;text-decoration:none;
+  font-family:"Space Grotesk",sans-serif;font-weight:700;padding:13px 26px;
+  border:3px solid var(--line);box-shadow:5px 5px 0 var(--line);
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--line)}
+.btn.ghost{background:#fff;color:var(--ink)}
+
+.stats{margin:40px auto 0;display:flex;gap:0;flex-wrap:wrap;list-style:none;justify-content:center;
+  background:#fff;color:var(--ink);border:3px solid var(--line);box-shadow:6px 6px 0 var(--line);
+  max-width:860px}
+.stats li{flex:1 1 180px;padding:16px 12px;font-size:13px;border-right:3px solid var(--line)}
+.stats li:last-child{border-right:none}
+.stats b{font-family:"Space Grotesk",sans-serif;font-size:30px;display:block;color:var(--sky)}
+.stats li:nth-child(even) b{color:var(--maple)}
+
+main section{padding:60px clamp(22px,7vw,96px) 26px;max-width:1240px;margin:0 auto}
+h2{
+  font-size:clamp(28px,4.2vw,44px);letter-spacing:-.02em;margin-bottom:20px;
+  padding-bottom:10px;border-bottom:4px solid var(--maple);display:inline-block;
+}
+.section-lede{max-width:66ch;margin-bottom:22px;color:#42535f}
+section p+p{margin-top:12px}
+#about p{max-width:70ch}
+
+blockquote{
+  margin-top:24px;padding:18px 24px;background:var(--maplesoft);border:3px solid var(--line);
+  font-family:"Space Grotesk",sans-serif;font-size:20px;max-width:56ch;
+  box-shadow:5px 5px 0 var(--line);
+}
+blockquote .note{display:block;margin-top:4px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0;
+  border:3px solid var(--line)}
+.cards article{padding:24px;border:0 solid var(--line);border-right-width:3px;border-bottom-width:3px}
+.cards article:nth-child(odd){background:var(--skysoft)}
+.cards h3{font-size:18px;margin-bottom:8px}
+.cards p{color:#42535f;font-size:15px;margin-bottom:10px}
+.cards a{font-weight:700;color:var(--maple);text-decoration:none}
+.cards a:hover{text-decoration:underline}
+
+.live-points{list-style:none;counter-reset:pt;max-width:66ch;margin:18px 0}
+.live-points li{counter-increment:pt;padding:10px 0 10px 62px;position:relative}
+.live-points li::before{
+  content:counter(pt);position:absolute;left:0;top:4px;
+  font:700 20px/40px "Space Grotesk",sans-serif;color:#fff;background:var(--sky);
+  width:44px;height:40px;text-align:center;border:3px solid var(--line);
+}
+.live-points li:nth-child(even)::before{background:var(--maple)}
+h3.sub{margin:28px 0 12px;font-size:22px;color:var(--navy)}
+.sessions{list-style:none;max-width:78ch;border-top:3px solid var(--line)}
+.sessions li{padding:10px 2px;border-bottom:1.5px solid #cdd6dc}
+.sessions span{font:700 11.5px/1 "Space Grotesk",sans-serif;letter-spacing:.1em;color:#fff;
+  background:var(--navy);padding:4px 8px;margin-right:10px;white-space:nowrap}
+
+.news-grid,.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.story{background:#fff;border:3px solid var(--line);box-shadow:5px 5px 0 var(--line)}
+.story img{width:100%;height:170px;object-fit:cover;border-bottom:3px solid var(--line)}
+.story h3{font-size:17px;padding:14px 18px 2px}
+.story .date{font:700 11px/1.5 "Space Grotesk",sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--maple);padding:2px 18px 8px}
+.story>p{padding:0 18px 16px;font-size:15px;color:#42535f}
+.story details{padding:0 18px 16px}
+.story summary,.member summary{cursor:pointer;font-weight:700;color:var(--sky);font-size:14.5px;list-style:none}
+.story summary::before,.member summary::before{content:"+ "}
+details[open]>summary::before{content:"− "}
+.story details p{font-size:15px;color:#42535f;margin-top:10px}
+
+.team-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.member{background:#fff;border:3px solid var(--line);padding:18px;text-align:center;
+  box-shadow:5px 5px 0 var(--line)}
+.member img{width:110px;height:110px;object-fit:cover;border-radius:50%;
+  border:3px solid var(--line);margin-bottom:10px}
+.member:nth-child(even) img{border-color:var(--maple)}
+.member:nth-child(odd) img{border-color:var(--sky)}
+.member h3{font-size:17px}
+.member .role{font-size:13px;color:#42535f;margin-bottom:8px}
+.member details{text-align:left}
+.member details p{font-size:14px;color:#42535f;margin-top:8px}
+
+#involved{background:var(--skysoft);max-width:none;border-top:3px solid var(--line);
+  border-bottom:3px solid var(--line);padding-bottom:56px;margin-top:56px}
+#involved p{max-width:66ch}
+#involved .cta-row{justify-content:flex-start}
+
+.faq{border:3px solid var(--line);padding:14px 18px;max-width:760px;background:#fff}
+.faq+.faq{margin-top:-3px}
+.faq summary{cursor:pointer;font-family:"Space Grotesk",sans-serif;font-weight:700}
+.faq[open]{background:var(--maplesoft)}
+.faq p{margin-top:8px;color:#42535f}
+
+footer{margin-top:64px;padding:48px clamp(22px,7vw,96px) 56px;text-align:center;
+  background:var(--navy);color:#fff;border-top:3px solid var(--line)}
+footer .big{font-family:"Space Grotesk",sans-serif;font-size:clamp(26px,4vw,40px);letter-spacing:-.02em}
+footer .big .note{display:block;color:var(--maple)}
+footer p+p{margin-top:18px}
+.social a{color:#bfe0f2}
+.fine{font-size:13px;color:#8fb4cc}
+
+@media (max-width:640px){
+  main section{padding-left:18px;padding-right:18px}
+  .stats li{border-right:none;border-top:3px solid var(--line)}
+  .stats li:first-child{border-top:none}
+}
