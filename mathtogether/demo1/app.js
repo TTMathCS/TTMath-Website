@@ -258,23 +258,29 @@ for (var i = 0; i < 120; i++) {
   sky.insertBefore(s, sky.firstChild);
 }
 
-// Shooting stars: random count, random direction, random spot, random timing.
+// Shooting stars: slow comets arcing across the sky on random curved paths.
 function meteorShower() {
+  var W = sky.clientWidth, H = sky.clientHeight;
   var n = 1 + Math.floor(Math.random() * 2);
   for (var k = 0; k < n; k++) {
     var m = document.createElement('div');
+    var fromLeft = Math.random() < 0.5;
+    var x0 = fromLeft ? -30 : W + 30;
+    var x1 = fromLeft ? W + 30 : -30;
+    var y0 = 20 + Math.random() * H * 0.75;
+    var y1 = 20 + Math.random() * H * 0.75;
+    var cy = Math.min(y0, y1) - 60 - Math.random() * 180;
     m.className = 'meteor';
-    m.style.top = (5 + Math.random() * 75) + '%';
-    m.style.left = (10 + Math.random() * 78) + '%';
-    m.style.setProperty('--angle', Math.floor(Math.random() * 360) + 'deg');
-    m.style.animationDelay = (Math.random() * 0.9) + 's';
-    m.style.animationDuration = (2 + Math.random() * 1.6) + 's';
+    m.style.offsetPath = "path('M" + x0 + ' ' + y0 + ' Q' + Math.round(W / 2) +
+      ' ' + Math.round(cy) + ' ' + x1 + ' ' + y1 + "')";
+    m.style.setProperty('--dur', (4.5 + Math.random() * 3) + 's');
+    m.style.animationDelay = (Math.random() * 0.8) + 's';
     sky.appendChild(m);
     m.addEventListener('animationend', function (e) { e.target.remove(); });
   }
-  setTimeout(meteorShower, 4000 + Math.random() * 8000);
+  setTimeout(meteorShower, 5000 + Math.random() * 9000);
 }
-if (!still) setTimeout(meteorShower, 1800);
+if (!still) setTimeout(meteorShower, 1500);
 
 // Live (x, y) readout: the panel is a real coordinate plane, 26px per unit.
 sky.addEventListener('mousemove', function (e) {
