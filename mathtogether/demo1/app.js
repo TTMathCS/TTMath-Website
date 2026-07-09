@@ -2,48 +2,62 @@ var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var sky = document.querySelector('.sky-stage');
 var coords = sky.querySelector('.coords');
 var discovery = sky.querySelector('.discovery-card');
-var constellation = sky.querySelector('.constellations polyline');
-var trail = [];
+var constellation = sky.querySelector('.constellations');
+var lastPoint = null;
+var lastMathematicianName = '';
+var maxTrailSegments = 5;
+var maxDots = 9;
 
 var formulas = [
   {
     title: 'Euler identity',
     formula: 'e^(iπ) + 1 = 0',
+    formulaHtml: 'e<sup>iπ</sup> + 1 = 0',
     note: 'Five essential constants meeting in one line.'
   },
   {
     title: 'Pythagorean theorem',
     formula: 'a^2 + b^2 = c^2',
+    formulaHtml: 'a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>',
     note: 'The oldest right-triangle compass.'
   },
   {
     title: 'Cauchy-Schwarz',
     formula: '(Σa_i b_i)^2 ≤ (Σa_i^2)(Σb_i^2)',
+    formulaHtml: '(<span class="sigma">Σ</span>a<sub>i</sub>b<sub>i</sub>)<sup>2</sup> ≤ ' +
+      '(<span class="sigma">Σ</span>a<sub>i</sub><sup>2</sup>)(<span class="sigma">Σ</span>b<sub>i</sub><sup>2</sup>)',
     note: 'A quiet engine behind olympiad inequalities.'
   },
   {
     title: "Fermat's little theorem",
     formula: 'a^p ≡ a (mod p)',
+    formulaHtml: 'a<sup>p</sup> ≡ a <span class="mod">(mod&nbsp;p)</span>',
     note: 'Prime numbers leaving a modular fingerprint.'
   },
   {
     title: 'Pascal identity',
     formula: 'C(n,k) = C(n-1,k-1) + C(n-1,k)',
+    formulaHtml: '<span class="binom"><span>n</span><span>k</span></span> = ' +
+      '<span class="binom"><span>n − 1</span><span>k − 1</span></span> + ' +
+      '<span class="binom"><span>n − 1</span><span>k</span></span>',
     note: 'Combinations growing one row at a time.'
   },
   {
     title: 'Bayes theorem',
     formula: 'P(A|B) = P(B|A)P(A) / P(B)',
+    formulaHtml: 'P(A|B) = <span class="math-frac"><span>P(B|A)P(A)</span><span>P(B)</span></span>',
     note: 'A rule for updating belief when evidence arrives.'
   },
   {
     title: 'Infinite primes',
     formula: 'There are infinitely many primes.',
+    formulaHtml: '∀N ∈ ℕ, ∃ prime p &gt; N',
     note: 'Euclid made infinity feel inevitable.'
   },
   {
     title: 'Golden ratio',
     formula: 'φ = (1 + √5) / 2',
+    formulaHtml: 'φ = <span class="math-frac"><span>1 + √5</span><span>2</span></span>',
     note: 'A recurrence, a spiral, and a proportion.'
   }
 ];
@@ -95,6 +109,15 @@ function pick(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
+function pickMathematician() {
+  var choices = mathematicians.filter(function (m) {
+    return m.name !== lastMathematicianName;
+  });
+  var item = pick(choices.length ? choices : mathematicians);
+  lastMathematicianName = item.name;
+  return item;
+}
+
 function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
 }
@@ -111,8 +134,8 @@ document.querySelectorAll('.curve').forEach(function (p, i) {
   });
 });
 
-// Sprinkle a night sky inside the compact Cartesian panel.
-for (var i = 0; i < 72; i++) {
+// Sprinkle a night sky inside the observatory-sized Cartesian panel.
+for (var i = 0; i < 120; i++) {
   var s = document.createElement('span');
   s.className = 'star';
   var sz = 1 + Math.random() * 1.6;
@@ -178,10 +201,10 @@ function updateDiscovery(kind, item) {
   var explainer = document.createElement('p');
 
   label.className = 'discovery-kicker';
-  formula.className = 'formula';
+  formula.className = 'formula math-display';
   label.textContent = 'Theorem flash';
   title.textContent = item.title;
-  formula.textContent = item.formula;
+  formula.innerHTML = item.formulaHtml;
   explainer.textContent = item.note;
   discovery.appendChild(label);
   discovery.appendChild(title);
@@ -198,12 +221,23 @@ function plotPoint(px, py, r) {
                 ((r.height - py) / 26).toFixed(1) + ')</span>';
   sky.appendChild(d);
 
-  trail.push([(px / r.width * 100).toFixed(2), (py / r.height * 100).toFixed(2)]);
-  if (trail.length > 9) trail.shift();
-  constellation.setAttribute('points', trail.map(function (p) { return p[0] + ',' + p[1]; }).join(' '));
+  var point = { x: px / r.width * 100, y: py / r.height * 100 };
+  if (lastPoint) {
+    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', lastPoint.x.toFixed(2));
+    line.setAttribute('y1', lastPoint.y.toFixed(2));
+    line.setAttribute('x2', point.x.toFixed(2));
+    line.setAttribute('y2', point.y.toFixed(2));
+    constellation.appendChild(line);
+  }
+  lastPoint = point;
+
+  while (constellation.children.length > maxTrailSegments) {
+    constellation.firstElementChild.remove();
+  }
 
   var dots = sky.querySelectorAll('.dot');
-  if (dots.length > 18) dots[0].remove();
+  if (dots.length > maxDots) dots[0].remove();
 }
 
 function showFormula(x, y, item) {
@@ -219,7 +253,7 @@ function showFormula(x, y, item) {
   star.className = 'spark-star';
   label.className = 'spark-formula';
   title.textContent = item.title;
-  formula.textContent = item.formula;
+  formula.innerHTML = item.formulaHtml;
   label.appendChild(title);
   label.appendChild(formula);
   b.appendChild(star);
@@ -265,7 +299,7 @@ function discover(px, py) {
   var safeX = clamp(px, 86, r.width - 86);
   var safeY = clamp(py, 70, r.height - 110);
   var portrait = Math.random() < 0.44;
-  var item = portrait ? pick(mathematicians) : pick(formulas);
+  var item = portrait ? pickMathematician() : pick(formulas);
 
   plotPoint(px, py, r);
   updateDiscovery(portrait ? 'portrait' : 'formula', item);
