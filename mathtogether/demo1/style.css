@@ -56,7 +56,7 @@ body>nav .brand{display:flex;align-items:center;gap:9px;font-family:"STIX Two Te
   min-width:max-content;padding:6px 12px 6px 8px;border-radius:8px;
   background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(84,215,183,.05));
   border:1px solid rgba(218,225,255,.18);box-shadow:inset 0 1px rgba(255,255,255,.06)}
-body>nav .brand img{width:76px;height:76px;object-fit:contain;
+body>nav .brand img{width:80px;height:80px;object-fit:contain;
   filter:drop-shadow(0 0 14px rgba(255,200,87,.5))}
 .brand-copy{display:grid;line-height:1.05}
 .brand-copy strong{font:600 24px/1.05 "STIX Two Text",Georgia,serif;color:#fff}
@@ -220,9 +220,14 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
 .constellations line:nth-last-child(n+5){opacity:.11}
 .axis{stroke:#cdd4f7;stroke-width:2;opacity:.36}
 .axis polygon{fill:#cdd4f7;stroke:none}
-.curve{fill:none;stroke-width:3;stroke-linecap:round;opacity:.58}
+.curve{fill:none;stroke-width:3;stroke-linecap:round;opacity:.72;
+  filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
 .c1{stroke:#8f84ff}
 .c2{stroke:#ff8a73;stroke-width:2.5}
+.area{stroke:none;opacity:.5}
+.cdepth{fill:none;stroke-width:3;stroke-linecap:round;opacity:.3}
+.d1{stroke:#4a3fb8}
+.d2{stroke:#b04a38}
 
 .coords{
   position:absolute;z-index:6;top:14px;right:14px;

@@ -16,7 +16,7 @@
 
 <nav>
   <a class="brand" href="#top">
-    <img src="../assets/img/logo.png" alt="Math Together Canada logo">
+    <img src="../assets/img/logo-badge.png" alt="Math Together Canada logo">
     <span class="brand-copy"><strong>Math Together</strong><small>mathtogether.ca</small></span>
   </a>
   <div class="links">
@@ -63,12 +63,26 @@
     <div class="sky-stage" role="button" tabindex="0"
       aria-label="Interactive night Cartesian plane. Click to discover a theorem, legend, conjecture, or math topic.">
       <svg class="plane" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="fall1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#8f84ff" stop-opacity=".45"/>
+            <stop offset="1" stop-color="#8f84ff" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="fall2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ff8a73" stop-opacity=".38"/>
+            <stop offset="1" stop-color="#ff8a73" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
         <g class="axis">
           <line x1="40" y1="580" x2="1170" y2="580"/>
           <line x1="110" y1="30" x2="110" y2="615"/>
           <polygon points="1170,580 1154,573 1154,587"/>
           <polygon points="110,30 103,46 117,46"/>
         </g>
+        <path class="area" fill="url(#fall1)" d="M110 560 C 280 560, 300 330, 470 330 S 660 470, 830 380 S 1080 120, 1170 100 L1170 580 L110 580 Z"/>
+        <path class="area" fill="url(#fall2)" d="M110 580 C 420 540, 760 470, 900 300 S 1080 60, 1170 40 L1170 580 Z"/>
+        <path class="cdepth d1" d="M110 560 C 280 560, 300 330, 470 330 S 660 470, 830 380 S 1080 120, 1170 100" transform="translate(7,12)"/>
+        <path class="cdepth d2" d="M110 580 C 420 540, 760 470, 900 300 S 1080 60, 1170 40" transform="translate(7,12)"/>
         <path class="curve c1" d="M110 560 C 280 560, 300 330, 470 330 S 660 470, 830 380 S 1080 120, 1170 100"/>
         <path class="curve c2" d="M110 580 C 420 540, 760 470, 900 300 S 1080 60, 1170 40"/>
       </svg>
