@@ -1,12 +1,7 @@
 var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var sky = document.querySelector('.sky-stage');
 var coords = sky.querySelector('.coords');
-var discovery = sky.querySelector('.discovery-card');
-var constellation = sky.querySelector('.constellations');
-var lastPoint = null;
 var lastLegendName = '';
-var maxTrailSegments = 5;
-var maxDots = 9;
 
 var formulas = [
   {
@@ -283,94 +278,6 @@ sky.addEventListener('mousemove', function (e) {
   coords.textContent = '(x, y) = (' + x + ', ' + y + ')';
 });
 
-function updateDiscovery(kind, item) {
-  discovery.classList.remove('pulse');
-  void discovery.offsetWidth;
-  discovery.classList.add('pulse');
-  while (discovery.firstChild) discovery.firstChild.remove();
-
-  if (kind === 'portrait') {
-    var wrap = document.createElement('div');
-    var img = document.createElement('img');
-    var text = document.createElement('div');
-    var kicker = document.createElement('p');
-    var name = document.createElement('h3');
-    var note = document.createElement('p');
-
-    wrap.className = 'discovery-person';
-    kicker.className = 'discovery-kicker';
-    img.src = item.src;
-    img.alt = item.name + ' portrait';
-    kicker.textContent = 'Legend cameo';
-    name.textContent = item.name;
-    note.textContent = item.note;
-    text.appendChild(kicker);
-    text.appendChild(name);
-    text.appendChild(note);
-    wrap.appendChild(img);
-    wrap.appendChild(text);
-    discovery.appendChild(wrap);
-    return;
-  }
-
-  var label = document.createElement('p');
-  var title = document.createElement('h3');
-  var formula = document.createElement('p');
-  var explainer = document.createElement('p');
-
-  label.className = 'discovery-kicker';
-  formula.className = 'formula math-display';
-  label.textContent = item.kicker || (kind === 'conjecture' ? 'Open conjecture' :
-    kind === 'topic' ? 'Math world' : 'Theorem flash');
-  title.textContent = item.title;
-  formula.innerHTML = item.formulaHtml;
-  explainer.textContent = item.note;
-  discovery.appendChild(label);
-  discovery.appendChild(title);
-  discovery.appendChild(formula);
-  discovery.appendChild(explainer);
-}
-
-function positionDiscovery(px, py, r) {
-  var labelWidth = Math.min(330, r.width - 54);
-  var side = px > r.width * 0.58 ? 'left' : 'right';
-  var x = side === 'left' ?
-    clamp(px - 58, labelWidth + 12, r.width - 18) :
-    clamp(px + 58, 18, r.width - labelWidth - 16);
-  var y = clamp(py, 84, r.height - 92);
-  discovery.dataset.side = side;
-  discovery.style.setProperty('--tag-x', x + 'px');
-  discovery.style.setProperty('--tag-y', y + 'px');
-}
-
-function plotPoint(px, py, r) {
-  var d = document.createElement('div');
-  d.className = 'dot';
-  d.style.left = px + 'px';
-  d.style.top = py + 'px';
-  d.innerHTML = '<i></i><span>(' + (px / 26).toFixed(1) + ', ' +
-                ((r.height - py) / 26).toFixed(1) + ')</span>';
-  sky.appendChild(d);
-
-  var point = { x: px / r.width * 100, y: py / r.height * 100 };
-  if (lastPoint) {
-    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('x1', lastPoint.x.toFixed(2));
-    line.setAttribute('y1', lastPoint.y.toFixed(2));
-    line.setAttribute('x2', point.x.toFixed(2));
-    line.setAttribute('y2', point.y.toFixed(2));
-    constellation.appendChild(line);
-  }
-  lastPoint = point;
-
-  while (constellation.children.length > maxTrailSegments) {
-    constellation.firstElementChild.remove();
-  }
-
-  var dots = sky.querySelectorAll('.dot');
-  if (dots.length > maxDots) dots[0].remove();
-}
-
 function showFormula(x, y, item) {
   var b = document.createElement('div');
   var star = document.createElement('span');
@@ -430,15 +337,12 @@ function discover(px, py) {
   var safeX = clamp(px, 86, r.width - 86);
   var safeY = clamp(py, 70, r.height - 110);
   var roll = Math.random();
-  var kind = roll < 0.28 ? 'portrait' : roll < 0.54 ? 'formula' :
-    roll < 0.78 ? 'conjecture' : 'topic';
+  var kind = roll < 0.3 ? 'portrait' : roll < 0.6 ? 'formula' :
+    roll < 0.85 ? 'conjecture' : 'topic';
   var item = kind === 'portrait' ? pickLegend() :
     kind === 'formula' ? pick(formulas) :
     kind === 'conjecture' ? pick(conjectures) : pick(topics);
 
-  plotPoint(px, py, r);
-  positionDiscovery(px, py, r);
-  updateDiscovery(kind, item);
   if (kind === 'portrait') showPortrait(safeX, safeY, item);
   else showFormula(safeX, safeY, item);
 }
