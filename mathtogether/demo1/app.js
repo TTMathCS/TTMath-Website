@@ -13,6 +13,29 @@ document.querySelectorAll('.curve').forEach(function (p, i) {
   });
 });
 
+// sprinkle a night sky behind the plane
+for (var i = 0; i < 90; i++) {
+  var s = document.createElement('span');
+  s.className = 'star';
+  var sz = 1 + Math.random() * 1.6;
+  s.style.cssText = 'left:' + (Math.random() * 100) + '%;top:' + (Math.random() * 92) +
+    '%;width:' + sz + 'px;height:' + sz + 'px;animation-duration:' +
+    (2 + Math.random() * 4) + 's;animation-delay:-' + (Math.random() * 4) + 's';
+  hero.insertBefore(s, hero.firstChild);
+}
+
+// a shooting star crosses the plane every so often
+function meteor() {
+  var m = document.createElement('div');
+  m.className = 'meteor';
+  m.style.top = (Math.random() * 55) + '%';
+  m.style.left = (25 + Math.random() * 70) + '%';
+  hero.appendChild(m);
+  m.addEventListener('animationend', function () { m.remove(); });
+  setTimeout(meteor, 2500 + Math.random() * 5500);
+}
+if (!still) setTimeout(meteor, 1500);
+
 // live (x, y) readout — the hero is a real coordinate plane, 26px per unit
 var coords = document.querySelector('.coords');
 hero.addEventListener('mousemove', function (e) {
