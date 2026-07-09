@@ -258,7 +258,7 @@ for (var i = 0; i < 120; i++) {
   sky.insertBefore(s, sky.firstChild);
 }
 
-// Shooting stars: slow comets arcing across the sky on random curved paths.
+// Shooting stars: slow comets crossing the sky in straight random lines.
 function meteorShower() {
   var W = sky.clientWidth, H = sky.clientHeight;
   var n = 1 + Math.floor(Math.random() * 2);
@@ -269,10 +269,8 @@ function meteorShower() {
     var x1 = fromLeft ? W + 30 : -30;
     var y0 = 20 + Math.random() * H * 0.75;
     var y1 = 20 + Math.random() * H * 0.75;
-    var cy = Math.min(y0, y1) - 60 - Math.random() * 180;
     m.className = 'meteor';
-    m.style.offsetPath = "path('M" + x0 + ' ' + y0 + ' Q' + Math.round(W / 2) +
-      ' ' + Math.round(cy) + ' ' + x1 + ' ' + y1 + "')";
+    m.style.offsetPath = "path('M" + x0 + ' ' + y0 + ' L' + x1 + ' ' + y1 + "')";
     m.style.setProperty('--dur', (4.5 + Math.random() * 3) + 's');
     m.style.animationDelay = (Math.random() * 0.8) + 's';
     sky.appendChild(m);
