@@ -268,6 +268,7 @@ function meteorShower() {
     m.style.left = (10 + Math.random() * 78) + '%';
     m.style.setProperty('--angle', Math.floor(Math.random() * 360) + 'deg');
     m.style.animationDelay = (Math.random() * 0.9) + 's';
+    m.style.animationDuration = (2 + Math.random() * 1.6) + 's';
     sky.appendChild(m);
     m.addEventListener('animationend', function (e) { e.target.remove(); });
   }
