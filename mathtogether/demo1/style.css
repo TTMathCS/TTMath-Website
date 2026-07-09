@@ -113,9 +113,10 @@ blockquote .note{display:block;font-weight:400}
 .cards a:hover{text-decoration:underline}
 
 .live-points{list-style:none;counter-reset:pt;max-width:64ch;margin:18px 0}
-.live-points li{counter-increment:pt;padding:8px 0 8px 46px;position:relative}
+.live-points li{counter-increment:pt;position:relative;margin:14px 0;
+  padding-left:46px;min-height:26px;display:flex;flex-direction:column;justify-content:center}
 .live-points li::before{
-  content:counter(pt,decimal-leading-zero);position:absolute;left:0;top:8px;
+  content:counter(pt,decimal-leading-zero);position:absolute;left:0;top:50%;transform:translateY(-50%);
   font:700 13px/26px ui-monospace,Menlo,monospace;color:var(--red);
   width:32px;height:26px;text-align:center;border:1.5px solid var(--red);border-radius:6px;
 }

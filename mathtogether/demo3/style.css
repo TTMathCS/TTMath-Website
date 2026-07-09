@@ -15,7 +15,8 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *{transition:none !important}
+  *{transition:none !important;animation:none !important}
+  .reveal{opacity:1;transform:none}
 }
 section,footer{scroll-margin-top:76px}
 
@@ -37,7 +38,11 @@ nav .brand{display:flex;align-items:center;gap:9px;font-family:"Space Grotesk",s
 nav .brand img{width:34px;height:auto}
 nav .links{margin-left:auto;display:flex;gap:4px 18px;flex-wrap:wrap;align-items:center}
 nav .links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px}
+nav .links a{position:relative}
+nav .links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:3px;
+  background:var(--maple);transition:right .18s}
 nav .links a:hover{color:var(--sky)}
+nav .links a:hover::after{right:0}
 nav .join{background:var(--maple);color:#fff !important;padding:7px 16px;border-radius:0;font-weight:700}
 nav .join:hover{background:var(--navy)}
 
@@ -50,9 +55,24 @@ header{
 .hero-logo{width:clamp(140px,18vw,190px);background:#fff;border-radius:50%;padding:14px;
   margin-bottom:26px;border:3px solid var(--line);position:relative;z-index:1}
 header::before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;
-  border:3px solid rgba(255,255,255,.22);left:-70px;top:50px}
+  border:3px solid rgba(255,255,255,.22);left:-70px;top:50px;
+  animation:drift 16s ease-in-out infinite alternate}
 header::after{content:"";position:absolute;width:150px;height:150px;
-  border:3px solid rgba(255,255,255,.18);transform:rotate(45deg);right:-45px;bottom:70px}
+  border:3px solid rgba(255,255,255,.18);transform:rotate(45deg);right:-45px;bottom:70px;
+  animation:drift 13s ease-in-out infinite alternate-reverse}
+@keyframes drift{
+  from{translate:0 0}
+  to{translate:26px 34px}
+}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;scale:.5}to{opacity:1;scale:1}}
+.hero-logo{animation:pop .55s .1s cubic-bezier(.2,1.5,.4,1) backwards}
+header .paper-head{animation:rise .5s .3s backwards}
+header h1{animation:rise .6s .4s backwards}
+header .note{animation:rise .6s .5s backwards}
+header .lede{animation:rise .6s .58s backwards}
+header .cta-row{animation:rise .6s .68s backwards}
+header .stats{animation:rise .6s .8s backwards}
 .paper-head{
   font:700 12px/1.4 "Space Grotesk",sans-serif;letter-spacing:.22em;text-transform:uppercase;
   color:#fff;margin-bottom:18px;opacity:.9;
@@ -83,6 +103,19 @@ mark{color:#fff;padding:0 6px;
 .stats b{font-family:"Space Grotesk",sans-serif;font-size:30px;display:block;color:var(--sky)}
 .stats li:nth-child(even) b{color:var(--maple)}
 
+.ticker{overflow:hidden;background:var(--navy);color:#fff;border-bottom:3px solid var(--line);
+  padding:11px 0;font:700 13px/1 "Space Grotesk",sans-serif;letter-spacing:.18em;
+  text-transform:uppercase}
+.ticker div{display:inline-flex;white-space:nowrap;width:max-content;
+  animation:tick 36s linear infinite}
+.ticker span{padding:0 26px}
+.ticker span:nth-child(even){color:var(--maple)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* scroll reveal (class added by main.js) */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s,transform .55s}
+.reveal.in{opacity:1;transform:none}
+
 main section{padding:60px clamp(22px,7vw,96px) 26px;max-width:1240px;margin:0 auto}
 h2{
   font-size:clamp(28px,4.2vw,44px);letter-spacing:-.02em;margin-bottom:20px;
@@ -108,10 +141,11 @@ blockquote .note{display:block;margin-top:4px}
 .cards a{font-weight:700;color:var(--maple);text-decoration:none}
 .cards a:hover{text-decoration:underline}
 
-.live-points{list-style:none;counter-reset:pt;max-width:66ch;margin:18px 0}
-.live-points li{counter-increment:pt;padding:10px 0 10px 62px;position:relative}
+.live-points{list-style:none;counter-reset:pt;max-width:66ch;margin:24px 0}
+.live-points li{counter-increment:pt;position:relative;margin:18px 0;
+  padding-left:62px;min-height:40px;display:flex;flex-direction:column;justify-content:center}
 .live-points li::before{
-  content:counter(pt);position:absolute;left:0;top:4px;
+  content:counter(pt);position:absolute;left:0;top:50%;transform:translateY(-50%);
   font:700 20px/40px "Space Grotesk",sans-serif;color:#fff;background:var(--sky);
   width:44px;height:40px;text-align:center;border:3px solid var(--line);
 }
