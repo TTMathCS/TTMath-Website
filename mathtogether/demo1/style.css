@@ -20,7 +20,7 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-section,footer{scroll-margin-top:70px}
+section,footer{scroll-margin-top:104px}
 
 body{
   overflow-x:hidden;
@@ -56,10 +56,11 @@ body>nav .brand{display:flex;align-items:center;gap:9px;font-family:"STIX Two Te
   min-width:max-content;padding:6px 12px 6px 8px;border-radius:8px;
   background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(84,215,183,.05));
   border:1px solid rgba(218,225,255,.18);box-shadow:inset 0 1px rgba(255,255,255,.06)}
-body>nav .brand img{width:50px;height:50px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(255,200,87,.38))}
+body>nav .brand img{width:76px;height:76px;object-fit:contain;
+  filter:drop-shadow(0 0 14px rgba(255,200,87,.5))}
 .brand-copy{display:grid;line-height:1.05}
-.brand-copy strong{font:600 21px/1.05 "STIX Two Text",Georgia,serif;color:#fff}
-.brand-copy small{font:600 11px/1.1 "IBM Plex Mono",ui-monospace,monospace;
+.brand-copy strong{font:600 24px/1.05 "STIX Two Text",Georgia,serif;color:#fff}
+.brand-copy small{font:600 12px/1.1 "IBM Plex Mono",ui-monospace,monospace;
   letter-spacing:.08em;text-transform:lowercase;color:var(--mint);margin-top:4px}
 body>nav .links{margin-left:auto;display:flex;gap:4px 18px;flex-wrap:wrap;align-items:center}
 body>nav .links a{color:#dfe5ff;text-decoration:none;font-weight:600;font-size:14px;position:relative}
@@ -196,14 +197,14 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
   position:absolute;z-index:2;width:220px;height:2px;pointer-events:none;border-radius:999px;
   background:linear-gradient(90deg,rgba(255,255,255,0),#fff);
   filter:drop-shadow(0 0 6px rgba(255,255,255,.9));
-  animation:meteor 1.2s ease-out forwards;
+  animation:meteor 1.2s ease-out both;
 }
 .meteor::after{content:"";position:absolute;right:-2px;top:-2px;width:6px;height:6px;
   border-radius:50%;background:#fff}
 @keyframes meteor{
-  from{transform:rotate(205deg) translateX(0);opacity:0}
+  from{transform:rotate(var(--angle,205deg)) translateX(0);opacity:0}
   12%{opacity:1}
-  to{transform:rotate(205deg) translateX(560px);opacity:0}
+  to{transform:rotate(var(--angle,205deg)) translateX(560px);opacity:0}
 }
 .plane{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}
 .constellations{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
@@ -542,7 +543,7 @@ blockquote .note{display:block;margin-top:6px;font-size:15px;color:var(--muted)}
   background:var(--coral);border:2px solid #0b1025;box-shadow:0 0 0 1px var(--coral),0 0 16px rgba(255,107,91,.55);
 }
 .cards article:nth-child(even)::before{background:var(--violet);box-shadow:0 0 0 1px var(--violet)}
-.cards article::after,.story::before,.member::after,.faq::before{
+.cards article::after,.story::before,.member .face::after,.faq::before{
   content:"";position:absolute;left:0;right:0;top:0;height:3px;
   background:linear-gradient(90deg,var(--mint),var(--gold),var(--coral));
   opacity:.78;z-index:1;pointer-events:none;
@@ -588,7 +589,7 @@ details[open]>summary::before{content:"− "}
 .story details p{font-size:15px;color:#525c7e;margin-top:10px}
 
 /* team org chart */
-.team-grid{grid-template-columns:repeat(auto-fit,minmax(230px,280px));justify-content:center}
+.team-grid{grid-template-columns:repeat(auto-fit,minmax(270px,330px));justify-content:center}
 .tier{text-align:center}
 .tier+.tier::before{content:"";display:block;width:2px;height:30px;
   background:repeating-linear-gradient(180deg,var(--ink) 0 4px,transparent 4px 9px);
@@ -597,23 +598,37 @@ details[open]>summary::before{content:"− "}
   text-transform:uppercase;color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;
   padding:7px 20px;margin:14px 0 18px;background:var(--sheet)}
 .tier:first-of-type .tier-label{background:var(--gold);border-color:var(--gold);color:#151a2f}
+/* member cards flip in 3D: fixed height so nothing resizes on click */
 .member{
-  padding:20px 18px;text-align:center;
+  background:none;border:none;box-shadow:none;padding:0;text-align:center;
+  height:360px;perspective:1100px;cursor:pointer;
+}
+.member .flip{position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;transition:transform .65s cubic-bezier(.3,.1,.2,1)}
+.member.flipped .flip{transform:rotateY(180deg)}
+.member .face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:1px solid rgba(223,230,255,.42);border-radius:6px;color:#242b49;
+  padding:24px 18px;
   background:
     linear-gradient(90deg,rgba(74,104,200,.12) 1px,transparent 1px),
     linear-gradient(rgba(74,104,200,.11) 1px,transparent 1px),
     radial-gradient(180px 120px at 50% 0,rgba(255,200,87,.16),transparent 70%),
     linear-gradient(180deg,#dce2f0,#c9d2e6);
   background-size:22px 22px,22px 22px,auto,auto;
+  box-shadow:0 18px 42px rgba(5,10,30,.3),inset 0 1px rgba(255,255,255,.55);
 }
-.member img{width:108px;height:108px;object-fit:cover;border-radius:50%;
-  border:3px solid var(--violet);margin-bottom:10px;
+.member .back{transform:rotateY(180deg);text-align:left;overflow-y:auto;padding:18px 17px}
+.member .back h3{font-size:17px;margin-bottom:8px}
+.member .back p{font-size:13.5px;line-height:1.5;color:#3c4568;margin-top:8px}
+.member img{width:128px;height:128px;object-fit:cover;border-radius:50%;
+  border:3px solid var(--violet);margin-bottom:12px;
   box-shadow:0 0 0 5px rgba(143,132,255,.12),0 14px 28px rgba(0,0,0,.28)}
 .member:nth-child(even) img{border-color:var(--coral)}
-.member h3{font-size:18px}
+.member h3{font-size:19px}
 .member .role{font-size:13px;color:#525c7e;margin-bottom:8px}
-.member details{text-align:left}
-.member details p{font-size:14px;color:#525c7e;margin-top:8px}
+.flip-hint{margin-top:12px;font:600 10.5px "IBM Plex Mono",monospace;
+  letter-spacing:.14em;text-transform:uppercase;color:#5b4ed0}
 
 #involved{
   background:
@@ -658,7 +673,7 @@ footer .btn:hover{background:var(--violet);border-color:var(--violet)}
 @media (max-width:640px){
   body>nav{justify-content:center;padding:10px 16px}
   body>nav .brand{width:100%;justify-content:center}
-  body>nav .brand img{width:56px;height:56px}
+  body>nav .brand img{width:64px;height:64px}
   .brand-copy strong{font-size:22px}
   body>nav .links{width:100%;min-width:0;max-width:354px;margin-left:0;justify-content:flex-start;gap:8px 14px}
   body>nav .links a{font-size:13.5px;white-space:nowrap}

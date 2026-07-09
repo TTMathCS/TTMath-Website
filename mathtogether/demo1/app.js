@@ -258,17 +258,22 @@ for (var i = 0; i < 120; i++) {
   sky.insertBefore(s, sky.firstChild);
 }
 
-// A shooting star crosses the panel every so often.
-function meteor() {
-  var m = document.createElement('div');
-  m.className = 'meteor';
-  m.style.top = (Math.random() * 55) + '%';
-  m.style.left = (20 + Math.random() * 68) + '%';
-  sky.appendChild(m);
-  m.addEventListener('animationend', function () { m.remove(); });
-  setTimeout(meteor, 3200 + Math.random() * 6000);
+// Shooting stars: random count, random direction, random spot, random timing.
+function meteorShower() {
+  var n = 1 + Math.floor(Math.random() * 2);
+  for (var k = 0; k < n; k++) {
+    var m = document.createElement('div');
+    m.className = 'meteor';
+    m.style.top = (5 + Math.random() * 75) + '%';
+    m.style.left = (10 + Math.random() * 78) + '%';
+    m.style.setProperty('--angle', Math.floor(Math.random() * 360) + 'deg');
+    m.style.animationDelay = (Math.random() * 0.9) + 's';
+    sky.appendChild(m);
+    m.addEventListener('animationend', function (e) { e.target.remove(); });
+  }
+  setTimeout(meteorShower, 4000 + Math.random() * 8000);
 }
-if (!still) setTimeout(meteor, 1600);
+if (!still) setTimeout(meteorShower, 1800);
 
 // Live (x, y) readout: the panel is a real coordinate plane, 26px per unit.
 sky.addEventListener('mousemove', function (e) {
@@ -357,6 +362,50 @@ sky.addEventListener('keydown', function (e) {
   e.preventDefault();
   var r = sky.getBoundingClientRect();
   discover(90 + Math.random() * (r.width - 180), 80 + Math.random() * (r.height - 170));
+});
+
+// Team cards flip like award medals: person on the front, bio on the back.
+document.querySelectorAll('.member').forEach(function (m) {
+  var flip = document.createElement('div');
+  var front = document.createElement('div');
+  var back = document.createElement('div');
+  var title = document.createElement('h3');
+  var details = m.querySelector('details');
+
+  flip.className = 'flip';
+  front.className = 'face front';
+  back.className = 'face back';
+  title.textContent = m.querySelector('h3').textContent;
+  back.appendChild(title);
+
+  if (details) {
+    details.querySelectorAll('p').forEach(function (p) { back.appendChild(p); });
+    details.remove();
+  } else {
+    var soon = document.createElement('p');
+    soon.textContent = 'Bio coming soon.';
+    back.appendChild(soon);
+  }
+
+  while (m.firstChild) front.appendChild(m.firstChild);
+  var hint = document.createElement('p');
+  hint.className = 'flip-hint';
+  hint.textContent = 'tap for bio';
+  front.appendChild(hint);
+
+  flip.appendChild(front);
+  flip.appendChild(back);
+  m.appendChild(flip);
+  m.setAttribute('tabindex', '0');
+  m.setAttribute('role', 'button');
+
+  function turn() { m.classList.toggle('flipped'); }
+  m.addEventListener('click', turn);
+  m.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    turn();
+  });
 });
 
 // The fixed y-axis ruler tracks scroll depth.
