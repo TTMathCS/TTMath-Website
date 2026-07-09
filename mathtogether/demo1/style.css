@@ -67,7 +67,7 @@ body>nav .join:hover{background:var(--mint)}
 /* ------------------------------------------------- hero: the plane */
 header{
   position:relative;overflow:hidden;
-  padding:48px clamp(22px,5vw,74px) 34px;
+  padding:28px clamp(18px,4vw,58px) 30px;
   background:
     linear-gradient(115deg,transparent 0 14%,rgba(84,215,183,.13) 14% 19%,transparent 19% 46%,rgba(255,200,87,.12) 46% 50%,transparent 50%),
     linear-gradient(rgba(143,132,255,.12) 1px,transparent 1px),
@@ -87,10 +87,10 @@ header::before{
 
 .hero-shell{
   position:relative;z-index:1;display:grid;
-  grid-template-columns:minmax(310px,.72fr) minmax(560px,1.28fr);
-  gap:clamp(24px,4vw,58px);align-items:center;max-width:1340px;margin:0 auto;
+  grid-template-columns:minmax(300px,.52fr) minmax(700px,1.48fr);
+  gap:clamp(22px,3.5vw,52px);align-items:start;max-width:1520px;margin:0 0 0 auto;
 }
-.hero-in{position:relative;max-width:650px;min-width:0}
+.hero-in{position:relative;max-width:620px;min-width:0;padding-top:30px}
 .eyebrow{
   display:flex;align-items:center;gap:8px;flex-wrap:wrap;
   font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--mint);
@@ -138,7 +138,8 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
 
 .sky-stage{
   position:relative;isolation:isolate;overflow:visible;justify-self:end;width:100%;
-  max-width:780px;min-width:0;height:clamp(470px,38vw,600px);cursor:crosshair;border-radius:0;
+  max-width:980px;min-width:0;height:clamp(560px,48vw,720px);cursor:crosshair;border-radius:0;
+  margin-top:-24px;margin-right:clamp(-64px,-3.8vw,-28px);
 }
 .sky-stage::before{
   content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
@@ -216,25 +217,30 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
 @keyframes plop{from{scale:.2;opacity:0}}
 
 .discovery-card{
-  position:absolute;z-index:5;left:22px;right:22px;bottom:48px;min-height:128px;
-  padding:18px 20px;border-radius:8px;color:#eef2ff;pointer-events:none;
+  position:absolute;z-index:5;left:auto;right:30px;bottom:56px;width:min(360px,calc(100% - 60px));
+  min-height:0;padding:10px 13px 11px 15px;border-radius:6px;color:#eef2ff;pointer-events:none;
   background:
-    linear-gradient(135deg,rgba(10,16,38,.94),rgba(27,37,79,.82)),
-    linear-gradient(90deg,rgba(255,200,87,.22),rgba(84,215,183,.18));
-  border:1px solid rgba(205,212,247,.30);box-shadow:0 22px 44px rgba(0,0,0,.34);
-  backdrop-filter:blur(12px);
+    linear-gradient(90deg,rgba(84,215,183,.58) 0 2px,transparent 2px),
+    linear-gradient(135deg,rgba(8,13,31,.76),rgba(14,22,50,.54));
+  border:1px solid rgba(205,212,247,.22);
+  box-shadow:0 14px 34px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.06);
+  backdrop-filter:blur(10px);
+}
+.discovery-card::after{
+  content:"";position:absolute;right:12px;top:12px;width:7px;height:7px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 4px rgba(255,200,87,.12),0 0 16px rgba(255,200,87,.58);
 }
 .discovery-kicker{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.discovery-card h3{font-size:26px;line-height:1.08;margin-bottom:8px;color:#fff}
-.discovery-card p{color:#c7ceef;font-size:14px;line-height:1.45}
+  text-transform:uppercase;color:var(--mint);margin-bottom:6px;padding-right:22px}
+.discovery-card h3{font-size:19px;line-height:1.08;margin-bottom:5px;color:#fff;padding-right:18px}
+.discovery-card p{color:#c7ceef;font-size:12px;line-height:1.36}
 .discovery-card .formula{
-  font:600 clamp(24px,2.6vw,34px)/1.35 "STIX Two Text",Georgia,serif;
-  color:#fff;margin:4px 0 8px;overflow-wrap:anywhere;letter-spacing:0;
+  font:600 clamp(16px,1.55vw,22px)/1.22 "STIX Two Text",Georgia,serif;
+  color:#fff;margin:3px 0 6px;overflow-wrap:anywhere;letter-spacing:0;
 }
 .discovery-card.pulse{animation:cardPulse .48s ease}
-.discovery-person{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center}
-.discovery-person img{width:64px;height:64px;object-fit:cover;border-radius:50%;
+.discovery-person{display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:center}
+.discovery-person img{width:48px;height:48px;object-fit:cover;border-radius:50%;
   border:2px solid var(--gold);box-shadow:0 0 0 3px rgba(255,200,87,.15)}
 .sky-caption{
   position:absolute;z-index:6;left:16px;right:16px;bottom:13px;
@@ -346,12 +352,12 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
 .stop:hover i,.stop:focus-visible i{transform:scale(1.5)}
 .stop:hover span,.stop:focus-visible span{color:var(--violet)}
 .stop:nth-child(even):hover span{color:var(--coral)}
-@media (max-width:920px){
+@media (max-width:1120px){
   header{padding-top:28px}
   .hero-shell{grid-template-columns:1fr;width:100%;max-width:100%}
-  .hero-in{text-align:center;margin:0 auto;width:100%;max-width:680px}
+  .hero-in{text-align:center;margin:0 auto;width:100%;max-width:680px;padding-top:0}
   .cta-row,.stats{justify-content:center}
-  .sky-stage{justify-self:center;max-width:760px;height:500px}
+  .sky-stage{justify-self:center;max-width:820px;height:540px;margin-top:10px;margin-right:0}
 }
 @media (max-width:720px){
   .plotmap{justify-content:center;margin-top:28px}
@@ -571,16 +577,16 @@ footer .btn:hover{background:var(--violet);border-color:var(--violet)}
   .cta-row,.stats{justify-content:flex-start}
   .btn{font-size:14px;padding:10px 18px}
   .stats{gap:12px 22px}
-  .sky-stage{width:100%;max-width:354px;height:390px;justify-self:start}
-  .discovery-card{left:12px;right:12px;bottom:36px;min-height:104px;padding:12px 13px}
+  .sky-stage{width:100%;max-width:354px;height:410px;justify-self:start;margin-top:4px;margin-right:0}
+  .discovery-card{left:12px;right:12px;bottom:36px;width:auto;min-height:0;padding:10px 12px 11px 13px}
   .sky-invite{left:12px;right:12px;top:14px;max-width:none;padding:9px 11px}
   .sky-invite b{font-size:10.5px}
   .sky-invite small{font-size:10.5px}
-  .discovery-card h3{font-size:19px}
-  .discovery-card p{font-size:12.5px}
-  .discovery-card .formula{font-size:15px}
-  .discovery-person{grid-template-columns:54px 1fr;gap:10px}
-  .discovery-person img{width:54px;height:54px}
+  .discovery-card h3{font-size:18px}
+  .discovery-card p{font-size:12px}
+  .discovery-card .formula{font-size:14.5px}
+  .discovery-person{grid-template-columns:46px 1fr;gap:10px}
+  .discovery-person img{width:46px;height:46px}
   .sky-caption{font-size:10px;letter-spacing:.05em}
   .portrait-burst{width:136px}
   .portrait-burst img{width:104px;height:104px}
