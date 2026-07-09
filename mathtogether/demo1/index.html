@@ -8,8 +8,9 @@
 <link rel="icon" href="../assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Caveat:wght@600&family=Public+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,500;0,600;1,500&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
 </head>
 <body>
 
@@ -21,38 +22,61 @@
     <a href="#livestream">Livestream</a>
     <a href="#news">News</a>
     <a href="#team">Team</a>
+    <a href="#involved">Get involved</a>
     <a href="#faq">FAQ</a>
     <a class="join" href="https://forms.gle/XjoktJdHGPGnzJs17">Join us</a>
   </div>
 </nav>
 
 <header id="top">
-  <p class="paper-head">Math Together Canada &nbsp;·&nbsp; Community Contest Paper &nbsp;·&nbsp; Time limit: none &nbsp;·&nbsp; Open to everyone</p>
-  <h1>United by Numbers,<br><mark>Inspired by Learning!</mark></h1>
-  <p class="note" aria-hidden="true">← show your work, have fun doing it</p>
-  <p class="lede">We are a student-led organization on a mission to unite math enthusiasts from coast to coast.
-  Whether you're eager to explore new problem-solving strategies, need support with schoolwork, or aspire
-  to excel in math competitions, our vibrant community is here to guide and inspire you. Led by passionate
-  high school students who live and breathe mathematics, we offer dynamic events, engaging resources, and a
-  welcoming environment where learning flourishes and friendships thrive. Join us to explore, collaborate,
-  and experience the beauty of mathematics — together, we can make math more accessible, exciting, and
-  enriching for everyone!</p>
-  <p class="cta-row">
-    <a class="btn" href="https://forms.gle/XjoktJdHGPGnzJs17">Sign up now</a>
-    <a class="btn ghost" href="https://www.youtube.com/@MathTogetherCanada">Watch on YouTube</a>
-  </p>
-  <ul class="stats">
-    <li><b>500+</b> happy students</li>
-    <li><b>6</b> programs &amp; activities</li>
-    <li><b>6</b> community partners</li>
-    <li><b>$7,110</b> raised for SickKids</li>
-  </ul>
+  <svg class="plane" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g class="axis">
+      <line x1="40" y1="580" x2="1170" y2="580"/>
+      <line x1="110" y1="30" x2="110" y2="615"/>
+      <polygon points="1170,580 1154,573 1154,587"/>
+      <polygon points="110,30 103,46 117,46"/>
+    </g>
+    <path class="curve c1" d="M110 560 C 280 560, 300 330, 470 330 S 660 470, 830 380 S 1080 120, 1170 100"/>
+    <path class="curve c2" d="M110 580 C 420 540, 760 470, 900 300 S 1080 60, 1170 40"/>
+    <g class="pts">
+      <circle cx="470" cy="330" r="6"/><text x="486" y="322">(500+, students)</text>
+      <circle cx="830" cy="380" r="6"/><text x="846" y="410">(6, programs)</text>
+      <circle cx="1035" cy="180" r="6"/><text x="930" y="160">($7 110, SickKids)</text>
+    </g>
+  </svg>
+  <p class="coords">(x, y) = (0.0, 0.0)</p>
+  <div class="hero-in">
+    <p class="eyebrow">y = math · together(x) &nbsp;—&nbsp; student-led, coast to coast</p>
+    <h1>United by <em>Numbers</em>,<br>Inspired by <em>Learning</em>!</h1>
+    <p class="lede">We are a student-led organization on a mission to unite math enthusiasts from coast to
+    coast. Whether you're eager to explore new problem-solving strategies, need support with schoolwork,
+    or aspire to excel in math competitions, our vibrant community is here to guide and inspire you. Led
+    by passionate high school students who live and breathe mathematics, we offer dynamic events, engaging
+    resources, and a welcoming environment where learning flourishes and friendships thrive. Join us to
+    explore, collaborate, and experience the beauty of mathematics — together, we can make math more
+    accessible, exciting, and enriching for everyone!</p>
+    <p class="cta-row">
+      <a class="btn" href="https://forms.gle/XjoktJdHGPGnzJs17">Sign up now</a>
+      <a class="btn ghost" href="https://www.youtube.com/@MathTogetherCanada">Watch on YouTube</a>
+    </p>
+    <ul class="stats">
+      <li><b>500+</b> happy students</li>
+      <li><b>6</b> programs &amp; activities</li>
+      <li><b>6</b> community partners</li>
+      <li><b>$7,110</b> raised for SickKids</li>
+    </ul>
+    <p class="hint">psst — click anywhere up here to plot a point</p>
+  </div>
 </header>
+
+<div class="ruler-strip" aria-hidden="true"><div><span>Gauss</span><span>Pascal</span><span>Cayley</span><span>Fermat</span><span>Euclid</span><span>CIMC</span><span>COMC</span><span>CMO</span><span>AMC 8</span><span>AMC 10</span><span>AMC 12</span><span>AIME</span><span>Math Kangaroo</span><span>CTMC</span><span>HMMT</span><span>EGMO</span><span>IMO</span><span>MPFG</span><span>Gauss</span><span>Pascal</span><span>Cayley</span><span>Fermat</span><span>Euclid</span><span>CIMC</span><span>COMC</span><span>CMO</span><span>AMC 8</span><span>AMC 10</span><span>AMC 12</span><span>AIME</span><span>Math Kangaroo</span><span>CTMC</span><span>HMMT</span><span>EGMO</span><span>IMO</span><span>MPFG</span></div></div>
+
+<div class="yaxis" aria-hidden="true"><span class="marker">0</span></div>
 
 <main>
 
 <section id="about">
-  <h2><span class="part">Part A</span> Who we are</h2>
+  <h2>Who we are</h2>
   <p>Founded by math enthusiasts, our club aims to make math fun and accessible for everyone.
   We believe that numbers can be exciting and engaging, and we're here to prove it!</p>
   <p>Our leadership team is a mix of seasoned advisors and enthusiastic students, all dedicated to
@@ -63,7 +87,7 @@
 </section>
 
 <section id="programs">
-  <h2><span class="part">Part B</span> Programs &amp; activities</h2>
+  <h2>Programs &amp; activities</h2>
   <p class="section-lede">Programs that make math meaningful, fun, and community-driven!</p>
   <div class="cards">
     <article><h3>Peer Tutoring Support</h3>
@@ -89,7 +113,7 @@
 </section>
 
 <section id="livestream">
-  <h2><span class="part">Part C</span> Math Challenge livestream</h2>
+  <h2>Math Challenge livestream</h2>
   <p class="section-lede">Are you passionate about math? Want to test your problem-solving skills in
   real-time? Math Together Canada invites you to our Math Challenge — learning problem-solving
   strategies through interactive discussions. Big math energy on our
@@ -113,7 +137,7 @@
 </section>
 
 <section id="news">
-  <h2><span class="part">Part D</span> News &amp; stories</h2>
+  <h2>News &amp; stories</h2>
 
   <div class="news-grid">
 
@@ -323,11 +347,12 @@
 </section>
 
 <section id="team">
-  <h2><span class="part">Part E</span> Meet our team</h2>
-  <div class="team-grid">
-
+  <h2>Meet our team</h2>
+    <div class="tier">
+    <h3 class="tier-label">Leadership</h3>
+    <div class="team-grid">
     <article class="member"><img src="../assets/img/team-michael.jpg" alt="Michael Sun">
-      <h3>Michael Sun</h3><p class="role">MTC President · Appleby College 2027</p>
+      <h3>Michael Sun</h3><p class="role">President · Appleby College 2027</p>
       <details><summary>Bio</summary>
         <p>Michael is a passionate math enthusiast who excels in problem-solving as a CIMC Champion, IMMC
         Meritorious Award, COMC Bronze, USAJMO, CMO and APMO qualifier, with team successes in ARML, HMMT,
@@ -337,9 +362,8 @@
         students and co-organizes charity math competitions, raising funds for SickKids and making a
         community impact.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-perry.jpg" alt="Perry Dai">
-      <h3>Perry Dai</h3><p class="role">MTC Co-president · UTS 2027</p>
+      <h3>Perry Dai</h3><p class="role">Co-president · UTS 2027</p>
       <details><summary>Bio</summary>
         <p>Perry is a dedicated math enthusiast and avid competitor — highlights include CJMO Champion,
         APMO Silver, USAMO Bronze, and perfect scores on the CS/IMC.</p>
@@ -347,9 +371,14 @@
         curiosity and a love for learning. At Math Together Canada, Perry hopes to share insights, inspire
         deeper engagement in math, and help create an inclusive, collaborative community.</p>
       </details></article>
+    </div>
+  </div>
 
+  <div class="tier">
+    <h3 class="tier-label">Executives</h3>
+    <div class="team-grid">
     <article class="member"><img src="../assets/img/team-kaylyn.jpg" alt="Kaylyn Zhang">
-      <h3>Kaylyn Zhang</h3><p class="role">MTC Executive · UTS 2028</p>
+      <h3>Kaylyn Zhang</h3><p class="role">UTS 2028</p>
       <details><summary>Bio</summary>
         <p>Kaylyn is a passionate math student who has participated and won prizes in many contests,
         including the AMCs (2x Maryam Mirzakhani AMC10 certificate), CMWMC (2x 2nd place), CEMC contests
@@ -359,9 +388,8 @@
         She hopes that through Math Together Canada, everyone feels included and empowered to pursue their
         interests.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-prince.png" alt="Prince Zhang">
-      <h3>Prince Zhang</h3><p class="role">MTC Executive · UCC 2028</p>
+      <h3>Prince Zhang</h3><p class="role">UCC 2028</p>
       <details><summary>Bio</summary>
         <p>A motivated math competitor, Prince has made the ARML tiebreakers and performed well in contests
         like the Euclid, COMC, AMC 10, and AIME. He also enjoys music, science, and DECA, all driven by an
@@ -369,9 +397,14 @@
         <p>At Math Together Canada, Prince aims to share his enthusiasm for math by sparking interest in
         others and laying a strong foundation for their future learning and growth.</p>
       </details></article>
+    </div>
+  </div>
 
+  <div class="tier">
+    <h3 class="tier-label">Advisors</h3>
+    <div class="team-grid">
     <article class="member"><img src="../assets/img/team-james.jpg" alt="James Qiu">
-      <h3>James Qiu</h3><p class="role">MTC Advisor · Stanford 2030</p>
+      <h3>James Qiu</h3><p class="role">Stanford 2030</p>
       <details><summary>Bio</summary>
         <p>James is an enthusiastic student who loves math, business, and drama, excelling in AMC 10/12
         (Distinguished Honor Roll), the Canadian Mathematical Olympiad (Performance with Honours), and
@@ -381,27 +414,24 @@
         hopes to spark deeper interest in math, promote team problem-solving, and foster a welcoming
         community for everyone.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-lillian.jpg" alt="Lillian Zhang">
-      <h3>Lillian Zhang</h3><p class="role">MTC Advisor · MIT PhD student</p>
+      <h3>Lillian Zhang</h3><p class="role">MIT PhD student</p>
       <details><summary>Bio</summary>
         <p>MIT (2020) in Mathematics, MIT PhD student in Computer Science, HMMT Director (2018–2019), USAMO
         qualifier, MPFG top 10 (the only one from Canada in MPFG history).</p>
         <p>Purpose: to build a home for math lovers, generate interest and wonder in the math indifferent,
         and support the math adverse so that mathematics can be accessible to everyone.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-emily.jpg" alt="Emily Ma">
-      <h3>Emily Ma</h3><p class="role">MTC Advisor · Harvard 2028</p>
+      <h3>Emily Ma</h3><p class="role">Harvard 2028</p>
       <details><summary>Bio</summary>
         <p>Emily is an undergraduate student at Harvard that is dedicated to sharing her love of math. She
         has earned an IMO bronze medal, EGMO silver medal, USAMO silver medal, and two honourable mentions
         on the CMO.</p>
         <p>In her free time, Emily likes watching musicals and playing card games.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-ming.jpg" alt="Ming Yang">
-      <h3>Ming Yang</h3><p class="role">MTC Advisor · MIT 2029</p>
+      <h3>Ming Yang</h3><p class="role">MIT 2029</p>
       <details><summary>Bio</summary>
         <p>2x IMO Silver Medal, 2x CMO Best Solution Award, 2x APMO Silver Medal.</p>
         <p>Ming is passionate about inspiring the next generation of math enthusiasts by creating engaging
@@ -409,9 +439,8 @@
         Through tangible action and advice, he aims to make math more accessible, enjoyable, and rewarding
         for the next generation.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-shanna.jpg" alt="Shanna Xiao">
-      <h3>Shanna Xiao</h3><p class="role">MTC Advisor · Caltech 2029</p>
+      <h3>Shanna Xiao</h3><p class="role">Caltech 2029</p>
       <details><summary>Bio</summary>
         <p>Shanna is passionate about math and participated in various math competitions throughout high
         school. She represented Team Canada at EGMO in 2023 and 2025, received Honourable Mention twice at
@@ -420,9 +449,14 @@
         Canada, she hopes to contribute towards a math community for everyone and inspire younger students
         to pursue mathematics as well.</p>
       </details></article>
+    </div>
+  </div>
 
+  <div class="tier">
+    <h3 class="tier-label">Content Contributors</h3>
+    <div class="team-grid">
     <article class="member"><img src="../assets/img/team-max.jpg" alt="Maximilian Lin">
-      <h3>Maximilian Lin</h3><p class="role">Content Contributor · WTCS 2028</p>
+      <h3>Maximilian Lin</h3><p class="role">WTCS 2028</p>
       <details><summary>Bio</summary>
         <p>Maximilian is a curious student with a deep love for mathematics. He is a CJMO Gold Medalist and
         has qualified for the CMO, APMO, and AIME. He has also achieved team success at HMMT, ARML, IMMC,
@@ -432,9 +466,8 @@
         competitions. Through Math Together, he hopes to inspire more students to discover the beauty of
         mathematics by making problem solving approachable, engaging, and rewarding.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-han.png" alt="Han Wu">
-      <h3>Han Wu</h3><p class="role">Content Contributor · Harvard 2030</p>
+      <h3>Han Wu</h3><p class="role">Harvard 2030</p>
       <details><summary>Bio</summary>
         <p>Han is a student from Vancouver, BC, with a strong passion for math. He has qualified for the
         CMO and APMO, and earned top scores in the COMC, AMC 12, AIME, and various CEMC contests.</p>
@@ -443,9 +476,8 @@
         Together, Han is excited to share his love for math, inspire younger students, and give back to the
         community that has shaped his journey.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-chris.jpg" alt="Chris Fu">
-      <h3>Chris Fu</h3><p class="role">Content Contributor · SDSS 2026</p>
+      <h3>Chris Fu</h3><p class="role">SDSS 2026</p>
       <details><summary>Bio</summary>
         <p>Chris is a dedicated student who finds great joy in exploring mathematics. He has qualified for
         USAJMO, CMO, and APMO, earning USAJMO Honor.</p>
@@ -454,9 +486,8 @@
         Together, he hopes to inspire students' curiosity and passion for mathematics, and help them
         discover its captivating beauty.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-abhiraj.png" alt="Abhiraj Singh">
-      <h3>Abhiraj Singh</h3><p class="role">Content Contributor · UTS 2027</p>
+      <h3>Abhiraj Singh</h3><p class="role">UTS 2027</p>
       <details><summary>Bio</summary>
         <p>Abhiraj is a dedicated student with a deep love for mathematics, thriving in both contest and
         enrichment settings. He has consistently qualified for AIME since grade 7 and earned a perfect
@@ -466,9 +497,8 @@
         encourage collaborative approaches to challenging problems, and contribute to a supportive
         community where curiosity drives learning.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-eason.jpg" alt="Eason Zhang">
-      <h3>Eason Zhang</h3><p class="role">Content Contributor · Hillfield 2028</p>
+      <h3>Eason Zhang</h3><p class="role">Hillfield 2028</p>
       <details><summary>Bio</summary>
         <p>Yixuan (Eason) Zhang is a highly motivated high school student with a strong academic record and
         a passion for science, mathematics, and research. He has earned multiple academic awards, including
@@ -477,9 +507,14 @@
         over 150 hours of service experience. He is committed to continuous learning, teamwork, and using
         his curiosity to contribute meaningfully to projects that make a positive impact.</p>
       </details></article>
+    </div>
+  </div>
 
+  <div class="tier">
+    <h3 class="tier-label">Outreach</h3>
+    <div class="team-grid">
     <article class="member"><img src="../assets/img/team-eric.jpg" alt="Eric Zhang">
-      <h3>Eric Zhang</h3><p class="role">Outreach · UCC 2027</p>
+      <h3>Eric Zhang</h3><p class="role">UCC 2027</p>
       <details><summary>Bio</summary>
         <p>Eric is a passionate student who loves business and debate, excelling in major competitions such
         as being a top 10 speaker for Harvard WSDC and reaching the national semifinals. He has honed his
@@ -489,16 +524,15 @@
         a dynamic learning environment, and bring communities together through a shared passion for
         mathematics.</p>
       </details></article>
-
     <article class="member"><img src="../assets/img/team-eddy.jpg" alt="Eddy Liang">
-      <h3>Eddy Liang</h3><p class="role">Outreach · Crescent 2028</p>
+      <h3>Eddy Liang</h3><p class="role">Crescent 2028</p>
     </article>
-
+    </div>
   </div>
 </section>
 
 <section id="involved">
-  <h2><span class="part">Part F</span> Get involved</h2>
+  <h2>Get involved</h2>
   <p>Want to make a difference? Join us as a volunteer! We're always looking for passionate individuals
   who want to share their love for math.</p>
   <p>Whether you're a math whiz or just someone who enjoys helping others, there's a place for you in our
@@ -508,7 +542,7 @@
 </section>
 
 <section id="faq">
-  <h2><span class="part">Bonus</span> Math queries unleashed!</h2>
+  <h2>Math queries unleashed!</h2>
   <details class="faq"><summary>What is Math Together Canada?</summary>
     <p>We're a vibrant community dedicated to making math fun and engaging for everyone!</p></details>
   <details class="faq"><summary>How can I join the club?</summary>
