@@ -56,7 +56,7 @@ body>nav .brand{display:flex;align-items:center;gap:9px;font-family:"STIX Two Te
   min-width:max-content;padding:6px 12px 6px 8px;border-radius:8px;
   background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(84,215,183,.05));
   border:1px solid rgba(218,225,255,.18);box-shadow:inset 0 1px rgba(255,255,255,.06)}
-body>nav .brand img{width:50px;height:50px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(255,200,87,.38))}
+body>nav .brand img{width:68px;height:68px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(255,200,87,.38))}
 .brand-copy{display:grid;line-height:1.05}
 .brand-copy strong{font:600 21px/1.05 "STIX Two Text",Georgia,serif;color:#fff}
 .brand-copy small{font:600 11px/1.1 "IBM Plex Mono",ui-monospace,monospace;
@@ -174,7 +174,7 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
 .stats b{font-family:"STIX Two Text",serif;font-size:27px;font-weight:600;
   color:var(--violet);display:block}
 .stats li:nth-child(even) b{color:var(--gold)}
-.stats li{font-size:13px;color:#c6cfee}
+.stats li{font-size:13px;color:#c6cfee;text-align:center}
 
 .sky-stage{
   position:relative;isolation:isolate;overflow:hidden;justify-self:end;width:100%;
@@ -203,22 +203,11 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
 .meteor::after{content:"";position:absolute;right:-2px;top:-2px;width:6px;height:6px;
   border-radius:50%;background:#fff}
 @keyframes meteor{
-  from{transform:rotate(205deg) translateX(0);opacity:0}
+  from{transform:rotate(var(--angle,205deg)) translateX(0);opacity:0}
   12%{opacity:1}
-  to{transform:rotate(205deg) translateX(560px);opacity:0}
+  to{transform:rotate(var(--angle,205deg)) translateX(560px);opacity:0}
 }
 .plane{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}
-.constellations{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
-.constellations line{
-  stroke:var(--gold);stroke-width:.48;stroke-linecap:round;
-  filter:drop-shadow(0 0 7px rgba(255,200,87,.65));
-  transition:opacity .35s ease,stroke-width .35s ease;
-}
-.constellations line:nth-last-child(1){opacity:.78;stroke-width:.62}
-.constellations line:nth-last-child(2){opacity:.52}
-.constellations line:nth-last-child(3){opacity:.34}
-.constellations line:nth-last-child(4){opacity:.20}
-.constellations line:nth-last-child(n+5){opacity:.11}
 .axis{stroke:#cdd4f7;stroke-width:2;opacity:.36}
 .axis polygon{fill:#cdd4f7;stroke:none}
 .curve{fill:none;stroke-width:3;stroke-linecap:round;opacity:.58}
@@ -249,15 +238,6 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
   0%,100%{transform:scale(.86);opacity:.72}
   50%{transform:scale(1.12);opacity:1}
 }
-.dot{position:absolute;z-index:4;pointer-events:none;transform:translate(-50%,-50%)}
-.dot i{display:block;width:11px;height:11px;border-radius:50%;
-  background:var(--gold);border:2.5px solid #fff;
-  box-shadow:0 0 0 1.5px var(--gold),0 0 18px rgba(255,200,87,.9);
-  animation:plop .35s cubic-bezier(.2,1.6,.4,1)}
-.dot span{position:absolute;left:12px;top:-6px;white-space:nowrap;
-  font:600 11.5px "IBM Plex Mono",monospace;color:#e8eaff}
-@keyframes plop{from{scale:.2;opacity:0}}
-
 .sky-caption{
   position:absolute;z-index:6;left:16px;right:16px;bottom:13px;
   font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;

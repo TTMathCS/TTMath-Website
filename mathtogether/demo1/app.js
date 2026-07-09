@@ -1,11 +1,7 @@
 var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var sky = document.querySelector('.sky-stage');
 var coords = sky.querySelector('.coords');
-var constellation = sky.querySelector('.constellations');
-var lastPoint = null;
 var lastLegendName = '';
-var maxTrailSegments = 5;
-var maxDots = 9;
 
 var formulas = [
   {
@@ -213,17 +209,18 @@ for (var i = 0; i < 80; i++) {
   sky.insertBefore(s, sky.firstChild);
 }
 
-// A shooting star crosses the panel every so often.
+// A lone shooting star, random direction and random timing.
 function meteor() {
   var m = document.createElement('div');
   m.className = 'meteor';
-  m.style.top = (Math.random() * 55) + '%';
-  m.style.left = (20 + Math.random() * 68) + '%';
+  m.style.top = (10 + Math.random() * 65) + '%';
+  m.style.left = (15 + Math.random() * 70) + '%';
+  m.style.setProperty('--angle', Math.floor(Math.random() * 360) + 'deg');
   sky.appendChild(m);
   m.addEventListener('animationend', function () { m.remove(); });
-  setTimeout(meteor, 3200 + Math.random() * 6000);
+  setTimeout(meteor, 5000 + Math.random() * 11000);
 }
-if (!still) setTimeout(meteor, 1600);
+if (!still) setTimeout(meteor, 2500);
 
 // Live (x, y) readout: the panel is a real coordinate plane, 26px per unit.
 sky.addEventListener('mousemove', function (e) {
@@ -232,34 +229,6 @@ sky.addEventListener('mousemove', function (e) {
   var y = ((r.bottom - e.clientY) / 26).toFixed(1);
   coords.textContent = '(x, y) = (' + x + ', ' + y + ')';
 });
-
-function plotPoint(px, py, r) {
-  var d = document.createElement('div');
-  d.className = 'dot';
-  d.style.left = px + 'px';
-  d.style.top = py + 'px';
-  d.innerHTML = '<i></i><span>(' + (px / 26).toFixed(1) + ', ' +
-                ((r.height - py) / 26).toFixed(1) + ')</span>';
-  sky.appendChild(d);
-
-  var point = { x: px / r.width * 100, y: py / r.height * 100 };
-  if (lastPoint) {
-    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('x1', lastPoint.x.toFixed(2));
-    line.setAttribute('y1', lastPoint.y.toFixed(2));
-    line.setAttribute('x2', point.x.toFixed(2));
-    line.setAttribute('y2', point.y.toFixed(2));
-    constellation.appendChild(line);
-  }
-  lastPoint = point;
-
-  while (constellation.children.length > maxTrailSegments) {
-    constellation.firstElementChild.remove();
-  }
-
-  var dots = sky.querySelectorAll('.dot');
-  if (dots.length > maxDots) dots[0].remove();
-}
 
 // One burst per click: a flashing star plus a single card with the details.
 function showFormula(x, y, item) {
@@ -328,7 +297,6 @@ function discover(px, py) {
   var safeX = clamp(px, 86, r.width - 86);
   var safeY = clamp(py, 96, r.height - 120);
 
-  plotPoint(px, py, r);
   if (Math.random() < 0.4) showPortrait(safeX, safeY, pickLegend());
   else showFormula(safeX, safeY, pick(Math.random() < 0.65 ? formulas : conjectures));
 }
