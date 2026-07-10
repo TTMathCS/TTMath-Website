@@ -273,6 +273,11 @@ var legends = [
   }
 ];
 
+// Preload portraits so a legend appears instantly on unlock.
+addEventListener('load', function () {
+  legends.forEach(function (m) { new Image().src = m.src; });
+});
+
 function pick(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
@@ -302,14 +307,17 @@ document.querySelectorAll('.curve').forEach(function (p, i) {
   });
 });
 
-// Sprinkle a night sky inside the observatory-sized Cartesian panel.
-for (var i = 0; i < 120; i++) {
+// Sprinkle a night sky: varied sizes, warm and cool tints, a few bright standouts.
+var tints = ['#ffffff', '#dbe6ff', '#fff3d9'];
+for (var i = 0; i < 160; i++) {
   var s = document.createElement('span');
   s.className = 'star';
-  var sz = 1 + Math.random() * 1.6;
+  var sz = 1 + Math.random() * 1.8;
+  if (Math.random() < 0.06) sz = 2.8 + Math.random() * 1.2;
   s.style.cssText = 'left:' + (Math.random() * 100) + '%;top:' + (Math.random() * 92) +
-    '%;width:' + sz + 'px;height:' + sz + 'px;animation-duration:' +
-    (2 + Math.random() * 4) + 's;animation-delay:-' + (Math.random() * 4) + 's';
+    '%;width:' + sz + 'px;height:' + sz + 'px;background:' + tints[i % 3] +
+    ';animation-duration:' + (1.6 + Math.random() * 5.5) + 's;animation-delay:-' +
+    (Math.random() * 7) + 's';
   sky.insertBefore(s, sky.firstChild);
 }
 
@@ -383,10 +391,15 @@ function showPortrait(x, y, item) {
   card.appendChild(img);
   card.appendChild(name);
   card.appendChild(note);
-  sky.appendChild(card);
+
+  function reveal() {
+    sky.appendChild(card);
+    cap('.portrait-burst', 3);
+  }
+  if (img.complete) reveal();
+  else { img.onload = reveal; img.onerror = reveal; }
 
   card.addEventListener('animationend', function () { card.remove(); });
-  cap('.portrait-burst', 3);
 }
 
 function cap(selector, limit) {

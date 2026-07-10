@@ -188,8 +188,16 @@ header .btn.ghost:hover{color:var(--gold);border-color:var(--gold);background:rg
 }
 .sky-stage:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .star{position:absolute;z-index:0;border-radius:50%;background:#fff;pointer-events:none;
-  animation:twinkle 3s ease-in-out infinite alternate}
-@keyframes twinkle{from{opacity:.15}to{opacity:.95}}
+  box-shadow:0 0 6px 1px rgba(220,232,255,.28);
+  animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{
+  0%,100%{opacity:.9;transform:scale(1)}
+  22%{opacity:.35;transform:scale(.86)}
+  38%{opacity:.75;transform:scale(.97)}
+  60%{opacity:.12;transform:scale(.8)}
+  74%{opacity:.6;transform:scale(.94)}
+  88%{opacity:.28;transform:scale(.88)}
+}
 .meteor{
   position:absolute;z-index:2;left:0;top:0;width:340px;height:3px;pointer-events:none;border-radius:999px;
   background:linear-gradient(90deg,rgba(255,255,255,0) 0,rgba(170,195,255,.14) 30%,
