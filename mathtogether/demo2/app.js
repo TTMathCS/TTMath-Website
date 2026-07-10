@@ -1,19 +1,25 @@
 var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 var surprises = [
-  { kicker: 'Program ticket', title: 'Peer tutoring', formula: 'question + mentor -> confidence', note: 'Free support for school math, foundations, and confidence.', symbol: '∑' },
-  { kicker: 'Contest ticket', title: 'Contest prep sprint', formula: 'AMC -> AIME -> CMO', note: 'Practice sessions, strategy, and student-led breakdowns for contest math.', symbol: 'π' },
-  { kicker: 'Charity ticket', title: 'Charity Math Competition', formula: 'math + kindness = impact', note: 'Community contests that raise funds and make problem solving social.', img: '../assets/img/news-charity-2025.png' },
-  { kicker: 'Camp ticket', title: 'Summer camp teamwork', formula: 'puzzles + friends -> momentum', note: 'Hands-on contest math, group solving, and final challenge days.', img: '../assets/img/news-summer-camp-2025.jpg' },
-  { kicker: 'Livestream ticket', title: 'Problem breakdown live', formula: 'problem -> method -> aha', note: 'Students compare solutions and learn the reasoning behind hard problems.', symbol: '▶' },
+  { kicker: 'Legend ticket', title: 'Maryam Mirzakhani', formula: 'geometry + imagination', note: 'A reminder that deep mathematical creativity can feel like drawing maps of new worlds.', img: '../assets/img/legends/mirzakhani.jpg' },
+  { kicker: 'Legend ticket', title: 'Emmy Noether', formula: 'symmetry -> structure', note: 'Her ideas connect symmetry, algebra, and modern physics.', img: '../assets/img/mathematicians/noether.jpg' },
+  { kicker: 'Legend ticket', title: 'Albert Einstein', formula: 'E = mc²', note: 'Thought experiments, geometry, and physics meet in one famous formula.', img: '../assets/img/legends/einstein.jpg' },
   { kicker: 'Theorem flash', title: 'Cauchy-Schwarz', formula: '(Σaᵢbᵢ)² ≤ (Σaᵢ²)(Σbᵢ²)', note: 'A powerful inequality that appears often in olympiad solutions.', symbol: '≤' },
+  { kicker: 'Theorem flash', title: 'Euler Identity', formula: 'e^{iπ} + 1 = 0', note: 'Five famous constants meet in one tiny equation.', symbol: 'e' },
+  { kicker: 'Conjecture flash', title: 'Collatz Conjecture', formula: '3x + 1', note: 'Simple enough to play in seconds, hard enough that nobody has proved it fully.', symbol: '3x' },
+  { kicker: 'Conjecture flash', title: 'Riemann Hypothesis', formula: 'ζ(s) = 0', note: 'One of the deepest mysteries behind the pattern of prime numbers.', symbol: 'ζ' },
   { kicker: 'Topic flash', title: 'Graph theory', formula: 'G = (V,E)', note: 'Friendships, routes, tournaments, and networks become solvable structures.', symbol: 'G' },
-  { kicker: 'Volunteer ticket', title: 'Student leadership', formula: 'teach + organize + design', note: 'Volunteers can teach, write, mentor, run events, and help the community grow.', symbol: '∞' }
+  { kicker: 'Topic flash', title: 'Expected value', formula: 'E[X] = ΣxP(x)', note: 'A contest superpower for games, probability, and smart guessing.', symbol: 'P' },
+  { kicker: 'MTC story', title: 'Summer camp teamwork', formula: 'puzzles + friends -> momentum', note: 'Hands-on contest math, group solving, and final challenge days.', img: '../assets/img/news-summer-camp-2025.jpg' },
+  { kicker: 'MTC story', title: 'Charity Math Competition', formula: 'math + kindness = impact', note: 'Community contests that raise funds and make problem solving social.', img: '../assets/img/news-charity-2025.png' },
+  { kicker: 'Legend ticket', title: 'Katherine Johnson', formula: 'orbit = calculation + courage', note: 'Precision mathematics that helped guide spaceflight.', img: '../assets/img/legends/katherine-johnson.jpg' }
 ];
 
 var lastSurprise = -1;
+var wheelRotation = 0;
 var hero = document.querySelector('.hero');
 var wheelLab = document.querySelector('.wheel-lab');
+var wheelArt = document.querySelector('.wheel-art');
 var spotlight = document.querySelector('.spotlight');
 var spotKicker = document.querySelector('.spot-kicker');
 var spotTitle = document.querySelector('.spotlight h2');
@@ -61,16 +67,28 @@ function spinSurprise() {
     wheelLab.classList.remove('spinning');
     wheelLab.offsetWidth;
     wheelLab.classList.add('spinning');
-    setTimeout(function () { wheelLab.classList.remove('spinning'); }, 760);
-    setTimeout(function () { setSpotlight(surprises[next]); }, 220);
+    wheelRotation += 1080 + next * 29 + Math.floor(Math.random() * 80);
+    if (wheelArt) wheelArt.style.setProperty('--spin', wheelRotation + 'deg');
+    setTimeout(function () { setSpotlight(surprises[next]); }, 850);
+    setTimeout(function () { wheelLab.classList.remove('spinning'); }, 1320);
   } else {
     setSpotlight(surprises[next]);
   }
 }
 
 document.querySelectorAll('[data-spin]').forEach(function (button) {
-  button.addEventListener('click', spinSurprise);
+  button.addEventListener('click', function (event) {
+    event.stopPropagation();
+    spinSurprise();
+  });
 });
+
+if (wheelLab) {
+  wheelLab.addEventListener('click', function (event) {
+    if (event.target.closest('.spotlight')) return;
+    spinSurprise();
+  });
+}
 
 document.querySelectorAll('[data-count]').forEach(function (node) {
   if (reduceMotion) return;

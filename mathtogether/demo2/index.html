@@ -72,13 +72,17 @@
         <path class="swoop b" d="M98 244 C184 88,430 90,546 246 C638 370,568 532,382 588 C226 636,80 544,106 388"/>
         <path class="zig" d="M96 338 L154 302 L214 338 L274 302 L334 338 L394 302 L454 338 L514 302 L576 338"/>
         <path class="loop" d="M158 508 C218 432,302 434,356 506 S502 574,562 486"/>
+        <text x="100" y="154">legend</text>
+        <text x="466" y="142">theorem</text>
+        <text x="494" y="552">topic</text>
+        <text x="96" y="592">conjecture</text>
       </svg>
 
       <button class="wheel-core" data-spin type="button" aria-label="Spin the surprise wheel">
         <img src="../assets/img/logo-badge.png" alt="">
         <span>Spin surprise</span>
       </button>
-      <p class="spin-callout">Tap the center ticket</p>
+      <p class="spin-callout">Click to spin</p>
 
       <article class="spotlight" aria-live="polite">
         <div class="spot-media"><span class="spot-symbol">?</span><img class="spot-image" alt="" hidden></div>
@@ -86,7 +90,7 @@
           <p class="spot-kicker">Surprise wheel</p>
           <h2>Spin for a math moment.</h2>
           <p class="spot-formula">? -> aha!</p>
-          <p class="spot-note">The wheel can land on a theorem, contest topic, program, livestream, camp, or community story.</p>
+          <p class="spot-note">The wheel can land on a legend, theorem, conjecture, contest topic, or Math Together story.</p>
           <button class="spin-again" data-spin type="button">Spin again</button>
         </div>
       </article>
@@ -171,15 +175,48 @@
 <section id="team" class="scene team">
   <div class="scene-head">
     <p class="section-kicker">Student crew</p>
-    <h2>Built by students who compete, teach, and organize.</h2>
+    <h2>Built by students, guided by a Board of Directors.</h2>
   </div>
-  <div class="badge-wall">
-    <article><img src="../assets/img/team-michael.jpg" alt="Michael Sun"><h3>Michael Sun</h3><p class="role">President · Appleby College 2027</p><p class="bio">CIMC Champion, IMMC Meritorious Award, COMC Bronze, USAJMO, CMO and APMO qualifier. Michael tutors students and co-organizes charity math competitions supporting SickKids.</p></article>
-    <article><img src="../assets/img/team-perry.jpg" alt="Perry Dai"><h3>Perry Dai</h3><p class="role">Co-president · UTS 2027</p><p class="bio">CJMO Champion, APMO Silver, USAMO Bronze, and perfect scorer on the CS/IMC. Perry works to make Math Together inclusive, collaborative, and deeper than contest scores alone.</p></article>
-    <article><img src="../assets/img/team-kaylyn.jpg" alt="Kaylyn Zhang"><h3>Kaylyn Zhang</h3><p class="role">Executive · UTS 2028</p><p class="bio">Kaylyn has earned prizes in AMC, CMWMC, CEMC contests, MPFG, and HMMT. She has led workshops and hopes every student feels included and empowered to pursue math.</p></article>
-    <article><img src="../assets/img/team-prince.png" alt="Prince Zhang"><h3>Prince Zhang</h3><p class="role">Executive · UCC 2028</p><p class="bio">Prince has made ARML tiebreakers and performed well in Euclid, COMC, AMC 10, and AIME. He shares math enthusiasm by helping students build strong foundations.</p></article>
-    <article><img src="../assets/img/team-lillian.jpg" alt="Lillian Zhang"><h3>Lillian Zhang</h3><p class="role">Advisor · MIT PhD student</p><p class="bio">MIT Mathematics alum, MIT PhD student in Computer Science, HMMT Director, USAMO qualifier, and MPFG top 10. Lillian helps build a home for math lovers.</p></article>
-    <article><img src="../assets/img/team-emily.jpg" alt="Emily Ma"><h3>Emily Ma</h3><p class="role">Advisor · Harvard 2028</p><p class="bio">Emily is an undergraduate at Harvard with an IMO bronze medal, EGMO silver medal, USAMO silver medal, and two honourable mentions on the CMO.</p></article>
+  <div class="team-tier">
+    <h3 class="tier-label">Leadership</h3>
+    <div class="badge-wall">
+      <article><img src="../assets/img/team-michael.jpg" alt="Michael Sun"><h3>Michael Sun</h3><p class="role">President · Appleby College 2027</p><p class="bio">CIMC Champion, IMMC Meritorious Award, COMC Bronze, USAJMO, CMO and APMO qualifier. Michael tutors students and co-organizes charity math competitions supporting SickKids.</p></article>
+      <article><img src="../assets/img/team-perry.jpg" alt="Perry Dai"><h3>Perry Dai</h3><p class="role">Co-president · UTS 2027</p><p class="bio">CJMO Champion, APMO Silver, USAMO Bronze, and perfect scorer on the CS/IMC. Perry works to make Math Together inclusive, collaborative, and deeper than contest scores alone.</p></article>
+    </div>
+  </div>
+  <div class="team-tier">
+    <h3 class="tier-label">Executives</h3>
+    <div class="badge-wall">
+      <article><img src="../assets/img/team-kaylyn.jpg" alt="Kaylyn Zhang"><h3>Kaylyn Zhang</h3><p class="role">Executive · UTS 2028</p><p class="bio">Kaylyn has earned prizes in AMC, CMWMC, CEMC contests, MPFG, and HMMT. She has led workshops and hopes every student feels included and empowered to pursue math.</p></article>
+      <article><img src="../assets/img/team-prince.png" alt="Prince Zhang"><h3>Prince Zhang</h3><p class="role">Executive · UCC 2028</p><p class="bio">Prince has made ARML tiebreakers and performed well in Euclid, COMC, AMC 10, and AIME. He shares math enthusiasm by helping students build strong foundations.</p></article>
+    </div>
+  </div>
+  <div class="team-tier">
+    <h3 class="tier-label">Board of Directors</h3>
+    <div class="badge-wall">
+      <article><img src="../assets/img/team-james.jpg" alt="James Qiu"><h3>James Qiu</h3><p class="role">Board of Directors · Stanford 2030</p><p class="bio">AMC 10/12 Distinguished Honor Roll, CMO Performance with Honours, and USAMO Honorable Mention. James founded WePioneer and helps build a welcoming problem-solving community.</p></article>
+      <article><img src="../assets/img/team-lillian.jpg" alt="Lillian Zhang"><h3>Lillian Zhang</h3><p class="role">Board of Directors · MIT PhD student</p><p class="bio">MIT Mathematics alum, MIT PhD student in Computer Science, HMMT Director, USAMO qualifier, and MPFG top 10. Lillian helps build a home for math lovers.</p></article>
+      <article><img src="../assets/img/team-emily.jpg" alt="Emily Ma"><h3>Emily Ma</h3><p class="role">Board of Directors · Harvard 2028</p><p class="bio">Emily is an undergraduate at Harvard with an IMO bronze medal, EGMO silver medal, USAMO silver medal, and two honourable mentions on the CMO.</p></article>
+      <article><img src="../assets/img/team-ming.jpg" alt="Ming Yang"><h3>Ming Yang</h3><p class="role">Board of Directors · MIT 2029</p><p class="bio">Two-time IMO Silver Medalist, two-time CMO Best Solution Award recipient, and two-time APMO Silver Medalist. Ming creates engaging problems and guidance for younger students.</p></article>
+      <article><img src="../assets/img/team-shanna.jpg" alt="Shanna Xiao"><h3>Shanna Xiao</h3><p class="role">Board of Directors · Caltech 2029</p><p class="bio">Shanna represented Team Canada at EGMO in 2023 and 2025, received MPFG Honourable Mention twice, and hopes to inspire younger students to pursue mathematics.</p></article>
+    </div>
+  </div>
+  <div class="team-tier">
+    <h3 class="tier-label">Content Contributors</h3>
+    <div class="badge-wall">
+      <article><img src="../assets/img/team-max.jpg" alt="Maximilian Lin"><h3>Maximilian Lin</h3><p class="role">Content Contributor · WTCS 2028</p><p class="bio">CJMO Gold Medalist and CMO, APMO, and AIME qualifier with team success at HMMT, ARML, IMMC, and SMO. Maximilian makes problem solving approachable and rewarding.</p></article>
+      <article><img src="../assets/img/team-han.png" alt="Han Wu"><h3>Han Wu</h3><p class="role">Content Contributor · Harvard 2030</p><p class="bio">Han has qualified for CMO and APMO and earned top scores in COMC, AMC 12, AIME, and CEMC contests. He shares his love of math with younger students.</p></article>
+      <article><img src="../assets/img/team-chris.jpg" alt="Chris Fu"><h3>Chris Fu</h3><p class="role">Content Contributor · SDSS 2026</p><p class="bio">Chris has qualified for USAJMO, CMO, and APMO, earning USAJMO Honor. He is passionate about teaching and helping students discover math's beauty.</p></article>
+      <article><img src="../assets/img/team-abhiraj.png" alt="Abhiraj Singh"><h3>Abhiraj Singh</h3><p class="role">Content Contributor · UTS 2027</p><p class="bio">Abhiraj has consistently qualified for AIME since grade 7 and earned a perfect score on CLMC. He encourages collaborative approaches to challenging problems.</p></article>
+      <article><img src="../assets/img/team-eason.jpg" alt="Eason Zhang"><h3>Eason Zhang</h3><p class="role">Content Contributor · Hillfield 2028</p><p class="bio">Eason is a motivated student with awards in mathematics and science, active in STEM clubs, fencing, and community volunteering with over 150 service hours.</p></article>
+    </div>
+  </div>
+  <div class="team-tier">
+    <h3 class="tier-label">Outreach</h3>
+    <div class="badge-wall">
+      <article><img src="../assets/img/team-eric.jpg" alt="Eric Zhang"><h3>Eric Zhang</h3><p class="role">Outreach · UCC 2027</p><p class="bio">Eric brings business, debate, marketing, and logistics experience to Math Together, helping foster a dynamic learning environment and bring communities together.</p></article>
+      <article><img src="../assets/img/team-eddy.jpg" alt="Eddy Liang"><h3>Eddy Liang</h3><p class="role">Outreach · Crescent 2028</p><p class="bio">Eddy supports outreach and community growth for Math Together Canada.</p></article>
+    </div>
   </div>
 </section>
 
