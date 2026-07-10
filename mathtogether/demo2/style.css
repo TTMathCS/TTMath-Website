@@ -1,7 +1,7 @@
 /* demo 2 - Math Carnival */
 
 :root{
-  --cream:#fff2c8;
+  --cream:#f8f1dd;
   --paper:#fffaf0;
   --ink:#15223d;
   --muted:#5f6578;
@@ -21,7 +21,7 @@ body{
   font:16px/1.62 Inter,system-ui,sans-serif;
   background:
     linear-gradient(135deg,rgba(255,73,108,.13) 0 18px,transparent 18px 38px),
-    linear-gradient(55deg,#fff2c8 0%,#f6ffcf 31%,#e1fbff 64%,#ffe8ee 100%);
+    linear-gradient(55deg,#f8f1dd 0%,#f1f5e2 31%,#e1fbff 64%,#ffe8ee 100%);
   background-size:54px 54px,auto;
 }
 
@@ -53,12 +53,12 @@ h1,h2,h3,.brand strong,.footer-logo{font-family:"Space Grotesk",Inter,sans-serif
 
 .hero{
   position:relative;min-height:900px;overflow:hidden;padding:40px clamp(18px,5vw,72px) 38px;
-  isolation:isolate;background:#ffe65b;
+  isolation:isolate;background:var(--cream);
 }
 .formula-canvas,.stripe-wall{position:absolute;inset:0;z-index:-2}
 .stripe-wall{
   z-index:-3;background:
-    conic-gradient(from 45deg at 50% 42%,#ff496c 0 22deg,#fff2c8 22deg 44deg,#00b8b0 44deg 66deg,#ff9f1c 66deg 88deg,#6c4bd8 88deg 110deg,#fff2c8 110deg 132deg,#bbdf2d 132deg 154deg,#2777ff 154deg 176deg,#ff496c 176deg 198deg,#fff2c8 198deg 220deg,#00b8b0 220deg 242deg,#ff9f1c 242deg 264deg,#6c4bd8 264deg 286deg,#fff2c8 286deg 308deg,#bbdf2d 308deg 330deg,#2777ff 330deg 360deg);
+    conic-gradient(from 45deg at 50% 42%,#ff496c 0 22deg,#f8f1dd 22deg 44deg,#00b8b0 44deg 66deg,#ff9f1c 66deg 88deg,#6c4bd8 88deg 110deg,#f8f1dd 110deg 132deg,#bbdf2d 132deg 154deg,#2777ff 154deg 176deg,#ff496c 176deg 198deg,#f8f1dd 198deg 220deg,#00b8b0 220deg 242deg,#ff9f1c 242deg 264deg,#6c4bd8 264deg 286deg,#f8f1dd 286deg 308deg,#bbdf2d 308deg 330deg,#2777ff 330deg 360deg);
   opacity:.22;
 }
 .hero::after{
@@ -183,7 +183,7 @@ main{background:var(--paper)}
   box-shadow:7px 7px 0 rgba(16,24,39,.14);clip-path:polygon(0 0,100% 0,100% 80%,92% 100%,0 100%);
 }
 .proof-tickets article:nth-child(2){--r:1deg;background:#e1fbff}
-.proof-tickets article:nth-child(3){--r:-.4deg;background:#f6ffcf}
+.proof-tickets article:nth-child(3){--r:-.4deg;background:#f1f5e2}
 .proof-tickets span{display:block;color:var(--rose);font-weight:1000;margin-bottom:8px}
 .proof-tickets b{font-family:"Space Grotesk",sans-serif;font-size:22px}
 
@@ -229,7 +229,7 @@ main{background:var(--paper)}
   display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;text-align:left;background:#fff;border:3px solid var(--black);padding:14px;transform:rotate(var(--turn,0deg));
   box-shadow:7px 7px 0 rgba(16,24,39,.14);clip-path:polygon(7% 0,100% 0,93% 100%,0 100%);
 }
-.badge-wall article:nth-child(3n){--turn:1deg;background:#f6ffcf}
+.badge-wall article:nth-child(3n){--turn:1deg;background:#f1f5e2}
 .badge-wall article:nth-child(3n+1){--turn:-1deg;background:#e1fbff}
 .badge-wall img{width:112px;height:112px;object-fit:cover;border:4px solid var(--black);clip-path:polygon(50% 0,100% 34%,86% 100%,14% 100%,0 34%)}
 .badge-wall h3{font-size:22px;line-height:1.02}
