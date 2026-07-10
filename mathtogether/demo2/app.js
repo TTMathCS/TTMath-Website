@@ -1,94 +1,121 @@
 var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-var topics = {
+var exhibits = {
   calculus: {
-    kicker: 'Calculus portal',
+    kicker: 'Calculus ride',
     title: 'Curves become motion.',
     formula: 'd/dx x² = 2x',
-    note: 'Derivatives, integrals, rates, areas, and motion.'
+    note: 'Rates, areas, slopes, and motion turn into tools students can feel.',
+    symbol: '∫'
   },
-  combinatorics: {
-    kicker: 'Combinatorics portal',
-    title: 'Patterns become choices.',
-    formula: 'C(n,k)= n! / k!(n-k)!',
-    note: 'Counting paths, Pascal triangles, cases, and clever shortcuts.'
+  number: {
+    kicker: 'Prime parade',
+    title: 'Numbers start hiding patterns.',
+    formula: '2, 3, 5, 7, 11, ...',
+    note: 'Prime numbers, modular tricks, divisibility, and olympiad shortcuts.',
+    symbol: 'π'
   },
   probability: {
-    kicker: 'Probability portal',
-    title: 'Chance becomes strategy.',
-    formula: 'P(A|B)= P(B|A)P(A) / P(B)',
-    note: 'Randomness, games, expected value, and decisions under uncertainty.'
+    kicker: 'Chance booth',
+    title: 'Randomness becomes strategy.',
+    formula: 'E[X] = Σ xP(x)',
+    note: 'Expected value, games, Bayes thinking, and decisions under uncertainty.',
+    symbol: 'P'
   },
-  graph: {
-    kicker: 'Graph theory portal',
-    title: 'Friendships become maps.',
-    formula: 'G = (V,E)',
-    note: 'Networks, routes, tournaments, trees, coloring, and social math.'
+  geometry: {
+    kicker: 'Shape tent',
+    title: 'Pictures become proof.',
+    formula: 'a² + b² = c²',
+    note: 'Angles, transformations, symmetry, invariants, and visual reasoning.',
+    symbol: '△'
   },
   algebra: {
-    kicker: 'Algebra portal',
-    title: 'Symbols become machines.',
+    kicker: 'Symbol machine',
+    title: 'Equations become engines.',
     formula: 'Ax = b',
-    note: 'Equations, matrices, symmetry, transformations, and structure.'
+    note: 'Structures, systems, matrices, functions, and clean problem language.',
+    symbol: 'A'
   },
-  topology: {
-    kicker: 'Topology portal',
-    title: 'Shapes become stories.',
-    formula: 'χ = V - E + F',
-    note: 'Knots, surfaces, holes, maps, and geometry that can bend.'
+  conjecture: {
+    kicker: 'Mystery booth',
+    title: 'Some doors are still locked.',
+    formula: 'P ?= NP',
+    note: 'Unsolved problems show students that math is still being invented.',
+    symbol: '?'
   }
 };
 
-var topicCard = document.querySelector('.topic-card');
-var topicKicker = topicCard && topicCard.querySelector('p');
-var topicTitle = topicCard && topicCard.querySelector('h2');
-var topicFormula = topicCard && topicCard.querySelector('.topic-formula');
-var topicNote = topicCard && topicCard.querySelector('span');
-var board = document.querySelector('.math-board');
+var surprises = [
+  { kicker: 'Legend ticket', title: 'Emmy Noether', formula: 'symmetry -> conservation', note: 'A giant of modern algebra and theoretical physics.', img: '../assets/img/mathematicians/noether.jpg' },
+  { kicker: 'Legend ticket', title: 'Maryam Mirzakhani', formula: 'geometry + dynamics', note: 'A reminder that imagination is a rigorous tool.', img: '../assets/img/legends/mirzakhani.jpg' },
+  { kicker: 'Science ticket', title: 'Albert Einstein', formula: 'E = mc²', note: 'Geometry, thought experiments, and spacetime.', img: '../assets/img/legends/einstein.jpg' },
+  { kicker: 'Theorem ticket', title: 'Euler Identity', formula: 'e^{iπ} + 1 = 0', note: 'Five famous constants share one tiny stage.', symbol: 'e' },
+  { kicker: 'Conjecture ticket', title: 'Collatz Conjecture', formula: '3x + 1', note: 'Simple enough to play, difficult enough to humble everyone.', symbol: '3x' },
+  { kicker: 'Topic ticket', title: 'Graph Theory', formula: 'G = (V,E)', note: 'Friendships, routes, tournaments, and networks become math.', symbol: 'G' },
+  { kicker: 'Legend ticket', title: 'Katherine Johnson', formula: 'orbit = calculation + courage', note: 'Precision math that helped guide spaceflight.', img: '../assets/img/legends/katherine-johnson.jpg' },
+  { kicker: 'Theorem ticket', title: 'Cauchy-Schwarz', formula: '(Σaᵢbᵢ)² ≤ (Σaᵢ²)(Σbᵢ²)', note: 'A powerful inequality behind many olympiad solutions.', symbol: '≤' }
+];
+
+var lastSurprise = -1;
+var hero = document.querySelector('.hero');
+var spotlight = document.querySelector('.spotlight');
+var spotKicker = document.querySelector('.spot-kicker');
+var spotTitle = document.querySelector('.spotlight h2');
+var spotFormula = document.querySelector('.spot-formula');
+var spotNote = document.querySelector('.spot-note');
+var spotSymbol = document.querySelector('.spot-symbol');
+var spotImage = document.querySelector('.spot-image');
 
 function animateNode(node, frames, duration) {
   if (!node || reduceMotion || typeof node.animate !== 'function') return;
   node.animate(frames, { duration: duration, easing: 'cubic-bezier(.2,.8,.2,1)' });
 }
 
-function drawSpark(button, formula) {
-  if (!board || reduceMotion) return;
-  var spark = document.createElement('span');
-  var box = button.getBoundingClientRect();
-  var boardBox = board.getBoundingClientRect();
-  spark.className = 'math-spark';
-  spark.textContent = formula;
-  spark.style.left = box.left - boardBox.left + box.width / 2 + 'px';
-  spark.style.top = box.top - boardBox.top - 8 + 'px';
-  board.appendChild(spark);
-  animateNode(spark, [
-    { opacity: 0, transform: 'translate(-50%, 8px) scale(.86)' },
-    { opacity: 1, transform: 'translate(-50%, -14px) scale(1)' },
-    { opacity: 0, transform: 'translate(-50%, -46px) scale(.92)' }
-  ], 980);
-  setTimeout(function () {
-    spark.remove();
-  }, 1040);
+function setSpotlight(item) {
+  if (!item) return;
+  if (spotKicker) spotKicker.textContent = item.kicker;
+  if (spotTitle) spotTitle.textContent = item.title;
+  if (spotFormula) spotFormula.textContent = item.formula;
+  if (spotNote) spotNote.textContent = item.note;
+  if (item.img) {
+    spotImage.src = item.img;
+    spotImage.alt = item.title;
+    spotImage.hidden = false;
+    spotSymbol.hidden = true;
+  } else {
+    spotSymbol.textContent = item.symbol || '∑';
+    spotSymbol.hidden = false;
+    spotImage.hidden = true;
+    spotImage.removeAttribute('src');
+  }
+  animateNode(spotlight, [
+    { opacity: .72, transform: 'translateY(12px) rotate(2deg)' },
+    { opacity: 1, transform: 'translateY(0) rotate(-1deg)' }
+  ], 260);
 }
 
-document.querySelectorAll('.hotspot').forEach(function (button) {
+document.querySelectorAll('.exhibit-tab').forEach(function (button) {
   button.addEventListener('click', function () {
-    var topic = topics[button.dataset.topic] || topics.calculus;
-    document.querySelectorAll('.hotspot').forEach(function (item) {
+    var key = button.dataset.exhibit;
+    document.querySelectorAll('.exhibit-tab').forEach(function (item) {
       item.classList.toggle('active', item === button);
     });
-    if (topicKicker) topicKicker.textContent = topic.kicker;
-    if (topicTitle) topicTitle.textContent = topic.title;
-    if (topicFormula) topicFormula.textContent = topic.formula;
-    if (topicNote) topicNote.textContent = topic.note;
-    document.documentElement.dataset.topic = button.dataset.topic;
-    animateNode(topicCard, [
-      { opacity: 0.72, transform: 'translateY(12px) rotate(-1deg)' },
-      { opacity: 1, transform: 'translateY(0) rotate(0)' }
-    ], 260);
-    drawSpark(button, topic.formula);
+    if (hero) hero.dataset.exhibit = key;
+    setSpotlight(exhibits[key]);
   });
 });
+
+var surpriseButton = document.querySelector('.surprise');
+if (surpriseButton) {
+  surpriseButton.addEventListener('click', function () {
+    var next = Math.floor(Math.random() * surprises.length);
+    if (surprises.length > 1) {
+      while (next === lastSurprise) next = Math.floor(Math.random() * surprises.length);
+    }
+    lastSurprise = next;
+    setSpotlight(surprises[next]);
+  });
+}
 
 document.querySelectorAll('[data-count]').forEach(function (node) {
   if (reduceMotion) return;
@@ -108,7 +135,7 @@ document.querySelectorAll('[data-count]').forEach(function (node) {
 });
 
 var revealItems = document.querySelectorAll(
-  'main section, .proof-stack article, .program-grid article, .route-map a, .story, .legend-grid article, .team-grid article, .conjecture-card'
+  '.scene, .proof-tickets article, .ride-track article, .scoreboard a, .story-strip article, .mask-wall article, .lock-row article, .badge-wall article, .final-ticket'
 );
 if ('IntersectionObserver' in window && !reduceMotion) {
   var observer = new IntersectionObserver(function (entries) {
@@ -117,12 +144,74 @@ if ('IntersectionObserver' in window && !reduceMotion) {
       entry.target.classList.add('in');
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.12 });
+  }, { threshold: .12 });
   revealItems.forEach(function (item, index) {
     item.classList.add('reveal');
-    item.style.transitionDelay = Math.min(index % 7, 6) * 38 + 'ms';
+    item.style.transitionDelay = Math.min(index % 7, 6) * 36 + 'ms';
     observer.observe(item);
   });
 } else {
   revealItems.forEach(function (item) { item.classList.add('in'); });
+}
+
+var canvas = document.querySelector('.formula-canvas');
+if (canvas && !reduceMotion) {
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var formulas = ['π', 'Σ', '√', 'ζ', '∞', '∫', 'φ', 'P?', 'AIME', 'CMO', 'QED', '3x+1'];
+
+  function resizeCanvas() {
+    var ratio = Math.min(window.devicePixelRatio || 1, 2);
+    var box = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(box.width * ratio));
+    canvas.height = Math.max(1, Math.floor(box.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  }
+
+  function seedParticles() {
+    particles = [];
+    var box = canvas.getBoundingClientRect();
+    var count = Math.min(64, Math.max(28, Math.floor(box.width / 24)));
+    for (var i = 0; i < count; i += 1) {
+      particles.push({
+        x: Math.random() * box.width,
+        y: Math.random() * box.height,
+        vx: -.18 + Math.random() * .36,
+        vy: .18 + Math.random() * .55,
+        text: formulas[i % formulas.length],
+        size: 13 + Math.random() * 15,
+        color: ['#101827', '#ff496c', '#00b8b0', '#6c4bd8', '#2777ff'][i % 5]
+      });
+    }
+  }
+
+  function draw() {
+    var box = canvas.getBoundingClientRect();
+    ctx.clearRect(0, 0, box.width, box.height);
+    ctx.font = '800 16px IBM Plex Mono, monospace';
+    particles.forEach(function (p) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y > box.height + 20) p.y = -20;
+      if (p.x < -40) p.x = box.width + 40;
+      if (p.x > box.width + 40) p.x = -40;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(Math.sin((p.y + p.x) / 90) * .16);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = .33;
+      ctx.font = '900 ' + p.size + 'px IBM Plex Mono, monospace';
+      ctx.fillText(p.text, 0, 0);
+      ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resizeCanvas();
+  seedParticles();
+  draw();
+  window.addEventListener('resize', function () {
+    resizeCanvas();
+    seedParticles();
+  });
 }
