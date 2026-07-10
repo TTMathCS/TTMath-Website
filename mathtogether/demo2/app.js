@@ -1,58 +1,101 @@
 var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-var stage = document.querySelector('.launch-stage');
-var focus = document.querySelector('.legend-focus');
-var focusImg = focus.querySelector('img');
-var focusName = focus.querySelector('h2');
-var focusNote = focus.querySelector('span');
-var route = document.querySelector('.mission-output');
-var routeTitle = route.querySelector('strong');
-var routeCopy = route.querySelector('p');
 
-document.querySelectorAll('.orbit-card').forEach(function (button) {
-  button.addEventListener('click', function () {
-    document.querySelectorAll('.orbit-card').forEach(function (item) {
-      item.classList.toggle('active', item === button);
-    });
-    focusImg.src = button.dataset.img;
-    focusImg.alt = button.dataset.name + ' portrait';
-    focusName.textContent = button.dataset.name;
-    focusNote.textContent = button.dataset.note;
-    focus.animate([
-      { opacity: 0.55, transform: 'translateY(10px)' },
-      { opacity: 1, transform: 'translateY(0)' }
-    ], { duration: reduceMotion ? 0 : 240, easing: 'ease-out' });
-  });
-});
+var topics = {
+  calculus: {
+    kicker: 'Calculus portal',
+    title: 'Curves become motion.',
+    formula: 'd/dx x² = 2x',
+    note: 'Derivatives, integrals, rates, areas, and motion.'
+  },
+  combinatorics: {
+    kicker: 'Combinatorics portal',
+    title: 'Patterns become choices.',
+    formula: 'C(n,k)= n! / k!(n-k)!',
+    note: 'Counting paths, Pascal triangles, cases, and clever shortcuts.'
+  },
+  probability: {
+    kicker: 'Probability portal',
+    title: 'Chance becomes strategy.',
+    formula: 'P(A|B)= P(B|A)P(A) / P(B)',
+    note: 'Randomness, games, expected value, and decisions under uncertainty.'
+  },
+  graph: {
+    kicker: 'Graph theory portal',
+    title: 'Friendships become maps.',
+    formula: 'G = (V,E)',
+    note: 'Networks, routes, tournaments, trees, coloring, and social math.'
+  },
+  algebra: {
+    kicker: 'Algebra portal',
+    title: 'Symbols become machines.',
+    formula: 'Ax = b',
+    note: 'Equations, matrices, symmetry, transformations, and structure.'
+  },
+  topology: {
+    kicker: 'Topology portal',
+    title: 'Shapes become stories.',
+    formula: 'χ = V - E + F',
+    note: 'Knots, surfaces, holes, maps, and geometry that can bend.'
+  }
+};
 
-document.querySelectorAll('.mission-card').forEach(function (button) {
-  button.addEventListener('click', function () {
-    document.querySelectorAll('.mission-card').forEach(function (item) {
-      item.classList.toggle('active', item === button);
-    });
-    routeTitle.textContent = button.dataset.title;
-    routeCopy.textContent = button.dataset.copy;
-    route.animate([
-      { opacity: 0.5, transform: 'translateY(-8px)' },
-      { opacity: 1, transform: 'translateY(0)' }
-    ], { duration: reduceMotion ? 0 : 220, easing: 'ease-out' });
-  });
-});
+var topicCard = document.querySelector('.topic-card');
+var topicKicker = topicCard && topicCard.querySelector('p');
+var topicTitle = topicCard && topicCard.querySelector('h2');
+var topicFormula = topicCard && topicCard.querySelector('.topic-formula');
+var topicNote = topicCard && topicCard.querySelector('span');
+var board = document.querySelector('.math-board');
 
-if (stage && !reduceMotion) {
-  stage.addEventListener('mousemove', function (event) {
-    var box = stage.getBoundingClientRect();
-    var x = ((event.clientX - box.left) / box.width - 0.5) * 12;
-    var y = ((event.clientY - box.top) / box.height - 0.5) * 12;
-    stage.style.setProperty('--tilt-x', y.toFixed(2) + 'deg');
-    stage.style.setProperty('--tilt-y', (-x).toFixed(2) + 'deg');
-  });
+function animateNode(node, frames, duration) {
+  if (!node || reduceMotion || typeof node.animate !== 'function') return;
+  node.animate(frames, { duration: duration, easing: 'cubic-bezier(.2,.8,.2,1)' });
 }
+
+function drawSpark(button, formula) {
+  if (!board || reduceMotion) return;
+  var spark = document.createElement('span');
+  var box = button.getBoundingClientRect();
+  var boardBox = board.getBoundingClientRect();
+  spark.className = 'math-spark';
+  spark.textContent = formula;
+  spark.style.left = box.left - boardBox.left + box.width / 2 + 'px';
+  spark.style.top = box.top - boardBox.top - 8 + 'px';
+  board.appendChild(spark);
+  animateNode(spark, [
+    { opacity: 0, transform: 'translate(-50%, 8px) scale(.86)' },
+    { opacity: 1, transform: 'translate(-50%, -14px) scale(1)' },
+    { opacity: 0, transform: 'translate(-50%, -46px) scale(.92)' }
+  ], 980);
+  setTimeout(function () {
+    spark.remove();
+  }, 1040);
+}
+
+document.querySelectorAll('.hotspot').forEach(function (button) {
+  button.addEventListener('click', function () {
+    var topic = topics[button.dataset.topic] || topics.calculus;
+    document.querySelectorAll('.hotspot').forEach(function (item) {
+      item.classList.toggle('active', item === button);
+    });
+    if (topicKicker) topicKicker.textContent = topic.kicker;
+    if (topicTitle) topicTitle.textContent = topic.title;
+    if (topicFormula) topicFormula.textContent = topic.formula;
+    if (topicNote) topicNote.textContent = topic.note;
+    document.documentElement.dataset.topic = button.dataset.topic;
+    animateNode(topicCard, [
+      { opacity: 0.72, transform: 'translateY(12px) rotate(-1deg)' },
+      { opacity: 1, transform: 'translateY(0) rotate(0)' }
+    ], 260);
+    drawSpark(button, topic.formula);
+  });
+});
 
 document.querySelectorAll('[data-count]').forEach(function (node) {
   if (reduceMotion) return;
+  var raw = node.textContent.trim();
   var target = Number(node.dataset.count);
-  var prefix = node.textContent.trim().charAt(0) === '$' ? '$' : '';
-  var suffix = node.textContent.trim().slice(-1) === '+' ? '+' : '';
+  var prefix = raw.charAt(0) === '$' ? '$' : '';
+  var suffix = raw.slice(-1) === '+' ? '+' : '';
   var start = null;
   function step(time) {
     if (!start) start = time;
@@ -64,7 +107,9 @@ document.querySelectorAll('[data-count]').forEach(function (node) {
   requestAnimationFrame(step);
 });
 
-var revealItems = document.querySelectorAll('main section, .mission-card, .story, .member, .proof-card');
+var revealItems = document.querySelectorAll(
+  'main section, .proof-stack article, .program-grid article, .route-map a, .story, .legend-grid article, .team-grid article, .conjecture-card'
+);
 if ('IntersectionObserver' in window && !reduceMotion) {
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -75,7 +120,7 @@ if ('IntersectionObserver' in window && !reduceMotion) {
   }, { threshold: 0.12 });
   revealItems.forEach(function (item, index) {
     item.classList.add('reveal');
-    item.style.transitionDelay = Math.min(index % 6, 5) * 45 + 'ms';
+    item.style.transitionDelay = Math.min(index % 7, 6) * 38 + 'ms';
     observer.observe(item);
   });
 } else {
