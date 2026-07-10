@@ -15,10 +15,31 @@ var surprises = [
   { kicker: 'Legend ticket', title: 'Katherine Johnson', formula: 'orbit = calculation + courage', note: 'Precision mathematics that helped guide spaceflight.', img: '../assets/img/legends/katherine-johnson.jpg' }
 ];
 
+var segments = [
+  ['legend', '#ff496c', '#fff'],
+  ['theorem', '#2777ff', '#fff'],
+  ['topic', '#00b8b0', '#fff'],
+  ['story', '#ff9f1c', '#101827'],
+  ['conjecture', '#6c4bd8', '#fff'],
+  ['legend', '#ff496c', '#fff'],
+  ['theorem', '#2777ff', '#fff'],
+  ['topic', '#00b8b0', '#fff'],
+  ['story', '#ff9f1c', '#101827'],
+  ['conjecture', '#6c4bd8', '#fff']
+];
+var kindOf = {
+  'Legend ticket': 'legend',
+  'Theorem flash': 'theorem',
+  'Conjecture flash': 'conjecture',
+  'Topic flash': 'topic',
+  'MTC story': 'story'
+};
+var segStep = 360 / segments.length;
+
 var lastSurprise = -1;
 var wheelRotation = 0;
 var hero = document.querySelector('.hero');
-var wheelLab = document.querySelector('.wheel-lab');
+var wheelStage = document.querySelector('.wheel-stage');
 var wheelArt = document.querySelector('.wheel-art');
 var spotlight = document.querySelector('.spotlight');
 var spotKicker = document.querySelector('.spot-kicker');
@@ -27,6 +48,39 @@ var spotFormula = document.querySelector('.spot-formula');
 var spotNote = document.querySelector('.spot-note');
 var spotSymbol = document.querySelector('.spot-symbol');
 var spotImage = document.querySelector('.spot-image');
+
+function svgNode(name, attrs) {
+  var el = document.createElementNS('http://www.w3.org/2000/svg', name);
+  for (var key in attrs) el.setAttribute(key, attrs[key]);
+  wheelArt.appendChild(el);
+  return el;
+}
+
+function buildWheel() {
+  svgNode('circle', { cx: 340, cy: 340, r: 326, fill: '#101827' });
+  segments.forEach(function (seg, i) {
+    var a0 = (i * segStep - 90) * Math.PI / 180;
+    var a1 = a0 + segStep * Math.PI / 180;
+    svgNode('path', {
+      d: 'M340 340 L' + (340 + 302 * Math.cos(a0)).toFixed(1) + ' ' + (340 + 302 * Math.sin(a0)).toFixed(1) +
+        ' A302 302 0 0 1 ' + (340 + 302 * Math.cos(a1)).toFixed(1) + ' ' + (340 + 302 * Math.sin(a1)).toFixed(1) + ' Z',
+      fill: seg[1], stroke: '#101827', 'stroke-width': 3
+    });
+    var label = svgNode('text', {
+      x: 340, y: 130, fill: seg[2],
+      transform: 'rotate(' + (i * segStep + segStep / 2) + ' 340 340)'
+    });
+    label.textContent = seg[0];
+  });
+  for (var i = 0; i < 20; i += 1) {
+    var a = i * 18 * Math.PI / 180;
+    svgNode('circle', {
+      cx: (340 + 314 * Math.cos(a)).toFixed(1), cy: (340 + 314 * Math.sin(a)).toFixed(1),
+      r: 6, fill: i % 2 ? '#ffd94d' : '#fff'
+    });
+  }
+}
+if (wheelArt) buildWheel();
 
 function animateNode(node, frames, duration) {
   if (!node || reduceMotion || typeof node.animate !== 'function') return;
@@ -57,20 +111,23 @@ function setSpotlight(item) {
 }
 
 function spinSurprise() {
-  var next = Math.floor(Math.random() * surprises.length);
-  if (surprises.length > 1) {
-    while (next === lastSurprise) next = Math.floor(Math.random() * surprises.length);
-  }
+  if (wheelStage && wheelStage.classList.contains('spinning')) return;
+  var seg = Math.floor(Math.random() * segments.length);
+  var pool = [];
+  surprises.forEach(function (item, i) {
+    if (kindOf[item.kicker] === segments[seg][0] && i !== lastSurprise) pool.push(i);
+  });
+  var next = pool[Math.floor(Math.random() * pool.length)];
   lastSurprise = next;
   if (hero) hero.dataset.spin = 'surprise';
-  if (wheelLab && !reduceMotion) {
-    wheelLab.classList.remove('spinning');
-    wheelLab.offsetWidth;
-    wheelLab.classList.add('spinning');
-    wheelRotation += 1080 + next * 29 + Math.floor(Math.random() * 80);
+  if (wheelStage && !reduceMotion) {
+    wheelStage.classList.add('spinning');
+    var landing = 360 - (seg * segStep + segStep / 2) + (Math.random() * 16 - 8);
+    var delta = ((landing - wheelRotation) % 360 + 360) % 360;
+    wheelRotation += 1440 + delta;
     if (wheelArt) wheelArt.style.setProperty('--spin', wheelRotation + 'deg');
-    setTimeout(function () { setSpotlight(surprises[next]); }, 850);
-    setTimeout(function () { wheelLab.classList.remove('spinning'); }, 1320);
+    setTimeout(function () { setSpotlight(surprises[next]); }, 3250);
+    setTimeout(function () { wheelStage.classList.remove('spinning'); }, 3400);
   } else {
     setSpotlight(surprises[next]);
   }
@@ -83,11 +140,8 @@ document.querySelectorAll('[data-spin]').forEach(function (button) {
   });
 });
 
-if (wheelLab) {
-  wheelLab.addEventListener('click', function (event) {
-    if (event.target.closest('.spotlight')) return;
-    spinSurprise();
-  });
+if (wheelStage) {
+  wheelStage.addEventListener('click', function () { spinSurprise(); });
 }
 
 document.querySelectorAll('[data-count]').forEach(function (node) {

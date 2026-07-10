@@ -55,34 +55,14 @@
     </section>
 
     <section class="wheel-lab" aria-label="Interactive math carnival wheel">
-      <svg class="wheel-art" viewBox="0 0 680 680" aria-hidden="true">
-        <defs>
-          <linearGradient id="ribbonA" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ff496c"/>
-            <stop offset=".52" stop-color="#ffb000"/>
-            <stop offset="1" stop-color="#00b8b0"/>
-          </linearGradient>
-          <linearGradient id="ribbonB" x1="1" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#6c4bd8"/>
-            <stop offset=".5" stop-color="#2777ff"/>
-            <stop offset="1" stop-color="#bbdf2d"/>
-          </linearGradient>
-        </defs>
-        <path class="swoop a" d="M78 448 C134 174,410 42,586 192 C714 302,584 580,328 584 C190 586,116 530,78 448Z"/>
-        <path class="swoop b" d="M98 244 C184 88,430 90,546 246 C638 370,568 532,382 588 C226 636,80 544,106 388"/>
-        <path class="zig" d="M96 338 L154 302 L214 338 L274 302 L334 338 L394 302 L454 338 L514 302 L576 338"/>
-        <path class="loop" d="M158 508 C218 432,302 434,356 506 S502 574,562 486"/>
-        <text x="100" y="154">legend</text>
-        <text x="466" y="142">theorem</text>
-        <text x="494" y="552">topic</text>
-        <text x="96" y="592">conjecture</text>
-      </svg>
-
-      <button class="wheel-core" data-spin type="button" aria-label="Spin the surprise wheel">
-        <img src="../assets/img/logo-badge.png" alt="">
-        <span>Spin surprise</span>
-      </button>
-      <p class="spin-callout">Click to spin</p>
+      <div class="wheel-stage">
+        <svg class="wheel-art" viewBox="0 0 680 680" aria-hidden="true"></svg>
+        <button class="wheel-core" data-spin type="button" aria-label="Spin the surprise wheel">
+          <img src="../assets/img/logo-badge.png" alt="">
+          <span>Spin</span>
+        </button>
+        <p class="spin-callout">Click to spin</p>
+      </div>
 
       <article class="spotlight" aria-live="polite">
         <div class="spot-media"><span class="spot-symbol">?</span><img class="spot-image" alt="" hidden></div>
