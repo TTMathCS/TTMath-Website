@@ -57,28 +57,20 @@ function svgNode(name, attrs) {
 }
 
 function buildWheel() {
-  svgNode('circle', { cx: 340, cy: 340, r: 326, fill: '#101827' });
   segments.forEach(function (seg, i) {
     var a0 = (i * segStep - 90) * Math.PI / 180;
     var a1 = a0 + segStep * Math.PI / 180;
     svgNode('path', {
-      d: 'M340 340 L' + (340 + 302 * Math.cos(a0)).toFixed(1) + ' ' + (340 + 302 * Math.sin(a0)).toFixed(1) +
-        ' A302 302 0 0 1 ' + (340 + 302 * Math.cos(a1)).toFixed(1) + ' ' + (340 + 302 * Math.sin(a1)).toFixed(1) + ' Z',
-      fill: seg[1], stroke: '#101827', 'stroke-width': 3
+      d: 'M340 340 L' + (340 + 330 * Math.cos(a0)).toFixed(1) + ' ' + (340 + 330 * Math.sin(a0)).toFixed(1) +
+        ' A330 330 0 0 1 ' + (340 + 330 * Math.cos(a1)).toFixed(1) + ' ' + (340 + 330 * Math.sin(a1)).toFixed(1) + ' Z',
+      fill: seg[1], stroke: '#101827', 'stroke-width': 2
     });
     var label = svgNode('text', {
-      x: 340, y: 130, fill: seg[2],
-      transform: 'rotate(' + (i * segStep + segStep / 2) + ' 340 340)'
+      x: 610, y: 340, fill: seg[2], 'text-anchor': 'end', 'dominant-baseline': 'central',
+      transform: 'rotate(' + (i * segStep + segStep / 2 - 90) + ' 340 340)'
     });
     label.textContent = seg[0];
   });
-  for (var i = 0; i < 20; i += 1) {
-    var a = i * 18 * Math.PI / 180;
-    svgNode('circle', {
-      cx: (340 + 314 * Math.cos(a)).toFixed(1), cy: (340 + 314 * Math.sin(a)).toFixed(1),
-      r: 6, fill: i % 2 ? '#ffd94d' : '#fff'
-    });
-  }
 }
 if (wheelArt) buildWheel();
 
@@ -122,7 +114,7 @@ function spinSurprise() {
   if (hero) hero.dataset.spin = 'surprise';
   if (wheelStage && !reduceMotion) {
     wheelStage.classList.add('spinning');
-    var landing = 360 - (seg * segStep + segStep / 2) + (Math.random() * 16 - 8);
+    var landing = 90 - (seg * segStep + segStep / 2) + (Math.random() * 16 - 8);
     var delta = ((landing - wheelRotation) % 360 + 360) % 360;
     wheelRotation += 1440 + delta;
     if (wheelArt) wheelArt.style.setProperty('--spin', wheelRotation + 'deg');
