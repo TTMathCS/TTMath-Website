@@ -42,12 +42,15 @@
     box-shadow:var(--shadow);transition:border-color .2s,color .2s}
   .theme-toggle:hover{border-color:var(--blue);color:var(--blue)}
 
-  header{margin-bottom:26px;padding:18px 0 22px;
+  header{position:relative;z-index:0;margin-bottom:26px;padding:18px 0 22px;
     background:
       linear-gradient(180deg,rgba(0,0,0,0) 0%,var(--sheet) 92%),
       linear-gradient(var(--grid) 1px,transparent 1px),
       linear-gradient(90deg,var(--grid) 1px,transparent 1px);
     background-size:auto,24px 24px,24px 24px}
+  .plot{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+  .plot path{stroke:var(--blue);stroke-width:1.5;fill:none;opacity:.28}
+  .plot circle{fill:var(--green);opacity:.55}
   .kicker{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
     font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);
     margin-bottom:10px}
@@ -75,6 +78,8 @@
     font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
     font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
   .rows p{grid-column:1;color:var(--muted);font-size:14px;line-height:1.5}
+  .chips{grid-row:2;grid-column:2;display:flex;gap:5px;align-self:center;justify-self:end}
+  .chips i{display:block;width:13px;height:13px;border-radius:3px;border:1px solid var(--line)}
   .rows .go{grid-row:1;grid-column:2;color:var(--blue);white-space:nowrap;
     font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
     font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
@@ -104,6 +109,10 @@
 <body>
   <div class="sheet">
     <header>
+      <svg class="plot" viewBox="0 0 720 130" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 124 C 260 118, 420 96, 720 6"/>
+        <circle cx="530" cy="72" r="3.5"/>
+      </svg>
       <p class="kicker">TTMath · TTMathCS</p>
       <h1>TTMath Hub</h1>
       <p class="lede">Website demos, rewritten math notes, and the U&nbsp;of&nbsp;T
@@ -112,7 +121,7 @@
 
     <main>
       <section aria-labelledby="demos-title">
-        <h2 id="demos-title">01 · Website demos</h2>
+        <h2 id="demos-title">School site demos</h2>
         <ul class="rows">
           <li><a href="demo1/">
             <strong>Demo 1 — Classic school site</strong>
@@ -133,31 +142,34 @@
       </section>
 
       <section aria-labelledby="mtc-title">
-        <h2 id="mtc-title">02 · Math Together redesign</h2>
+        <h2 id="mtc-title">Math Together redesign</h2>
         <ul class="rows">
           <li><a href="mathtogether/demo1/">
-            <strong>Demo 1 — Living coordinate plane</strong>
+            <strong>Demo 1 — Night sky</strong>
             <span class="go">Open →</span>
-            <p>Interactive Cartesian-plane theme: self-drawing curves, a
-            click-to-plot hero, and math-textbook typography.</p>
+            <p>Stars and meteors over a deep-navy hero, a glowing stats band,
+            a number-line ruler, and a wall of member legends.</p>
+            <span class="chips" aria-hidden="true"><i style="background:#080d1b"></i><i style="background:#8f84ff"></i><i style="background:#ffc857"></i><i style="background:#54d7b7"></i></span>
           </a></li>
           <li><a href="mathtogether/demo2/">
-            <strong>Demo 2 — Chalkboard</strong>
+            <strong>Demo 2 — Math carnival</strong>
             <span class="go">Open →</span>
-            <p>Evening math-circle mood: chalk lettering and doodles on a deep
-            green board.</p>
+            <p>Kinetic carnival: spin the wheel for a surprise math moment,
+            program booths, and livestreams with scoreboard energy.</p>
+            <span class="chips" aria-hidden="true"><i style="background:#fff2c8"></i><i style="background:#ff496c"></i><i style="background:#00b8b0"></i><i style="background:#6c4bd8"></i></span>
           </a></li>
           <li><a href="mathtogether/demo3/">
             <strong>Demo 3 — Maple poster<span class="tag">Preferred</span></strong>
             <span class="go">Open →</span>
-            <p>Bold flat poster in the club's own blue and maple orange, big
-            type and thick rules.</p>
+            <p>Bold flat poster in club blue and maple orange, now with a news
+            ticker, scroll reveals, counting stats, and an org-chart team.</p>
+            <span class="chips" aria-hidden="true"><i style="background:#14456b"></i><i style="background:#2f9fd8"></i><i style="background:#f2812e"></i><i style="background:#fdeede"></i></span>
           </a></li>
         </ul>
       </section>
 
       <section aria-labelledby="notes-title">
-        <h2 id="notes-title">03 · Math notes rewrite demos</h2>
+        <h2 id="notes-title">Math notes</h2>
         <ul class="rows">
           <li><a href="math-notes/">
             <strong>L3 Number Theory — Class 6 notes</strong>
@@ -169,7 +181,7 @@
       </section>
 
       <section aria-labelledby="uoft-title">
-        <h2 id="uoft-title">04 · U of T math learning path</h2>
+        <h2 id="uoft-title">U of T learning path</h2>
         <ul class="rows">
           <li><a href="uoft_math/">
             <strong>Course guide library</strong>
