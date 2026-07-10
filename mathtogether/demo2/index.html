@@ -24,23 +24,14 @@
     <a href="#programs">Programs</a>
     <a href="#arena">Arena</a>
     <a href="#stories">Stories</a>
-    <a href="#legends">Legends</a>
     <a href="#team">Team</a>
     <a class="join" href="https://forms.gle/XjoktJdHGPGnzJs17">Join</a>
   </div>
 </nav>
 
-<header id="top" class="hero" data-exhibit="calculus">
+<header id="top" class="hero">
   <canvas class="formula-canvas" aria-hidden="true"></canvas>
   <div class="stripe-wall" aria-hidden="true"></div>
-
-  <div class="hero-marquee" aria-label="Math Together Canada">
-    <span>Math Together Canada</span>
-    <span>student-led</span>
-    <span>contest math</span>
-    <span>peer support</span>
-    <span>coast to coast</span>
-  </div>
 
   <div class="hero-layout">
     <section class="hero-copy">
@@ -81,32 +72,22 @@
         <path class="swoop b" d="M98 244 C184 88,430 90,546 246 C638 370,568 532,382 588 C226 636,80 544,106 388"/>
         <path class="zig" d="M96 338 L154 302 L214 338 L274 302 L334 338 L394 302 L454 338 L514 302 L576 338"/>
         <path class="loop" d="M158 508 C218 432,302 434,356 506 S502 574,562 486"/>
-        <text x="86" y="138">Σ puzzles</text>
-        <text x="448" y="130">π primes</text>
-        <text x="506" y="542">∞ questions</text>
-        <text x="94" y="590">logic arcade</text>
       </svg>
 
-      <button class="exhibit-tab active" style="--x:50%;--y:6%;--tilt:-4deg" data-exhibit="calculus" type="button"><b>∫</b><span>motion</span></button>
-      <button class="exhibit-tab" style="--x:87%;--y:26%;--tilt:7deg" data-exhibit="number" type="button"><b>π</b><span>primes</span></button>
-      <button class="exhibit-tab" style="--x:86%;--y:70%;--tilt:-6deg" data-exhibit="probability" type="button"><b>P</b><span>chance</span></button>
-      <button class="exhibit-tab" style="--x:50%;--y:93%;--tilt:5deg" data-exhibit="geometry" type="button"><b>△</b><span>shape</span></button>
-      <button class="exhibit-tab" style="--x:13%;--y:70%;--tilt:-8deg" data-exhibit="algebra" type="button"><b>A</b><span>code</span></button>
-      <button class="exhibit-tab" style="--x:13%;--y:26%;--tilt:8deg" data-exhibit="conjecture" type="button"><b>?</b><span>mystery</span></button>
-
-      <div class="wheel-core">
+      <button class="wheel-core" data-spin type="button" aria-label="Spin the surprise wheel">
         <img src="../assets/img/logo-badge.png" alt="">
-        <span>Spin</span>
-      </div>
+        <span>Spin surprise</span>
+      </button>
+      <p class="spin-callout">Tap the center ticket</p>
 
       <article class="spotlight" aria-live="polite">
-        <div class="spot-media"><span class="spot-symbol">∫</span><img class="spot-image" alt="" hidden></div>
+        <div class="spot-media"><span class="spot-symbol">?</span><img class="spot-image" alt="" hidden></div>
         <div>
-          <p class="spot-kicker">Calculus ride</p>
-          <h2>Curves become motion.</h2>
-          <p class="spot-formula">d/dx x² = 2x</p>
-          <p class="spot-note">Rates, areas, slopes, and motion turn into tools students can feel.</p>
-          <button class="surprise" type="button">Spin surprise</button>
+          <p class="spot-kicker">Surprise wheel</p>
+          <h2>Spin for a math moment.</h2>
+          <p class="spot-formula">? -> aha!</p>
+          <p class="spot-note">The wheel can land on a theorem, contest topic, program, livestream, camp, or community story.</p>
+          <button class="spin-again" data-spin type="button">Spin again</button>
         </div>
       </article>
     </section>
@@ -187,48 +168,18 @@
   </div>
 </section>
 
-<section id="legends" class="scene legends">
-  <div class="scene-head">
-    <p class="section-kicker">Hall of sparks</p>
-    <h2>Legends and scientists as carnival masks.</h2>
-  </div>
-  <div class="mask-wall">
-    <article><img src="../assets/img/legends/euclid.jpg" alt="Euclid"><h3>Euclid</h3><p>Geometry as proof language.</p></article>
-    <article><img src="../assets/img/legends/einstein.jpg" alt="Albert Einstein"><h3>Einstein</h3><p>Geometry becomes gravity.</p></article>
-    <article><img src="../assets/img/mathematicians/noether.jpg" alt="Emmy Noether"><h3>Noether</h3><p>Symmetry becomes algebra.</p></article>
-    <article><img src="../assets/img/mathematicians/ramanujan.jpg" alt="Srinivasa Ramanujan"><h3>Ramanujan</h3><p>Infinite series intuition.</p></article>
-    <article><img src="../assets/img/legends/mirzakhani.jpg" alt="Maryam Mirzakhani"><h3>Mirzakhani</h3><p>Geometry with imagination.</p></article>
-    <article><img src="../assets/img/legends/curie.jpg" alt="Marie Curie"><h3>Curie</h3><p>Measurement and discovery.</p></article>
-    <article><img src="../assets/img/legends/katherine-johnson.jpg" alt="Katherine Johnson"><h3>Johnson</h3><p>Math that guided spaceflight.</p></article>
-    <article><img src="../assets/img/legends/grace-hopper.jpg" alt="Grace Hopper"><h3>Hopper</h3><p>Logic becomes language.</p></article>
-  </div>
-</section>
-
-<section id="conjectures" class="scene vault">
-  <div class="scene-head">
-    <p class="section-kicker">Mystery vault</p>
-    <h2>Unsolved questions with glowing locks.</h2>
-  </div>
-  <div class="lock-row">
-    <article><span>ζ</span><h3>Riemann Hypothesis</h3><p>Prime numbers hide inside a famous function.</p></article>
-    <article><span>3x+1</span><h3>Collatz Conjecture</h3><p>Two tiny rules, no complete proof.</p></article>
-    <article><span>2n</span><h3>Goldbach Conjecture</h3><p>Even numbers seem to split into two primes.</p></article>
-    <article><span>P?</span><h3>P vs NP</h3><p>Quick to check may not mean quick to find.</p></article>
-  </div>
-</section>
-
 <section id="team" class="scene team">
   <div class="scene-head">
     <p class="section-kicker">Student crew</p>
     <h2>Built by students who compete, teach, and organize.</h2>
   </div>
   <div class="badge-wall">
-    <article><img src="../assets/img/team-michael.jpg" alt="Michael Sun"><h3>Michael Sun</h3><p>MTC President</p></article>
-    <article><img src="../assets/img/team-perry.jpg" alt="Perry Dai"><h3>Perry Dai</h3><p>MTC Co-president</p></article>
-    <article><img src="../assets/img/team-kaylyn.jpg" alt="Kaylyn Zhang"><h3>Kaylyn Zhang</h3><p>MTC Executive</p></article>
-    <article><img src="../assets/img/team-prince.png" alt="Prince Zhang"><h3>Prince Zhang</h3><p>MTC Executive</p></article>
-    <article><img src="../assets/img/team-lillian.jpg" alt="Lillian Zhang"><h3>Lillian Zhang</h3><p>MTC Advisor</p></article>
-    <article><img src="../assets/img/team-emily.jpg" alt="Emily Ma"><h3>Emily Ma</h3><p>MTC Advisor</p></article>
+    <article><img src="../assets/img/team-michael.jpg" alt="Michael Sun"><h3>Michael Sun</h3><p class="role">President · Appleby College 2027</p><p class="bio">CIMC Champion, IMMC Meritorious Award, COMC Bronze, USAJMO, CMO and APMO qualifier. Michael tutors students and co-organizes charity math competitions supporting SickKids.</p></article>
+    <article><img src="../assets/img/team-perry.jpg" alt="Perry Dai"><h3>Perry Dai</h3><p class="role">Co-president · UTS 2027</p><p class="bio">CJMO Champion, APMO Silver, USAMO Bronze, and perfect scorer on the CS/IMC. Perry works to make Math Together inclusive, collaborative, and deeper than contest scores alone.</p></article>
+    <article><img src="../assets/img/team-kaylyn.jpg" alt="Kaylyn Zhang"><h3>Kaylyn Zhang</h3><p class="role">Executive · UTS 2028</p><p class="bio">Kaylyn has earned prizes in AMC, CMWMC, CEMC contests, MPFG, and HMMT. She has led workshops and hopes every student feels included and empowered to pursue math.</p></article>
+    <article><img src="../assets/img/team-prince.png" alt="Prince Zhang"><h3>Prince Zhang</h3><p class="role">Executive · UCC 2028</p><p class="bio">Prince has made ARML tiebreakers and performed well in Euclid, COMC, AMC 10, and AIME. He shares math enthusiasm by helping students build strong foundations.</p></article>
+    <article><img src="../assets/img/team-lillian.jpg" alt="Lillian Zhang"><h3>Lillian Zhang</h3><p class="role">Advisor · MIT PhD student</p><p class="bio">MIT Mathematics alum, MIT PhD student in Computer Science, HMMT Director, USAMO qualifier, and MPFG top 10. Lillian helps build a home for math lovers.</p></article>
+    <article><img src="../assets/img/team-emily.jpg" alt="Emily Ma"><h3>Emily Ma</h3><p class="role">Advisor · Harvard 2028</p><p class="bio">Emily is an undergraduate at Harvard with an IMO bronze medal, EGMO silver medal, USAMO silver medal, and two honourable mentions on the CMO.</p></article>
   </div>
 </section>
 

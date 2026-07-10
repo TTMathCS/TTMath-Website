@@ -1,63 +1,19 @@
 var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-var exhibits = {
-  calculus: {
-    kicker: 'Calculus ride',
-    title: 'Curves become motion.',
-    formula: 'd/dx x² = 2x',
-    note: 'Rates, areas, slopes, and motion turn into tools students can feel.',
-    symbol: '∫'
-  },
-  number: {
-    kicker: 'Prime parade',
-    title: 'Numbers start hiding patterns.',
-    formula: '2, 3, 5, 7, 11, ...',
-    note: 'Prime numbers, modular tricks, divisibility, and olympiad shortcuts.',
-    symbol: 'π'
-  },
-  probability: {
-    kicker: 'Chance booth',
-    title: 'Randomness becomes strategy.',
-    formula: 'E[X] = Σ xP(x)',
-    note: 'Expected value, games, Bayes thinking, and decisions under uncertainty.',
-    symbol: 'P'
-  },
-  geometry: {
-    kicker: 'Shape tent',
-    title: 'Pictures become proof.',
-    formula: 'a² + b² = c²',
-    note: 'Angles, transformations, symmetry, invariants, and visual reasoning.',
-    symbol: '△'
-  },
-  algebra: {
-    kicker: 'Symbol machine',
-    title: 'Equations become engines.',
-    formula: 'Ax = b',
-    note: 'Structures, systems, matrices, functions, and clean problem language.',
-    symbol: 'A'
-  },
-  conjecture: {
-    kicker: 'Mystery booth',
-    title: 'Some doors are still locked.',
-    formula: 'P ?= NP',
-    note: 'Unsolved problems show students that math is still being invented.',
-    symbol: '?'
-  }
-};
-
 var surprises = [
-  { kicker: 'Legend ticket', title: 'Emmy Noether', formula: 'symmetry -> conservation', note: 'A giant of modern algebra and theoretical physics.', img: '../assets/img/mathematicians/noether.jpg' },
-  { kicker: 'Legend ticket', title: 'Maryam Mirzakhani', formula: 'geometry + dynamics', note: 'A reminder that imagination is a rigorous tool.', img: '../assets/img/legends/mirzakhani.jpg' },
-  { kicker: 'Science ticket', title: 'Albert Einstein', formula: 'E = mc²', note: 'Geometry, thought experiments, and spacetime.', img: '../assets/img/legends/einstein.jpg' },
-  { kicker: 'Theorem ticket', title: 'Euler Identity', formula: 'e^{iπ} + 1 = 0', note: 'Five famous constants share one tiny stage.', symbol: 'e' },
-  { kicker: 'Conjecture ticket', title: 'Collatz Conjecture', formula: '3x + 1', note: 'Simple enough to play, difficult enough to humble everyone.', symbol: '3x' },
-  { kicker: 'Topic ticket', title: 'Graph Theory', formula: 'G = (V,E)', note: 'Friendships, routes, tournaments, and networks become math.', symbol: 'G' },
-  { kicker: 'Legend ticket', title: 'Katherine Johnson', formula: 'orbit = calculation + courage', note: 'Precision math that helped guide spaceflight.', img: '../assets/img/legends/katherine-johnson.jpg' },
-  { kicker: 'Theorem ticket', title: 'Cauchy-Schwarz', formula: '(Σaᵢbᵢ)² ≤ (Σaᵢ²)(Σbᵢ²)', note: 'A powerful inequality behind many olympiad solutions.', symbol: '≤' }
+  { kicker: 'Program ticket', title: 'Peer tutoring', formula: 'question + mentor -> confidence', note: 'Free support for school math, foundations, and confidence.', symbol: '∑' },
+  { kicker: 'Contest ticket', title: 'Contest prep sprint', formula: 'AMC -> AIME -> CMO', note: 'Practice sessions, strategy, and student-led breakdowns for contest math.', symbol: 'π' },
+  { kicker: 'Charity ticket', title: 'Charity Math Competition', formula: 'math + kindness = impact', note: 'Community contests that raise funds and make problem solving social.', img: '../assets/img/news-charity-2025.png' },
+  { kicker: 'Camp ticket', title: 'Summer camp teamwork', formula: 'puzzles + friends -> momentum', note: 'Hands-on contest math, group solving, and final challenge days.', img: '../assets/img/news-summer-camp-2025.jpg' },
+  { kicker: 'Livestream ticket', title: 'Problem breakdown live', formula: 'problem -> method -> aha', note: 'Students compare solutions and learn the reasoning behind hard problems.', symbol: '▶' },
+  { kicker: 'Theorem flash', title: 'Cauchy-Schwarz', formula: '(Σaᵢbᵢ)² ≤ (Σaᵢ²)(Σbᵢ²)', note: 'A powerful inequality that appears often in olympiad solutions.', symbol: '≤' },
+  { kicker: 'Topic flash', title: 'Graph theory', formula: 'G = (V,E)', note: 'Friendships, routes, tournaments, and networks become solvable structures.', symbol: 'G' },
+  { kicker: 'Volunteer ticket', title: 'Student leadership', formula: 'teach + organize + design', note: 'Volunteers can teach, write, mentor, run events, and help the community grow.', symbol: '∞' }
 ];
 
 var lastSurprise = -1;
 var hero = document.querySelector('.hero');
+var wheelLab = document.querySelector('.wheel-lab');
 var spotlight = document.querySelector('.spotlight');
 var spotKicker = document.querySelector('.spot-kicker');
 var spotTitle = document.querySelector('.spotlight h2');
@@ -94,28 +50,27 @@ function setSpotlight(item) {
   ], 260);
 }
 
-document.querySelectorAll('.exhibit-tab').forEach(function (button) {
-  button.addEventListener('click', function () {
-    var key = button.dataset.exhibit;
-    document.querySelectorAll('.exhibit-tab').forEach(function (item) {
-      item.classList.toggle('active', item === button);
-    });
-    if (hero) hero.dataset.exhibit = key;
-    setSpotlight(exhibits[key]);
-  });
-});
-
-var surpriseButton = document.querySelector('.surprise');
-if (surpriseButton) {
-  surpriseButton.addEventListener('click', function () {
-    var next = Math.floor(Math.random() * surprises.length);
-    if (surprises.length > 1) {
-      while (next === lastSurprise) next = Math.floor(Math.random() * surprises.length);
-    }
-    lastSurprise = next;
+function spinSurprise() {
+  var next = Math.floor(Math.random() * surprises.length);
+  if (surprises.length > 1) {
+    while (next === lastSurprise) next = Math.floor(Math.random() * surprises.length);
+  }
+  lastSurprise = next;
+  if (hero) hero.dataset.spin = 'surprise';
+  if (wheelLab && !reduceMotion) {
+    wheelLab.classList.remove('spinning');
+    wheelLab.offsetWidth;
+    wheelLab.classList.add('spinning');
+    setTimeout(function () { wheelLab.classList.remove('spinning'); }, 760);
+    setTimeout(function () { setSpotlight(surprises[next]); }, 220);
+  } else {
     setSpotlight(surprises[next]);
-  });
+  }
 }
+
+document.querySelectorAll('[data-spin]').forEach(function (button) {
+  button.addEventListener('click', spinSurprise);
+});
 
 document.querySelectorAll('[data-count]').forEach(function (node) {
   if (reduceMotion) return;
@@ -135,7 +90,7 @@ document.querySelectorAll('[data-count]').forEach(function (node) {
 });
 
 var revealItems = document.querySelectorAll(
-  '.scene, .proof-tickets article, .ride-track article, .scoreboard a, .story-strip article, .mask-wall article, .lock-row article, .badge-wall article, .final-ticket'
+  '.scene, .proof-tickets article, .ride-track article, .scoreboard a, .story-strip article, .badge-wall article, .final-ticket'
 );
 if ('IntersectionObserver' in window && !reduceMotion) {
   var observer = new IntersectionObserver(function (entries) {
@@ -158,7 +113,7 @@ var canvas = document.querySelector('.formula-canvas');
 if (canvas && !reduceMotion) {
   var ctx = canvas.getContext('2d');
   var particles = [];
-  var formulas = ['π', 'Σ', '√', 'ζ', '∞', '∫', 'φ', 'P?', 'AIME', 'CMO', 'QED', '3x+1'];
+  var formulas = ['π', 'Σ', '√', '∞', '∫', 'φ', 'AIME', 'CMO', 'QED', 'AMC', 'COMC', 'Gauss'];
 
   function resizeCanvas() {
     var ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -171,7 +126,7 @@ if (canvas && !reduceMotion) {
   function seedParticles() {
     particles = [];
     var box = canvas.getBoundingClientRect();
-    var count = Math.min(64, Math.max(28, Math.floor(box.width / 24)));
+    var count = Math.min(42, Math.max(20, Math.floor(box.width / 34)));
     for (var i = 0; i < count; i += 1) {
       particles.push({
         x: Math.random() * box.width,
@@ -199,7 +154,7 @@ if (canvas && !reduceMotion) {
       ctx.translate(p.x, p.y);
       ctx.rotate(Math.sin((p.y + p.x) / 90) * .16);
       ctx.fillStyle = p.color;
-      ctx.globalAlpha = .33;
+      ctx.globalAlpha = .20;
       ctx.font = '900 ' + p.size + 'px IBM Plex Mono, monospace';
       ctx.fillText(p.text, 0, 0);
       ctx.restore();
